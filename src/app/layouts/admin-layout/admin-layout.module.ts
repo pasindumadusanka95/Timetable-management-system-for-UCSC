@@ -20,6 +20,7 @@ import {
   MatTooltipModule,
   MatSelectModule
 } from '@angular/material';
+import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
 @NgModule({
   imports: [
     CommonModule,
@@ -31,6 +32,7 @@ import {
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    ScheduleModule
   ],
   declarations: [
     DashboardComponent,
