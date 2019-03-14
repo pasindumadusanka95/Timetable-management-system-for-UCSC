@@ -25,6 +25,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from './login/login.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { HallsComponent } from './halls/halls.component';
 
 // tslint:disable-next-line:prefer-const
 let config = {
@@ -53,6 +54,7 @@ let config = {
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
+    HallsComponent,
 
   ],
   providers: [],
