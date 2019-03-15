@@ -23,8 +23,19 @@ import {
 } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './login/login.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { HallsComponent } from './halls/halls.component';
 
-
+// tslint:disable-next-line:prefer-const
+let config = {
+  apiKey: 'AIzaSyAO3dPICHK8GbsBOsHXnjOIsnY1ABELVFk',
+  authDomain: 'timetablemanager-1769a.firebaseapp.com',
+  databaseURL: 'https://timetablemanager-1769a.firebaseio.com',
+  projectId: 'timetablemanager-1769a',
+  storageBucket: 'timetablemanager-1769a.appspot.com',
+  messagingSenderId: '142400018060'
+};
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -32,6 +43,8 @@ import { LoginComponent } from './login/login.component';
     HttpModule,
     ComponentsModule,
     RouterModule,
+    AngularFireModule.initializeApp(config),
+    AngularFireAuthModule,
     AppRoutingModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
@@ -41,6 +54,7 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
+    HallsComponent,
 
   ],
   providers: [],
