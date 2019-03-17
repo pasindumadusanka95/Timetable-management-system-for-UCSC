@@ -11,6 +11,7 @@ import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
+import { LecturersComponent } from '../../addlecturers/lecturers.component';
 
 import {
   MatButtonModule,
@@ -32,6 +33,7 @@ import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    ReactiveFormsModule,
     ScheduleModule
   ],
   declarations: [
@@ -43,6 +45,7 @@ import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
+    LecturersComponent,
   ]
 })
 

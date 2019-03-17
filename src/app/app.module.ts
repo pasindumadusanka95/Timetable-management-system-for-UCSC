@@ -26,7 +26,14 @@ import { LoginComponent } from './login/login.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { HallsComponent } from './halls/halls.component';
+import { LecturersComponent } from './addlecturers/lecturers.component';
+// Toaster for Alert Messages
 
+import { ToastrModule } from 'ngx-toastr';
+// Reactive Form Module
+import { ReactiveFormsModule } from '@angular/forms';
+// NGX Pagination
+import { NgxPaginationModule } from 'ngx-pagination';
 // tslint:disable-next-line:prefer-const
 let config = {
   apiKey: 'AIzaSyAO3dPICHK8GbsBOsHXnjOIsnY1ABELVFk',
@@ -45,7 +52,15 @@ let config = {
     RouterModule,
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule,
+    ReactiveFormsModule,        // Reactive forms module
     AppRoutingModule,
+    BrowserAnimationsModule,    // Required animations module for Toastr
+    ToastrModule.forRoot({      // Register NgxToast NPM module
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
+    NgxPaginationModule ,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     })
