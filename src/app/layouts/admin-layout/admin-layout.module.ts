@@ -12,6 +12,9 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { LecturersComponent } from '../../addlecturers/lecturers.component';
+import {LecturersListComponent} from '../../lecturers-list/lecturers-list.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+
 
 import {
   MatButtonModule,
@@ -34,7 +37,8 @@ import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
     MatSelectModule,
     MatTooltipModule,
     ReactiveFormsModule,
-    ScheduleModule
+    ScheduleModule,
+    NgxPaginationModule
   ],
   declarations: [
     DashboardComponent,
@@ -46,6 +50,7 @@ import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
     NotificationsComponent,
     UpgradeComponent,
     LecturersComponent,
+    LecturersListComponent,
   ]
 })
 
