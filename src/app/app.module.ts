@@ -18,6 +18,7 @@ import { IconsComponent } from './icons/icons.component';
 import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
+
 import {
   AgmCoreModule
 } from '@agm/core';
@@ -27,6 +28,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { HallsComponent } from './halls/halls.component';
 import { LecturersComponent } from './addlecturers/lecturers.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
 // Toaster for Alert Messages
 
 import { ToastrModule } from 'ngx-toastr';
@@ -34,6 +36,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { ReactiveFormsModule } from '@angular/forms';
 // NGX Pagination
 import { NgxPaginationModule } from 'ngx-pagination';
+import { LecturersListComponent } from './lecturers-list/lecturers-list.component';
 // tslint:disable-next-line:prefer-const
 let config = {
   apiKey: 'AIzaSyAO3dPICHK8GbsBOsHXnjOIsnY1ABELVFk',
@@ -48,6 +51,7 @@ let config = {
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+    NgbModule,
     ComponentsModule,
     RouterModule,
     AngularFireModule.initializeApp(config),
