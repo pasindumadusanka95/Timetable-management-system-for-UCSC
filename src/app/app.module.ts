@@ -30,13 +30,17 @@ import { HallsComponent } from './halls/halls.component';
 import { LecturersComponent } from './addlecturers/lecturers.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
 // Toaster for Alert Messages
+// Firebase Modules
 
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
 import { ToastrModule } from 'ngx-toastr';
 // Reactive Form Module
 import { ReactiveFormsModule } from '@angular/forms';
 // NGX Pagination
 import { NgxPaginationModule } from 'ngx-pagination';
 import { LecturersListComponent } from './lecturers-list/lecturers-list.component';
+import { EditLecturerComponent } from './edit-lecturer/edit-lecturer.component';
 // tslint:disable-next-line:prefer-const
 let config = {
   apiKey: 'AIzaSyAO3dPICHK8GbsBOsHXnjOIsnY1ABELVFk',
@@ -50,6 +54,8 @@ let config = {
   imports: [
     BrowserAnimationsModule,
     FormsModule,
+    AngularFireModule.initializeApp(environment.firebase), // Main Angular fire module 
+    AngularFireDatabaseModule,  // Firebase database module
     HttpModule,
     NgbModule,
     ComponentsModule,
@@ -74,6 +80,7 @@ let config = {
     AdminLayoutComponent,
     LoginComponent,
     HallsComponent,
+    EditLecturerComponent,
 
   ],
   providers: [],
