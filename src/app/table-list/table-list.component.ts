@@ -13,8 +13,9 @@ export class TableListComponent implements OnInit {
   public selectedDate: Date = new Date(2018, 1, 15);  
   public timeScale: TimeScaleModel = { enable: true, interval: 60, slotCount: 2 };
   public eventSettings: EventSettingsModel = { dataSource: scheduleData };
-  public scheduleViews: View[] = ['WorkWeek','Week'];
+  public scheduleViews: View[] = ['WorkWeek'];
   public showTimeIndicator: boolean = false;
+  public showHeaderBar: boolean = false;
  
  
 
