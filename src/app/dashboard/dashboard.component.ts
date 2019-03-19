@@ -1,12 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
+import { DayService, WeekService, WorkWeekService, MonthService, AgendaService,TimeScaleModel,EventSettingsModel,View } from '@syncfusion/ej2-angular-schedule';
+import { scheduleData } from '../datasource';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+  providers: [DayService, WeekService, WorkWeekService, MonthService, AgendaService]
 })
 export class DashboardComponent implements OnInit {
+
+  public selectedDate: Date = new Date(2018, 1, 15);  
+  public timeScale: TimeScaleModel = { enable: true, interval: 60, slotCount: 2 };
+  public eventSettings: EventSettingsModel = { dataSource: scheduleData };
+  public scheduleViews: View[] = ['WorkWeek'];
+  public showTimeIndicator: boolean = false;
+  public showHeaderBar: boolean = false;
 
   constructor() { }
   startAnimationForLineChart(chart){
