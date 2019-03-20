@@ -6,7 +6,11 @@ import { scheduleData } from '../datasource';
   selector: 'app-table-list',
   templateUrl: './table-list.component.html',
   styleUrls: ['./table-list.component.css'],
-  providers: [DayService, WeekService, WorkWeekService, MonthService, AgendaService]
+  providers: [DayService, WeekService, WorkWeekService, MonthService, AgendaService],
+  styles: [`
+    .e-schedule .e-read-only {
+        opacity: .8;
+    }`],
 
 })
 export class TableListComponent implements OnInit {
