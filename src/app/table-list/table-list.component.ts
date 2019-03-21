@@ -16,7 +16,7 @@ import {
   styleUrls: ['./table-list.component.css'],
   
   encapsulation: ViewEncapsulation.None,
-  providers: [DayService, WeekService, WorkWeekService, MonthService, AgendaService,DragAndDropService,ResizeServicegi],
+  providers: [DayService, WeekService, WorkWeekService, MonthService, AgendaService,DragAndDropService,ResizeService],
   
 
 })
