@@ -6,7 +6,7 @@ import { DropDownList } from '@syncfusion/ej2-dropdowns';
 import { eventsData } from '../datasource';
 import {
   EventSettingsModel, ScheduleComponent, EventRenderedArgs, DayService, WeekService,
-  WorkWeekService, MonthService, AgendaService, PopupOpenEventArgs, ResizeService, DragAndDropService
+  WorkWeekService, MonthService, AgendaService, PopupOpenEventArgs, ResizeService, DragAndDropService, 
 } from '@syncfusion/ej2-angular-schedule';
 
 
@@ -16,7 +16,7 @@ import {
   styleUrls: ['./table-list.component.css'],
   
   encapsulation: ViewEncapsulation.None,
-  providers: [DayService, WeekService, WorkWeekService, MonthService, AgendaService],
+  providers: [DayService, WeekService, WorkWeekService, MonthService, AgendaService,DragAndDropService,ResizeServicegi],
   
 
 })
