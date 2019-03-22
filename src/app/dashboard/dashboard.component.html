@@ -128,8 +128,11 @@
                     <h4 class="card-title">First Year Time Table</h4>
                 </div>
                 <div class="card-body table-responsive">
-                    <ejs-schedule width= '100%' height='300px'  [views]="scheduleViews" [workHours]="scheduleHours"startHour='08:00' endHour='19:00' [showTimeIndicator]="showTimeIndicator" [showHeaderBar] = "showHeaderBar" > </ejs-schedule>
-                </div>
+                    <ejs-schedule #scheduleObj width='100%' height='350px' [selectedDate]="selectedDate" [eventSettings]="eventSettings" (popupOpen)="onPopupOpen($event)" [showHeaderBar]="showHederBar" [views]="views" [workHours]="scheduleHours"startHour='08:00' endHour='19:00'[showTimeIndicator]="showTimeIndicator">
+                        <ng-template #dateHeaderTemplate let-data>
+                            <div class="date-text">{{getDateHeaderText(data.date)}}</div>
+                        </ng-template>
+                      </ejs-schedule>                </div>
             </div>
           </div>
           <div class="col-lg-6 col-md-12">
@@ -138,8 +141,11 @@
                       <h4 class="card-title">Second Year Time Table</h4>
                   </div>
                   <div class="card-body table-responsive">
-                    <ejs-schedule width= '100%' height='300px'  [views]="scheduleViews" [workHours]="scheduleHours"startHour='08:00' endHour='19:00' [showTimeIndicator]="showTimeIndicator" [showHeaderBar] = "showHeaderBar" > </ejs-schedule>
-                  </div>
+                    <ejs-schedule #scheduleObj width='100%' height='350px' [selectedDate]="selectedDate" [eventSettings]="eventSettings" (popupOpen)="onPopupOpen($event)" [showHeaderBar]="showHederBar" [views]="views" [workHours]="scheduleHours"startHour='08:00' endHour='19:00'[showTimeIndicator]="showTimeIndicator">
+                        <ng-template #dateHeaderTemplate let-data>
+                            <div class="date-text">{{getDateHeaderText(data.date)}}</div>
+                        </ng-template>
+                      </ejs-schedule>                  </div>
               </div>
           </div>
       </div>
@@ -150,8 +156,11 @@
                   <h4 class="card-title">Third Year Time Table</h4>
               </div>
               <div class="card-body table-responsive">
-                <ejs-schedule width= '100%' height='300px'  [views]="scheduleViews" [workHours]="scheduleHours"startHour='08:00' endHour='19:00' [showTimeIndicator]="showTimeIndicator" [showHeaderBar] = "showHeaderBar" > </ejs-schedule>
-              </div>
+                <ejs-schedule #scheduleObj width='100%' height='350px' [selectedDate]="selectedDate" [eventSettings]="eventSettings" (popupOpen)="onPopupOpen($event)" [showHeaderBar]="showHederBar" [views]="views" [workHours]="scheduleHours"startHour='08:00' endHour='19:00'[showTimeIndicator]="showTimeIndicator">
+                    <ng-template #dateHeaderTemplate let-data>
+                        <div class="date-text">{{getDateHeaderText(data.date)}}</div>
+                    </ng-template>
+                  </ejs-schedule>              </div>
           </div>
         </div>
         <div class="col-lg-6 col-md-12">
@@ -160,8 +169,12 @@
                     <h4 class="card-title">Fourth Year Time Table</h4>
                 </div>
                 <div class="card-body table-responsive">
-                    <ejs-schedule width= '100%' height='300px'  [views]="scheduleViews" [workHours]="scheduleHours"startHour='08:00' endHour='19:00' [showTimeIndicator]="showTimeIndicator" [showHeaderBar] = "showHeaderBar" > </ejs-schedule>
-                </div>
+                    <ejs-schedule #scheduleObj width='100%' height='350px' [selectedDate]="selectedDate" [eventSettings]="eventSettings" (popupOpen)="onPopupOpen($event)" [showHeaderBar]="showHederBar" [views]="views" [workHours]="scheduleHours"startHour='08:00' endHour='19:00'[showTimeIndicator]="showTimeIndicator">
+                        <ng-template #dateHeaderTemplate let-data>
+                            <div class="date-text">{{getDateHeaderText(data.date)}}</div>
+                        </ng-template>
+                      </ejs-schedule>                
+                    </div>
             </div>
         </div>
     </div>
