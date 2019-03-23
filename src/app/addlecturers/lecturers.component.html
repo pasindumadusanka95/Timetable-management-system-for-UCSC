@@ -1,19 +1,19 @@
 <div class="pt-3 pb-2 mb-3 border-bottom offset-sm-1">
-    <app-lecturers-list></app-lecturers-list>
+    <!-- <app-lecturers-list></app-lecturers-list> -->
   <h1 class="h2">Add Lectuers</h1>
 
   </div>
   
   <!-- lecturer form -->
-  <form [formGroup]="studentForm" (ngSubmit)="submitStudentData()" novalidate>
+  <form [formGroup]="lecturerForm" (ngSubmit)="submitLecturerData()" novalidate>
     <div class="row">
             
       <div class="col-lg-5 col-md-12 col-sm-12 offset-sm-2">
         <div class="row">
   
             <div class="col-md-12 mb-3">
-                <label>Initials</label>
-                <input type="text" formControlName="initials" class="form-control" required>
+                <label>User name</label>
+                <input type="text" formControlName="userName" class="form-control" required>
                 </div>
           <div class="col-md-12 mb-3">
             <label>First name</label>
@@ -48,19 +48,19 @@
             <p *ngIf="mobileNumber.errors?.pattern" class="error"><sup>*</sup>Use numbers only
               number</p>
           </div>
-          <div>
+          <!-- <div>
           <label>Subjects</label>
           <div class="form-group text-right"></div>
           <input type="text" formControlName="subjects" class="form-control" required>
           <span class="form-group-btn">
                 <button class="btn btn-default" type="button">Add Subjects</button>
            </span>
-          </div>
+          </div>-->
         
-    </div>
+    </div> 
         <div class="form-group text-right">
           <button type="button" class="btn btn-secondary gap-right" (click)="ResetForm()">Reset</button>
-          <button type="submit" class="btn btn-success" [disabled]="!studentForm.valid">Add Lectuer</button>
+          <button type="submit" class="btn btn-success" [disabled]="!lecturerForm.valid">Add Lectuer</button>
         </div>
   
       </div>

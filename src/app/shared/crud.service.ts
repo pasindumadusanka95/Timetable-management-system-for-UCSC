@@ -17,8 +17,8 @@ export class CrudService {
   // Create Lecturer
   AddLecturer(lecturer: Lecturer) {
     this.LecturersRef.push({
-      initials: lecturer.initials,
-      firstname: lecturer.firstname,
+      userName: lecturer.username,
+      firstName: lecturer.firstname,
       lastName: lecturer.lastname,
       email: lecturer.email,
       mobileNumber: lecturer.mobileNumber
@@ -40,8 +40,8 @@ export class CrudService {
   // Update Lecturer Object
   UpdateLecturer(lecturer: Lecturer) {
     this.LecturerRef.update({
-      initials: lecturer.initials,
-      firstname: lecturer.firstname,
+      userName: lecturer.username,
+      firstName: lecturer.firstname,
       lastName: lecturer.lastname,
       email: lecturer.email,
       mobileNumber: lecturer.mobileNumber

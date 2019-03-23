@@ -54,7 +54,7 @@ let config = {
   imports: [
     BrowserAnimationsModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebase), // Main Angular fire module 
+    AngularFireModule.initializeApp(environment.firebase), // Main Angular fire module
     AngularFireDatabaseModule,  // Firebase database module
     HttpModule,
     NgbModule,
