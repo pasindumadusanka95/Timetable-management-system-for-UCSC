@@ -18,12 +18,16 @@ export class LecturersListComponent implements OnInit {
     private crudservice: CrudService,
    public modalService: NgbModal
    ) { }
+
+   // tslint:disable-next-line:member-ordering
+   lecturerArray = [];
+
     open(content) {
-      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.modalService.open(content , {ariaLabelledBy: 'modal-basic-title', size: 'lg'}).result.then((result) => {
         this.closeResult = `Closed with: ${result}`;
       }, (reason) => {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      });
+      }, );
     }
 
     private getDismissReason(reason: any): string {
@@ -39,7 +43,16 @@ export class LecturersListComponent implements OnInit {
 
   ngOnInit() {
     this.dataState();
-    this.crudservice.getLecturers();
+    this.crudservice.getLecturers().subscribe(
+      list => {
+        this.lecturerArray = list.map(item => {
+          return {
+            $key: item.key,
+              ...item.payload.val()
+          };
+        });
+      }
+    );
     // Initialize student's list, when component is ready
     // let s = this.crudApi.GetStudentsList();
   //  s.snapshotChanges().subscribe(data => { // Using snapshotChanges() method to retrieve list of data along with metadata($key)

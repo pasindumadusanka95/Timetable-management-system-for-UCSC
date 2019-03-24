@@ -1,63 +1,70 @@
 <ng-template #content let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
+    
     <div class="modal-body">
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Lecturers List</h1>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
+    <h3 class="h2">Lecturers List</h3>
+    
     <!-- It won't show if there is no student data -->
-    <a routerLink="/register-student" class="btn btn-success" *ngIf="hideWhenNoStudent">
-      <i class="fas fa-plus custom-fa-plus"></i>
+    <!-- <a routerLink="/register-student" class="btn btn-success" *ngIf="hideWhenNoStudent"> -->
+      <!-- <i class="fas fa-plus custom-fa-plus"></i>
       Add Student
-    </a>
+    </a> -->
   </div>
   
-  <div class="pricing-header mx-auto">
+  <!-- <div class="pricing-header mx-auto">
   
-    <!-- Preloader shows before the data loads-->
+ 
     <div class="no-data text-center" *ngIf="preLoader">
       <img src="assets/preloader.gif" class="preloader-icon" alt="No student">
-    </div>
+    </div> -->
   
     <!-- No data shows when their is no student data available -->
-    <div class="no-data text-center" *ngIf="noData">
+    <!-- <div class="no-data text-center" *ngIf="noData">
       <img src="assets/no-student.svg" class="nodata-msg" alt="No student">
       <p class="nodata-msg">No student added yet!</p>
       <a routerLink="/register-student" class="btn btn-success">
         <i class="fas fa-plus custom-fa-plus"></i>
         Add Student
       </a>
-    </div>
+    </div> -->
   
     <!-- Showing students data -->
-    <div class="table-responsive" *ngIf="hideWhenNoStudent">
+    <div class="table-responsive" >
       <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
         <thead>
           <tr>
-            <th scope="col">Student Id</th>
-            <th scope="col">Student name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Mobile number</th>
-            <th class="text-center" scope="col">Edit</th>
+            <th scope="col"><b>Name</b></th>
+            <th scope="col"><b>Email</b></th>
+            <th scope="col"><b>Mobile Number</b></th>
+            <th scope="col"><b>User Name</b></th>
+            <th scope="col"></th>
+           
           </tr>
         </thead>
-        <tbody>
+        
           <!-- *ngFor loop iterates over Student array and fetch the student's data -->
           <!-- paginate pipe will add pagination in student's list, it won't show if items are less then 7 -->
-          <tr *ngFor="let student of Student | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
-            <!-- <tr> -->
-            <th scope="row">{{student.$key}}</th>
-            <td>{{student.firstName}} {{student.lastName}}</td>
-            <td>{{student.email}}</td>
-            <td>{{student.mobileNumber}}</td>
-            <td class="text-center action-block">
+          <ng-container *ngFor="let lecturer of lecturerArray | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
+           
+             <tr  class="table-striped"> 
+            <!-- <th scope="row">{{student.$key}}</th> -->
+            <td>{{lecturer.firstName}} {{lecturer.lastName}}</td>
+            <td>{{lecturer.email}}</td>
+            <td>{{lecturer.mobileNumber}}</td>
+            <td>{{lecturer.userName}}</td>
+            <td>
+              <button class="btn btn-outline-info">Edit</button>
+              <button class="btn btn-outline-danger">Delete</button>
+            <!-- <td class="text-center action-block">
               <i class="far fa-edit" routerLink="/edit-student/{{student.$key}}"></i>
-              <i class="far fa-trash-alt" (click)="deleteStudent(student)"></i></td>
+              <i class="far fa-trash-alt" (click)="deleteStudent(student)"></i></td> -->
+              </td>
           </tr>
-        </tbody>
+        
+      </ng-container>
       </table>
     </div>
     <!-- Pagination -->
@@ -65,13 +72,11 @@
   
   </div>
 
-</div>
-<div class="modal-footer">
-  <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-</div>
+
+
 </ng-template>
 
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Edit Lectures</button>
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">View Lectures</button>
 
 <hr>
 
