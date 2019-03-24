@@ -7,7 +7,7 @@
 
 export const environment = {
   production: false,
-  firebase: {
+  firebaseConfig: {
       apiKey: 'AIzaSyAO3dPICHK8GbsBOsHXnjOIsnY1ABELVFk',
       authDomain: 'timetablemanager-1769a.firebaseapp.com',
       databaseURL: 'https://timetablemanager-1769a.firebaseio.com',

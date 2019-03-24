@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-
+import { CrudService} from '../shared/crud.service';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-lecturers-list',
@@ -10,18 +11,13 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class LecturersListComponent implements OnInit {
   closeResult: string;
-  // p: number = 1;                      // Fix for AOT compilation error for NGX pagination
-  // Student: Student[];                 // Save students data in Student's array.
-  // hideWhenNoStudent: boolean = false; // Hide students data table when no student.
-  // noData: boolean = false;            // Showing No Student Message, when no student in database.
-  // preLoader: boolean = true;          // Showing Preloader to show user data is coming for you from thre server(A tiny UX Shit)
-
 
   constructor(
     // public crudApi: CrudService, // Inject student CRUD services in constructor.
-    public toastr: ToastrService ,  // Toastr service for alert message
-    public modalService: NgbModal
-    ) { }
+   // public toastr: ToastrService ,  // Toastr service for alert message
+    private crudservice: CrudService,
+   public modalService: NgbModal
+   ) { }
     open(content) {
       this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
         this.closeResult = `Closed with: ${result}`;
@@ -29,7 +25,7 @@ export class LecturersListComponent implements OnInit {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       });
     }
-  
+
     private getDismissReason(reason: any): string {
       if (reason === ModalDismissReasons.ESC) {
         return 'by pressing ESC';
@@ -39,10 +35,12 @@ export class LecturersListComponent implements OnInit {
         return  `with: ${reason}`;
       }
     }
-  
+
 
   ngOnInit() {
-    this.dataState(); // Initialize student's list, when component is ready
+    this.dataState();
+    this.crudservice.getLecturers();
+    // Initialize student's list, when component is ready
     // let s = this.crudApi.GetStudentsList();
   //  s.snapshotChanges().subscribe(data => { // Using snapshotChanges() method to retrieve list of data along with metadata($key)
       // this.Student = [];

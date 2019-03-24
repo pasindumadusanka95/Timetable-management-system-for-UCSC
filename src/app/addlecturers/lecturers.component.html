@@ -5,9 +5,9 @@
   </div>
   
   <!-- lecturer form -->
-  <form [formGroup]="lecturerForm" (ngSubmit)="submitLecturerData()" novalidate>
-    <div class="row">
-            
+  <form [formGroup]="this.crudService.form" (ngSubmit)="onSubmit()">
+    <input type="hidden" formControlName="$key">
+    <div class="row"> 
       <div class="col-lg-5 col-md-12 col-sm-12 offset-sm-2">
         <div class="row">
   
@@ -17,10 +17,12 @@
                 </div>
           <div class="col-md-12 mb-3">
             <label>First name</label>
-            <input type="text" formControlName="firstName" class="form-control" required>
+            <input type="text" formControlName="firstName" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.firstName.errors}">
+            <div class="invalid-feedback" *ngIf="submitted && formControls.firstName.errors">
+              <label>This field is required.</label></div>
             <!-- Showing errors using getter method -->
-            <p *ngIf="firstName.touched && firstName.invalid" class="error"><sup>*</sup>Please enter atleast first name</p>
-            <p *ngIf="firstName.errors?.minlength" class="error"><sup>*</sup>Name shouldn't be less than 2 words</p>
+            <!-- <p *ngIf="firstName.touched && firstName.invalid" class="error"><sup>*</sup>Please enter atleast first name</p>
+            <p *ngIf="firstName.errors?.minlength" class="error"><sup>*</sup>Name shouldn't be less than 2 words</p> -->
           </div>
   
           <div class="col-md-12 mb-3">
@@ -33,20 +35,27 @@
         <div class="row">
           <div class="col-md-12 mb-3">
             <label>Email</label>
-            <input type="email" formControlName="email" class="form-control" required>
+            <input type="email" formControlName="email" class="form-control"[ngClass]="{'is-invalid':submitted && formControls.email.errors}">
+            <div class="invalid-feedback" *ngIf="submitted && formControls.email.errors">
+              Invalid email address.</div>
             <!-- Showing errors using getter method -->
-            <p *ngIf="email.touched && email.invalid" class="error"><sup>*</sup>Please provide email</p>
-            <p *ngIf="email.errors?.pattern" class="error"><sup>*</sup>Please enter correct email</p>
+            <!-- <p *ngIf="email.touched && email.invalid" class="error"><sup>*</sup>Please provide email</p>
+            <p *ngIf="email.errors?.pattern" class="error"><sup>*</sup>Please enter correct email</p> -->
           </div>
   
           <div class="col-md-12 mb-3">
             <label>Mobile number</label>
-            <input type="text" formControlName="mobileNumber" class="form-control" required>
+            <input type="text" formControlName="mobileNumber" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.mobileNumber.errors}">
+            <div class="invalid-feedback" *ngIf="submitted && formControls.mobileNumber.errors">
+              <label *ngIf="formControls.mobileNumber.errors.required">This field is required.</label>
+              <label *ngIf="formControls.mobileNumber.errors.minlength">Atleast 8 numbers.<br></label>
+              <label *ngIf="formControls.mobileNumber.errors.pattern"><sup>*</sup>Use numbers only</label>
+            </div>
+            
             <!-- Showing errors using getter method -->
-            <p *ngIf="mobileNumber.touched && mobileNumber.invalid" class="error"><sup>*</sup>Please provide contact
+            <!-- <p *ngIf="mobileNumber.touched && mobileNumber.invalid" class="error"><sup>*</sup>Please provide contact
               number</p>
-            <p *ngIf="mobileNumber.errors?.pattern" class="error"><sup>*</sup>Use numbers only
-              number</p>
+             -->
           </div>
           <!-- <div>
           <label>Subjects</label>
@@ -60,10 +69,13 @@
     </div> 
         <div class="form-group text-right">
           <button type="button" class="btn btn-secondary gap-right" (click)="ResetForm()">Reset</button>
-          <button type="submit" class="btn btn-success" [disabled]="!lecturerForm.valid">Add Lectuer</button>
+          <button type="submit" class="btn btn-success" value="submit">Add Lectuer</button>
         </div>
   
       </div>
     </div>
     
   </form><!-- Student form ends-->
+  <div class="alert alert-info"  *ngIf="showSuccessMessage">
+    Submitted successfully.
+  </div>

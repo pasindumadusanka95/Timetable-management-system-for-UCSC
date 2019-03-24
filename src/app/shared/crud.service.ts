@@ -1,56 +1,46 @@
 import { Injectable } from '@angular/core';
 import { Lecturer } from '../shared/lecturer';  // Lecturer data type interface class
 // tslint:disable-next-line:max-line-length
-import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';  // Firebase modules for Database, Data list and Single object
-
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';  // Firebase modules for Database, Data list and Single object
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+  import { from } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 
 export class CrudService {
-  LecturersRef: AngularFireList<any>;    // Reference to Lecturer data list, its an Observable
-  LecturerRef: AngularFireObject<any>;   // Reference to Lecturer object, its an Observable too
 
-  // Inject AngularFireDatabase Dependency in Constructor
-  constructor(private db: AngularFireDatabase) { }
 
-  // Create Lecturer
-  AddLecturer(lecturer: Lecturer) {
-    this.LecturersRef.push({
-      userName: lecturer.username,
-      firstName: lecturer.firstname,
-      lastName: lecturer.lastname,
+constructor(private firebase: AngularFireDatabase) {}
+    // tslint:disable-next-line:member-ordering
+    lecturerList: AngularFireList<any>;
+  // tslint:disable-next-line:member-ordering
+  form = new FormGroup({
+    $key: new FormControl(null),
+    userName: new FormControl(''),
+    firstName: new FormControl('', Validators.required),
+    lastName: new FormControl(''),
+    email: new FormControl('', Validators.email),
+    mobileNumber: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('^[0-9]*$')])
+  });
+
+  getLecturers() {
+    this.lecturerList = this.firebase.list('lecturers');
+    return this.lecturerList.snapshotChanges();
+  }
+
+  insertLecturer(lecturer) {
+    this.lecturerList.push({
+      userName: lecturer.userName,
+      firstName: lecturer.firstName,
+      lastName: lecturer.lastName,
       email: lecturer.email,
       mobileNumber: lecturer.mobileNumber
-    })
-  }
-
-  // Fetch Single Lecturer Object
-  GetLecturer(id: string) {
-    this.LecturerRef = this.db.object('Lecturers-list/' + id);
-    return this.LecturerRef;
-  }
-
-  // Fetch Lecturers List
-  GetLecturersList() {
-    this.LecturersRef = this.db.list('Lecturers-list');
-    return this.LecturersRef;
-  }
-
-  // Update Lecturer Object
-  UpdateLecturer(lecturer: Lecturer) {
-    this.LecturerRef.update({
-      userName: lecturer.username,
-      firstName: lecturer.firstname,
-      lastName: lecturer.lastname,
-      email: lecturer.email,
-      mobileNumber: lecturer.mobileNumber
-    })
-  }
-
-  // Delete Lecturer Object
-  DeleteLecturer(id: string) {
-    this.LecturerRef = this.db.object('Lecturers-list/' + id);
-    this.LecturerRef.remove();
+    });
   }
 }
+
+
+
+
+
