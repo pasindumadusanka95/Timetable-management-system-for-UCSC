@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild,ViewEncapsulation } from '@angular/core';
-import { scheduleData } from '../datasource';
 import { createElement, extend } from '@syncfusion/ej2-base';
 import { Internationalization } from '@syncfusion/ej2-base';
 import { DropDownList } from '@syncfusion/ej2-dropdowns';
@@ -76,5 +75,6 @@ export class TableListComponent implements OnInit {
 
   ngOnInit() {
   }
+
 
 }

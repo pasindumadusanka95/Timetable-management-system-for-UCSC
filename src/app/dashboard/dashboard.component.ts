@@ -1,7 +1,6 @@
 import { Component, OnInit,ViewChild,ViewEncapsulation } from '@angular/core';
 import * as Chartist from 'chartist';
 import { createElement, extend } from '@syncfusion/ej2-base';
-import { scheduleData } from '../datasource';
 import {Internationalization} from '@syncfusion/ej2-base';
 import {eventsData} from '../datasource';
 import {
@@ -127,8 +126,13 @@ export class DashboardComponent implements OnInit {
 
       seq2 = 0;
   };
+
+  onDataBound(){
+    let a=this.scheduleObj.getEvents();
+    console.log(this.eventSettings.dataSource)
+  }
   ngOnInit() {
-      /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
+   /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
       const dataDailySalesChart: any = {
           labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
@@ -210,3 +214,5 @@ export class DashboardComponent implements OnInit {
   }
 
 }
+
+
