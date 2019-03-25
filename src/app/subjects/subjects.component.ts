@@ -20,11 +20,12 @@ export class SubjectsComponent implements OnInit {
     if (this.subjectsService.form.valid) {
      if (this.subjectsService.form.get('$key').value == null) {
        this.subjectsService.insertSubjects(this.subjectsService.form.value);
-       this.showSuccessMessage = true;
-       setTimeout(() => this.showSuccessMessage = false, 3000);
+      //  this.showSuccessMessage = true;
+      //  setTimeout(() => this.showSuccessMessage = false, 3000);
      }
     this.submitted = false;
     this.subjectsService.form.reset();
   }
 
+}
 }

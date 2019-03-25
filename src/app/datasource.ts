@@ -1,90 +1,102 @@
-export let defaultData: Object[] = [
-  {
-      Id: 1,
-      Subject: 'Conference',
-      StartTime: new Date(2018, 1, 7, 10, 0),
-      EndTime: new Date(2018, 1, 7, 11, 0),
-      IsAllDay: false
-      }, {
-      Id: 2,
-      Subject: 'Meeting - 1',
-      StartTime: new Date(2018, 1, 15, 10, 0),
-      EndTime: new Date(2018, 1, 16, 12, 30),
-      IsAllDay: false
-      },{
-      Id: 3,
-      Subject: 'Paris',
-      StartTime: new Date(2018, 1, 13, 12, 0),
-      EndTime: new Date(2018, 1, 13, 12, 30),
-      IsAllDay: false
-      },{
-      Id: 4,
-      Subject: 'Vacation',
-      StartTime: new Date(2018, 1, 12, 10, 0),
-      EndTime: new Date(2018, 1, 12, 10, 30),
-      IsAllDay: false
-      }
-];
+// export let defaultData: Object[] = [
+//   {
+//       Id: 1,
+//       Subject: 'Conference',
+//       StartTime: new Date(2018, 1, 7, 10, 0),
+//       EndTime: new Date(2018, 1, 7, 11, 0),
+//       IsAllDay: false
+//       }, {
+//       Id: 2,
+//       Subject: 'Meeting - 1',
+//       StartTime: new Date(2018, 1, 15, 10, 0),
+//       EndTime: new Date(2018, 1, 16, 12, 30),
+//       IsAllDay: false
+//       },{
+//       Id: 3,
+//       Subject: 'Paris',
+//       StartTime: new Date(2018, 1, 13, 12, 0),
+//       EndTime: new Date(2018, 1, 13, 12, 30),
+//       IsAllDay: false
+//       },{
+//       Id: 4,
+//       Subject: 'Vacation',
+//       StartTime: new Date(2018, 1, 12, 10, 0),
+//       EndTime: new Date(2018, 1, 12, 10, 30),
+//       IsAllDay: false
+//       }
+// ];
 
 let msPerDay = 86400000;
 let msPerHour = 3600000;
 let currentTime = new Date().setMinutes(0, 0, 0);
-export let readonlyEventsData: Object[] = [
-  {
-      Id: 1,
-      Subject: 'Project Workflow Analysis',
-      StartTime: new Date(currentTime + msPerDay * -2 + msPerHour * 2),
-      EndTime: new Date(currentTime + msPerDay * -2 + msPerHour * 4),
-  }, {
-      Id: 2,
-      Subject: 'Project Requirement Planning',
-      StartTime: new Date(currentTime + msPerDay * -1 + msPerHour * 2),
-      EndTime: new Date(currentTime + msPerDay * -1 + msPerHour * 4),
-  }, {
-      Id: 3,
-      Subject: 'Meeting with Developers',
-      StartTime: new Date(currentTime + msPerDay * -1 + msPerHour * -3),
-      EndTime: new Date(currentTime + msPerDay * -1 + msPerHour * -1),
-  }, {
-      Id: 4,
-      Subject: 'Team Fun Activities',
-      StartTime: new Date(currentTime + msPerHour * -4),
-      EndTime: new Date(currentTime + msPerHour * -2)
-  }, {
-      Id: 5,
-      Subject: 'Quality Analysis',
-      StartTime: new Date(currentTime + msPerHour * 1),
-      EndTime: new Date(currentTime + msPerHour * 3),
-      ReadOnly: true
-  }, {
-      Id: 6,
-      Subject: 'Customer meeting – John Mackenzie',
-      StartTime: new Date(currentTime + msPerHour * 5),
-      EndTime: new Date(currentTime + msPerHour * 6)
-  }, {
-      Id: 7,
-      Subject: 'Meeting with Core team',
-      StartTime: new Date(currentTime + msPerHour * 9),
-      EndTime: new Date(currentTime + msPerHour * 10)
-  }, {
-      Id: 8,
-      Subject: 'Project Review',
-      StartTime: new Date(currentTime + msPerDay * 1 + msPerHour * 3),
-      EndTime: new Date(currentTime + msPerDay * 1 + msPerHour * 5),
-  }, {
-      Id: 9,
-      Subject: 'Project demo meeting with Andrew',
-      StartTime: new Date(currentTime + msPerDay * 1 + msPerHour * -4),
-      EndTime: new Date(currentTime + msPerDay * 1 + msPerHour * -3),
-  }, {
-      Id: 10,
-      Subject: 'Online Hosting of Project',
-      StartTime: new Date(currentTime + msPerDay * 2 + msPerHour * 4),
-      EndTime: new Date(currentTime + msPerDay * 2 + msPerHour * 6),
-  }
+// export let readonlyEventsData: Object[] = [
+//   {
+//       Id: 1,
+//       Subject: 'Project Workflow Analysis',
+//       StartTime: new Date(currentTime + msPerDay * -2 + msPerHour * 2),
+//       EndTime: new Date(currentTime + msPerDay * -2 + msPerHour * 4),
+//   }, {
+//       Id: 2,
+//       Subject: 'Project Requirement Planning',
+//       StartTime: new Date(currentTime + msPerDay * -1 + msPerHour * 2),
+//       EndTime: new Date(currentTime + msPerDay * -1 + msPerHour * 4),
+//   }, {
+//       Id: 3,
+//       Subject: 'Meeting with Developers',
+//       StartTime: new Date(currentTime + msPerDay * -1 + msPerHour * -3),
+//       EndTime: new Date(currentTime + msPerDay * -1 + msPerHour * -1),
+//   }, {
+//       Id: 4,
+//       Subject: 'Team Fun Activities',
+//       StartTime: new Date(currentTime + msPerHour * -4),
+//       EndTime: new Date(currentTime + msPerHour * -2)
+//   }, {
+//       Id: 5,
+//       Subject: 'Quality Analysis',
+//       StartTime: new Date(currentTime + msPerHour * 1),
+//       EndTime: new Date(currentTime + msPerHour * 3),
+//       ReadOnly: true
+//   }, {
+//       Id: 6,
+//       Subject: 'Customer meeting – John Mackenzie',
+//       StartTime: new Date(currentTime + msPerHour * 5),
+//       EndTime: new Date(currentTime + msPerHour * 6)
+//   }, {
+//       Id: 7,
+//       Subject: 'Meeting with Core team',
+//       StartTime: new Date(currentTime + msPerHour * 9),
+//       EndTime: new Date(currentTime + msPerHour * 10)
+//   }, {
+//       Id: 8,
+//       Subject: 'Project Review',
+//       StartTime: new Date(currentTime + msPerDay * 1 + msPerHour * 3),
+//       EndTime: new Date(currentTime + msPerDay * 1 + msPerHour * 5),
+//   }, {
+//       Id: 9,
+//       Subject: 'Project demo meeting with Andrew',
+//       StartTime: new Date(currentTime + msPerDay * 1 + msPerHour * -4),
+//       EndTime: new Date(currentTime + msPerDay * 1 + msPerHour * -3),
+//   }, {
+//       Id: 10,
+//       Subject: 'Online Hosting of Project',
+//       StartTime: new Date(currentTime + msPerDay * 2 + msPerHour * 4),
+//       EndTime: new Date(currentTime + msPerDay * 2 + msPerHour * 6),
+//   }
+// ];
+
+export let eventsData1Y: Object[] = [
+  
 ];
 
-export let eventsData: Object[] = [
+export let eventsData2Y: Object[] = [
+  
+];
+
+export let eventsData3Y: Object[] = [
+  
+];
+
+export let eventsData4Y: Object[] = [
   
 ];
 
