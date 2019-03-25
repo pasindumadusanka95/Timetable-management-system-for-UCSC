@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild,ViewEncapsulation } from '@angular/core';
 import { createElement, extend } from '@syncfusion/ej2-base';
 import { Internationalization } from '@syncfusion/ej2-base';
 import { DropDownList } from '@syncfusion/ej2-dropdowns';
-import { eventsData } from '../datasource';
+import { eventsData1Y,eventsData2Y,eventsData3Y,eventsData4Y } from '../datasource';
 import {
   EventSettingsModel, ScheduleComponent, EventRenderedArgs, DayService, WeekService,
   WorkWeekService, MonthService, AgendaService, PopupOpenEventArgs, ResizeService, DragAndDropService, 
@@ -21,7 +21,10 @@ import {
 })
 export class TableListComponent implements OnInit {
   public selectedDate: Date = new Date(2018, 1, 15);
-  public eventSettings: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData, null, true) };
+  public eventSettings1Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData1Y, null, true) };
+  public eventSettings2Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData2Y, null, true) };
+  public eventSettings3Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData3Y, null, true) };
+  public eventSettings4Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData4Y, null, true) };
   public showHederBar: Boolean = false;
   public views: Array<String> = ['WorkWeek'];
   public showTimeIndicator: boolean = false;
