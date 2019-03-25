@@ -10,25 +10,8 @@
                 <span class="navbar-toggler-icon icon-bar"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                <!-- <form class="navbar-form">
-                    <div class="input-group no-border">
-                        <input type="text" value="" class="form-control" placeholder="Search...">
-                        <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
-                            <i class="material-icons">search</i>
-                            <div class="ripple-container"></div>
-                        </button>
-                    </div>
-                </form> -->
                 <ul class="navbar-nav">
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#pablo">
-                            <i class="material-icons">dashboard</i>
-                            <p>
-                                <span class="d-lg-none d-md-block">Stats</span>
-                            </p>
-                        </a>
-                    </li> -->
-                    <li class="nav-item dropdown">
+                   <li class="nav-item dropdown">
                         <a class="nav-link" href="#pablo" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="material-icons">notifications</i>
                             <span class="notification">5</span>
@@ -68,11 +51,6 @@
                       <h4 class="card-title">View Subjects
                       </h4>
                   </div>
-                  <!-- <div class="card-footer">
-                      <div class="stats">
-                          Get More Space
-                      </div>
-                  </div> -->
               </div>
           </div>
           <div class="col-lg-4 col-md-6 col-sm-6">
@@ -83,11 +61,6 @@
                       </div>
                       <h4 class="card-title">View Lecture Halls</h4>
                   </div>
-                  <!-- <div class="card-footer">
-                      <div class="stats">
-                          Last 24 Hours
-                      </div>
-                  </div> -->
               </div>
           </div>
           <div class="col-lg-4 col-md-6 col-sm-6">
@@ -98,42 +71,21 @@
                       </div>
                       <h5 class="card-title">View Lecturer Details</h5>
                   </div>
-                  <!-- <div class="card-footer">
-                      <div class="stats">
-                            Tracked from Github
-                      </div>
-                  </div> -->
               </div>
           </div>
-          <!-- <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                  <div class="card-header card-header-info card-header-icon">
-                      <div class="card-icon">
-                          <i class="fa fa-twitter"></i>
-                      </div>
-                      <h3 class="card-title">View Notifications</h3>
-                  </div>
-                  <div class="card-footer">
-                      <div class="stats">
-                          Just Updated
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div> -->
       <div class="row">
           <div class="col-lg-6 col-md-12">
             <div class="card">
                 <div class="card-header card-header-info">
                     <h4 class="card-title">First Year Time Table</h4>
                 </div>
-                <div class="card-body table-responsive">
-                    <ejs-schedule #scheduleObj width='100%' height='350px' (actionComplete)= "onDataBound1Y()" [selectedDate]="selectedDate" [eventSettings]="eventSettings1Y" (popupOpen)="onPopupOpen($event)" [showHeaderBar]="showHederBar" [views]="views" [workHours]="scheduleHours"startHour='08:00' endHour='19:00'[showTimeIndicator]="showTimeIndicator">
-                        <ng-template #dateHeaderTemplate let-data>
-                            <div class="date-text">{{getDateHeaderText(data.date)}}</div>
-                        </ng-template>
-                      </ejs-schedule>                
-                </div>
+                 <div class="card-body table-responsive">
+                        <ejs-schedule #scheduleObj width='100%' height='350px' (actionComplete)= "onDataBound1Y()" [selectedDate]="selectedDate" [eventSettings]="eventSettings1Y" (popupOpen)="onPopupOpen($event)" [showHeaderBar]="showHederBar" [views]="views" [workHours]="scheduleHours"startHour='08:00' endHour='19:00'[showTimeIndicator]="showTimeIndicator">
+                            <ng-template #dateHeaderTemplate let-data>
+                                <div class="date-text">{{getDateHeaderText(data.date)}}</div>
+                            </ng-template>
+                        </ejs-schedule>                
+                 </div>
             </div>
           </div>
           <div class="col-lg-6 col-md-12">
@@ -141,12 +93,13 @@
                   <div class="card-header card-header-info">
                       <h4 class="card-title">Second Year Time Table</h4>
                   </div>
-                  <div class="card-body table-responsive">
-                    <ejs-schedule #scheduleObj width='100%' height='350px' (actionComplete)= "onDataBound2Y()" [selectedDate]="selectedDate" [eventSettings]="eventSettings2Y" (popupOpen)="onPopupOpen($event)" [showHeaderBar]="showHederBar" [views]="views" [workHours]="scheduleHours"startHour='08:00' endHour='19:00'[showTimeIndicator]="showTimeIndicator">
-                        <ng-template #dateHeaderTemplate let-data>
-                            <div class="date-text">{{getDateHeaderText(data.date)}}</div>
-                        </ng-template>
-                      </ejs-schedule>                  </div>
+                    <div class="card-body table-responsive">
+                        <ejs-schedule #scheduleObj width='100%' height='350px' (actionComplete)= "onDataBound2Y()" [selectedDate]="selectedDate" [eventSettings]="eventSettings2Y" (popupOpen)="onPopupOpen($event)" [showHeaderBar]="showHederBar" [views]="views" [workHours]="scheduleHours"startHour='08:00' endHour='19:00'[showTimeIndicator]="showTimeIndicator">
+                            <ng-template #dateHeaderTemplate let-data>
+                                <div class="date-text">{{getDateHeaderText(data.date)}}</div>
+                            </ng-template>
+                        </ejs-schedule>                  
+                    </div>
               </div>
           </div>
       </div>
@@ -156,12 +109,13 @@
               <div class="card-header card-header-info">
                   <h4 class="card-title">Third Year Time Table</h4>
               </div>
-              <div class="card-body table-responsive">
-                <ejs-schedule #scheduleObj width='100%' height='350px' (actionComplete)= "onDataBound3Y()" [selectedDate]="selectedDate" [eventSettings]="eventSettings3Y" (popupOpen)="onPopupOpen($event)" [showHeaderBar]="showHederBar" [views]="views" [workHours]="scheduleHours"startHour='08:00' endHour='19:00'[showTimeIndicator]="showTimeIndicator">
-                    <ng-template #dateHeaderTemplate let-data>
-                        <div class="date-text">{{getDateHeaderText(data.date)}}</div>
-                    </ng-template>
-                  </ejs-schedule>              </div>
+                <div class="card-body table-responsive">
+                    <ejs-schedule #scheduleObj width='100%' height='350px' (actionComplete)= "onDataBound3Y()" [selectedDate]="selectedDate" [eventSettings]="eventSettings3Y" (popupOpen)="onPopupOpen($event)" [showHeaderBar]="showHederBar" [views]="views" [workHours]="scheduleHours"startHour='08:00' endHour='19:00'[showTimeIndicator]="showTimeIndicator">
+                        <ng-template #dateHeaderTemplate let-data>
+                            <div class="date-text">{{getDateHeaderText(data.date)}}</div>
+                        </ng-template>
+                    </ejs-schedule>              
+                </div>
           </div>
         </div>
         <div class="col-lg-6 col-md-12">
@@ -169,13 +123,12 @@
                 <div class="card-header card-header-info">
                     <h4 class="card-title">Fourth Year Time Table</h4>
                 </div>
-                <div class="card-body table-responsive">
-                    <ejs-schedule #scheduleObj width='100%' height='350px' (actionComplete)= "onDataBound4Y()" [selectedDate]="selectedDate" [eventSettings]="eventSettings4Y" (popupOpen)="onPopupOpen($event)" [showHeaderBar]="showHederBar" [views]="views" [workHours]="scheduleHours"startHour='08:00' endHour='19:00'[showTimeIndicator]="showTimeIndicator">
-                        <ng-template #dateHeaderTemplate let-data>
-                            <div class="date-text">{{getDateHeaderText(data.date)}}</div>
-                        </ng-template>
-                      </ejs-schedule>                
-                    
+                    <div class="card-body table-responsive">
+                        <ejs-schedule #scheduleObj width='100%' height='350px' (actionComplete)= "onDataBound4Y()" [selectedDate]="selectedDate" [eventSettings]="eventSettings4Y" (popupOpen)="onPopupOpen($event)" [showHeaderBar]="showHederBar" [views]="views" [workHours]="scheduleHours"startHour='08:00' endHour='19:00'[showTimeIndicator]="showTimeIndicator">
+                            <ng-template #dateHeaderTemplate let-data>
+                                <div class="date-text">{{getDateHeaderText(data.date)}}</div>
+                            </ng-template>
+                        </ejs-schedule>                
                     </div>
             </div>
         </div>
