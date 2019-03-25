@@ -42,6 +42,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { LecturersListComponent } from './lecturers-list/lecturers-list.component';
 import { EditLecturerComponent } from './edit-lecturer/edit-lecturer.component';
 import {CrudService} from './shared/crud.service';
+import { SubjectsComponent } from './subjects/subjects.component';
+import { SubjectListComponent } from './subject-list/subject-list.component';
+import { SubjectsService } from './shared/subjects.service';
 
 // tslint:disable-next-line:prefer-const
 let config = {
@@ -83,9 +86,11 @@ let config = {
     LoginComponent,
     HallsComponent,
     EditLecturerComponent,
+    SubjectsComponent,
+    SubjectListComponent,
 
   ],
-  providers: [CrudService],
+  providers: [CrudService, SubjectsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
