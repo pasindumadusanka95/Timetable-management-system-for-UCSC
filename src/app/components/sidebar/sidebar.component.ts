@@ -13,7 +13,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/managelectures', title: 'Manage Lecturers',  icon: 'person', class: '' },
     { path: '/user-profile', title: 'Manage Halls',  icon: 'house', class: '' },
     { path: '/typography', title: 'Manage Student Counts',  icon: 'people', class: '' },
-    { path: '/notifications', title: 'Manage Subjects',  icon: 'books', class: '' },
+    { path: '/subjects', title: 'Manage Subjects',  icon: 'books', class: '' },
 ];
 
 @Component({

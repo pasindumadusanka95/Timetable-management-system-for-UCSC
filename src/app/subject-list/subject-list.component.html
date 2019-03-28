@@ -1,3 +1,26 @@
-<p>
-  subject-list works!
-</p>
+<table class="table table-sm">
+  <thead>
+    <th>Subject Code</th>
+    <th>Subject</th>
+    <th>Year</th>
+    <th>Semester</th>
+    <th>Credit</th>
+    <th></th>
+  </thead>
+  <ng-container *ngFor="let subject of subjectsArray">
+    <tr class="table">
+      <td>{{subject.subjectCode}}</td>
+      <td>{{subject.subjectTitle}}</td>
+      <td>{{subject.year}}</td>
+      <td>{{subject.semester}}</td>
+      <td>{{subject.credit}}</td>
+      <td>
+        <button class="btn btn-outline-info" (click)="subjectsService.populateForm(subjects)">Edit</button>
+        <button class="btn btn-outline-danger" (click)="onDelete(subject.$key)">Delete</button>
+      </td>
+    </tr>
+  </ng-container>
+</table>
+<div class="alert alert-danger" *ngIf="showDeleteMessage">
+    Deleted Successfully!
+  </div>

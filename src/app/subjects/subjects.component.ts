@@ -10,6 +10,7 @@ export class SubjectsComponent implements OnInit {
 
   constructor(private subjectsService: SubjectsService) { }
   submitted: boolean;
+  showSuccessMessage: boolean;
   formControls = this.subjectsService.form.controls;
 
   ngOnInit() {
@@ -18,13 +19,15 @@ export class SubjectsComponent implements OnInit {
   onSubmit(){
     this.submitted = true;
     if (this.subjectsService.form.valid) {
-     if (this.subjectsService.form.get('$key').value == null) {
-       this.subjectsService.insertSubjects(this.subjectsService.form.value);
-       this.showSuccessMessage = true;
-       setTimeout(() => this.showSuccessMessage = false, 3000);
-     }
+     if (this.subjectsService.form.get('$key').value == null) 
+       this.subjectsService.insertSubject(this.subjectsService.form.value);
+     else
+       this.subjectsService.updateSubject(this.subjectsService.form.value);
+    this.showSuccessMessage = true;
+    setTimeout(() => this.showSuccessMessage = false, 3000);
     this.submitted = false;
     this.subjectsService.form.reset();
   }
 
+}
 }

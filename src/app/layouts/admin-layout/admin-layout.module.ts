@@ -1,3 +1,5 @@
+import { SubjectListComponent } from './../../subject-list/subject-list.component';
+import { SubjectsComponent } from './../../subjects/subjects.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -51,6 +53,8 @@ import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
     UpgradeComponent,
     LecturersComponent,
     LecturersListComponent,
+    SubjectsComponent,
+    SubjectListComponent,
   ]
 })
 

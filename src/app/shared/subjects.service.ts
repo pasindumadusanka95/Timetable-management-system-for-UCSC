@@ -24,7 +24,7 @@ export class SubjectsService {
     return this.subjectsList.snapshotChanges();
   }
 
-  insertSubjects(subjects) {
+  insertSubject(subjects) {
     this.subjectsList.push({
       subjectCode: subjects.subjectCode,
       subjectTitle: subjects.subjectTitle,
@@ -32,6 +32,24 @@ export class SubjectsService {
       semester: subjects.semester,
       credit: subjects.credit
     });
+  }
+
+  populateForm(subjects){
+    this.form.setValue(subjects);
+  }
+
+  updateSubject(subjects) {
+    this.subjectsList.update(subjects.$key,{
+      subjectCode: subjects.subjectCode,
+      subjectTitle: subjects.subjectTitle,
+      year: subjects.year,
+      semester: subjects.semester,
+      credit: subjects.credit
+    });
+  }
+
+  deleteSubject($key: string){
+    this.subjectsList.remove($key);
   }
 
 }
