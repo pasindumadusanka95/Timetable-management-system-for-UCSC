@@ -86,8 +86,8 @@ let config = {
     LoginComponent,
     HallsComponent,
     EditLecturerComponent,
-    SubjectsComponent,
-    SubjectListComponent,
+    //SubjectsComponent,
+    //SubjectListComponent,
 
   ],
   providers: [CrudService, SubjectsService],
