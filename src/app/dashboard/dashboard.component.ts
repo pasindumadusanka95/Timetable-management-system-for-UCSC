@@ -2,7 +2,7 @@ import { Component, OnInit,ViewChild,ViewEncapsulation } from '@angular/core';
 import * as Chartist from 'chartist';
 import { createElement, extend } from '@syncfusion/ej2-base';
 import {Internationalization} from '@syncfusion/ej2-base';
-import {eventsData} from '../datasource';
+import {eventsData1Y,eventsData2Y,eventsData3Y,eventsData4Y} from '../datasource';
 import {
   EventSettingsModel, ScheduleComponent, EventRenderedArgs, DayService, WeekService,
   WorkWeekService, MonthService, AgendaService, PopupOpenEventArgs, ResizeService, DragAndDropService, 
@@ -20,7 +20,10 @@ import {
 export class DashboardComponent implements OnInit {
 
   public selectedDate: Date = new Date(2018, 1, 15);
-  public eventSettings: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData, null, true) };
+  public eventSettings1Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData1Y, null, true) };
+  public eventSettings2Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData2Y, null, true) };
+  public eventSettings3Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData3Y, null, true) };
+  public eventSettings4Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData4Y, null, true) };
   public showHederBar: Boolean = false;
   public views: Array<String> = ['WorkWeek'];
   public showTimeIndicator: boolean = false;
@@ -127,9 +130,24 @@ export class DashboardComponent implements OnInit {
       seq2 = 0;
   };
 
-  onDataBound(){
-    let a=this.scheduleObj.getEvents();
-    console.log(this.eventSettings.dataSource)
+  onDataBound1Y(){
+    let json1Y = JSON.stringify(this.eventSettings1Y.dataSource);
+    console.log(json1Y);
+  }
+
+  onDataBound2Y(){
+    let json2Y = JSON.stringify(this.eventSettings2Y.dataSource);
+    console.log(json2Y);
+  }
+
+  onDataBound3Y(){
+    let json3Y = JSON.stringify(this.eventSettings3Y.dataSource);
+    console.log(json3Y);
+  }
+
+  onDataBound4Y(){
+    let json4Y = JSON.stringify(this.eventSettings4Y.dataSource);
+    console.log(json4Y);
   }
   ngOnInit() {
    /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
