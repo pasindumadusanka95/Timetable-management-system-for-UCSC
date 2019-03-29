@@ -15,7 +15,7 @@
       <td>{{subject.semester}}</td>
       <td>{{subject.credit}}</td>
       <td>
-        <button class="btn btn-outline-info" (click)="subjectsService.populateForm(subjects)">Edit</button>
+        <button class="btn btn-outline-info" (click)="subjectsService.populateForm(subject)">Edit</button>
         <button class="btn btn-outline-danger" (click)="onDelete(subject.$key)">Delete</button>
       </td>
     </tr>

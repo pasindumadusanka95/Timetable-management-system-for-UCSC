@@ -1,4 +1,6 @@
-<div class="row">
+<div class="col-lg-5 col-md-12 col-sm-12 offset-sm-2">
+
+  <div class="row">
   <div class="class-md-5">
     <!-- subject form -->
   <form [formGroup]="this.subjectsService.form" (ngSubmit)="onSubmit()">
@@ -48,12 +50,16 @@
       <input type="submit" class="btn btn-primary" value="Submit">
     </div>
     
-  </form><!-- Student form ends-->
+  </form><!-- Subject form ends-->
   <div class="alert alert-info" *ngIf="showSucessMessage">
     Submitted Successfully!
   </div>
   </div>
-  <div class="class-md-7">
+  
+</div>
+
+</div>
+
+<div class="class-md-7">
     <app-subject-list></app-subject-list>
   </div>
-</div>

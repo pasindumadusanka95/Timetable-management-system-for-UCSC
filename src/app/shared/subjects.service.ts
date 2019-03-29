@@ -34,8 +34,8 @@ export class SubjectsService {
     });
   }
 
-  populateForm(subjects){
-    this.form.setValue(subjects);
+  populateForm(subject){
+    this.form.setValue(subject);
   }
 
   updateSubject(subjects) {
