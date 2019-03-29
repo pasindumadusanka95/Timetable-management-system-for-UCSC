@@ -3,9 +3,10 @@ import * as Chartist from 'chartist';
 import { createElement, extend } from '@syncfusion/ej2-base';
 import {Internationalization} from '@syncfusion/ej2-base';
 import {eventsData1Y,eventsData2Y,eventsData3Y,eventsData4Y} from '../datasource';
+import { DateTimePicker } from '@syncfusion/ej2-calendars';
 import {
   EventSettingsModel, ScheduleComponent, EventRenderedArgs, DayService, WeekService,
-  WorkWeekService, MonthService, AgendaService, PopupOpenEventArgs, ResizeService, DragAndDropService, 
+  WorkWeekService, MonthService, AgendaService, PopupOpenEventArgs, ResizeService, DragAndDropService,EJ2Instance, 
 } from '@syncfusion/ej2-angular-schedule';
 
 
@@ -36,6 +37,21 @@ export class DashboardComponent implements OnInit {
     return this.instance.formatDate(value, { skeleton: 'E' });
   }
   onPopupOpen(args: PopupOpenEventArgs): void {
+
+    if (args.type === 'Editor') {
+      let start: DateTimePicker = (args.element.querySelector('.e-start') as EJ2Instance).ej2_instances[0] as DateTimePicker;
+      start.format = "EEEE, h:mm a";
+      start.dataBind();
+      let end: DateTimePicker = (args.element.querySelector('.e-end') as EJ2Instance).ej2_instances[0] as DateTimePicker;
+      end.format = "EEEE, h:mm a";
+      end.dataBind();
+      args.element.querySelectorAll('.e-round').forEach((node: HTMLElement, index: number) => {
+        if (index === 0 || index === 6) {
+          node.style.display = 'none';
+        }
+      });
+    }
+
     if (args.type === 'QuickInfo') {
       let startDate;
       let endDate;
