@@ -85,13 +85,14 @@ export class LecturersComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.crudService.form.valid) {
-     if (this.crudService.form.get('$key').value == null) {
-       this.crudService.insertLecturer(this.crudService.form.value);
-       this.showSuccessMessage = true;
-       setTimeout(() => this.showSuccessMessage = false, 3000);
-     }
-    this.submitted = false;
-    this.crudService.form.reset();
+     if (this.crudService.form.get('$key').value == null)
+      this.crudService.insertLecturer(this.crudService.form.value);
+     else     
+       this.crudService.updateLecturer(this.crudService.form.value);
+     this.showSuccessMessage = true;
+     setTimeout(() => this.showSuccessMessage = false, 3000);
+     this.submitted = false;
+     this.crudService.form.reset();
      }
   }
 

@@ -56,8 +56,8 @@
             <td>{{lecturer.mobileNumber}}</td>
             <td>{{lecturer.userName}}</td>
             <td>
-              <button class="btn btn-outline-info">Edit</button>
-              <button class="btn btn-outline-danger">Delete</button>
+              <button class="btn btn-outline-info" (click)="crudService.populateForm(lecturer)">Edit</button>
+              <button class="btn btn-outline-danger" (click)="onDelete(lecturer.$key)">Delete</button>
             <!-- <td class="text-center action-block">
               <i class="far fa-edit" routerLink="/edit-student/{{student.$key}}"></i>
               <i class="far fa-trash-alt" (click)="deleteStudent(student)"></i></td> -->
@@ -66,6 +66,9 @@
         
       </ng-container>
       </table>
+      <div class="alert alert-danger" *ngIf="showDeleteMessage">
+          Deleted Successfully!
+        </div>
     </div>
     <!-- Pagination -->
     <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>

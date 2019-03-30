@@ -23,27 +23,21 @@
       <label for="">Year</label>
       <input type="text" formControlName="year" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.year.errors}">
       <div class="invalid-feedback" *ngIf="submitted && formControls.year.errors">
-          <label *ngIf="formControls.year.errors.required">This field is required.</label>
-          <label *ngIf="formControls.year.errors.min">Enter a number between 1-4</label>
-          <label *ngIf="formControls.year.errors.max">Enter a number between 1-4</label>
+          <label *ngIf="formControls.year.errors.pattern">Enter a number between 1-4</label>
       </div>
     </div>
     <div class="form-group">
       <label for="">Semester</label>
       <input type="text" formControlName="semester" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.semester.errors}">
       <div class="invalid-feedback" *ngIf="submitted && formControls.semester.errors">
-          <label *ngIf="formControls.semester.errors.required">This field is required.</label>
-          <label *ngIf="formControls.semester.errors.min">Enter a number between 1-2</label>
-          <label *ngIf="formControls.semester.errors.max">Enter a number between 1-2</label>
+          <label *ngIf="formControls.semester.errors.pattern">Enter a number between 1-2</label>
       </div>
     </div>
     <div class="form-group">
       <label for="">Credit Value</label>
       <input type="text" formControlName="credit" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.credit.errors}">
       <div class="invalid-feedback" *ngIf="submitted && formControls.credit.errors">
-          <label *ngIf="formControls.credit.errors.required">This field is required.</label>
-          <label *ngIf="formControls.credit.errors.min">Enter a number between 1-3</label>
-          <label *ngIf="formControls.credit.errors.max">Enter a number between 1-3</label>
+          <label *ngIf="formControls.credit.errors.pattern">Enter a number between 1-3</label>
       </div>
     </div>
     <div class="form-group">

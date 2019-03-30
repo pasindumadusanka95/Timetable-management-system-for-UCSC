@@ -21,6 +21,7 @@ export class LecturersListComponent implements OnInit {
 
    // tslint:disable-next-line:member-ordering
    lecturerArray = [];
+   showDeleteMessage: boolean;
 
     open(content) {
       this.modalService.open(content , {ariaLabelledBy: 'modal-basic-title', size: 'lg'}).result.then((result) => {
@@ -63,6 +64,14 @@ export class LecturersListComponent implements OnInit {
         // this.Student.push(a as Student);
     //  })
   //  })
+  }
+
+  onDelete($key){
+    if(confirm('Confirm delete this record?')){
+      this.crudservice.deleteLecturer($key);
+      this.showDeleteMessage = true;
+      setTimeout(() => this.showDeleteMessage = false, 3000);
+    }
   }
 
   // tslint:disable-next-line:max-line-length
