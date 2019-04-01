@@ -4,6 +4,8 @@ import { createElement, extend } from '@syncfusion/ej2-base';
 import {Internationalization} from '@syncfusion/ej2-base';
 import {eventsData1Y,eventsData2Y,eventsData3Y,eventsData4Y} from '../datasource';
 import { DateTimePicker } from '@syncfusion/ej2-calendars';
+import { DropDownList } from '@syncfusion/ej2-dropdowns';
+
 import {
   EventSettingsModel, ScheduleComponent, EventRenderedArgs, DayService, WeekService,
   WorkWeekService, MonthService, AgendaService, PopupOpenEventArgs, ResizeService, DragAndDropService,EJ2Instance, 
@@ -29,6 +31,8 @@ export class DashboardComponent implements OnInit {
   public views: Array<String> = ['WorkWeek'];
   public showTimeIndicator: boolean = false;
 
+  
+
   @ViewChild('scheduleObj')
   public scheduleObj: ScheduleComponent;
   public instance: Internationalization = new Internationalization();
@@ -50,6 +54,29 @@ export class DashboardComponent implements OnInit {
           node.style.display = 'none';
         }
       });
+
+      if (!args.element.querySelector('.custom-field-row')) {
+        let row: HTMLElement = createElement('div', { className: 'custom-field-row' });
+        let formElement: HTMLElement = args.element.querySelector('.e-schedule-form');
+        formElement.firstChild.insertBefore(row, args.element.querySelector('.e-title-location-row'));
+        let container: HTMLElement = createElement('div', { className: 'custom-field-container' });
+        let inputEle: HTMLInputElement = createElement('input', {
+            className: 'e-field2', attrs: { name: 'Venue' }
+        }) as HTMLInputElement;
+        container.appendChild(inputEle);
+        row.appendChild(container);
+        let drowDownList: DropDownList = new DropDownList({
+            dataSource: [],
+            fields: { text: 'text', value: 'value' },
+            value: (<{ [key: string]: Object }>(args.data)).EventType as string,
+            floatLabelType: 'Always', placeholder: 'Subjects'
+        });
+        drowDownList.appendTo(inputEle);
+        inputEle.setAttribute('name', 'Venue');
+    }
+
+    
+    
     }
 
     if (args.type === 'QuickInfo') {
