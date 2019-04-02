@@ -28,6 +28,7 @@ export class TableListComponent implements OnInit {
   public showHederBar: Boolean = false;
   public views: Array<String> = ['WorkWeek'];
   public showTimeIndicator: boolean = false;
+  public readonly: boolean = true;
 
   @ViewChild('scheduleObj')
   public scheduleObj: ScheduleComponent;

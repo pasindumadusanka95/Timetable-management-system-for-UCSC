@@ -45,6 +45,8 @@ import {CrudService} from './shared/crud.service';
 import { SubjectsComponent } from './subjects/subjects.component';
 import { SubjectListComponent } from './subject-list/subject-list.component';
 import { SubjectsService } from './shared/subjects.service';
+import {TimeTableCRUDService} from './shared/time-table-crud.service';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 
 // tslint:disable-next-line:prefer-const
 let config = {
@@ -62,6 +64,7 @@ let config = {
     AngularFireModule.initializeApp(environment.firebaseConfig), // Main Angular fire module
     AngularFireDatabaseModule,  // Firebase database module
     HttpModule,
+    AngularFirestoreModule,
     NgbModule,
     ComponentsModule,
     RouterModule,
@@ -90,7 +93,7 @@ let config = {
     //SubjectListComponent,
 
   ],
-  providers: [CrudService, SubjectsService],
+  providers: [CrudService, SubjectsService,TimeTableCRUDService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

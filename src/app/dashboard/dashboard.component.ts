@@ -10,6 +10,7 @@ import {
   EventSettingsModel, ScheduleComponent, EventRenderedArgs, DayService, WeekService,
   WorkWeekService, MonthService, AgendaService, PopupOpenEventArgs, ResizeService, DragAndDropService,EJ2Instance, 
 } from '@syncfusion/ej2-angular-schedule';
+import { TimeTableCRUDService } from 'app/shared/time-table-crud.service';
 
 
 @Component({
@@ -17,7 +18,7 @@ import {
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
   encapsulation: ViewEncapsulation.None,
-  providers: [DayService, WeekService, WorkWeekService, MonthService, AgendaService,DragAndDropService,ResizeService],
+  providers: [DayService, WeekService, WorkWeekService, MonthService, AgendaService,DragAndDropService,ResizeService]
   
 })
 export class DashboardComponent implements OnInit {
@@ -115,7 +116,7 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  constructor(private ttcs:TimeTableCRUDService) { }
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -176,6 +177,7 @@ export class DashboardComponent implements OnInit {
   onDataBound1Y(){
     let json1Y = JSON.stringify(this.eventSettings1Y.dataSource);
     console.log(json1Y);
+    this.ttcs.insertobject(json1Y)
   }
 
   onDataBound2Y(){
