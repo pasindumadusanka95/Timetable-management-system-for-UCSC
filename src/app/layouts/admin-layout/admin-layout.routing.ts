@@ -6,7 +6,6 @@ import { UserProfileComponent } from '../../user-profile/user-profile.component'
 import { TableListComponent } from '../../table-list/table-list.component';
 import { TypographyComponent } from '../../typography/typography.component';
 import { IconsComponent } from '../../icons/icons.component';
-import { MapsComponent } from '../../maps/maps.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { LecturersComponent } from '../../addlecturers/lecturers.component';
 
@@ -58,7 +57,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'table-list',     component: TableListComponent },
     { path: 'typography',     component: TypographyComponent },
     { path: 'icons',          component: IconsComponent },
-    { path: 'maps',           component: MapsComponent },
     { path: 'subjects',       component: SubjectsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
     {path: 'managelectures',  component: LecturersComponent }

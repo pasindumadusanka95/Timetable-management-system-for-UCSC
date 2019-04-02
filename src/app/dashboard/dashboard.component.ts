@@ -1,14 +1,13 @@
 import { Component, OnInit,ViewChild,ViewEncapsulation } from '@angular/core';
 import * as Chartist from 'chartist';
-import { createElement, extend } from '@syncfusion/ej2-base';
+import { extend } from '@syncfusion/ej2-base';
 import {Internationalization} from '@syncfusion/ej2-base';
 import {eventsData1Y,eventsData2Y,eventsData3Y,eventsData4Y} from '../datasource';
 import { DateTimePicker } from '@syncfusion/ej2-calendars';
-import { DropDownList } from '@syncfusion/ej2-dropdowns';
+
 
 import {
-  EventSettingsModel, ScheduleComponent, EventRenderedArgs, DayService, WeekService,
-  WorkWeekService, MonthService, AgendaService, PopupOpenEventArgs, ResizeService, DragAndDropService,EJ2Instance, 
+  EventSettingsModel, ScheduleComponent, WorkWeekService, PopupOpenEventArgs, ResizeService, DragAndDropService,EJ2Instance,CellClickEventArgs,EventClickArgs, 
 } from '@syncfusion/ej2-angular-schedule';
 import { TimeTableCRUDService } from 'app/shared/time-table-crud.service';
 
@@ -18,7 +17,7 @@ import { TimeTableCRUDService } from 'app/shared/time-table-crud.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
   encapsulation: ViewEncapsulation.None,
-  providers: [DayService, WeekService, WorkWeekService, MonthService, AgendaService,DragAndDropService,ResizeService]
+  providers: [WorkWeekService,DragAndDropService,ResizeService]
   
 })
 export class DashboardComponent implements OnInit {
@@ -31,12 +30,25 @@ export class DashboardComponent implements OnInit {
   public showHederBar: Boolean = false;
   public views: Array<String> = ['WorkWeek'];
   public showTimeIndicator: boolean = false;
+  public showQuickInfo: boolean = false;
 
   
 
   @ViewChild('scheduleObj')
   public scheduleObj: ScheduleComponent;
   public instance: Internationalization = new Internationalization();
+
+  onCellClick(args: CellClickEventArgs): void {
+    this.scheduleObj.openEditor(args, 'Add');
+  }
+  onEventClick(args: EventClickArgs): void {
+    if (!(args.event as any).RecurrenceRule) {
+      this.scheduleObj.openEditor(args.event, 'Save');
+    }
+    else {
+      this.scheduleObj.quickPopup.openRecurrenceAlert();
+    }
+  }
 
   getDateHeaderText(value: Date): string {
     return this.instance.formatDate(value, { skeleton: 'E' });
@@ -56,65 +68,8 @@ export class DashboardComponent implements OnInit {
         }
       });
 
-      if (!args.element.querySelector('.custom-field-row')) {
-        let row: HTMLElement = createElement('div', { className: 'custom-field-row' });
-        let formElement: HTMLElement = args.element.querySelector('.e-schedule-form');
-        formElement.firstChild.insertBefore(row, args.element.querySelector('.e-title-location-row'));
-        let container: HTMLElement = createElement('div', { className: 'custom-field-container' });
-        let inputEle: HTMLInputElement = createElement('input', {
-            className: 'e-field2', attrs: { name: 'Venue' }
-        }) as HTMLInputElement;
-        container.appendChild(inputEle);
-        row.appendChild(container);
-        let drowDownList: DropDownList = new DropDownList({
-            dataSource: [],
-            fields: { text: 'text', value: 'value' },
-            value: (<{ [key: string]: Object }>(args.data)).EventType as string,
-            floatLabelType: 'Always', placeholder: 'Subjects'
-        });
-        drowDownList.appendTo(inputEle);
-        inputEle.setAttribute('name', 'Venue');
-    }
-
-    
-    
-    }
-
-    if (args.type === 'QuickInfo') {
-      let startDate;
-      let endDate;
-      let isAllDay;
-      if (args.target.classList.contains('e-work-cells')) {
-        startDate = (args.data as any).startTime;
-        endDate = (args.data as any).endTime;
-        isAllDay = (args.data as any).isAllDay;
       }
-      else {
-        startDate = (args.data as any).StartTime;
-        endDate = (args.data as any).EndTime;
-        isAllDay = (args.data as any).IsAllDay;
-      }
-      let details: string = '';
-      let startTimeDetail: string = this.instance.formatDate(startDate, { type: 'time', skeleton: 'short' });
-      let endTimeDetail: string = this.instance.formatDate(endDate, { type: 'time', skeleton: 'short' });
-      let startDateDetails = this.scheduleObj.getDayNames('wide')[startDate.getDay()];
-      endDate = (isAllDay) && endDate.getHours() === 0 && endDate.getMinutes() === 0 ? new Date(endDate.setDate(endDate.getDate() - 1)) : endDate;
-      let endDateDetails = this.scheduleObj.getDayNames('wide')[endDate.getDay()];
-      let spanLength: number = endDate.getDate() !== startDate.getDate() &&
-            (endDate.getTime() - startDate.getTime()) / (60 * 60 * 1000) < 24 ? 1 : 0;
-      if (isAllDay) {
-        details = startDateDetails + ' (all Day)';
-        if ((endDate.getTime() -startDate.getTime()) / 86400000 > 1) {
-          details += ' - ' + endDateDetails + ' (all Day)';
-        }
-      } else if ((((endDate.getTime() - startDate.getTime()) / 86400000) >= 1 || spanLength > 0)) {
-        details = startDateDetails + ' (' + startTimeDetail + ')' + ' - ' + endDateDetails + ' (' + endTimeDetail + ')';
-      } else {
-        details = startDateDetails + ' (' + (startTimeDetail + ' - ' + endTimeDetail) + ')';
-      }
-      args.element.querySelector('.e-date-time-details').textContent = details;
-    }
-  }
+}
 
   constructor(private ttcs:TimeTableCRUDService) { }
   startAnimationForLineChart(chart){
@@ -194,88 +149,6 @@ export class DashboardComponent implements OnInit {
     let json4Y = JSON.stringify(this.eventSettings4Y.dataSource);
     console.log(json4Y);
   }
-  ngOnInit() {
-   /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
-      const dataDailySalesChart: any = {
-          labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-          series: [
-              [12, 17, 7, 17, 23, 18, 38]
-          ]
-      };
-
-     const optionsDailySalesChart: any = {
-          lineSmooth: Chartist.Interpolation.cardinal({
-              tension: 0
-          }),
-          low: 0,
-          high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-          chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
-      }
-
-      var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
-
-      this.startAnimationForLineChart(dailySalesChart);
-
-
-      /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
-
-      const dataCompletedTasksChart: any = {
-          labels: ['12p', '3p', '6p', '9p', '12p', '3a', '6a', '9a'],
-          series: [
-              [230, 750, 450, 300, 280, 240, 200, 190]
-          ]
-      };
-
-     const optionsCompletedTasksChart: any = {
-          lineSmooth: Chartist.Interpolation.cardinal({
-              tension: 0
-          }),
-          low: 0,
-          high: 1000, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-          chartPadding: { top: 0, right: 0, bottom: 0, left: 0}
-      }
-
-      var completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
-
-      // start animation for the Completed Tasks Chart - Line Chart
-      this.startAnimationForLineChart(completedTasksChart);
-
-
-
-      /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
-
-      var datawebsiteViewsChart = {
-        labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-        series: [
-          [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
-
-        ]
-      };
-      var optionswebsiteViewsChart = {
-          axisX: {
-              showGrid: false
-          },
-          low: 0,
-          high: 1000,
-          chartPadding: { top: 0, right: 5, bottom: 0, left: 0}
-      };
-      var responsiveOptions: any[] = [
-        ['screen and (max-width: 640px)', {
-          seriesBarDistance: 5,
-          axisX: {
-            labelInterpolationFnc: function (value) {
-              return value[0];
-            }
-          }
-        }]
-      ];
-      var websiteViewsChart = new Chartist.Bar('#websiteViewsChart', datawebsiteViewsChart, optionswebsiteViewsChart, responsiveOptions);
-
-      //start animation for the Emails Subscription Chart
-      this.startAnimationForBarChart(websiteViewsChart);
-  }
-
+  ngOnInit() {}
 }
-
-
