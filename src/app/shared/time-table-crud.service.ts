@@ -41,7 +41,6 @@ export class TimeTableCRUDService {
 
 
   insertobject(object){
-    // const doc = this.db.collection('Timetable').doc("1styear");
-    // return doc.collection("1styear").doc(object)
+    const doc = this.db.collection('Timetable').doc("1styear").set({firstyear:object});
   }
 }

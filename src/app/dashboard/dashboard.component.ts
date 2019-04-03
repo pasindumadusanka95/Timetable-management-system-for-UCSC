@@ -4,6 +4,7 @@ import { extend } from '@syncfusion/ej2-base';
 import {Internationalization} from '@syncfusion/ej2-base';
 import {eventsData1Y,eventsData2Y,eventsData3Y,eventsData4Y} from '../datasource';
 import { DateTimePicker } from '@syncfusion/ej2-calendars';
+import { DropDownList } from '@syncfusion/ej2-dropdowns';
 
 
 import {
@@ -56,20 +57,51 @@ export class DashboardComponent implements OnInit {
   onPopupOpen(args: PopupOpenEventArgs): void {
 
     if (args.type === 'Editor') {
-      let start: DateTimePicker = (args.element.querySelector('.e-start') as EJ2Instance).ej2_instances[0] as DateTimePicker;
-      start.format = "EEEE, h:mm a";
-      start.dataBind();
-      let end: DateTimePicker = (args.element.querySelector('.e-end') as EJ2Instance).ej2_instances[0] as DateTimePicker;
-      end.format = "EEEE, h:mm a";
-      end.dataBind();
-      args.element.querySelectorAll('.e-round').forEach((node: HTMLElement, index: number) => {
-        if (index === 0 || index === 6) {
-          node.style.display = 'none';
+
+            let subjectElement: HTMLInputElement = args.element.querySelector('#Subject') as HTMLInputElement;
+            if (!subjectElement.classList.contains('e-dropdownlist')) {
+                let dropDownListObject: DropDownList = new DropDownList({
+                    placeholder: 'Choose subject', value: subjectElement.value,
+                    dataSource: ['New', 'Requested', 'Confirmed']
+                });
+                dropDownListObject.appendTo(subjectElement);
+                subjectElement.setAttribute('name', 'EventType');
+
+            let locationElement: HTMLInputElement = args.element.querySelector('#Location') as HTMLInputElement;
+            if (!locationElement.classList.contains('e-dropdownlist')) {
+                let dropDownListObject: DropDownList = new DropDownList({
+                    placeholder: 'Choose Location', value: locationElement.value,
+                    dataSource: ['New', 'Requested', 'Confirmed']
+                });
+                dropDownListObject.appendTo(locationElement);
+                locationElement.setAttribute('name', 'Location');
+
+            let lecturerElement: HTMLInputElement = args.element.querySelector('#Lecturer') as HTMLInputElement;
+            if (!lecturerElement.classList.contains('e-dropdownlist')) {
+                let dropDownListObject: DropDownList = new DropDownList({
+                    placeholder: 'Choose Lecturer', value: lecturerElement.value,
+                    dataSource: ['New', 'Continue', 'Confirmed']
+                });
+                dropDownListObject.appendTo(lecturerElement);
+                lecturerElement.setAttribute('name', 'Location');
+            }
+
+            let start: DateTimePicker = (args.element.querySelector('#StartTime') as EJ2Instance).ej2_instances[0] as DateTimePicker;
+            start.format = "EEEE, h:mm a";
+            start.dataBind();
+            let end: DateTimePicker = (args.element.querySelector('#EndTime') as EJ2Instance).ej2_instances[0] as DateTimePicker;
+            end.format = "EEEE, h:mm a";
+            end.dataBind();
+            args.element.querySelectorAll('.e-round').forEach((node: HTMLElement, index: number) => {
+            if (index === 0 || index === 6) {
+            node.style.display = 'none';
         }
       });
 
       }
 }
+    }
+  }
 
   constructor(private ttcs:TimeTableCRUDService) { }
   startAnimationForLineChart(chart){
