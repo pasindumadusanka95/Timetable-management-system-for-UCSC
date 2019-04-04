@@ -8,7 +8,7 @@ import { DropDownList } from '@syncfusion/ej2-dropdowns';
 
 
 import {
-  EventSettingsModel, ScheduleComponent, WorkWeekService, PopupOpenEventArgs, ResizeService, DragAndDropService,EJ2Instance,CellClickEventArgs,EventClickArgs, 
+  EventSettingsModel, ScheduleComponent, WorkWeekService, PopupOpenEventArgs, ResizeService, DragAndDropService,EJ2Instance,CellClickEventArgs,EventClickArgs,RecurrenceEditor, 
 } from '@syncfusion/ej2-angular-schedule';
 import { TimeTableCRUDService } from 'app/shared/time-table-crud.service';
 
@@ -32,17 +32,7 @@ export class DashboardComponent implements OnInit {
   public views: Array<String> = ['WorkWeek'];
   public showTimeIndicator: boolean = false;
   public showQuickInfo: boolean = false;
-  public eventSettings: EventSettingsModel = {
-    dataSource: eventsData1Y,
-    fields: {
-        id: 'Id',
-        subject: { name: 'Subject', title: 'Event Name' },
-        location: { name: 'Location', title: 'Event Location'},
-        description: { name: 'Description', title: 'Event Description' },
-        startTime: { name: 'StartTime', title: 'Start Duration' },
-        endTime: { name: 'EndTime', title: 'End Duration'  }
-    }
-};
+  
 
   
 
@@ -69,17 +59,59 @@ export class DashboardComponent implements OnInit {
 
     if (args.type === 'Editor') {
 
-            let start: DateTimePicker = (args.element.querySelector('.e-start') as EJ2Instance).ej2_instances[0] as DateTimePicker;
-            start.format = "EEEE, h:mm";
-            start.dataBind();
-            let end: DateTimePicker = (args.element.querySelector('.e-end') as EJ2Instance).ej2_instances[0] as DateTimePicker;
-            end.format = "EEEE, h:mm";
-            end.dataBind();
-            args.element.querySelectorAll('.e-round').forEach((node: HTMLElement, index: number) => {
-            if (index === 0 || index === 6) {
-            node.style.display = 'none';
-        }
-      });
+      //       let start: DateTimePicker = (args.element.querySelector('.e-start') as EJ2Instance).ej2_instances[0] as DateTimePicker;
+      //       start.format = "EEEE, h:mm";
+      //       start.dataBind();
+      //       let end: DateTimePicker = (args.element.querySelector('.e-end') as EJ2Instance).ej2_instances[0] as DateTimePicker;
+      //       end.format = "EEEE, h:mm";
+      //       end.dataBind();
+      //       args.element.querySelectorAll('.e-round').forEach((node: HTMLElement, index: number) => {
+      //       if (index === 0 || index === 6) {
+      //       node.style.display = 'none';
+      //   }
+      // });
+
+      let subjectElement: HTMLInputElement = args.element.querySelector('#Subject') as HTMLInputElement;
+      if (!subjectElement.classList.contains('e-dropdownlist')) {
+        let dropDownListObject: DropDownList = new DropDownList({
+          placeholder: 'Choose status', value: subjectElement.value,
+          dataSource: ['New', 'Requested', 'Confirmed']
+        });
+        dropDownListObject.appendTo(subjectElement);
+      }
+      let lecturerElement: HTMLInputElement = args.element.querySelector('#Lecturer') as HTMLInputElement;
+      if (!lecturerElement.classList.contains('e-dropdownlist')) {
+        let dropDownListObject: DropDownList = new DropDownList({
+          placeholder: 'Choose Lecture', value: lecturerElement.value,
+          dataSource: ['Laura', 'Nancy', 'Steven']
+        });
+        dropDownListObject.appendTo(lecturerElement);
+      }
+      let venueElement: HTMLInputElement = args.element.querySelector('#Location') as HTMLInputElement;
+      if (!venueElement.classList.contains('e-dropdownlist')) {
+        let dropDownListObject: DropDownList = new DropDownList({
+          placeholder: 'Choose venue', value: venueElement.value,
+          dataSource: ['Mumbai', 'Chennai', 'Bangalore']
+        });
+        dropDownListObject.appendTo(venueElement);
+      }
+      let startElement: HTMLInputElement = args.element.querySelector('#StartTime') as HTMLInputElement;
+      if (!startElement.classList.contains('e-datetimepicker')) {
+        new DateTimePicker({ value: new Date(startElement.value) || new Date() }, startElement);
+      }
+      let endElement: HTMLInputElement = args.element.querySelector('#EndTime') as HTMLInputElement;
+      if (!endElement.classList.contains('e-datetimepicker')) {
+        new DateTimePicker({ value: new Date(endElement.value) || new Date() }, endElement);
+      }
+      let recurElement: HTMLElement = args.element.querySelector('#RecurrenceEditor');
+            if (!recurElement.classList.contains('e-recurrenceeditor')) {
+                let recurrObject: RecurrenceEditor = new RecurrenceEditor({
+                  frequencies: ['weekly'],
+                });
+                recurrObject.appendTo(recurElement);
+                (this.scheduleObj.eventWindow as any).recurrenceEditor = recurrObject;
+            }
+            document.getElementById('RecurrenceEditor').style.display = (this.scheduleObj.currentAction == "EditOccurrence") ? 'none' : 'block';
 
       
 }
