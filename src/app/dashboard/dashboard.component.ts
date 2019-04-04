@@ -32,6 +32,17 @@ export class DashboardComponent implements OnInit {
   public views: Array<String> = ['WorkWeek'];
   public showTimeIndicator: boolean = false;
   public showQuickInfo: boolean = false;
+  public eventSettings: EventSettingsModel = {
+    dataSource: eventsData1Y,
+    fields: {
+        id: 'Id',
+        subject: { name: 'Subject', title: 'Event Name' },
+        location: { name: 'Location', title: 'Event Location'},
+        description: { name: 'Description', title: 'Event Description' },
+        startTime: { name: 'StartTime', title: 'Start Duration' },
+        endTime: { name: 'EndTime', title: 'End Duration'  }
+    }
+};
 
   
 
@@ -58,39 +69,11 @@ export class DashboardComponent implements OnInit {
 
     if (args.type === 'Editor') {
 
-            let subjectElement: HTMLInputElement = args.element.querySelector('#Subject') as HTMLInputElement;
-            if (!subjectElement.classList.contains('e-dropdownlist')) {
-                let dropDownListObject: DropDownList = new DropDownList({
-                    placeholder: 'Choose subject', value: subjectElement.value,
-                    dataSource: ['New', 'Requested', 'Confirmed']
-                });
-                dropDownListObject.appendTo(subjectElement);
-                subjectElement.setAttribute('name', 'EventType');
-
-            let locationElement: HTMLInputElement = args.element.querySelector('#Location') as HTMLInputElement;
-            if (!locationElement.classList.contains('e-dropdownlist')) {
-                let dropDownListObject: DropDownList = new DropDownList({
-                    placeholder: 'Choose Location', value: locationElement.value,
-                    dataSource: ['New', 'Requested', 'Confirmed']
-                });
-                dropDownListObject.appendTo(locationElement);
-                locationElement.setAttribute('name', 'Location');
-
-            let lecturerElement: HTMLInputElement = args.element.querySelector('#Lecturer') as HTMLInputElement;
-            if (!lecturerElement.classList.contains('e-dropdownlist')) {
-                let dropDownListObject: DropDownList = new DropDownList({
-                    placeholder: 'Choose Lecturer', value: lecturerElement.value,
-                    dataSource: ['New', 'Continue', 'Confirmed']
-                });
-                dropDownListObject.appendTo(lecturerElement);
-                lecturerElement.setAttribute('name', 'Location');
-            }
-
-            let start: DateTimePicker = (args.element.querySelector('#StartTime') as EJ2Instance).ej2_instances[0] as DateTimePicker;
-            start.format = "EEEE, h:mm a";
+            let start: DateTimePicker = (args.element.querySelector('.e-start') as EJ2Instance).ej2_instances[0] as DateTimePicker;
+            start.format = "EEEE, h:mm";
             start.dataBind();
-            let end: DateTimePicker = (args.element.querySelector('#EndTime') as EJ2Instance).ej2_instances[0] as DateTimePicker;
-            end.format = "EEEE, h:mm a";
+            let end: DateTimePicker = (args.element.querySelector('.e-end') as EJ2Instance).ej2_instances[0] as DateTimePicker;
+            end.format = "EEEE, h:mm";
             end.dataBind();
             args.element.querySelectorAll('.e-round').forEach((node: HTMLElement, index: number) => {
             if (index === 0 || index === 6) {
@@ -98,10 +81,10 @@ export class DashboardComponent implements OnInit {
         }
       });
 
-      }
+      
 }
     }
-  }
+  
 
   constructor(private ttcs:TimeTableCRUDService) { }
   startAnimationForLineChart(chart){
