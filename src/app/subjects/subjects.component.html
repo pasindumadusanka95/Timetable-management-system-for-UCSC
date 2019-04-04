@@ -1,69 +1,107 @@
-<div class="col-lg-2 col-md-6 col-sm-6 offset-sm-2">
-
-  <div class="row">
-  <div class="class-md-5">
-    <!-- subject form -->
-  <form [formGroup]="this.subjectsService.form" (ngSubmit)="onSubmit()">
-    <input type="hidden" formControlName="$key">
-    <div class="form-group">
-      <label for="">Subject Code</label>
-      <input type="text" formControlName="subjectCode" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.subjectCode.errors}">
-      <div class="invalid-feedback" *ngIf="submitted && formControls.subjectCode.errors">
-          <label>This field is required.</label>
-      </div>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Manage Subjects</h4>
+                        <!-- <p class="card-category">Complete your profile</p> -->
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="this.subjectsService.form" (ngSubmit)="onSubmit()">
+                            <input type="hidden" formControlName="$key">
+                            <div class="row">
+                                <div class="col-md-12">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Subject Code" type="text" formControlName="subjectCode" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.subjectCode.errors}">
+                                    </mat-form-field>
+                                </div>
+                                <div class="invalid-feedback" *ngIf="submitted && formControls.subjectCode.errors">
+                                    <label>This field is required.</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Subject Title" type="text" formControlName="subjectTitle" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.subjectTitle.errors}">
+                                    </mat-form-field>
+                                </div>
+                                <div class="invalid-feedback" *ngIf="submitted && formControls.subjectTitle.errors">
+                                    <label>This field is required.</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Year" type="text" formControlName="year" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.year.errors}">
+                                    </mat-form-field>
+                                </div>
+                                <div class="invalid-feedback" *ngIf="submitted && formControls.year.errors">
+                                    <label *ngIf="formControls.year.errors.required">This field is required</label>
+                                    <label *ngIf="formControls.year.errors.min">Enter a number between 1-4</label>
+                                    <label *ngIf="formControls.year.errors.max">Enter a number between 1-4</label>
+                                    <label *ngIf="formControls.year.errors.pattern">Enter a number between 1-4</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Semester" type="text" formControlName="semester" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.semester.errors}">
+                                    </mat-form-field>
+                                </div>
+                                <div class="invalid-feedback" *ngIf="submitted && formControls.semester.errors">
+                                    <label *ngIf="formControls.semester.errors.required">This field is required</label>
+                                    <label *ngIf="formControls.semester.errors.min">Enter a number between 1-2</label>
+                                    <label *ngIf="formControls.semester.errors.max">Enter a number between 1-2</label>
+                                    <label *ngIf="formControls.semester.errors.pattern">Enter a number between 1-2</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Credit Value" type="text" formControlName="credit" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.credit.errors}">
+                                    </mat-form-field>
+                                </div>
+                                <div class="invalid-feedback" *ngIf="submitted && formControls.credit.errors">
+                                    <label *ngIf="formControls.credit.errors.required">This field is required</label>
+                                    <label *ngIf="formControls.credit.errors.min">Enter a number between 1-3</label>
+                                    <label *ngIf="formControls.credit.errors.max">Enter a number between 1-3</label>
+                                    <label *ngIf="formControls.credit.errors.pattern">Enter a number between 1-3</label>
+                                </div>
+                            </div>
+                            <div class="form-group text-right">
+                                <button mat-raised-button type="button" class="btn btn-primary gap-right" (click)="ResetForm()">Reset</button>
+                                <button mat-raised-button type="submit" class="btn btn-danger pull-right" value="submit">Submit</button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </form>
+                        <div class="alert alert-info"  *ngIf="showSuccessMessage">
+                            Submitted successfully.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card card-profile">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Subjects List</h4>
+                        <!-- <p class="card-category">Complete your profile</p> -->
+                    </div>
+                    <div class="card-body">
+                        <app-subject-list></app-subject-list>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-      <label for="">Subject Title</label>
-      <input type="text" formControlName="subjectTitle" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.subjectTitle.errors}">
-      <div class="invalid-feedback" *ngIf="submitted && formControls.subjectTitle.errors">
-          <label>This field is required.</label>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="">Year</label>
-      <input type="text" formControlName="year" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.year.errors}">
-      <div class="invalid-feedback" *ngIf="submitted && formControls.year.errors">
-          <label *ngIf="formControls.year.errors.required">This field is required</label>
-          <label *ngIf="formControls.year.errors.min">Enter a number between 1-4</label>
-          <label *ngIf="formControls.year.errors.max">Enter a number between 1-4</label>
-          <label *ngIf="formControls.year.errors.pattern">Enter a number between 1-4</label>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="">Semester</label>
-      <input type="text" formControlName="semester" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.semester.errors}">
-      <div class="invalid-feedback" *ngIf="submitted && formControls.semester.errors">
-          <label *ngIf="formControls.semester.errors.required">This field is required</label>
-          <label *ngIf="formControls.semester.errors.min">Enter a number between 1-2</label>
-          <label *ngIf="formControls.semester.errors.max">Enter a number between 1-2</label>
-          <label *ngIf="formControls.semester.errors.pattern">Enter a number between 1-2</label>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="">Credit Value</label>
-      <input type="text" formControlName="credit" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.credit.errors}">
-      <div class="invalid-feedback" *ngIf="submitted && formControls.credit.errors">
-          <label *ngIf="formControls.credit.errors.required">This field is required</label>
-          <label *ngIf="formControls.credit.errors.min">Enter a number between 1-3</label>
-          <label *ngIf="formControls.credit.errors.max">Enter a number between 1-3</label>
-          <label *ngIf="formControls.credit.errors.pattern">Enter a number between 1-3</label>
-      </div>
-    </div>
-    <div class="form-group text-right">
-        <button type="button" class="btn btn-secondary gap-right" (click)="ResetForm()">Reset</button>
-        <button type="submit" class="btn btn-primary" value="submit">Submit</button>
-      </div>
-    
-  </form><!-- Subject form ends-->
-  <div class="alert alert-info" *ngIf="showSucessMessage">
-    Submitted Successfully!
   </div>
-  </div>
-  <div class="class-md-7">
-      <app-subject-list></app-subject-list>
-    </div> 
-</div>
+  
 
-</div>
+
+
+
+
+
+
 
 
