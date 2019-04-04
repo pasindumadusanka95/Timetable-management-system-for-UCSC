@@ -11,11 +11,11 @@ import {LecturersListComponent} from '../lecturers-list/lecturers-list.component
 })
 
 export class LecturersComponent implements OnInit {
-  // public lecturerForm: FormGroup;  // Define FormGroup to Lecturer's form
+  public lecturerForm: FormGroup;  // Define FormGroup to Lecturer's form
 
   // constructor(
   //   public crudApi: CrudService,  // CRUD API services
-  //   public fb: FormBuilder,       // Form Builder service for Reactive forms
+    // public fb: FormBuilder,       // Form Builder service for Reactive forms
   //   public toastr: ToastrService  // Toastr service for alert message
   // ) { }
 
@@ -25,7 +25,7 @@ export class LecturersComponent implements OnInit {
   //   this.lectureForm();              // Call Lecturer form when component is ready
   // }
 
-  // // Reactive Lecturer form
+  // Reactive Lecturer form
   // lectureForm() {
   //     this.lecturerForm = this.fb.group({
   //       userName: [''],
@@ -36,33 +36,33 @@ export class LecturersComponent implements OnInit {
   //   })
   // }
 
-  // // Accessing form control using getters
+  // Accessing form control using getters
 
-  // get userName() {
-  //   return this.lecturerForm.get('userName');
-  // }
+  get userName() {
+    return this.lecturerForm.get('userName');
+  }
 
-  // get firstName() {
-  //   return this.lecturerForm.get('firstName');
-  // }
+  get firstName() {
+    return this.lecturerForm.get('firstName');
+  }
 
-  // get lastName() {
-  //   return this.lecturerForm.get('lastName');
-  // }
+  get lastName() {
+    return this.lecturerForm.get('lastName');
+  }
 
-  // get email() {
-  //   return this.lecturerForm.get('email');
-  // }
+  get email() {
+    return this.lecturerForm.get('email');
+  }
 
-  // get mobileNumber() {
-  //   return this.lecturerForm.get('mobileNumber');
-  // }
+  get mobileNumber() {
+    return this.lecturerForm.get('mobileNumber');
+  }
 
 
-  // // Reset Lecturer form's values
-  // ResetForm() {
-  //   this.lecturerForm.reset();
-  // }
+  // Reset Lecturer form's values
+  ResetForm() {
+    this.lecturerForm.reset();
+  }
 
   // submitLecturerData() {
   //   this.crudApi.AddLecturer(this.lecturerForm.value); // Submit Lecturer data using CRUD API
@@ -85,10 +85,11 @@ export class LecturersComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.crudService.form.valid) {
-     if (this.crudService.form.get('$key').value == null)
+     if (this.crudService.form.get('$key').value == null) {
       this.crudService.insertLecturer(this.crudService.form.value);
-     else     
+     } else {
        this.crudService.updateLecturer(this.crudService.form.value);
+     }
      this.showSuccessMessage = true;
      setTimeout(() => this.showSuccessMessage = false, 3000);
      this.submitted = false;
