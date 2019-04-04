@@ -16,6 +16,10 @@ export class SubjectsComponent implements OnInit {
   ngOnInit() {
   }
 
+  ResetForm() {
+    this.subjectsService.form.reset();
+  }
+
   onSubmit(){
     this.submitted = true;
     if (this.subjectsService.form.valid) {

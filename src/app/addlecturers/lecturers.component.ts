@@ -61,7 +61,7 @@ export class LecturersComponent implements OnInit {
 
   // Reset Lecturer form's values
   ResetForm() {
-    this.lecturerForm.reset();
+    this.crudService.form.reset();
   }
 
   // submitLecturerData() {

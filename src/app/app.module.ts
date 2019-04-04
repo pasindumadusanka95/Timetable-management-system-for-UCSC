@@ -83,7 +83,7 @@ let config = {
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
-    HallsComponent,
+    //HallsComponent,
     EditLecturerComponent,
     //SubjectsComponent,
     //SubjectListComponent,

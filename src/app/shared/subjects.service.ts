@@ -14,9 +14,9 @@ export class SubjectsService {
     $key: new FormControl(null),
     subjectCode: new FormControl('', Validators.required),
     subjectTitle: new FormControl('', Validators.required),
-    year: new FormControl('', [Validators.pattern('^[1-4]*$')]),
-    semester: new FormControl('', [Validators.pattern('^[1-2]*$')]),
-    credit: new FormControl('', [Validators.pattern('^[1-3]*$')]),
+    year: new FormControl('', [Validators.required, Validators.min(1), Validators.max(4), Validators.pattern('^[1-4]*$')]),
+    semester: new FormControl('', [Validators.required, Validators.min(1), Validators.max(2), Validators.pattern('^[1-2]*$')]),
+    credit: new FormControl('', [Validators.required, Validators.min(1), Validators.max(3), Validators.pattern('^[1-3]*$')]),
   });
 
   getSubjects(){
