@@ -8,7 +8,7 @@ import { DropDownList } from '@syncfusion/ej2-dropdowns';
 
 
 import {
-  EventSettingsModel, ScheduleComponent, WorkWeekService, PopupOpenEventArgs, ResizeService, DragAndDropService,EJ2Instance,CellClickEventArgs,EventClickArgs,RecurrenceEditor, 
+  EventSettingsModel, ScheduleComponent, WorkWeekService, PopupOpenEventArgs, ResizeService, DragAndDropService,CellClickEventArgs,EventClickArgs,RecurrenceEditor, 
 } from '@syncfusion/ej2-angular-schedule';
 import { TimeTableCRUDService } from 'app/shared/time-table-crud.service';
 
@@ -59,18 +59,6 @@ export class DashboardComponent implements OnInit {
 
     if (args.type === 'Editor') {
 
-      //       let start: DateTimePicker = (args.element.querySelector('.e-start') as EJ2Instance).ej2_instances[0] as DateTimePicker;
-      //       start.format = "EEEE, h:mm";
-      //       start.dataBind();
-      //       let end: DateTimePicker = (args.element.querySelector('.e-end') as EJ2Instance).ej2_instances[0] as DateTimePicker;
-      //       end.format = "EEEE, h:mm";
-      //       end.dataBind();
-      //       args.element.querySelectorAll('.e-round').forEach((node: HTMLElement, index: number) => {
-      //       if (index === 0 || index === 6) {
-      //       node.style.display = 'none';
-      //   }
-      // });
-
       let subjectElement: HTMLInputElement = args.element.querySelector('#Subject') as HTMLInputElement;
       if (!subjectElement.classList.contains('e-dropdownlist')) {
         let dropDownListObject: DropDownList = new DropDownList({
@@ -97,11 +85,13 @@ export class DashboardComponent implements OnInit {
       }
       let startElement: HTMLInputElement = args.element.querySelector('#StartTime') as HTMLInputElement;
       if (!startElement.classList.contains('e-datetimepicker')) {
-        new DateTimePicker({ value: new Date(startElement.value) || new Date() }, startElement);
+        new DateTimePicker({ value: new Date(startElement.value) || new Date() }, startElement).format='EEEE HH:mm';
+        
+        
       }
       let endElement: HTMLInputElement = args.element.querySelector('#EndTime') as HTMLInputElement;
       if (!endElement.classList.contains('e-datetimepicker')) {
-        new DateTimePicker({ value: new Date(endElement.value) || new Date() }, endElement);
+        new DateTimePicker({ value: new Date(endElement.value) || new Date() }, endElement).format= 'EEEE HH:mm';
       }
       let recurElement: HTMLElement = args.element.querySelector('#RecurrenceEditor');
             if (!recurElement.classList.contains('e-recurrenceeditor')) {
@@ -119,62 +109,7 @@ export class DashboardComponent implements OnInit {
   
 
   constructor(private ttcs:TimeTableCRUDService) { }
-  startAnimationForLineChart(chart){
-      let seq: any, delays: any, durations: any;
-      seq = 0;
-      delays = 80;
-      durations = 500;
-
-      chart.on('draw', function(data) {
-        if(data.type === 'line' || data.type === 'area') {
-          data.element.animate({
-            d: {
-              begin: 600,
-              dur: 700,
-              from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
-              to: data.path.clone().stringify(),
-              easing: Chartist.Svg.Easing.easeOutQuint
-            }
-          });
-        } else if(data.type === 'point') {
-              seq++;
-              data.element.animate({
-                opacity: {
-                  begin: seq * delays,
-                  dur: durations,
-                  from: 0,
-                  to: 1,
-                  easing: 'ease'
-                }
-              });
-          }
-      });
-
-      seq = 0;
-  };
-  startAnimationForBarChart(chart){
-      let seq2: any, delays2: any, durations2: any;
-
-      seq2 = 0;
-      delays2 = 80;
-      durations2 = 500;
-      chart.on('draw', function(data) {
-        if(data.type === 'bar'){
-            seq2++;
-            data.element.animate({
-              opacity: {
-                begin: seq2 * delays2,
-                dur: durations2,
-                from: 0,
-                to: 1,
-                easing: 'ease'
-              }
-            });
-        }
-      });
-
-      seq2 = 0;
-  };
+  
 
   onDataBound1Y(){
     let json1Y = JSON.stringify(this.eventSettings1Y.dataSource);
