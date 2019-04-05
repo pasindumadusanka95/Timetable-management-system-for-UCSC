@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
-
+import {LecturerDashboardComponent} from './lecturer-dashboard/lecturer-dashboard.component'
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import {LoginComponent} from './login/login.component';
 const routes: Routes = [
   { path: '', component: LoginComponent },
+  { path: 'lecturer', component: LecturerDashboardComponent },
   {
     path: 'dashboard',
     redirectTo: 'dashboard',
