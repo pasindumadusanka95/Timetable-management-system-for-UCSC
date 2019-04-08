@@ -46,6 +46,7 @@ import { SubjectListComponent } from './subject-list/subject-list.component';
 import { SubjectsService } from './shared/subjects.service';
 import {TimeTableCRUDService} from './shared/time-table-crud.service';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
+import { LecturerDashboardComponent } from './lecturer-dashboard/lecturer-dashboard.component';
 
 // tslint:disable-next-line:prefer-const
 let config = {
@@ -85,6 +86,7 @@ let config = {
     LoginComponent,
     //HallsComponent,
     EditLecturerComponent,
+    LecturerDashboardComponent,
     //SubjectsComponent,
     //SubjectListComponent,
 
