@@ -26,6 +26,7 @@ import {
   MatSelectModule
 } from '@angular/material';
 import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
+import { FirstYearComponent } from 'app/TimeTabels/first-year/first-year.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -39,7 +40,7 @@ import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
     MatTooltipModule,
     ReactiveFormsModule,
     ScheduleModule,
-    NgxPaginationModule
+    NgxPaginationModule,
   ],
   declarations: [
     DashboardComponent,
@@ -53,6 +54,7 @@ import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
     LecturersListComponent,
     SubjectsComponent,
     SubjectListComponent,
+    FirstYearComponent
   ]
 })
 

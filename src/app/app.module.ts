@@ -47,6 +47,10 @@ import { SubjectsService } from './shared/subjects.service';
 import {TimeTableCRUDService} from './shared/time-table-crud.service';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { LecturerDashboardComponent } from './lecturer-dashboard/lecturer-dashboard.component';
+import { FirstYearComponent } from './TimeTabels/first-year/first-year.component';
+import { SecondYearComponent } from './TimeTabels/second-year/second-year.component';
+import { ThirdYearComponent } from './TimeTabels/third-year/third-year.component';
+import { FourthYearComponent } from './TimeTabels/fourth-year/fourth-year.component';
 
 // tslint:disable-next-line:prefer-const
 let config = {
@@ -87,6 +91,12 @@ let config = {
     //HallsComponent,
     EditLecturerComponent,
     LecturerDashboardComponent,
+    
+    SecondYearComponent,
+    
+    ThirdYearComponent,
+    
+    FourthYearComponent,
     //SubjectsComponent,
     //SubjectListComponent,
 

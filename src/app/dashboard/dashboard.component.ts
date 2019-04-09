@@ -33,7 +33,6 @@ export class DashboardComponent implements OnInit {
   public showTimeIndicator: boolean = false;
   public showQuickInfo: boolean = false;
   
-  
 
   
 
@@ -42,8 +41,10 @@ export class DashboardComponent implements OnInit {
   public instance: Internationalization = new Internationalization();
 
   onCellClick(args: CellClickEventArgs): void {
+
     this.scheduleObj.openEditor(args, 'Add');
   }
+  
   onEventClick(args: EventClickArgs): void {
     if (!(args.event as any).RecurrenceRule) {
       this.scheduleObj.openEditor(args.event, 'Save');
@@ -52,6 +53,7 @@ export class DashboardComponent implements OnInit {
       this.scheduleObj.quickPopup.openRecurrenceAlert();
     }
   }
+  
 
   getDateHeaderText(value: Date): string {
     return this.instance.formatDate(value, { skeleton: 'E' });
@@ -126,9 +128,10 @@ export class DashboardComponent implements OnInit {
     //       break;
     //     }
     // }
+    
+    this.ttcs.setFirstYearTT(this.eventSettings1Y.dataSource)
 
-    // if(canAdd){
-      this.ttcs.setFirstYearTT(this.eventSettings1Y.dataSource)
+      
     // }
     // else{
     //   console.log('cannot allocate')
@@ -136,20 +139,20 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  onDataBound2Y(){
-    this.ttcs.setSecondYearTT(this.eventSettings2Y.dataSource)
-    console.log(this.eventSettings2Y.dataSource);
-  }
+  // onDataBound2Y(event){
+  //   this.ttcs.setSecondYearTT(this.eventSettings2Y.dataSource)
+  //   console.log();
+  // }
 
-  onDataBound3Y(){
-    this.ttcs.setThirdYearTT(this.eventSettings3Y.dataSource)
-    console.log(this.eventSettings3Y.dataSource);
-  }
+  // onDataBound3Y(event){
+  //   this.ttcs.setThirdYearTT(this.eventSettings3Y.dataSource)
+  //   console.log(this.eventSettings3Y.dataSource);
+  // }
 
-  onDataBound4Y(){
-    this.ttcs.setFourthYearTT(this.eventSettings4Y.dataSource)
-    console.log(this.eventSettings4Y.dataSource);
-  }
+  // onDataBound4Y(event){
+  //   this.ttcs.setFourthYearTT(this.eventSettings4Y.dataSource)
+  //   console.log(this.eventSettings4Y.dataSource);
+  // }
 
   ngOnInit() {
     this.ttcs.getFirstYearTT().subscribe(next=>{
@@ -163,45 +166,46 @@ export class DashboardComponent implements OnInit {
     
       this.scheduleObj.refreshEvents()
       console.log(this.eventSettings1Y.dataSource)
-    })
-
-    this.ttcs.getSecondYearTT().subscribe(next=>{
-
-      for (let i of next.data().firstyear as any[]){
-        i.StartTime = i.StartTime.toDate();
-        i.EndTime = i.EndTime.toDate();
-        // this.eventSettings2Y.dataSource.push(i);
-
-      }
     
-      this.scheduleObj.refreshEvents()
-      console.log(this.eventSettings2Y.dataSource)
     })
 
-    this.ttcs.getThirdYearTT().subscribe(next=>{
+    // this.ttcs.getSecondYearTT().subscribe(next=>{
 
-      for (let i of next.data().firstyear as any[]){
-        i.StartTime = i.StartTime.toDate();
-        i.EndTime = i.EndTime.toDate();
-        // this.eventSettings3Y.dataSource.push(i);
+    //   for (let i of next.data().secondyear as any[]){
+    //     i.StartTime = i.StartTime.toDate();
+    //     i.EndTime = i.EndTime.toDate();
+    //     this.eventSettings2Y.dataSource.push(i);
 
-      }
+    //   }
     
-      this.scheduleObj.refreshEvents()
-      console.log(this.eventSettings3Y.dataSource)
-    })
+    //   this.scheduleObj.refreshEvents()
+    //   console.log(this.eventSettings2Y.dataSource)
+    // })
 
-    this.ttcs.getFourthYearTT().subscribe(next=>{
+    // this.ttcs.getThirdYearTT().subscribe(next=>{
 
-      for (let i of next.data().firstyear as any[]){
-        i.StartTime = i.StartTime.toDate();
-        i.EndTime = i.EndTime.toDate();
-        // this.eventSettings4Y.dataSource.push(i);
+    //   for (let i of next.data().thirdyear as any[]){
+    //     i.StartTime = i.StartTime.toDate();
+    //     i.EndTime = i.EndTime.toDate();
+    //     // this.eventSettings3Y.dataSource.push(i);
 
-      }
+    //   }
     
-      this.scheduleObj.refreshEvents()
-      console.log(this.eventSettings4Y.dataSource)
-    })
+    //   this.scheduleObj.refreshEvents()
+    //   console.log(this.eventSettings3Y.dataSource)
+    // })
+
+    // this.ttcs.getFourthYearTT().subscribe(next=>{
+
+    //   for (let i of next.data().fourthyear as any[]){
+    //     i.StartTime = i.StartTime.toDate();
+    //     i.EndTime = i.EndTime.toDate();
+    //     // this.eventSettings4Y.dataSource.push(i);
+
+    //   }
+    
+    //   this.scheduleObj.refreshEvents()
+    //   console.log(this.eventSettings4Y.dataSource)
+    // })
   }
 }
