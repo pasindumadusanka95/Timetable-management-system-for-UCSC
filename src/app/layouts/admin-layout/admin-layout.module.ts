@@ -26,7 +26,8 @@ import {
   MatSelectModule
 } from '@angular/material';
 import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
-import { FirstYearComponent } from 'app/TimeTabels/first-year/first-year.component';
+import { FirstYearComponent } from 'app/firstYearTimetable/first-year/first-year.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -55,6 +56,7 @@ import { FirstYearComponent } from 'app/TimeTabels/first-year/first-year.compone
     SubjectsComponent,
     SubjectListComponent,
     FirstYearComponent
+    
   ]
 })
 

@@ -84,9 +84,6 @@ let currentTime = new Date().setMinutes(0, 0, 0);
 //   }
 // ];
 
-export let eventsData1Y: Object[] = [
-  
-];
 
 export let eventsData2Y: Object[] = [
   

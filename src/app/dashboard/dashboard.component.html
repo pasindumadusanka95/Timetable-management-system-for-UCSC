@@ -93,57 +93,7 @@
                       <h4 class="card-title">Second Year Time Table</h4>
                   </div>
                     <div class="card-body table-responsive">
-                        <ejs-schedule #scheduleObj width='100%' height='350px' (actionComplete)= "onDataBound2Y($event)" [selectedDate]="selectedDate" [eventSettings]="eventSettings2Y" (popupOpen)="onPopupOpen($event)" [showHeaderBar]="showHederBar" [views]="views" [workHours]="scheduleHours"startHour='08:00' endHour='19:00'[showTimeIndicator]="showTimeIndicator" [showQuickInfo]="showQuickInfo" (cellClick)="onCellClick($event)" (eventClick)="onEventClick($event)">
-                            <ng-template #dateHeaderTemplate let-data>
-                                <div class="date-text">{{getDateHeaderText(data.date)}}</div>
-                            </ng-template>
-                            <ng-template #editorTemplate>
-                                    <table class="custom-event-editor" width="100%" cellpadding="15">
-                                        <tbody>
-                                            <tr>
-                                                <td class="e-textlabel">Subject</td>
-                                                <td colspan="4">
-                                                <input id="Subject" class="e-field e-input" type="text" value="" name="Subject"  />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="e-textlabel">Lecturer</td>
-                                                <td colspan="4">
-                                                <input id="Lecturer" class="e-field e-input" type="text" value="" name="Lecturer"  />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="e-textlabel">Venue</td>
-                                                <td colspan="4">
-                                                <input id="Location" class="e-field e-input" type="text" value="" name="Location"  />
-                                                </td>    
-                                            </tr>
-                                            <tr>
-                                        
-                                                <td class="e-textlabel">From</td>
-                                                
-                                                <input id="StartTime" class="e-field" type="text" name="StartTime" />
-                                            `   
-                                                <td class="e-textlabel">To</td>
-                                                <input id="EndTime" class="e-field" type="text" name="EndTime" />
-                                            
-                                            </tr>
-                              
-                               <tr>
-                                <td colspan="4">
-                                    <div id='RecurrenceEditor'></div>
-                                </td>
-                              </tr>
-                              <tr>
-                                  <td class="e-textlabel">Description</td>
-                                  <td colspan="4">
-                                      <textarea id="Description" class="e-field e-input" name="Description" rows="3" cols="50" style="width: 100%; height: 60px !important; resize: vertical"></textarea>
-                                  </td>
-                              </tr>
-                          </tbody>
-                      </table>
-                    </ng-template>
-                        </ejs-schedule>                  
+                           <!-- <app-second-year></app-second-year>           -->
                     </div>
               </div>
           </div>

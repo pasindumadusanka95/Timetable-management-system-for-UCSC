@@ -2,7 +2,7 @@ import { Component, OnInit,ViewChild,ViewEncapsulation } from '@angular/core';
 import * as Chartist from 'chartist';
 import { extend } from '@syncfusion/ej2-base';
 import {Internationalization} from '@syncfusion/ej2-base';
-import {eventsData2Y,eventsData3Y,eventsData4Y} from '../datasource';
+import {eventsData1Y} from '../datasource'
 import { DateTimePicker } from '@syncfusion/ej2-calendars';
 import { DropDownList } from '@syncfusion/ej2-dropdowns';
 
@@ -12,29 +12,22 @@ import {
 } from '@syncfusion/ej2-angular-schedule';
 import { TimeTableCRUDService } from 'app/shared/time-table-crud.service';
 
-
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+  selector: 'app-first-year',
+  templateUrl: './first-year.component.html',
+  styleUrls: ['./first-year.component.scss'],
   encapsulation: ViewEncapsulation.None,
   providers: [WorkWeekService,DragAndDropService,ResizeService]
-  
 })
-export class DashboardComponent implements OnInit {
+export class FirstYearComponent implements OnInit {
 
   public selectedDate: Date = new Date(2018, 1, 15);
-  
-  public eventSettings2Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData2Y, null, true) };
-  public eventSettings3Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData3Y, null, true) };
-  public eventSettings4Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData4Y, null, true) };
+  public eventSettings1Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData1Y, null, true) };
   public showHederBar: Boolean = false;
   public views: Array<String> = ['WorkWeek'];
   public showTimeIndicator: boolean = false;
   public showQuickInfo: boolean = false;
-  
 
-  
 
   @ViewChild('scheduleObj')
   public scheduleObj: ScheduleComponent;
@@ -113,68 +106,45 @@ export class DashboardComponent implements OnInit {
             });
 }
     }
-  
 
   constructor(private ttcs:TimeTableCRUDService) { }
-   
+
+  onDataBound1Y(event){
   
+    console.log(this.eventSettings1Y.dataSource)
+    // let canAdd=true;
+    // for(let i of this.eventSettings2Y.dataSource as any[])
+    // {
+    //     if(event.StartTime.getDay()==i.StartTime.getDay() ){
+    //       canAdd=false;
+    //       break;
+    //     }
+    // }
+    
+    this.ttcs.setFirstYearTT(this.eventSettings1Y.dataSource)
 
-
-  // onDataBound2Y(event){
-  //   this.ttcs.setSecondYearTT(this.eventSettings2Y.dataSource)
-  //   console.log();
-  // }
-
-  // onDataBound3Y(event){
-  //   this.ttcs.setThirdYearTT(this.eventSettings3Y.dataSource)
-  //   console.log(this.eventSettings3Y.dataSource);
-  // }
-
-  // onDataBound4Y(event){
-  //   this.ttcs.setFourthYearTT(this.eventSettings4Y.dataSource)
-  //   console.log(this.eventSettings4Y.dataSource);
-  // }
+      
+    // }
+    // else{
+    //   console.log('cannot allocate')
+    // }
+  }
 
   ngOnInit() {
+
+    this.ttcs.getFirstYearTT().subscribe(next=>{
+
+      for (let i of next.data().firstyear as any[]){
+        i.StartTime = i.StartTime.toDate();
+        i.EndTime = i.EndTime.toDate();
+        // this.eventSettings1Y.dataSource.push(i);
+
+      }
     
-
-    // this.ttcs.getSecondYearTT().subscribe(next=>{
-
-    //   for (let i of next.data().secondyear as any[]){
-    //     i.StartTime = i.StartTime.toDate();
-    //     i.EndTime = i.EndTime.toDate();
-    //     this.eventSettings2Y.dataSource.push(i);
-
-    //   }
+      this.scheduleObj.refreshEvents()
+      console.log(this.eventSettings1Y.dataSource)
     
-    //   this.scheduleObj.refreshEvents()
-    //   console.log(this.eventSettings2Y.dataSource)
-    // })
-
-    // this.ttcs.getThirdYearTT().subscribe(next=>{
-
-    //   for (let i of next.data().thirdyear as any[]){
-    //     i.StartTime = i.StartTime.toDate();
-    //     i.EndTime = i.EndTime.toDate();
-    //     // this.eventSettings3Y.dataSource.push(i);
-
-    //   }
-    
-    //   this.scheduleObj.refreshEvents()
-    //   console.log(this.eventSettings3Y.dataSource)
-    // })
-
-    // this.ttcs.getFourthYearTT().subscribe(next=>{
-
-    //   for (let i of next.data().fourthyear as any[]){
-    //     i.StartTime = i.StartTime.toDate();
-    //     i.EndTime = i.EndTime.toDate();
-    //     // this.eventSettings4Y.dataSource.push(i);
-
-    //   }
-    
-    //   this.scheduleObj.refreshEvents()
-    //   console.log(this.eventSettings4Y.dataSource)
-    // })
+    })
   }
+
 }
