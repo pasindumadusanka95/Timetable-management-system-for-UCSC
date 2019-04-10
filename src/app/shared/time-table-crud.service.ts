@@ -32,10 +32,10 @@ export class TimeTableCRUDService {
     return this.db.collection('Timetable').doc('2ndyear').get();
   }
   getThirdYearTT(){
-    return this.db.collection('3YTimetable').doc('3rdyear').get();
+    return this.db.collection('Timetable').doc('3rdyear').get();
   }
   getFourthYearTT(){
-    return this.db.collection('4YTimetable').doc('4thyear').get();
+    return this.db.collection('Timetable').doc('4thyear').get();
   }
 
   // searchUsers(searchValue){
@@ -56,9 +56,9 @@ export class TimeTableCRUDService {
     const doc = this.db.collection('Timetable').doc('2ndyear').set({secondyear:object});
   }
   setThirdYearTT(object){
-    const doc = this.db.collection('3YTimetable').doc('3rdyear').set({thirdyear:object});
+    const doc = this.db.collection('Timetable').doc('3rdyear').set({thirdyear:object});
   }
   setFourthYearTT(object){
-    const doc = this.db.collection('4YTimetable').doc('4thyear').set({fourthyear:object});
+    const doc = this.db.collection('Timetable').doc('4thyear').set({fourthyear:object});
   }
 }

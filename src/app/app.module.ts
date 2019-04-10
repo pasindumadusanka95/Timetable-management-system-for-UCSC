@@ -49,6 +49,8 @@ import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestor
 import { LecturerDashboardComponent } from './lecturer-dashboard/lecturer-dashboard.component';
 
 
+
+
 // tslint:disable-next-line:prefer-const
 let config = {
   apiKey: 'AIzaSyAO3dPICHK8GbsBOsHXnjOIsnY1ABELVFk',
@@ -88,6 +90,9 @@ let config = {
     //HallsComponent,
     EditLecturerComponent,
     LecturerDashboardComponent,
+    
+    
+    
    
     
     
