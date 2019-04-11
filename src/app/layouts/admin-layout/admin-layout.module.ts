@@ -30,6 +30,10 @@ import { FirstYearComponent } from 'app/timetabels/first-year/first-year.compone
 import { SecondYearComponent } from 'app/timetabels/second-year/second-year.component';
 import { ThirdYearComponent } from 'app/timetabels/third-year/third-year.component';
 import { FourthYearComponent } from 'app/timetabels/fourth-year/fourth-year.component';
+import { ViewFirstYearComponent } from 'app/viewtimetabels/view-first-year/view-first-year.component';
+import { ViewSecondYearComponent } from 'app/viewtimetabels/view-second-year/view-second-year.component';
+import { ViewThirdYearComponent } from 'app/viewtimetabels/view-third-year/view-third-year.component';
+import { ViewFourthYearComponent } from 'app/viewtimetabels/view-fourth-year/view-fourth-year.component';
 
 
 @NgModule({
@@ -62,7 +66,11 @@ import { FourthYearComponent } from 'app/timetabels/fourth-year/fourth-year.comp
     FirstYearComponent,
     SecondYearComponent,
     ThirdYearComponent,
-    FourthYearComponent
+    FourthYearComponent,
+    ViewFirstYearComponent,
+    ViewSecondYearComponent,
+    ViewThirdYearComponent,
+    ViewFourthYearComponent,
     
   ]
 })

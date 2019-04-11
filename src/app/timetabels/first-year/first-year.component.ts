@@ -21,7 +21,7 @@ import { TimeTableCRUDService } from 'app/shared/time-table-crud.service';
 })
 export class FirstYearComponent implements OnInit {
 
-  public selectedDate: Date = new Date(2018, 1, 15);
+  public selectedDate: Date = new Date(2019, 7, 1);
   public eventSettings1Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData1Y, null, true) };
   public showHederBar: Boolean = false;
   public views: Array<String> = ['WorkWeek'];
@@ -137,7 +137,7 @@ export class FirstYearComponent implements OnInit {
       for (let i of next.data().firstyear as any[]){
         i.StartTime = i.StartTime.toDate();
         i.EndTime = i.EndTime.toDate();
-        // this.eventSettings1Y.dataSource.push(i);
+        //this.eventSettings1Y.dataSource.push(i);
 
       }
     
