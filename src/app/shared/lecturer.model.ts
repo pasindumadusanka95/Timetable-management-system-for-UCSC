@@ -1,6 +1,6 @@
 // tslint:disable-next-line:no-empty-interface
 export interface Lecturer {
-        $key: string;
+        id: string;
         userName: string;
         firstName: string;
         lastName: string;

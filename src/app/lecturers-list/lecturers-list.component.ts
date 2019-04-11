@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { CrudService} from '../shared/crud.service';
+import {NgbActiveModal, NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { LecturerService} from '../shared/lecturer.service';
 import { from } from 'rxjs';
+import { Lecturer } from 'app/shared/lecturer.model';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-lecturers-list',
@@ -11,12 +13,15 @@ import { from } from 'rxjs';
 })
 export class LecturersListComponent implements OnInit {
   closeResult: string;
-
+  list: Lecturer[];
   constructor(
-    // public crudApi: CrudService, // Inject student CRUD services in constructor.
+    // public crudApi: LecturerService, // Inject student CRUD services in constructor.
    // public toastr: ToastrService ,  // Toastr service for alert message
-    private crudservice: CrudService,
-   public modalService: NgbModal
+    private service: LecturerService,
+   public modalService: NgbModal,
+  public activeModal: NgbActiveModal,
+  private firestore: AngularFirestore,
+  private toastr : ToastrService
    ) { }
 
    // tslint:disable-next-line:member-ordering
@@ -43,58 +48,32 @@ export class LecturersListComponent implements OnInit {
 
 
   ngOnInit() {
-    this.dataState();
-    this.crudservice.getLecturers().subscribe(
-      list => {
-        this.lecturerArray = list.map(item => {
-          return {
-            $key: item.key,
-              ...item.payload.val()
-          };
-        });
-      }
-    );
-    // Initialize student's list, when component is ready
-    // let s = this.crudApi.GetStudentsList();
-  //  s.snapshotChanges().subscribe(data => { // Using snapshotChanges() method to retrieve list of data along with metadata($key)
-      // this.Student = [];
-   //   data.forEach(item => {
-    //    let a = item.payload.toJSON();
-    //    a['$key'] = item.key;
-        // this.Student.push(a as Student);
-    //  })
-  //  })
-  }
 
-  onDelete($key){
-    if(confirm('Confirm delete this record?')){
-      this.crudservice.deleteLecturer($key);
-      this.showDeleteMessage = true;
-      setTimeout(() => this.showDeleteMessage = false, 3000);
+    this.service.getLecturers().subscribe(actionArray => {
+      this.list = actionArray.map(item=>{
+        return {
+          id: item.payload.doc.id,
+          ...item.payload.doc.data() 
+        } as Lecturer;
+        
+        })
+  });
+
+}
+
+onEdit(lecturer:Lecturer){
+  this.service.formData= Object.assign ({}, lecturer);
+  this.activeModal.close('Edit close');
+  
+}
+
+onDelete(id:String){
+  if(confirm('Are you sure to delete this record?')){
+      this.firestore.doc('lecturers/'+ id).delete()
+  this.toastr.warning('Deleted successfully!','Lecturer Record');
     }
+}
+
   }
 
-  // tslint:disable-next-line:max-line-length
-  // Using valueChanges() method to fetch simple list of students data. It updates the state of hideWhenNoStudent, noData & preLoader variables when any changes occurs in student data list in real-time.
-  dataState() {
-  //  this.crudApi.GetStudentsList().valueChanges().subscribe(data => {
-      // this.preLoader = false;
-      // if(data.length <= 0){
-        // this.hideWhenNoStudent = false;
-        // this.noData = true;
-      // } else {
-        // this.hideWhenNoStudent = true;
-        // this.noData = false;
-  //    }
- //   })
-  }
 
-  // Method to delete student object
-  // deleteStudent(student) {
-    // if (window.confirm('Are sure you want to delete this student ?')) { // Asking from user before Deleting student data.
-      // this.crudApi.DeleteStudent(student.$key) // Using Delete student API to delete student.
-      // this.toastr.success(student.firstName + ' successfully deleted!'); // Alert message will show up when student successfully deleted.
-   // }
-  }
-
-// }
