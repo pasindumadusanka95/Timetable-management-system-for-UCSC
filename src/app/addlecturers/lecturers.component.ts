@@ -58,11 +58,10 @@ export class LecturersComponent implements OnInit {
   // }
 
 
-  // Reset Lecturer form's values
-  ResetForm() {
-    this.crudService.form.reset();
-    this.submitted = false;
-  }
+  // // Reset Lecturer form's values
+  // // ResetForm() {
+  // //   this.service.form.reset();
+  // // }
 
   
 
