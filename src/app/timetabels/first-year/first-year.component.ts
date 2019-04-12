@@ -21,7 +21,7 @@ import { TimeTableCRUDService } from 'app/shared/time-table-crud.service';
 })
 export class FirstYearComponent implements OnInit {
 
-  public selectedDate: Date = new Date(2019, 7, 1);
+  public selectedDate: Date = new Date(2018, 7, 1);
   public eventSettings1Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData1Y, null, true) };
   public showHederBar: Boolean = false;
   public views: Array<String> = ['WorkWeek'];
@@ -34,7 +34,6 @@ export class FirstYearComponent implements OnInit {
   public instance: Internationalization = new Internationalization();
 
   onCellClick(args: CellClickEventArgs): void {
-
     this.scheduleObj.openEditor(args, 'Add');
   }
   
@@ -52,6 +51,12 @@ export class FirstYearComponent implements OnInit {
     return this.instance.formatDate(value, { skeleton: 'E' });
   }
   onPopupOpen(args: PopupOpenEventArgs): void {
+
+    if (args.type === 'RecurrenceAlert') {
+      args.cancel = true;
+      this.scheduleObj.openEditor(args.data.event, 'EditSeries');
+    }
+
 
     if (args.type === 'Editor') {
 
@@ -102,8 +107,10 @@ export class FirstYearComponent implements OnInit {
             args.element.querySelectorAll('.e-round').forEach((node: HTMLElement, index: number) => {
               if (index === 0 || index === 6) {
                 node.style.display = 'none';
-              }
-            });
+              }});
+
+              
+            
 }
     }
 

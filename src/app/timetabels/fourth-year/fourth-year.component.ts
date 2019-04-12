@@ -34,8 +34,7 @@ export class FourthYearComponent implements OnInit {
   public instance: Internationalization = new Internationalization();
 
   onCellClick(args: CellClickEventArgs): void {
-
-    this.scheduleObj.openEditor(args, 'Add');
+      this.scheduleObj.openEditor(args, 'Add');
   }
   
   onEventClick(args: EventClickArgs): void {
@@ -53,9 +52,14 @@ export class FourthYearComponent implements OnInit {
   }
   onPopupOpen(args: PopupOpenEventArgs): void {
 
-    if (args.type === 'Editor') {
+    if (args.type === 'RecurrenceAlert') {
+      args.cancel = true;
+      this.scheduleObj.openEditor(args.data.event, 'EditSeries');
+    }
 
-      let subjectElement: HTMLInputElement = args.element.querySelector('#Subject') as HTMLInputElement;
+    if (args.type === 'Editor') {
+      
+    let subjectElement: HTMLInputElement = args.element.querySelector('#Subject') as HTMLInputElement;
       if (!subjectElement.classList.contains('e-dropdownlist')) {
         let dropDownListObject: DropDownList = new DropDownList({
           placeholder: 'Choose status', value: subjectElement.value,

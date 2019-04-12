@@ -54,6 +54,11 @@ export class ThirdYearComponent implements OnInit {
   }
   onPopupOpen(args: PopupOpenEventArgs): void {
 
+    if (args.type === 'RecurrenceAlert') {
+      args.cancel = true;
+      this.scheduleObj.openEditor(args.data.event, 'EditSeries');
+    }
+
     if (args.type === 'Editor') {
 
       let subjectElement: HTMLInputElement = args.element.querySelector('#Subject') as HTMLInputElement;
