@@ -18,6 +18,7 @@ export class SubjectsComponent implements OnInit {
 
   ResetForm() {
     this.subjectsService.form.reset();
+    this.submitted = false;
   }
 
   onSubmit(){

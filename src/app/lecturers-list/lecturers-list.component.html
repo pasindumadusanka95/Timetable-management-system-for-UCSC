@@ -47,7 +47,7 @@
         
           <!-- *ngFor loop iterates over Student array and fetch the student's data -->
           <!-- paginate pipe will add pagination in student's list, it won't show if items are less then 7 -->
-          <ng-container *ngFor="let lecturer of lecturerArray | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
+          <ng-container *ngFor="let lecturer of list | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
            
              <tr  class="table-striped"> 
             <!-- <th scope="row">{{student.$key}}</th> -->
@@ -56,8 +56,8 @@
             <td>{{lecturer.mobileNumber}}</td>
             <td>{{lecturer.userName}}</td>
             <td>
-              <button class="btn btn-outline-info" (click)="crudService.populateForm(lecturer)">Edit</button>
-              <button class="btn btn-outline-danger" (click)="onDelete(lecturer.$key)">Delete</button>
+              <button class="btn btn-outline-info" (click)="onEdit(lecturer)">Edit</button>
+              <button class="btn btn-outline-danger" (click)="onDelete(lecturer.id)">Delete</button>
             <!-- <td class="text-center action-block">
               <i class="far fa-edit" routerLink="/edit-student/{{student.$key}}"></i>
               <i class="far fa-trash-alt" (click)="deleteStudent(student)"></i></td> -->

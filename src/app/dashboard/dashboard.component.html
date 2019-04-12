@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute fixed-top">
         <div class="container-fluid">
             <div class="navbar-wrapper">
@@ -39,6 +40,147 @@
             </div>
         </div>
     </nav>
+ <!-- subjectmodal -->
+ <ng-template #content let-modal>
+    
+    <div class="modal-body">
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
+    <h3 class="h2">Subject List</h3>
+    
+    
+  </div>
+  
+  
+    <div class="table-responsive" >
+      <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
+        <thead>
+          <tr>
+            <th scope="col"><b>Subject</b></th>
+            <th scope="col"><b>Subject Code</b></th>
+            <th scope="col"><b>Year</b></th>
+            <th scope="col"><b>Semester</b></th>
+            <th scope="col"><b>Credit</b></th>
+            
+           
+          </tr>
+        </thead>
+        
+         
+          <ng-container *ngFor="let subject of subjectsArray | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
+           
+             <tr  class="table-striped"> 
+            <!-- <th scope="row">{{student.$key}}</th> -->
+            <td>{{subject.subjectCode}}</td>
+            <td>{{subject.subjectTitle}}</td>
+            <td>{{subject.year}}</td>
+            <td>{{subject.semester}}</td>
+            <td>{{subject.credit}}</td>
+            
+          </tr>
+        
+      </ng-container>
+      </table>
+     
+    </div>
+    <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
+  
+  </div>
+  
+  
+  
+  </ng-template>
+     
+<!-- end subjectModal -->
+
+
+<!-- 1st year Modal -->
+<ng-template #content2 let-modal>
+    
+    <div class="modal-body">
+        
+            <h3 class="h3">1st Year Time Table</h3>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+         
+          <br>
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
+    
+    <div>
+    <app-first-year></app-first-year>
+</div>
+  </div>
+  </div>
+  </ng-template>
+<!-- End 1st year Modal -->
+
+<!-- 2nd year Modal -->
+<ng-template #content3 let-modal>
+    
+        <div class="modal-body">
+          
+                <h3 class="h3">2nd Year Time Table</h3>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+             
+              <br>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
+        
+        <div>
+                <app-second-year></app-second-year>
+    </div>
+      </div>
+      </div>
+      </ng-template>
+    <!-- End 2nd year Modal -->
+
+<!-- 3rd year Modal -->
+<ng-template #content4 let-modal>
+    
+        <div class="modal-body">
+         
+                <h3 class="h3">3rd Year Time Table</h3>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+             
+              <br>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
+        
+        <div>
+                <app-third-year></app-third-year> 
+    </div>
+      </div>
+      </div>
+      </ng-template>
+    <!-- End 3rd year Modal -->
+
+    <!-- 4th year Modal -->
+<ng-template #content5 let-modal>
+    
+        <div class="modal-body">
+         
+                <h3 class="h3">4th Year Time Table</h3>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+             
+              <br>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
+        
+        <div>
+                <app-fourth-year></app-fourth-year>
+    </div>
+      </div>
+      </div>
+      </ng-template>
+    <!-- End 4th year Modal -->
+
+
 <div class="main-content">
   <div class="container-fluid">
       <div class="row">
@@ -46,7 +188,7 @@
               <div class="card card-stats">
                   <div class="card-header card-header-success card-header-icon">
                       <div class="card-icon">
-                          <i class="material-icons">books</i>
+                          <i class="material-icons" style="cursor: pointer;" (click)="open(content)">books</i>
                       </div>
                       <h4 class="card-title">View Subjects
                       </h4>
@@ -60,6 +202,7 @@
                           <i class="material-icons">store</i>
                       </div>
                       <h4 class="card-title">View Lecture Halls</h4>
+                      
                   </div>
               </div>
           </div>
@@ -77,75 +220,20 @@
           <div class="col-lg-6 col-md-12">
             <div class="card">
                 <div class="card-header card-header-info">
-                    <h4 class="card-title">First Year Time Table</h4>
+                    <h4 class="card-title" style="cursor: pointer;" (click)="open(content2)">First Year Time Table</h4>
                 </div>
                  <div class="card-body table-responsive">
-                        <ejs-schedule #scheduleObj width='100%' height='100%' (actionComplete)= "onDataBound1Y()" [selectedDate]="selectedDate" [eventSettings]="eventSettings1Y" (popupOpen)="onPopupOpen($event)" [showHeaderBar]="showHederBar" [views]="views" [workHours]="scheduleHours"startHour='08:00' endHour='19:00'[showTimeIndicator]="showTimeIndicator" [showQuickInfo]="showQuickInfo" (cellClick)="onCellClick($event)" (eventClick)="onEventClick($event)">
-                            <ng-template #dateHeaderTemplate let-data>
-                                <div class="date-text">{{getDateHeaderText(data.date)}}</div>
-                            </ng-template>
-                            <ng-template #editorTemplate>
-                                <table class="custom-event-editor" width="100%" cellpadding="5">
-                                    <tbody>
-                                        <tr>
-                                            <td class="e-textlabel">Subject</td>
-                                            <td colspan="4">
-                                            <input id="Subject" class="e-field e-input" type="text" value="" name="Subject" style="width: 100%" />
-                                            </td>
-                                        </tr>
-                           <tr>
-                              <td class="e-textlabel">Lecturer</td>
-                              <td>
-                                  <input id="Lecturer" class="e-field e-input" type="text" value="" name="Lecturer" style="width: 100%" />
-                              </td>
-                           </tr>
-                          <tr>
-                            <td class="e-textlabel">Venue</td>
-                            <td>
-                                <input id="Location" class="e-field e-input" type="text" value="" name="Location" style="width: 100%" />
-                            </td>
-                          </tr>
-                          <tr>
-                              <td class="e-textlabel">From</td>
-                              <td colspan="4">
-                                  <input id="StartTime" class="e-field" type="text" name="StartTime" />
-                              </td>
-                          </tr>
-                          <tr>
-                              <td class="e-textlabel">To</td>
-                              <td colspan="4">
-                                  <input id="EndTime" class="e-field" type="text" name="EndTime" />
-                              </td>
-                          </tr>
-                           <tr>
-                            <td colspan="4">
-                                <div id='RecurrenceEditor'></div>
-                            </td>
-                          </tr>
-                          <tr>
-                              <td class="e-textlabel">Description</td>
-                              <td colspan="4">
-                                  <textarea id="Description" class="e-field e-input" name="Description" rows="3" cols="50" style="width: 100%; height: 60px !important; resize: vertical"></textarea>
-                              </td>
-                          </tr>
-                      </tbody>
-                  </table>
-                </ng-template>
-                        </ejs-schedule>                
+                    <app-first-year></app-first-year>
                  </div>
             </div>
           </div>
           <div class="col-lg-6 col-md-12">
               <div class="card">
                   <div class="card-header card-header-info">
-                      <h4 class="card-title">Second Year Time Table</h4>
+                      <h4 class="card-title" style="cursor: pointer;" (click)="open(content3)">Second Year Time Table</h4>
                   </div>
                     <div class="card-body table-responsive">
-                        <ejs-schedule #scheduleObj width='100%' height='350px' (actionComplete)= "onDataBound2Y()" [selectedDate]="selectedDate" [eventSettings]="eventSettings2Y" (popupOpen)="onPopupOpen($event)" [showHeaderBar]="showHederBar" [views]="views" [workHours]="scheduleHours"startHour='08:00' endHour='19:00'[showTimeIndicator]="showTimeIndicator" [showQuickInfo]="showQuickInfo" (cellClick)="onCellClick($event)" (eventClick)="onEventClick($event)">
-                            <ng-template #dateHeaderTemplate let-data>
-                                <div class="date-text">{{getDateHeaderText(data.date)}}</div>
-                            </ng-template>
-                        </ejs-schedule>                  
+                    <app-second-year></app-second-year>
                     </div>
               </div>
           </div>
@@ -154,28 +242,20 @@
         <div class="col-lg-6 col-md-12">
           <div class="card">
               <div class="card-header card-header-info">
-                  <h4 class="card-title">Third Year Time Table</h4>
+                  <h4 class="card-title" style="cursor: pointer;" (click)="open(content4)">Third Year Time Table</h4>
               </div>
                 <div class="card-body table-responsive">
-                    <ejs-schedule #scheduleObj width='100%' height='350px' (actionComplete)= "onDataBound3Y()" [selectedDate]="selectedDate" [eventSettings]="eventSettings3Y" (popupOpen)="onPopupOpen($event)" [showHeaderBar]="showHederBar" [views]="views" [workHours]="scheduleHours"startHour='08:00' endHour='19:00'[showTimeIndicator]="showTimeIndicator" [showQuickInfo]="showQuickInfo" (cellClick)="onCellClick($event)" (eventClick)="onEventClick($event)">
-                        <ng-template #dateHeaderTemplate let-data>
-                            <div class="date-text">{{getDateHeaderText(data.date)}}</div>
-                        </ng-template>
-                    </ejs-schedule>              
+                 <app-third-year></app-third-year>             
                 </div>
           </div>
       </div>
         <div class="col-lg-6 col-md-12">
           <div class="card">
              <div class="card-header card-header-info">
-                    <h4 class="card-title">Fourth Year Time Table</h4>
+                    <h4 class="card-title" style="cursor: pointer;" (click)="open(content5)">Fourth Year Time Table</h4>
                 </div>
                     <div class="card-body table-responsive">
-                    <ejs-schedule #scheduleObj width='100%' height='350px' (actionComplete)= "onDataBound4Y()" [selectedDate]="selectedDate" [eventSettings]="eventSettings4Y" (popupOpen)="onPopupOpen($event)" [showHeaderBar]="showHederBar" [views]="views" [workHours]="scheduleHours"startHour='08:00' endHour='19:00'[showTimeIndicator]="showTimeIndicator" [showQuickInfo]="showQuickInfo" (cellClick)="onCellClick($event)" (eventClick)="onEventClick($event)">
-                            <ng-template #dateHeaderTemplate let-data>
-                                <div class="date-text">{{getDateHeaderText(data.date)}}</div>
-                            </ng-template>
-                        </ejs-schedule>                
+                    <app-fourth-year></app-fourth-year>             
                     </div>
             </div>
         </div>
