@@ -8,14 +8,14 @@
                         <!-- <p class="card-category">Complete your profile</p> -->
                     </div>
                     <div class="card-body">
-                        <form [formGroup]="this.subjectsService.form" (ngSubmit)="onSubmit()">
-                            <input type="hidden" formControlName="$key">
+                        <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+                            <input type="hidden" name="id" #id="ngModel" [(ngModel)]="subjectsService.formData.id">
                             <div class="row">
                                 <div class="col-md-12">
                                   <mat-form-field class="example-full-width">
-                                      <input matInput placeholder="Subject Code" type="text" formControlName="subjectCode" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.subjectCode.errors}">
+                                      <input matInput placeholder="Subject Code" type="text" name="subjectCode" #subjectCode="ngModel" [(ngModel)]="subjectsService.formData.subjectCode" class="form-control" required>
                                   </mat-form-field>
-                                  <mat-error class="invalid-feedback" *ngIf="submitted && formControls.subjectCode.errors">
+                                  <mat-error class="invalid-feedback" *ngIf="subjectCode.invalid && subjectCode.touched">
                                       This field is required.
                                   </mat-error>
                                 </div>
@@ -23,9 +23,9 @@
                             <div class="row">
                                 <div class="col-md-12">
                                   <mat-form-field class="example-full-width">
-                                      <input matInput placeholder="Subject Title" type="text" formControlName="subjectTitle" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.subjectTitle.errors}">
+                                      <input matInput placeholder="Subject Title" type="text" name="subjectTitle" #subjectTitle="ngModel" [(ngModel)]="subjectsService.formData.subjectTitle" class="form-control" required>
                                   </mat-form-field>
-                                  <mat-error class="invalid-feedback" *ngIf="submitted && formControls.subjectTitle.errors">
+                                  <mat-error class="invalid-feedback" *ngIf="subjectTitle.invalid && subjectTitle.touched">
                                     This field is required.
                                   </mat-error>
                                 </div>
@@ -33,9 +33,9 @@
                             <div class="row">
                                 <div class="col-md-12">
                                   <mat-form-field class="example-full-width">
-                                      <input matInput placeholder="Year" type="text" formControlName="year" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.year.errors}">
+                                      <input matInput placeholder="Year" type="text" name="year" #year="ngModel" [(ngModel)]="subjectsService.formData.year" class="form-control" required>
                                   </mat-form-field>
-                                  <mat-error class="invalid-feedback" *ngIf="submitted && formControls.year.errors">
+                                  <mat-error class="invalid-feedback" *ngIf="year.invalid && year.touched">
                                       <div class="text-danger">
                                           <label *ngIf="formControls.year.errors.required">This field is required</label>
                                           <label *ngIf="formControls.year.errors.min || formControls.year.errors.max || formControls.year.errors.pattern">Enter a number between 1-4</label>
@@ -46,9 +46,9 @@
                             <div class="row">
                                 <div class="col-md-12">
                                   <mat-form-field class="example-full-width">
-                                      <input matInput placeholder="Semester" type="text" formControlName="semester" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.semester.errors}">
+                                      <input matInput placeholder="Semester" type="text" name="semester" #semester="ngModel" [(ngModel)]="subjectsService.formData.semester" class="form-control" required>
                                   </mat-form-field>
-                                  <mat-error class="invalid-feedback" *ngIf="submitted && formControls.semester.errors">
+                                  <mat-error class="invalid-feedback" *ngIf="semester.invalid && semester.touched">
                                       <div class="text-danger">
                                           <label *ngIf="formControls.semester.errors.required">This field is required</label>
                                           <label *ngIf="formControls.semester.errors.min || formControls.semester.errors.max || formControls.semester.errors.pattern">Enter a number between 1-2</label> 
@@ -59,9 +59,9 @@
                             <div class="row">
                                 <div class="form-group col-md-12">
                                   <mat-form-field class="example-full-width">
-                                      <input matInput placeholder="Credit Value" type="text" formControlName="credit" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.credit.errors}">
+                                      <input matInput placeholder="Credit Value" type="text" name="credit" #credit="ngModel" [(ngModel)]="subjectsService.formData.credit" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.credit.errors}" required>
                                   </mat-form-field>
-                                  <mat-error class="invalid-feedback" *ngIf="submitted && formControls.credit.errors">
+                                  <mat-error class="invalid-feedback" *ngIf="credit.invalid && credit.touched">
                                       <div class="text-danger">
                                           <label *ngIf="formControls.credit.errors.required">This field is required</label>
                                           <label *ngIf="formControls.credit.errors.min || formControls.credit.errors.max || formControls.credit.errors.pattern">Enter a number between 1-3</label>
@@ -70,14 +70,14 @@
                                 </div>
                             </div>
                             <div class="form-group text-right">
-                                <button mat-raised-button type="button" class="btn btn-info gap-right" (click)="ResetForm()">Reset</button>
+                                <button mat-raised-button type="button" class="btn btn-info gap-right" (click)="resetForm()">Reset</button>
                                 <button mat-raised-button type="submit" class="btn btn-danger pull-right" value="submit">Submit</button>
                             </div>
                             <div class="clearfix"></div>
                         </form>
-                        <div class="alert alert-info"  *ngIf="showSuccessMessage">
+                        <!-- <div class="alert alert-info"  *ngIf="showSuccessMessage">
                             Submitted successfully.
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

@@ -1,13 +1,17 @@
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Subjects } from './subjects.model';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SubjectsService {
 
-  constructor(private firebase: AngularFireDatabase) { }
+  formData : Subjects;
+
+  constructor(private firestore: AngularFirestore) { }
   subjectsList: AngularFireList<any>;
 
   form = new FormGroup({
@@ -20,36 +24,35 @@ export class SubjectsService {
   });
 
   getSubjects(){
-    this.subjectsList = this.firebase.list('subjects');
-    return this.subjectsList.snapshotChanges();
+    return this.firestore.collection('subjects').snapshotChanges();
   }
 
-  insertSubject(subjects) {
-    this.subjectsList.push({
-      subjectCode: subjects.subjectCode,
-      subjectTitle: subjects.subjectTitle,
-      year: subjects.year,
-      semester: subjects.semester,
-      credit: subjects.credit
-    });
-  }
+  // insertSubject(subjects) {
+  //   this.subjectsList.push({
+  //     subjectCode: subjects.subjectCode,
+  //     subjectTitle: subjects.subjectTitle,
+  //     year: subjects.year,
+  //     semester: subjects.semester,
+  //     credit: subjects.credit
+  //   });
+  // }
 
-  populateForm(subject){
-    this.form.setValue(subject);
-  }
+  // populateForm(subject){
+  //   this.form.setValue(subject);
+  // }
 
-  updateSubject(subjects) {
-    this.subjectsList.update(subjects.$key,{
-      subjectCode: subjects.subjectCode,
-      subjectTitle: subjects.subjectTitle,
-      year: subjects.year,
-      semester: subjects.semester,
-      credit: subjects.credit
-    });
-  }
+  // updateSubject(subjects) {
+  //   this.subjectsList.update(subjects.$key,{
+  //     subjectCode: subjects.subjectCode,
+  //     subjectTitle: subjects.subjectTitle,
+  //     year: subjects.year,
+  //     semester: subjects.semester,
+  //     credit: subjects.credit
+  //   });
+  // }
 
-  deleteSubject($key: string){
-    this.subjectsList.remove($key);
-  }
+  // deleteSubject($key: string){
+  //   this.subjectsList.remove($key);
+  // }
 
 }
