@@ -31,7 +31,7 @@ export class SubjectsComponent implements OnInit {
       subjectTitle:'',
       year: null,
       semester: null,
-      creditValue: null,
+      credit: null,
     }
   }
   
