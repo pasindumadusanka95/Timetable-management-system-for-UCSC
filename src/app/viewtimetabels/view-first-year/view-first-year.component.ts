@@ -32,6 +32,43 @@ export class ViewFirstYearComponent implements OnInit {
   getDateHeaderText(value: Date): string {
     return this.instance.formatDate(value, { skeleton: 'E' });
   }
+
+  onPopupOpen(args: PopupOpenEventArgs): void {
+    if (args.type === 'QuickInfo') {
+      let startDate;
+      let endDate;
+      let isAllDay;
+      if (args.target.classList.contains('e-work-cells')) {
+        startDate = (args.data as any).startTime;
+        endDate = (args.data as any).endTime;
+        isAllDay = (args.data as any).isAllDay;
+      }
+      else {
+        startDate = (args.data as any).StartTime;
+        endDate = (args.data as any).EndTime;
+        isAllDay = (args.data as any).IsAllDay;
+      }
+      let details: string = '';
+      let startTimeDetail: string = this.instance.formatDate(startDate, { type: 'time', skeleton: 'short' });
+      let endTimeDetail: string = this.instance.formatDate(endDate, { type: 'time', skeleton: 'short' });
+      let startDateDetails = this.scheduleObj.getDayNames('wide')[startDate.getDay()];
+      endDate = (isAllDay) && endDate.getHours() === 0 && endDate.getMinutes() === 0 ? new Date(endDate.setDate(endDate.getDate() - 1)) : endDate;
+      let endDateDetails = this.scheduleObj.getDayNames('wide')[endDate.getDay()];
+      let spanLength: number = endDate.getDate() !== startDate.getDate() &&
+            (endDate.getTime() - startDate.getTime()) / (60 * 60 * 1000) < 24 ? 1 : 0;
+      if (isAllDay) {
+        details = startDateDetails + ' (all Day)';
+        if ((endDate.getTime() -startDate.getTime()) / 86400000 > 1) {
+          details += ' - ' + endDateDetails + ' (all Day)';
+        }
+      } else if ((((endDate.getTime() - startDate.getTime()) / 86400000) >= 1 || spanLength > 0)) {
+        details = startDateDetails + ' (' + startTimeDetail + ')' + ' - ' + endDateDetails + ' (' + endTimeDetail + ')';
+      } else {
+        details = startDateDetails + ' (' + (startTimeDetail + ' - ' + endTimeDetail) + ')';
+      }
+      args.element.querySelector('.e-date-time-details').textContent = details;
+    }
+  }
   
   constructor(private ttcs:TimeTableCRUDService) { }
 

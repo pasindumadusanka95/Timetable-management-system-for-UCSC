@@ -11,6 +11,7 @@ import {
   EventSettingsModel, ScheduleComponent, WorkWeekService, PopupOpenEventArgs, ResizeService, DragAndDropService,CellClickEventArgs,EventClickArgs,RecurrenceEditor, 
 } from '@syncfusion/ej2-angular-schedule';
 import { TimeTableCRUDService } from 'app/shared/time-table-crud.service';
+import { Key } from 'protractor';
 
 @Component({
   selector: 'app-first-year',
@@ -21,7 +22,7 @@ import { TimeTableCRUDService } from 'app/shared/time-table-crud.service';
 })
 export class FirstYearComponent implements OnInit {
 
-  public selectedDate: Date = new Date(2018, 7, 1);
+  public selectedDate: Date = new Date(2018, 1, 15);
   public eventSettings1Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData1Y, null, true) };
   public showHederBar: Boolean = false;
   public views: Array<String> = ['WorkWeek'];
@@ -52,10 +53,11 @@ export class FirstYearComponent implements OnInit {
   }
   onPopupOpen(args: PopupOpenEventArgs): void {
 
-    if (args.type === 'RecurrenceAlert') {
-      args.cancel = true;
-      this.scheduleObj.openEditor(args.data.event, 'EditSeries');
-    }
+    if (args.type === 'RecurrenceAlert') { 
+      args.cancel = true; 
+      let data: { [key: string]: Object } = args.data as { [key: string]: Object }; 
+      this.scheduleObj.openEditor(data.event, 'EditOccurrence'); 
+    } 
 
 
     if (args.type === 'Editor') {
@@ -72,7 +74,7 @@ export class FirstYearComponent implements OnInit {
       if (!lecturerElement.classList.contains('e-dropdownlist')) {
         let dropDownListObject: DropDownList = new DropDownList({
           placeholder: 'Choose Lecture', value: lecturerElement.value,
-          dataSource: ['Laura', 'Nancy', 'Steven']
+          dataSource: []
         });
         dropDownListObject.appendTo(lecturerElement);
       }
