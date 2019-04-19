@@ -47,6 +47,7 @@ import { SubjectsService } from './shared/subjects.service';
 import {TimeTableCRUDService} from './shared/time-table-crud.service';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { LecturerDashboardComponent } from './lecturer-dashboard/lecturer-dashboard.component';
+import { LecsidebarComponent } from './lecsidebar/lecsidebar.component';
 
 
 
@@ -89,6 +90,7 @@ let config = {
     //HallsComponent,
     EditLecturerComponent,
     LecturerDashboardComponent,
+    LecsidebarComponent,
     
     
     
