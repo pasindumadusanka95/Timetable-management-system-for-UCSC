@@ -1,0 +1,227 @@
+
+<body>
+  <!-- ============================================================== -->
+  <!-- main wrapper -->
+  <!-- ============================================================== -->
+  <div class="dashboard-main-wrapper">
+      <!-- ============================================================== -->
+      <!-- navbar -->
+      <!-- ============================================================== -->
+      <nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute fixed-top">
+          <div class="container-fluid">
+              <div class="navbar-wrapper">
+                <a class="navbar-brand" href="#"></a>
+              </div>
+              <button mat-raised-button class="navbar-toggler" type="button" (click)="sidebarToggle()">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="navbar-toggler-icon icon-bar"></span>
+                  <span class="navbar-toggler-icon icon-bar"></span>
+                  <span class="navbar-toggler-icon icon-bar"></span>
+              </button>
+              <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                  <ul class="navbar-nav">
+                     <li class="nav-item dropdown">
+                          <a class="nav-link" href="#pablo" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="material-icons">notifications</i>
+                              <span class="notification">5</span>
+                              <p>
+                                  <span class="d-lg-none d-md-block">Some Actions</span>
+                              </p>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                              <a class="dropdown-item" href="#">Mike John responded to your email</a>
+                              <a class="dropdown-item" href="#">You have 5 new tasks</a>
+                              <a class="dropdown-item" href="#">You're now friend with Andrew</a>
+                              <a class="dropdown-item" href="#">Another Notification</a>
+                              <a class="dropdown-item" href="#">Another One</a>
+                          </div>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="">
+                              <i class="material-icons">logout</i> Logout
+                              <p>
+                                  <span class="d-lg-none d-md-block">Account</span>
+                              </p>
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+      <!-- ============================================================== -->
+      <!-- end navbar -->
+      <!-- ============================================================== -->
+      <!-- ============================================================== -->
+      <!-- left sidebar -->
+      
+          <div class="sidebar" data-color="danger" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
+              <app-superadmin-sidebar> </app-superadmin-sidebar>
+              <div class="sidebar-background" style="background-image: url(./assets/img/sidebar-4.jpg)"></div>
+          </div>
+         
+      
+      
+     
+      
+      <!-- ============================================================== -->
+      <!-- end left sidebar -->
+      <!-- ============================================================== -->
+      <!-- ============================================================== -->
+      <!-- wrapper  -->
+      <!-- ============================================================== -->
+      <div class="dashboard-wrapper">
+          <div class="dashboard-ecommerce">
+              <div class="container-fluid dashboard-content ">
+                  <!-- ============================================================== -->
+                  <!-- pageheader  -->
+                  <!-- ============================================================== -->
+                
+                  <!-- ============================================================== -->
+                  <!-- end pageheader  -->
+                  <!-- ============================================================== -->
+                  <div class="ecommerce-widget">
+
+                     
+                    
+                      
+
+                      
+                      
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title" style="cursor: pointer;" (click)="open(content2)">First Year Time Table</h4>
+                    </div>
+                     <div class="card-body table-responsive">
+                        <!-- <app-first-year></app-first-year> -->
+                     </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-12">
+                  <div class="card">
+                      <div class="card-header card-header-success">
+                          <h4 class="card-title" style="cursor: pointer;" (click)="open(content3)">Second Year Time Table</h4>
+                      </div>
+                        <div class="card-body table-responsive">
+                        <!-- <app-second-year></app-second-year> -->
+                        </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-success">
+                      <h4 class="card-title" style="cursor: pointer;" (click)="open(content4)">Third Year Time Table</h4>
+                  </div>
+                    <div class="card-body table-responsive">
+                     <!-- <app-third-year></app-third-year>              -->
+                    </div>
+              </div>
+          </div>
+            <div class="col-lg-6 col-md-12">
+              <div class="card">
+                 <div class="card-header card-header-success">
+                        <h4 class="card-title" style="cursor: pointer;" (click)="open(content5)">Fourth Year Time Table</h4>
+                    </div>
+                        <div class="card-body table-responsive">
+                        <!-- <app-fourth-year></app-fourth-year>              -->
+                        </div>
+                </div></div></div>
+         
+      </div>
+      <!-- ============================================================== -->
+      <!-- end wrapper  -->
+      <!-- ============================================================== -->
+  </div>
+  
+  <!-- 1st year Modal -->
+<ng-template #content2 let-modal>
+  
+  <div class="modal-body">
+      
+          <h3 class="h3">1st Year Time Table</h3>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+       
+        <br>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
+  
+  <div>
+  <!-- <app-first-year></app-first-year> -->
+</div>
+</div>
+</div>
+</ng-template>
+<!-- End 1st year Modal -->
+
+<!-- 2nd year Modal -->
+<ng-template #content3 let-modal>
+  
+      <div class="modal-body">
+        
+              <h3 class="h3">2nd Year Time Table</h3>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+           
+            <br>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
+      
+      <div>
+              <!-- <app-second-year></app-second-year> -->
+  </div>
+    </div>
+    </div>
+    </ng-template>
+  <!-- End 2nd year Modal -->
+
+<!-- 3rd year Modal -->
+<ng-template #content4 let-modal>
+  
+      <div class="modal-body">
+       
+              <h3 class="h3">3rd Year Time Table</h3>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+           
+            <br>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
+      
+      <div>
+              <!-- <app-third-year></app-third-year>  -->
+  </div>
+    </div>
+    </div>
+    </ng-template>
+  <!-- End 3rd year Modal -->
+
+  <!-- 4th year Modal -->
+<ng-template #content5 let-modal>
+  
+      <div class="modal-body">
+       
+              <h3 class="h3">4th Year Time Table</h3>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+           
+            <br>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
+      
+      <div>
+              <!-- <app-fourth-year></app-fourth-year> -->
+  </div>
+    </div>
+    </div>
+    </ng-template>
+  <!-- End 4th year Modal -->
+ 
+</body>
+
