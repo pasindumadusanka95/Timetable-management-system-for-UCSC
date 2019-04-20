@@ -54,10 +54,11 @@ export class ThirdYearComponent implements OnInit {
   }
   onPopupOpen(args: PopupOpenEventArgs): void {
 
-    if (args.type === 'RecurrenceAlert') {
-      args.cancel = true;
-      this.scheduleObj.openEditor(args.data.event, 'EditSeries');
-    }
+    if (args.type === 'RecurrenceAlert') { 
+      args.cancel = true; 
+      let data: { [key: string]: Object } = args.data as { [key: string]: Object }; 
+      this.scheduleObj.openEditor(data.event, 'EditOccurrence'); 
+    } 
 
     if (args.type === 'Editor') {
 
@@ -104,6 +105,8 @@ export class ThirdYearComponent implements OnInit {
                 (this.scheduleObj.eventWindow as any).recurrenceEditor = recurrObject;
             }
             document.getElementById('RecurrenceEditor').style.display = (this.scheduleObj.currentAction == "EditOccurrence") ? 'none' : 'block';
+
+          
 
             args.element.querySelectorAll('.e-round').forEach((node: HTMLElement, index: number) => {
               if (index === 0 || index === 6) {

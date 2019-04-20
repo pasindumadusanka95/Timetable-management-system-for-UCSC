@@ -52,10 +52,11 @@ export class FourthYearComponent implements OnInit {
   }
   onPopupOpen(args: PopupOpenEventArgs): void {
 
-    if (args.type === 'RecurrenceAlert') {
-      args.cancel = true;
-      this.scheduleObj.openEditor(args.data.event, 'EditSeries');
-    }
+    if (args.type === 'RecurrenceAlert') { 
+      args.cancel = true; 
+      let data: { [key: string]: Object } = args.data as { [key: string]: Object }; 
+      this.scheduleObj.openEditor(data.event, 'EditOccurrence'); 
+    } 
 
     if (args.type === 'Editor') {
       

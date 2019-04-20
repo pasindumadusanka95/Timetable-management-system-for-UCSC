@@ -49,6 +49,9 @@ import {TimeTableCRUDService} from './shared/time-table-crud.service';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { LecturerDashboardComponent } from './lecturer-dashboard/lecturer-dashboard.component';
 import { HallListComponent } from './hall-list/hall-list.component';
+import { LecsidebarComponent } from './lecsidebar/lecsidebar.component';
+import { SuperadminDashComponent } from './superadmin-dash/superadmin-dash.component';
+import { SuperadminSidebarComponent } from './superadmin-sidebar/superadmin-sidebar.component';
 
 
 
@@ -92,6 +95,9 @@ let config = {
     EditLecturerComponent,
     LecturerDashboardComponent,
     HallListComponent,
+    LecsidebarComponent,
+    SuperadminDashComponent,
+    SuperadminSidebarComponent,
     
     
     

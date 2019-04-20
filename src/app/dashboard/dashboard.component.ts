@@ -33,8 +33,8 @@ constructor(
       list => {
         this.subjectsArray = list.map(item => {
           return{
-            $key: item.key,
-            ...item.payload.val()
+          //  $key: item.key,
+         //   ...item.payload.val()
           }
         });
       });
