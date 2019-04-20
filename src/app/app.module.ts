@@ -1,3 +1,4 @@
+import { HallsService } from './shared/halls.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -47,6 +48,7 @@ import { SubjectsService } from './shared/subjects.service';
 import {TimeTableCRUDService} from './shared/time-table-crud.service';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { LecturerDashboardComponent } from './lecturer-dashboard/lecturer-dashboard.component';
+import { HallListComponent } from './hall-list/hall-list.component';
 
 
 
@@ -89,6 +91,7 @@ let config = {
     //HallsComponent,
     EditLecturerComponent,
     LecturerDashboardComponent,
+    HallListComponent,
     
     
     
@@ -100,7 +103,7 @@ let config = {
     //SubjectListComponent,
 
   ],
-  providers: [LecturerService, SubjectsService,TimeTableCRUDService,NgbActiveModal],
+  providers: [LecturerService, SubjectsService,TimeTableCRUDService,NgbActiveModal, HallsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

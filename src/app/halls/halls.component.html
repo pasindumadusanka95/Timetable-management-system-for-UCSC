@@ -8,26 +8,25 @@
                         <!-- <p class="card-category">Complete your profile</p> -->
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+                            <input type="hidden" name="id" #id="ngModel" [(ngModel)]="hallsService.formData.id">
                             <div class="row">
                                 <div class="col-md-12">
-                                  <mat-form-field class="example-full-width">
-                                      <input matInput placeholder="Hall" type="text">
-                                    </mat-form-field>
+                                    <label>Hall Name</label>
+                                    <input type="text" name="hallName" #hallName="ngModel" [(ngModel)]="hallsService.formData.userName" class="form-control" required>
+                                    <div *ngIf="hallName.invalid && hallName.touched" class="validation-error">This field is required.</div>
                                 </div>
                             </div>
+                            <label>Resources</label>
                             <div class="row">
-                                  <div class="col-md-12">
-                                      <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Hall ID" type="text">
-                                      </mat-form-field>
-                                  </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                  <mat-form-field class="example-full-width">
-                                     <textarea matInput placeholder="Description" class="form-control" rows="5"></textarea>
-                                   </mat-form-field>
+                                <div class="col-md-4">
+                                    <input type="checkbox" name="resources" value="whiteboard">Whiteboard
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="checkbox" name="resources" value="mic">Mic
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="checkbox" name="resources" value="projector">Projector
                                 </div>
                             </div>
                             <button mat-raised-button type="submit" class="btn btn-danger pull-right">Add Hall</button>

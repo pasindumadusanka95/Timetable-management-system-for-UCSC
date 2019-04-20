@@ -6,6 +6,6 @@ export interface Lecturer {
         lastName: string;
         email: string,
         mobileNumber: Number;
-       // subjects: Array[] ;
+       // subjects: [] ;
      }
 

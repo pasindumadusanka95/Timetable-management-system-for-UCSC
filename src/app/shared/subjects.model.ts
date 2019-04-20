@@ -5,5 +5,5 @@ export class Subjects {
         year: Number;
         semester: Number;
         credit: Number;
-       // lecturers: Array[] ;
+       // lecturers: [] ;
 }
