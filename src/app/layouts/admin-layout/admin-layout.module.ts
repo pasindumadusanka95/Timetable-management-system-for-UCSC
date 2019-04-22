@@ -71,7 +71,7 @@ import { ViewFourthYearComponent } from 'app/viewtimetabels/view-fourth-year/vie
     ViewSecondYearComponent,
     ViewThirdYearComponent,
     ViewFourthYearComponent,
-    
+
   ]
 })
 
