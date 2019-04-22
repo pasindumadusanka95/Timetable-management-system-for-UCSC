@@ -50,16 +50,6 @@ import { LecturerDashboardComponent } from './lecturer-dashboard/lecturer-dashbo
 import { LecsidebarComponent } from './lecsidebar/lecsidebar.component';
 import { SuperadminDashComponent } from './superadmin-dash/superadmin-dash.component';
 import { SuperadminSidebarComponent } from './superadmin-sidebar/superadmin-sidebar.component';
-import { SuperadminLayoutComponent } from './layouts/superadmin-layout/superadmin-layout.component';
-import { FirstYearComponent } from './timetabels/first-year/first-year.component';
-import { ViewFirstYearComponent } from './viewtimetabels/view-first-year/view-first-year.component';
-import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
-import { SecondYearComponent } from './timetabels/second-year/second-year.component';
-import { ThirdYearComponent } from './timetabels/third-year/third-year.component';
-import { FourthYearComponent } from './timetabels/fourth-year/fourth-year.component';
-import { ViewThirdYearComponent } from './viewtimetabels/view-third-year/view-third-year.component';
-import { ViewSecondYearComponent } from './viewtimetabels/view-second-year/view-second-year.component';
-import { ViewFourthYearComponent } from './viewtimetabels/view-fourth-year/view-fourth-year.component';
 
 
 
@@ -87,7 +77,6 @@ let config = {
     AngularFireAuthModule,
     ReactiveFormsModule,        // Reactive forms module
     AppRoutingModule,
-    ScheduleModule,
     BrowserAnimationsModule,    // Required animations module for Toastr
     ToastrModule.forRoot({      // Register NgxToast NPM module
       timeOut: 3000,
@@ -104,20 +93,19 @@ let config = {
     EditLecturerComponent,
     LecturerDashboardComponent,
     LecsidebarComponent,
-    SuperadminSidebarComponent,
-    SuperadminLayoutComponent,
     SuperadminDashComponent,
-    ViewFirstYearComponent,
-    ViewSecondYearComponent,
-    ViewThirdYearComponent,
-    ViewFourthYearComponent,
+    SuperadminSidebarComponent,
+    
+    
+    
     
    
-
+    
+    
+    //SubjectsComponent,
+    //SubjectListComponent,
 
   ],
-  
- 
   providers: [LecturerService, SubjectsService,TimeTableCRUDService,NgbActiveModal],
   bootstrap: [AppComponent]
 })
