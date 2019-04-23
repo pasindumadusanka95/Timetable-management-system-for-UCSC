@@ -12,6 +12,7 @@ import {
 } from '@syncfusion/ej2-angular-schedule';
 import { TimeTableCRUDService } from 'app/shared/time-table-crud.service';
 import { Key } from 'protractor';
+import { SubjectsService } from 'app/shared/subjects.service';
 
 @Component({
   selector: 'app-first-year',
@@ -28,6 +29,7 @@ export class FirstYearComponent implements OnInit {
   public views: Array<String> = ['WorkWeek'];
   public showTimeIndicator: boolean = false;
   public showQuickInfo: boolean = false;
+  public sub_list: Array<any>;
 
 
   @ViewChild('scheduleObj')
@@ -74,7 +76,7 @@ export class FirstYearComponent implements OnInit {
       if (!lecturerElement.classList.contains('e-dropdownlist')) {
         let dropDownListObject: DropDownList = new DropDownList({
           placeholder: 'Choose Lecture', value: lecturerElement.value,
-          dataSource: []
+          dataSource:[]
         });
         dropDownListObject.appendTo(lecturerElement);
       }
@@ -116,7 +118,7 @@ export class FirstYearComponent implements OnInit {
 }
     }
 
-  constructor(private ttcs:TimeTableCRUDService) { }
+  constructor(private ttcs:TimeTableCRUDService, private scs: SubjectsService) { }
 
   onDataBound1Y(event){
   
@@ -146,7 +148,7 @@ export class FirstYearComponent implements OnInit {
       for (let i of next.data().firstyear as any[]){
         i.StartTime = i.StartTime.toDate();
         i.EndTime = i.EndTime.toDate();
-        //this.eventSettings1Y.dataSource.push(i);
+        // this.eventSettings1Y.dataSource.push(i);
 
       }
     
@@ -154,6 +156,12 @@ export class FirstYearComponent implements OnInit {
       console.log(this.eventSettings1Y.dataSource)
     
     })
+
+    this.scs.getSubjects().subscribe(actionArray =>{
+        this.sub_list = actionArray;
+      });
+
+  
   }
 
 }
