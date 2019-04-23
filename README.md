@@ -23,10 +23,10 @@ To get more help on the Angular CLI use ng help or go check out the Angular CLI 
 <table>
 <tr>
 
-<td align="center"><img src="https://avatars2.githubusercontent.com/u/35169497?s=460&v=4" width=200></td>
-<td align="center"><img src="https://avatars0.githubusercontent.com/u/25032998?s=460&v=4" width=200></td>
 <td align="center"><img src="https://avatars3.githubusercontent.com/u/25347476?s=460&v=4" width=200></td>
-<td align="center"><img src="https://avatars1.githubusercontent.com/u/29378743?s=460&v=4" width=200></td>
+<td align="center"><img src="https://avatars3.githubusercontent.com/u/27823466?s=460&v=4" width=200></td>
+<td align="center"><img src="https://avatars2.githubusercontent.com/u/25449821?s=460&v=4" width=200></td>
+<td align="center"><img src="https://avatars1.githubusercontent.com/u/32460923?s=460&v=4" width=200></td>
 </tr>
 <tr>
 
