@@ -50,6 +50,13 @@ import { LecturerDashboardComponent } from './lecturer-dashboard/lecturer-dashbo
 import { LecsidebarComponent } from './lecsidebar/lecsidebar.component';
 import { SuperadminDashComponent } from './superadmin-dash/superadmin-dash.component';
 import { SuperadminSidebarComponent } from './superadmin-sidebar/superadmin-sidebar.component';
+import { ViewFirstYearComponent } from './viewtimetabels/view-first-year/view-first-year.component';
+import { ViewSecondYearComponent } from './viewtimetabels/view-second-year/view-second-year.component';
+import { ViewThirdYearComponent } from './viewtimetabels/view-third-year/view-third-year.component';
+import { ViewFourthYearComponent } from './viewtimetabels/view-fourth-year/view-fourth-year.component';
+import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
+import { SharedModule } from './shared/shared.module';
+import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
 
 
 
@@ -77,6 +84,7 @@ let config = {
     AngularFireAuthModule,
     ReactiveFormsModule,        // Reactive forms module
     AppRoutingModule,
+    ScheduleModule,
     BrowserAnimationsModule,    // Required animations module for Toastr
     ToastrModule.forRoot({      // Register NgxToast NPM module
       timeOut: 3000,
@@ -84,6 +92,7 @@ let config = {
       preventDuplicates: true,
     }),
     NgxPaginationModule ,
+    SharedModule
   ],
   declarations: [
     AppComponent,
@@ -99,6 +108,8 @@ let config = {
     
     
     
+    
+    
    
     
     
@@ -106,7 +117,11 @@ let config = {
     //SubjectListComponent,
 
   ],
+  exports:[
+    
+  ],
   providers: [LecturerService, SubjectsService,TimeTableCRUDService,NgbActiveModal],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
