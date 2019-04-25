@@ -57,6 +57,7 @@ import { ViewFourthYearComponent } from './viewtimetabels/view-fourth-year/view-
 import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
 import { SharedModule } from './shared/shared.module';
 import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
+import { WorkloadComponent } from './workload/workload.component';
 
 
 
@@ -104,6 +105,7 @@ let config = {
     LecsidebarComponent,
     SuperadminDashComponent,
     SuperadminSidebarComponent,
+    
     
     
     
