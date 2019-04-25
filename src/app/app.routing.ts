@@ -2,11 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
-
+import {LecturerDashboardComponent} from './lecturer-dashboard/lecturer-dashboard.component'
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import {LoginComponent} from './login/login.component';
+import { SuperadminDashComponent } from './superadmin-dash/superadmin-dash.component';
 const routes: Routes = [
   { path: '', component: LoginComponent },
+  { path: 'lecturer', component: LecturerDashboardComponent },
+  { path: 'superadmin', component: SuperadminDashComponent },
   {
     path: 'dashboard',
     redirectTo: 'dashboard',

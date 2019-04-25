@@ -7,16 +7,16 @@
     <th>Credit</th>
     <th></th>
   </thead>
-  <ng-container *ngFor="let subject of subjectsArray">
+  <ng-container *ngFor="let subject of list">
     <tr class="table">
       <td>{{subject.subjectCode}}</td>
       <td>{{subject.subjectTitle}}</td>
       <td>{{subject.year}}</td>
       <td>{{subject.semester}}</td>
       <td>{{subject.credit}}</td>
-      <td>
-        <button class="btn btn-outline-info" (click)="subjectsService.populateForm(subject)">Edit</button>
-        <button class="btn btn-outline-danger" (click)="onDelete(subject.$key)">Delete</button>
+      <td> 
+        <button class="btn btn-outline-info" (click)="onEdit(subject)">Edit</button>
+        <button class="btn btn-outline-danger" (click)="onDelete(subject.id)">Delete</button>
       </td>
     </tr>
   </ng-container>

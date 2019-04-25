@@ -27,7 +27,7 @@ import { LoginComponent } from './login/login.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { HallsComponent } from './halls/halls.component';
 import { LecturersComponent } from './addlecturers/lecturers.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
+import {NgbModule,NgbActiveModal} from '@ng-bootstrap/ng-bootstrap'
 // Toaster for Alert Messages
 // Firebase Modules
 import {AngularFireModule} from 'angularfire2'
@@ -40,12 +40,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { LecturersListComponent } from './lecturers-list/lecturers-list.component';
 import { EditLecturerComponent } from './edit-lecturer/edit-lecturer.component';
-import {CrudService} from './shared/crud.service';
+import {LecturerService} from './shared/lecturer.service';
 import { SubjectsComponent } from './subjects/subjects.component';
 import { SubjectListComponent } from './subject-list/subject-list.component';
 import { SubjectsService } from './shared/subjects.service';
 import {TimeTableCRUDService} from './shared/time-table-crud.service';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
+import { LecturerDashboardComponent } from './lecturer-dashboard/lecturer-dashboard.component';
+import { LecsidebarComponent } from './lecsidebar/lecsidebar.component';
+import { SuperadminDashComponent } from './superadmin-dash/superadmin-dash.component';
+import { SuperadminSidebarComponent } from './superadmin-sidebar/superadmin-sidebar.component';
+
+
 
 // tslint:disable-next-line:prefer-const
 let config = {
@@ -85,11 +91,22 @@ let config = {
     LoginComponent,
     //HallsComponent,
     EditLecturerComponent,
+    LecturerDashboardComponent,
+    LecsidebarComponent,
+    SuperadminDashComponent,
+    SuperadminSidebarComponent,
+    
+    
+    
+    
+   
+    
+    
     //SubjectsComponent,
     //SubjectListComponent,
 
   ],
-  providers: [CrudService, SubjectsService,TimeTableCRUDService],
+  providers: [LecturerService, SubjectsService,TimeTableCRUDService,NgbActiveModal],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

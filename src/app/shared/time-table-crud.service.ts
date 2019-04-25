@@ -25,9 +25,18 @@ export class TimeTableCRUDService {
   //   return this.db.collection('users').doc(userKey).delete();
   // }
 
-  // getUsers(){
-  //   return this.db.collection('users').snapshotChanges();
-  // }
+  getFirstYearTT(){
+    return this.db.collection('Timetable').doc('1styear').get();
+  }
+  getSecondYearTT(){
+    return this.db.collection('Timetable').doc('2ndyear').get();
+  }
+  getThirdYearTT(){
+    return this.db.collection('Timetable').doc('3rdyear').get();
+  }
+  getFourthYearTT(){
+    return this.db.collection('Timetable').doc('4thyear').get();
+  }
 
   // searchUsers(searchValue){
   //   return this.db.collection('users',ref => ref.where('nameToSearch', '>=', searchValue)
@@ -40,7 +49,16 @@ export class TimeTableCRUDService {
   // }
 
 
-  insertobject(object){
-    const doc = this.db.collection('Timetable').doc("1styear").set({firstyear:object});
+  setFirstYearTT(object){
+    const doc = this.db.collection('Timetable').doc('1styear').set({firstyear:object});
+  }
+  setSecondYearTT(object){
+    const doc = this.db.collection('Timetable').doc('2ndyear').set({secondyear:object});
+  }
+  setThirdYearTT(object){
+    const doc = this.db.collection('Timetable').doc('3rdyear').set({thirdyear:object});
+  }
+  setFourthYearTT(object){
+    const doc = this.db.collection('Timetable').doc('4thyear').set({fourthyear:object});
   }
 }
