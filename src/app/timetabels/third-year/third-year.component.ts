@@ -116,7 +116,7 @@ export class ThirdYearComponent implements OnInit {
 }
     }
 
-  constructor(private ttcs:TimeTableCRUDService) { }
+  constructor(private ttcs:TimeTableCRUDService,) { }
 
   onDataBound3Y(event){
   
@@ -146,7 +146,7 @@ export class ThirdYearComponent implements OnInit {
       for (let i of next.data().thirdyear as any[]){
         i.StartTime = i.StartTime.toDate();
         i.EndTime = i.EndTime.toDate();
-        //this.eventSettings3Y.dataSource.push(i);
+        (<any[]>(this.eventSettings3Y.dataSource)).push(i);
 
       }
     

@@ -27,6 +27,8 @@ export class SubjectsService {
     return this.firestore.collection('subjects').snapshotChanges();
   }
 
+  
+
   // insertSubject(subjects) {
   //   this.subjectsList.push({
   //     subjectCode: subjects.subjectCode,

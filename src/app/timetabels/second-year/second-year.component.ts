@@ -11,6 +11,7 @@ import {
   EventSettingsModel, ScheduleComponent, WorkWeekService, PopupOpenEventArgs, ResizeService, DragAndDropService,CellClickEventArgs,EventClickArgs,RecurrenceEditor, 
 } from '@syncfusion/ej2-angular-schedule';
 import { TimeTableCRUDService } from 'app/shared/time-table-crud.service';
+import { SubjectsService } from 'app/shared/subjects.service';
 
 
 @Component({
@@ -28,7 +29,7 @@ export class SecondYearComponent implements OnInit {
   public views: Array<String> = ['WorkWeek'];
   public showTimeIndicator: boolean = false;
   public showQuickInfo: boolean = false;
-
+  public sub_list:Array<any> = [];
 
   @ViewChild('scheduleObj')
   public scheduleObj: ScheduleComponent;
@@ -114,7 +115,7 @@ export class SecondYearComponent implements OnInit {
 }
     }
 
-  constructor(private ttcs:TimeTableCRUDService) { }
+  constructor(private ttcs:TimeTableCRUDService, public scs:SubjectsService) { }
 
   onDataBound2Y(event){
   
@@ -144,14 +145,23 @@ export class SecondYearComponent implements OnInit {
       for (let i of next.data().secondyear as any[]){
         i.StartTime = i.StartTime.toDate();
         i.EndTime = i.EndTime.toDate();
-        //this.eventSettings2Y.dataSource.push(i);
+        (<any[]>(this.eventSettings2Y.dataSource)).push(i);
 
       }
     
       this.scheduleObj.refreshEvents()
       console.log(this.eventSettings2Y.dataSource)
     
-    })
+    });
+
+    this.scs.getSubjects().subscribe(actionArray => {
+      this.sub_list = actionArray.map(item=>{
+        let a:any=item.payload.doc.data();
+        return a.subjectCode
+      }) 
+
+        console.log(this.sub_list)
+  });
   }
 
 }
