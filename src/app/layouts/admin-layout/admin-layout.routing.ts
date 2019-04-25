@@ -8,6 +8,7 @@ import { TypographyComponent } from '../../typography/typography.component';
 import { IconsComponent } from '../../icons/icons.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { LecturersComponent } from '../../addlecturers/lecturers.component';
+import { WorkloadComponent } from 'app/workload/workload.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -59,5 +60,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'icons',          component: IconsComponent },
     { path: 'subjects',       component: SubjectsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
-    {path: 'managelectures',  component: LecturersComponent }
+    { path: 'managelectures',  component: LecturersComponent },
+    { path: 'workload',  component: WorkloadComponent },
 ];

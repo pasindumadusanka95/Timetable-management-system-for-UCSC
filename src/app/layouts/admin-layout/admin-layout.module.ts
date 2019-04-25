@@ -35,6 +35,7 @@ import { ViewSecondYearComponent } from 'app/viewtimetabels/view-second-year/vie
 import { ViewThirdYearComponent } from 'app/viewtimetabels/view-third-year/view-third-year.component';
 import { ViewFourthYearComponent } from 'app/viewtimetabels/view-fourth-year/view-fourth-year.component';
 import { SharedModule } from 'app/shared/shared.module';
+import { WorkloadComponent } from 'app/workload/workload.component';
 
 
 @NgModule({
@@ -69,6 +70,8 @@ import { SharedModule } from 'app/shared/shared.module';
     SecondYearComponent,
     ThirdYearComponent,
     FourthYearComponent,
+    WorkloadComponent
+  
     
     
   ],
