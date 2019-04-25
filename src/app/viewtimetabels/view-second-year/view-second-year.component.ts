@@ -41,7 +41,7 @@ export class ViewSecondYearComponent implements OnInit {
       for (let i of next.data().secondyear as any[]){
         i.StartTime = i.StartTime.toDate();
         i.EndTime = i.EndTime.toDate();
-        //this.eventSettings2Y.dataSource.push(i);
+        (<any[]>(this.eventSettings2Y.dataSource)).push(i);
 
       }
     

@@ -42,7 +42,7 @@ export class ViewThirdYearComponent implements OnInit {
       for (let i of next.data().thirdyear as any[]){
         i.StartTime = i.StartTime.toDate();
         i.EndTime = i.EndTime.toDate();
-         //this.eventSettings3Y.dataSource.push(i);
+        (<any[]>(this.eventSettings3Y.dataSource)).push(i);
 
       }
     
