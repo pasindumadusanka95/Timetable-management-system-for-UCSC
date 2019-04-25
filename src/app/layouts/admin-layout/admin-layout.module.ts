@@ -34,6 +34,7 @@ import { ViewFirstYearComponent } from 'app/viewtimetabels/view-first-year/view-
 import { ViewSecondYearComponent } from 'app/viewtimetabels/view-second-year/view-second-year.component';
 import { ViewThirdYearComponent } from 'app/viewtimetabels/view-third-year/view-third-year.component';
 import { ViewFourthYearComponent } from 'app/viewtimetabels/view-fourth-year/view-fourth-year.component';
+import { SharedModule } from 'app/shared/shared.module';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { ViewFourthYearComponent } from 'app/viewtimetabels/view-fourth-year/vie
     ReactiveFormsModule,
     ScheduleModule,
     NgxPaginationModule,
+    SharedModule
   ],
   declarations: [
     DashboardComponent,
@@ -67,10 +69,14 @@ import { ViewFourthYearComponent } from 'app/viewtimetabels/view-fourth-year/vie
     SecondYearComponent,
     ThirdYearComponent,
     FourthYearComponent,
-    ViewFirstYearComponent,
-    ViewSecondYearComponent,
-    ViewThirdYearComponent,
-    ViewFourthYearComponent,
+    
+    
+  ],
+  exports:[
+    FirstYearComponent,
+    SecondYearComponent,
+    ThirdYearComponent,
+    FourthYearComponent,
     
   ]
 })

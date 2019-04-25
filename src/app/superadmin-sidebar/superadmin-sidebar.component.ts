@@ -10,6 +10,7 @@ declare interface RouteInfo {
 }
 export const ROUTES: RouteInfo[] = [
     { path: '/superadmin', title: 'Dashboard',  icon: 'dashboard', class: '' },
+    { path: '/reqSchedule', title: 'Request Reschedule',  icon: 'schedule', class: '' },
     // { path: '/table-list', title: 'View Time Tables',  icon: 'content_paste', class: '' },
     // { path: '/managelectures', title: 'Manage Lecturers',  icon: 'person', class: '' },
     // { path: '/halls', title: 'Manage Halls',  icon: 'house', class: '' },
