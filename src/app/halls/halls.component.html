@@ -1,42 +1,62 @@
 <div class="main-content">
-    <div class="container-fluid center">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-4">
                 <div class="card">
-                    <div class="card-header card-header-danger">
+                    <div class="card-header card-header-primary">
                         <h4 class="card-title">Manage Halls</h4>
-                        <!-- <p class="card-category">Complete your profile</p> -->
+                       
                     </div>
                     <div class="card-body">
-                        <form>
+                      <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+                        <input type="hidden" name="id" #id="ngModel" [(ngModel)]="hallservice.formData.id">
+                         
                             <div class="row">
                                 <div class="col-md-12">
-                                  <mat-form-field class="example-full-width">
-                                      <input matInput placeholder="Hall" type="text">
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="row">
-                                  <div class="col-md-12">
-                                      <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Hall ID" type="text">
-                                      </mat-form-field>
+                                    <label>Hall ID</label>
+                                    <input type="text" name="hallID" #hallID="ngModel" [(ngModel)]="hallservice.formData.hallID" class="form-control" required>
+                                    <div *ngIf="hallID.invalid && hallID.touched" class="validation-error">This field is required.</div>
                                   </div>
+                                </div>
+                                <div class="row">
+                              <div class="col-md-12">
+                                <label>Hall Capacity</label>
+                                <input type="number" name="capacity" #capacity="ngModel" [(ngModel)]="hallservice.formData.capacity" class="form-control" required>
+                              </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">
-                                  <mat-form-field class="example-full-width">
-                                     <textarea matInput placeholder="Description" class="form-control" rows="5"></textarea>
-                                   </mat-form-field>
-                                </div>
+                              <div class="col-md-12">
+                                <label>Resources Availability</label>
+                                <input type="text" name="resourceStatus" #resourceStatus="ngModel" [(ngModel)]="hallservice.formData.resourceStatus" class="form-control" required>
+                              </div>
+                      </div>
+                      
+                             <div class="form-group text-right">
+                              <button type="button" class="btn btn-info gap-right" (click)="resetForm(form)">Reset</button>
+                              <button type="submit" class="btn btn-success pull-right" [disabled]="form.invalid" value="submit">Add Hall</button>
                             </div>
-                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Add Hall</button>
-                            <div class="clearfix"></div>
-                        </form>
+                      
+                         
+                          <div class="clearfix"></div>
+                        
+                      </form>
+                      
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-  </div>
   
+  
+  <div class="col-md-8">
+  <div class="card card-profile">
+      <div class="card-header card-header-primary">
+          <h4 class="card-title">Hall Details</h4>
+          <!-- <p class="card-category">Complete your profile</p> -->
+      </div>
+      <div class="card-body">
+          <app-hall-list></app-hall-list>
+      </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>

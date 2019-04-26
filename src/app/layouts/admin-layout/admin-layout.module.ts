@@ -38,6 +38,7 @@ import { SharedModule } from 'app/shared/shared.module';
 import { WorkloadComponent } from 'app/workload/workload.component';
 import { HallListComponent } from 'app/hall-list/hall-list.component';
 import { StudentCountComponent } from 'app/student-count/student-count.component';
+import { StudentCountListComponent } from 'app/student-count-list/student-count-list.component';
 
 
 @NgModule({
@@ -75,6 +76,7 @@ import { StudentCountComponent } from 'app/student-count/student-count.component
     WorkloadComponent,
     HallListComponent,
     StudentCountComponent,
+    StudentCountListComponent,
   
     
     

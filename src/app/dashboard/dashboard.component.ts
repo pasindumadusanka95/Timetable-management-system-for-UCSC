@@ -6,6 +6,8 @@ import { LecturerService } from 'app/shared/lecturer.service';
 import { SubjectsService } from 'app/shared/subjects.service';
 import { Subjects } from 'app/shared/subjects.model';
 import { Lecturer } from 'app/shared/lecturer.model';
+import { Hall } from 'app/shared/hall.model';
+import { HallService } from 'app/shared/hall.service';
 
 
 
@@ -22,13 +24,15 @@ import { Lecturer } from 'app/shared/lecturer.model';
 export class DashboardComponent implements OnInit {
   list: Subjects[];
   Llist: Lecturer[];
+  Hlist: Hall[];
   closeResult: string;
 constructor(
   private lecservice: LecturerService,
    public modalService: NgbModal,
   private firestore: AngularFirestore,
   private toastr : ToastrService,
-  private subjectsService: SubjectsService
+  private subjectsService: SubjectsService,
+  private hallservice : HallService
 ) { }
    
    ngOnInit() {
@@ -50,7 +54,15 @@ constructor(
       
       })
 });
-      }
+this.hallservice.getHall().subscribe(actionArray => {
+  this.Hlist = actionArray.map(item=>{
+    return {
+      id: item.payload.doc.id,
+      ...item.payload.doc.data() 
+    } as Hall;
+      })
+    });
+  }
 
 
       open(content) {

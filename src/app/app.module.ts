@@ -60,6 +60,7 @@ import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
 import { WorkloadComponent } from './workload/workload.component';
 import { HallListComponent } from './hall-list/hall-list.component';
 import { StudentCountComponent } from './student-count/student-count.component';
+import { StudentCountListComponent } from './student-count-list/student-count-list.component';
 
 
 
@@ -108,6 +109,7 @@ let config = {
     LecsidebarComponent,
     SuperadminDashComponent,
     SuperadminSidebarComponent,
+    
     
     
     

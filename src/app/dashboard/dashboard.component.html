@@ -154,6 +154,61 @@
 <!-- end lecturerModal -->
 
 
+<!-- hallmodal -->
+<ng-template #contenth let-modal>
+    
+  <div class="modal-body">
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
+  <h3 class="h2">Hall List</h3>
+  
+  
+</div>
+
+
+  <div class="table-responsive" >
+    <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
+      <thead>
+        <tr>
+          
+            <th scope="col"><b>Hall ID</b></th>
+            <th scope="col"><b>Capacity</b></th>
+            <th scope="col"><b>Resource Availability</b></th>
+           
+           
+          
+          
+         
+        </tr>
+      </thead>
+      
+       
+        <ng-container *ngFor="let hall of Hlist  | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
+         
+           <tr  class="table-striped"> 
+          <!-- <th scope="row">{{student.$key}}</th> -->
+          <td>{{hall.hallID}}</td>
+            <td>{{hall.capacity}}</td>
+            <td>{{hall.resourceStatus}}</td>
+          
+        </tr>
+      
+    </ng-container>
+    </table>
+   
+  </div>
+  <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
+
+</div>
+
+
+
+</ng-template>
+   
+<!-- end hallModal -->
+
 <!-- 1st year Modal -->
 <ng-template #content2 let-modal>
     
@@ -257,7 +312,7 @@
               <div class="card card-stats">
                   <div class="card-header card-header-primary card-header-icon">
                       <div class="card-icon">
-                          <i class="material-icons">store</i>
+                          <i class="material-icons" style="cursor: pointer;" (click)="open(contenth)">store</i>
                       </div>
                       <h4 class="card-title">View Lecture Halls</h4>
                       

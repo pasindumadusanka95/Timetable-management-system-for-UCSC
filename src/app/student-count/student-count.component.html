@@ -1,65 +1,75 @@
-<div class="pt-3 pb-2 mb-3 border-bottom offset-sm-1">
-  <!-- <app-lecturers-list></app-lecturers-list> -->
-<h1 class="h2">Add Student Groups Details</h1>
-
-</div>
-
-<!-- lecturer form -->
-<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
-  <input type="hidden" name="id" #id="ngModel" [(ngModel)]="StudentCountservice.formData.id">
-  <div class="row"> 
-    <div class="col-lg-5 col-md-12 col-sm-12 offset-sm-2">
+<div class="main-content">
+  <div class="container-fluid">
       <div class="row">
-
-          <div class="col-md-12 mb-3">
-              <label>Registered Year</label>
-              <input type="text" name="registeredYear" #registeredYear="ngModel" [(ngModel)]="StudentCountservice.formData.registeredYear" class="form-control" required>
-              <div *ngIf="registeredYear.invalid && registeredYear.touched" class="validation-error">This field is required.</div>
-            </div>
-        <div class="col-md-12 mb-3">
-          <label>Course</label>
-          <input type="text" name="course" #course="ngModel" [(ngModel)]="StudentCountservice.formData.course" class="form-control" required>
-        </div>
-
-        <div class="col-md-12 mb-3">
-          <label>Group Name</label>
-          <input type="text" name="groupName" #groupName="ngModel" [(ngModel)]="StudentCountservice.formData.groupName" class="form-control" required>
-        </div>
-
-      </div>
-
-      <div class="row">
-        <div class="col-md-12 mb-3">
-          <label>Number of Groups </label>
-          <input type="number" name="numberofGroups" #numberofGroups="ngModel" [(ngModel)]="StudentCountservice.formData.numberofGroups" class="form-control" required>
-        </div>
-
-        <div class="col-md-12 mb-3">
-          <label>Sizes of Groups</label>
-          <input type="number" name="sizeofGroups" #sizeofGroups="ngModel" [(ngModel)]="StudentCountservice.formData.sizeofGroups" class="form-control" required>
+          <div class="col-md-4">
+              <div class="card">
+                  <div class="card-header card-header-primary">
+                      <h4 class="card-title">Manage Student Groups</h4>
+                     
+                  </div>
+                  <div class="card-body">
+                    <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+                      <input type="hidden" name="id" #id="ngModel" [(ngModel)]="StudentCountservice.formData.id">
+                      <div class="row"> 
+                              <div class="col-md-12">
+                                  <label>Registered Year</label>
+                                  <input type="text" name="registeredYear" #registeredYear="ngModel" [(ngModel)]="StudentCountservice.formData.registeredYear" class="form-control" required>
+                                  <div *ngIf="registeredYear.invalid && registeredYear.touched" class="validation-error">This field is required.</div>
+                                </div>
+                      </div>
+                                <div class="row">
+                            <div class="col-md-12">
+                              <label>Course</label>
+                              <input type="text" name="course" #course="ngModel" [(ngModel)]="StudentCountservice.formData.course" class="form-control" required>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <label>Group Name</label>
+                              <input type="text" name="groupName" #groupName="ngModel" [(ngModel)]="StudentCountservice.formData.groupName" class="form-control" required>
+                            </div>
+                          </div>
+                    
+                          <div class="row">
+                            <div class="col-md-12">
+                              <label>Number of Groups </label>
+                              <input type="number" name="numberofGroups" #numberofGroups="ngModel" [(ngModel)]="StudentCountservice.formData.numberofGroups" class="form-control" required>
+                            </div>
+                    </div>
+                    <div class="row">
+                            <div class="col-md-12">
+                              <label>Sizes of Groups</label>
+                              <input type="number" name="sizeofGroups" #sizeofGroups="ngModel" [(ngModel)]="StudentCountservice.formData.sizeofGroups" class="form-control" required>
+                              </div>
+                          
+                      </div> 
+                      <div class="form-group text-right">
+                        <button type="button" class="btn btn-info gap-right" (click)="resetForm(form)">Reset</button>
+                        <button type="submit" class="btn btn-success pull-right" [disabled]="form.invalid" value="submit">Submit</button>
+                      </div>
+                    
+                      <div class="clearfix"></div>
+                    </form>
+                    
+                  </div>
+              </div>
           </div>
-          
-          
-        
-        <!-- <div>
-        <label>Subjects</label>
-        <div class="form-group text-right"></div>
-        <input type="text" formControlName="subjects" class="form-control" required>
-        <span class="form-group-btn">
-              <button class="btn btn-default" type="button">Add Subjects</button>
-         </span>
-        </div>-->
-      
-  </div> 
-      <div class="form-group text-right">
-        <button type="button" class="btn btn-secondary gap-right" (click)="resetForm(form)">Reset</button>
-        <button type="submit" class="btn btn-success" [disabled]="form.invalid" value="submit">Submit</button>
-      </div>
 
+
+<div class="col-md-8">
+<div class="card card-profile">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title">Student Count Details</h4>
+        <!-- <p class="card-category">Complete your profile</p> -->
     </div>
-  </div>
-  
-</form><!-- Student form ends-->
-<div class="alert alert-info"  *ngIf="showSuccessMessage">
-  Submitted successfully.
+    <div class="card-body">
+        <app-student-count-list></app-student-count-list>
+    </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+
+
+
