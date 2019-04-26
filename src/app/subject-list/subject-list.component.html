@@ -15,8 +15,12 @@
       <td>{{subject.semester}}</td>
       <td>{{subject.credit}}</td>
       <td> 
-        <button class="btn btn-outline-info" (click)="onEdit(subject)">Edit</button>
-        <button class="btn btn-outline-danger" (click)="onDelete(subject.id)">Delete</button>
+        <a class="action-btn" style="color:rgb(36, 143, 192); cursor: pointer" (click)="onEdit(subject)">
+          <i class="material-icons">edit</i>
+        </a>
+        <a class="action-btn" style="color:lightcoral; cursor: pointer" (click)="onDelete(subject.id)">
+          <i class="material-icons">delete</i>
+        </a>
       </td>
     </tr>
   </ng-container>

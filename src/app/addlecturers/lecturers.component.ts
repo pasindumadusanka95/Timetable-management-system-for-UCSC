@@ -34,39 +34,6 @@ export class LecturersComponent implements OnInit {
     }
   }
 
- 
-  // public lecturerForm: FormGroup;  // Define FormGroup to Lecturer's form
-
-  // get userName() {
-  //   return this.lecturerForm.get('userName');
-  // }
-
-  // get firstName() {
-  //   return this.lecturerForm.get('firstName');
-  // }
-
-  // get lastName() {
-  //   return this.lecturerForm.get('lastName');
-  // }
-
-  // get email() {
-  //   return this.lecturerForm.get('email');
-  // }
-
-  // get mobileNumber() {
-  //   return this.lecturerForm.get('mobileNumber');
-  // }
-
-
-  // // Reset Lecturer form's values
-  // // ResetForm() {
-  // //   this.service.form.reset();
-  // // }
-
-  
-
-  
- 
 
     // tslint:disable-next-line:member-ordering
     submitted: boolean;
