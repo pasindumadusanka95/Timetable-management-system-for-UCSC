@@ -1,33 +1,34 @@
 import { Injectable } from '@angular/core';
-import { Lecturer } from './lecturer.model';  // Lecturer data type interface class
 // tslint:disable-next-line:max-line-length
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';  // Firebase modules for Database, Data list and Single object
 import {FormControl, FormGroup, Validators} from '@angular/forms';
   import { from } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { StudentCount } from './student-count.model';
 @Injectable({
   providedIn: 'root'
 })
 
-export class LecturerService {
-    formData : Lecturer;
+export class StudentCountService {
+    formData : StudentCount;
 
 constructor(private firestore: AngularFirestore) {}
     // tslint:disable-next-line:member-ordering
-    lecturerList: AngularFireList<any>;
+    studentcountList: AngularFireList<any>;
   // tslint:disable-next-line:member-ordering
   form = new FormGroup({
     $key: new FormControl(null),
-    userName: new FormControl(''),
-    firstName: new FormControl('', Validators.required),
-    lastName: new FormControl(''),
-    email: new FormControl('', Validators.email),
-    mobileNumber: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('^[0-9]*$')])
+    registeredYear: new FormControl('',Validators.required),
+    course: new FormControl('',Validators.required),
+    groupName: new FormControl('', Validators.required),
+    numberofGroups: new FormControl('',Validators.required),
+    sizeofGroups: new FormControl('', Validators.required),
+   
   });
 
 
-getLecturers(){
-  return this.firestore.collection('lecturers').snapshotChanges();
+getStudentCount(){
+  return this.firestore.collection('studentcount').snapshotChanges();
 }
 
 

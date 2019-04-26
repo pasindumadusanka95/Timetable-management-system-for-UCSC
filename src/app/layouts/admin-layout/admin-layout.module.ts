@@ -36,6 +36,8 @@ import { ViewThirdYearComponent } from 'app/viewtimetabels/view-third-year/view-
 import { ViewFourthYearComponent } from 'app/viewtimetabels/view-fourth-year/view-fourth-year.component';
 import { SharedModule } from 'app/shared/shared.module';
 import { WorkloadComponent } from 'app/workload/workload.component';
+import { HallListComponent } from 'app/hall-list/hall-list.component';
+import { StudentCountComponent } from 'app/student-count/student-count.component';
 
 
 @NgModule({
@@ -70,7 +72,9 @@ import { WorkloadComponent } from 'app/workload/workload.component';
     SecondYearComponent,
     ThirdYearComponent,
     FourthYearComponent,
-    WorkloadComponent
+    WorkloadComponent,
+    HallListComponent,
+    StudentCountComponent,
   
     
     

@@ -14,6 +14,7 @@ export class SubjectsService {
   constructor(private firestore: AngularFirestore) { }
   subjectsList: AngularFireList<any>;
 
+  // tslint:disable-next-line:member-ordering
   form = new FormGroup({
     $key: new FormControl(null),
     subjectCode: new FormControl('', Validators.required),
