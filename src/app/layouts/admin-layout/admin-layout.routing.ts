@@ -9,6 +9,7 @@ import { IconsComponent } from '../../icons/icons.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { LecturersComponent } from '../../addlecturers/lecturers.component';
 import { WorkloadComponent } from 'app/workload/workload.component';
+import { StudentCountComponent } from 'app/student-count/student-count.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -56,7 +57,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'halls',          component: HallsComponent },
     { path: 'table-list',     component: TableListComponent },
-    { path: 'typography',     component: TypographyComponent },
+    { path: 'student-count',     component: StudentCountComponent },
     { path: 'icons',          component: IconsComponent },
     { path: 'subjects',       component: SubjectsComponent },
     { path: 'upgrade',        component: UpgradeComponent },

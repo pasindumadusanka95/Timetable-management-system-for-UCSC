@@ -69,7 +69,7 @@
         </thead>
         
          
-          <ng-container *ngFor="let subject of subjectsArray | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
+          <ng-container *ngFor="let subject of list | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
            
              <tr  class="table-striped"> 
             <!-- <th scope="row">{{student.$key}}</th> -->
@@ -94,6 +94,64 @@
   </ng-template>
      
 <!-- end subjectModal -->
+
+
+ <!-- lecturermodal -->
+ <ng-template #contentl let-modal>
+    
+  <div class="modal-body">
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
+  <h3 class="h2">Lecturer List</h3>
+  
+  
+</div>
+
+
+  <div class="table-responsive" >
+    <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
+      <thead>
+        <tr>
+          
+            <th scope="col"><b>Name</b></th>
+            <th scope="col"><b>Email</b></th>
+            <th scope="col"><b>Mobile Number</b></th>
+            <th scope="col"><b>User Name</b></th>
+            <th scope="col"></th>
+           
+          
+          
+         
+        </tr>
+      </thead>
+      
+       
+        <ng-container *ngFor="let lecturer of Llist  | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
+         
+           <tr  class="table-striped"> 
+          <!-- <th scope="row">{{student.$key}}</th> -->
+          <td>{{lecturer.firstName}} {{lecturer.lastName}}</td>
+            <td>{{lecturer.email}}</td>
+            <td>{{lecturer.mobileNumber}}</td>
+            <td>{{lecturer.userName}}</td>
+          
+        </tr>
+      
+    </ng-container>
+    </table>
+   
+  </div>
+  <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
+
+</div>
+
+
+
+</ng-template>
+   
+<!-- end lecturerModal -->
 
 
 <!-- 1st year Modal -->
@@ -210,7 +268,7 @@
               <div class="card card-stats">
                   <div class="card-header card-header-warning card-header-icon">
                       <div class="card-icon">
-                          <i class="material-icons">people</i>
+                          <i class="material-icons" style="cursor: pointer;" (click)="open(contentl)">people</i>
                       </div>
                       <h5 class="card-title">View Lecturer Details</h5>
                   </div>
