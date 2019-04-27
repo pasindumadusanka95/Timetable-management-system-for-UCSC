@@ -13,6 +13,8 @@ import {
 import { TimeTableCRUDService } from 'app/shared/time-table-crud.service';
 import { Key } from 'protractor';
 import { SubjectsService } from 'app/shared/subjects.service';
+import { LecturerService } from 'app/shared/lecturer.service';
+import { HallService } from 'app/shared/hall.service';
 
 @Component({
   selector: 'app-first-year',
@@ -30,6 +32,8 @@ export class FirstYearComponent implements OnInit {
   public showTimeIndicator: boolean = false;
   public showQuickInfo: boolean = false;
   public sub_list: Array<any> = [];
+  public lec_list: Array<any> = [];
+  public venue_list: Array<any> = [];
 
 
   @ViewChild('scheduleObj')
@@ -67,24 +71,24 @@ export class FirstYearComponent implements OnInit {
       let subjectElement: HTMLInputElement = args.element.querySelector('#Subject') as HTMLInputElement;
       if (!subjectElement.classList.contains('e-dropdownlist')) {
         let dropDownListObject: DropDownList = new DropDownList({
-          placeholder: 'Choose status', value: subjectElement.value,
-          dataSource: ['New', 'Requested', 'Confirmed']
+          placeholder: 'Choose Subject', value: subjectElement.value,
+          dataSource: this.sub_list
         });
         dropDownListObject.appendTo(subjectElement);
       }
       let lecturerElement: HTMLInputElement = args.element.querySelector('#Lecturer') as HTMLInputElement;
       if (!lecturerElement.classList.contains('e-dropdownlist')) {
         let dropDownListObject: DropDownList = new DropDownList({
-          placeholder: 'Choose Lecture', value: lecturerElement.value,
-          dataSource:this.sub_list
+          placeholder: 'Choose Lecturer', value: lecturerElement.value,
+          dataSource: this.lec_list
         });
         dropDownListObject.appendTo(lecturerElement);
       }
       let venueElement: HTMLInputElement = args.element.querySelector('#Location') as HTMLInputElement;
       if (!venueElement.classList.contains('e-dropdownlist')) {
         let dropDownListObject: DropDownList = new DropDownList({
-          placeholder: 'Choose venue', value: venueElement.value,
-          dataSource: ['Mumbai', 'Chennai', 'Bangalore']
+          placeholder: 'Choose Venue', value: venueElement.value,
+          dataSource: this.venue_list
         });
         dropDownListObject.appendTo(venueElement);
       }
@@ -118,7 +122,7 @@ export class FirstYearComponent implements OnInit {
 }
     }
 
-  constructor(private ttcs:TimeTableCRUDService, private scs: SubjectsService) { }
+  constructor(private ttcs:TimeTableCRUDService, private scs: SubjectsService, private lcs: LecturerService, private hcs: HallService ) { }
 
   onDataBound1Y(event){
   
@@ -163,8 +167,26 @@ export class FirstYearComponent implements OnInit {
         return a.subjectCode
       }) 
 
-        console.log(this.sub_list)
+        
   });
+
+    this.lcs.getLecturers().subscribe(actionArray => {
+      this.lec_list = actionArray.map(item=>{
+        let a:any=item.payload.doc.data();
+        return a.userName
+      }) 
+
+      
+  });
+
+    this.hcs.getHall().subscribe(actioArray => {
+      this.venue_list = actioArray.map(item=>{
+        let a:any=item.payload.doc.data();
+        return a.hallID
+      })
+    })
+
+  
 
   
   }
