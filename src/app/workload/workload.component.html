@@ -4,7 +4,7 @@
           <div class="col-md-4">
               <div class="card">
                   <div class="card-header card-header-primary">
-                      <h4 class="card-title">Manage Halls</h4>
+                      <h4 class="card-title">Workload Calculator</h4>
                      
                   </div>
                   <div class="card-body">
@@ -13,27 +13,27 @@
                        
                           <div class="row">
                               <div class="col-md-12">
-                                  <label>Hall ID</label>
+                                  <label>Lecturer ID</label>
                                   <input type="text" name="hallID" #hallID="ngModel" [(ngModel)]="hallservice.formData.hallID" class="form-control" required>
                                   <div *ngIf="hallID.invalid && hallID.touched" class="validation-error">This field is required.</div>
                                 </div>
                               </div>
                               <div class="row">
                             <div class="col-md-12">
-                              <label>Hall Capacity</label>
+                              <label>Lecturer Name</label>
                               <input type="number" name="capacity" #capacity="ngModel" [(ngModel)]="hallservice.formData.capacity" class="form-control" required>
                             </div>
                           </div>
                           <div class="row">
                             <div class="col-md-12">
-                              <label>Resources Availability</label>
+                              <label>Email Address</label>
                               <input type="text" name="resourceStatus" #resourceStatus="ngModel" [(ngModel)]="hallservice.formData.resourceStatus" class="form-control" required>
                             </div>
                     </div>
                     
                            <div class="form-group text-right">
-                            <button type="button" class="btn btn-info gap-right" (click)="resetForm(form)">Reset</button>
-                            <button type="submit" class="btn btn-success pull-right" [disabled]="form.invalid" value="submit">Add Hall</button>
+              
+                            <button type="submit" class="btn btn-success pull-right" [disabled]="form.invalid" value="submit">Calculate</button>
                           </div>
                     
                        
@@ -49,7 +49,7 @@
 <div class="col-md-8">
 <div class="card card-profile">
     <div class="card-header card-header-primary">
-        <h4 class="card-title">Hall Details</h4>
+        <h4 class="card-title">Related Details</h4>
         <!-- <p class="card-category">Complete your profile</p> -->
     </div>
     <div class="card-body">
