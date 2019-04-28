@@ -93,7 +93,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-12">
                   <div class="card">
-                      <div class="card-header card-header-primary">
+                      <div class="card-header card-header-info">
                           <h4 class="card-title" style="cursor: pointer;" (click)="open(content2)">First Year Time Table</h4>
                       </div>
                        <div class="card-body table-responsive">
@@ -103,7 +103,7 @@
                 </div>
                 <div class="col-lg-6 col-md-12">
                     <div class="card">
-                        <div class="card-header card-header-primary">
+                        <div class="card-header card-header-info">
                             <h4 class="card-title" style="cursor: pointer;" (click)="open(content3)">Second Year Time Table</h4>
                         </div>
                           <div class="card-body table-responsive">
@@ -115,7 +115,7 @@
             <div class="row">
               <div class="col-lg-6 col-md-12">
                 <div class="card">
-                    <div class="card-header card-header-primary">
+                    <div class="card-header card-header-info">
                         <h4 class="card-title" style="cursor: pointer;" (click)="open(content4)">Third Year Time Table</h4>
                     </div>
                       <div class="card-body table-responsive">
@@ -125,7 +125,7 @@
             </div>
               <div class="col-lg-6 col-md-12">
                 <div class="card">
-                   <div class="card-header card-header-primary">
+                   <div class="card-header card-header-info">
                           <h4 class="card-title" style="cursor: pointer;" (click)="open(content5)">Fourth Year Time Table</h4>
                       </div>
                           <div class="card-body table-responsive">
@@ -141,15 +141,15 @@
     
     <!-- 1st year Modal -->
 <ng-template #content2 let-modal>
-    
+        <div class="modal-header">
+                <h3 class="h3">1st Year Time Table</h3>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+        </div>
+
     <div class="modal-body">
-        
-            <h3 class="h3">1st Year Time Table</h3>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-          </button>
-         
-          <br>
+ 
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
     
     <div>
@@ -162,15 +162,14 @@
 
 <!-- 2nd year Modal -->
 <ng-template #content3 let-modal>
-    
+        <div class="modal-header">
+        <h3 class="h3">2nd Year Time Table</h3>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
         <div class="modal-body">
-          
-                <h3 class="h3">2nd Year Time Table</h3>
-            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                <span aria-hidden="true">&times;</span>
-              </button>
-             
-              <br>
+
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
         
         <div>
@@ -183,15 +182,15 @@
 
 <!-- 3rd year Modal -->
 <ng-template #content4 let-modal>
-    
+        <div class="modal-header">
+                <h3 class="h3">3rd Year Time Table</h3>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+        </div>
         <div class="modal-body">
          
-                <h3 class="h3">3rd Year Time Table</h3>
-            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                <span aria-hidden="true">&times;</span>
-              </button>
-             
-              <br>
+                
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
         
         <div>
@@ -204,15 +203,14 @@
 
     <!-- 4th year Modal -->
 <ng-template #content5 let-modal>
-    
-        <div class="modal-body">
-         
+        <div class="modal-header">
                 <h3 class="h3">4th Year Time Table</h3>
-            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                <span aria-hidden="true">&times;</span>
-              </button>
-             
-              <br>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+        </div>
+        <div class="modal-body">
+
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
         
         <div>
