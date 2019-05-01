@@ -24,11 +24,11 @@ export const ROUTES: RouteInfo[] = [
   styleUrls: ['./lecsidebar.component.scss']
 })
 export class LecsidebarComponent implements OnInit {
-  menuItems: any[];
+  MenuItems: any[];
   constructor() { }
 
   ngOnInit() {
-    this.menuItems = ROUTES.filter(menuItem => menuItem);
+    this.MenuItems = ROUTES.filter(menuItem => menuItem);
   }
   isMobileMenu() {
       if ($(window).width() > 991) {
