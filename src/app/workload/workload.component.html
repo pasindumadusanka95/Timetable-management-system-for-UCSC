@@ -1,3 +1,62 @@
-<p>
-  workload works!
-</p>
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-4">
+              <div class="card">
+                  <div class="card-header card-header-primary">
+                      <h4 class="card-title">Workload Calculator</h4>
+                     
+                  </div>
+                  <div class="card-body">
+                    <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+                      <input type="hidden" name="id" #id="ngModel" [(ngModel)]="hallservice.formData.id">
+                       
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <label>Lecturer ID</label>
+                                  <input type="text" name="hallID" #hallID="ngModel" [(ngModel)]="hallservice.formData.hallID" class="form-control" required>
+                                  <div *ngIf="hallID.invalid && hallID.touched" class="validation-error">This field is required.</div>
+                                </div>
+                              </div>
+                              <div class="row">
+                            <div class="col-md-12">
+                              <label>Lecturer Name</label>
+                              <input type="text" name="capacity" #capacity="ngModel" [(ngModel)]="hallservice.formData.capacity" class="form-control" required>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <label>Email Address</label>
+                              <input type="text" name="resourceStatus" #resourceStatus="ngModel" [(ngModel)]="hallservice.formData.resourceStatus" class="form-control" required>
+                            </div>
+                    </div>
+                    
+                           <div class="form-group text-right">
+              
+                            <button type="submit" class="btn btn-success pull-left" [disabled]="form.invalid" value="submit">Calculate</button>
+                          </div>
+                    
+                       
+                        <div class="clearfix"></div>
+                      
+                    </form>
+                    
+                  </div>
+              </div>
+          </div>
+
+
+<div class="col-md-8">
+<div class="card card-profile">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title">Related Details</h4>
+        <!-- <p class="card-category">Complete your profile</p> -->
+    </div>
+    <div class="card-body">
+        <app-hall-list></app-hall-list>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>

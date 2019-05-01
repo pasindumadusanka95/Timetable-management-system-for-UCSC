@@ -47,7 +47,7 @@ import { SubjectsService } from './shared/subjects.service';
 import {TimeTableCRUDService} from './shared/time-table-crud.service';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { LecturerDashboardComponent } from './lecturer-dashboard/lecturer-dashboard.component';
-import { LecsidebarComponent } from './lecsidebar/lecsidebar.component';
+import { LecsidebarComponent } from './lecComponents/lecsidebar/lecsidebar.component';
 import { SuperadminDashComponent } from './superadmin-dash/superadmin-dash.component';
 import { SuperadminSidebarComponent } from './superadmin-sidebar/superadmin-sidebar.component';
 import { ViewFirstYearComponent } from './viewtimetabels/view-first-year/view-first-year.component';
@@ -61,6 +61,9 @@ import { WorkloadComponent } from './workload/workload.component';
 import { HallListComponent } from './hall-list/hall-list.component';
 import { StudentCountComponent } from './student-count/student-count.component';
 import { StudentCountListComponent } from './student-count-list/student-count-list.component';
+import { MessagesComponent } from './messages/messages.component';
+import { LecturerLayoutComponent } from './lecturer-layout/lecturer-layout.component';
+import { LecnavbarComponent } from './lecComponents/lecnavbar/lecnavbar.component';
 
 
 
@@ -105,11 +108,14 @@ let config = {
     LoginComponent,
     //HallsComponent,
     EditLecturerComponent,
-    LecturerDashboardComponent,
-    LecsidebarComponent,
+    // LecturerDashboardComponent,
+    // LecsidebarComponent,
     SuperadminDashComponent,
     SuperadminSidebarComponent,
-    
+   
+    LecturerLayoutComponent,
+   
+ 
     
     
     

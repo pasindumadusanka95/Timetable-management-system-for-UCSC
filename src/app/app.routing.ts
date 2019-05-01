@@ -6,10 +6,13 @@ import {LecturerDashboardComponent} from './lecturer-dashboard/lecturer-dashboar
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import {LoginComponent} from './login/login.component';
 import { SuperadminDashComponent } from './superadmin-dash/superadmin-dash.component';
+import { MessagesComponent } from './messages/messages.component';
+import { LecturerLayoutComponent } from './lecturer-layout/lecturer-layout.component';
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'lecturer', component: LecturerDashboardComponent },
+  // { path: 'lecturer', component: LecturerDashboardComponent },
   { path: 'superadmin', component: SuperadminDashComponent },
+  // { path: 'reqSchedule', component: MessagesComponent },
   {
     path: 'dashboard',
     redirectTo: 'dashboard',
@@ -22,6 +25,14 @@ const routes: Routes = [
         {
       path: '',
       loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
+  }]},
+  {
+    path: '',
+    component: LecturerLayoutComponent,
+    children: [
+        {
+      path: '',
+      loadChildren: './lecturer-layout/lecturer-layout.module#LecturerLayoutModule'
   }]}
     // { path: 'dashboard',      component: DashboardComponent },
     // { path: 'user-profile',   component: UserProfileComponent },

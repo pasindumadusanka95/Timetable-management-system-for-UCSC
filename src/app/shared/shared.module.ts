@@ -7,23 +7,31 @@ import { ViewFourthYearComponent } from 'app/viewtimetabels/view-fourth-year/vie
 import { AdminLayoutModule } from 'app/layouts/admin-layout/admin-layout.module';
 import { AppModule } from 'app/app.module';
 import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
+import { LecsidebarComponent } from 'app/lecComponents/lecsidebar/lecsidebar.component';
+import { RouterModule } from '@angular/router';
+import { LecnavbarComponent } from 'app/lecComponents/lecnavbar/lecnavbar.component';
 
 @NgModule({
     imports: [
         CommonModule,
-        ScheduleModule
+        ScheduleModule,
+        RouterModule
      ],
     declarations: [
         ViewFirstYearComponent,
         ViewSecondYearComponent,
         ViewThirdYearComponent,
-        ViewFourthYearComponent
+        ViewFourthYearComponent,
+        LecsidebarComponent,
+        LecnavbarComponent
     ],
     exports: [
         ViewFirstYearComponent,
         ViewSecondYearComponent,
         ViewThirdYearComponent,
-        ViewFourthYearComponent
+        ViewFourthYearComponent,
+        LecsidebarComponent,
+        LecnavbarComponent
     ]
 })
 export class SharedModule {}
