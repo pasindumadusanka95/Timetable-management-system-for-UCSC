@@ -7,29 +7,31 @@ admin.initializeApp()
 let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'aucsc321@gmail.com',
-        pass: 'Projectadmin123'
+        user: 'schedulemanager1@gmail.com',
+        pass: 'dnnzutdnpcnqyzlj'
     }
 });
 
 exports.sendMail = functions.firestore.document('messages/{document}').onCreate(event => {
 
     const dest = "pasindusenerath@gmail.com";
-    // const emailFrom = event.data().email;
-    // const message = event.data().message;
-    // const name = event.data().name;
-    // const subject = event.data().subject;
+     const LecturerID = event.data().LecturerID;
+     const reason = event.data().Reason;
+     const date = event.data().Date;
+     const time = event.data().Time;
+     const subject = event.data().Subject;
 
-
+    
     const mailOption = {
-        from: 'Project Admin <pasindusenerath@gmail.com>',
+        from: 'Schedule Manager <pasindusenerath@gmail.com>',
         to: dest,
-        subject: subject,
-        html: `<h2> You have recieved new message </h2>
-                <p> <b>email:</b> ${emailFrom} </p>
-                <p> <b>name: </b> ${name}</p>
-                <p> <b>subject: </b> ${subject}</p>
-                <p> <b>message: </b> ${message}</p>`
+        subject: 'Requesting Reschedule',
+        html: `<h3> Details of Request </h3>
+                <p> <b>Lecturer Code     :</b> ${LecturerID} </p>
+                <p> <b>Lecture Date      :</b> ${date}</p>
+                <p> <b>Lecture Time      :</b> ${time}</p>
+                <p> <b>Subject           :</b> ${subject}</p>
+                <p> <b>Reason            :</b> ${reason}</p>`
     }
 
     return transporter.sendMail(mailOption, (err, info) => {

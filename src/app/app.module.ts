@@ -81,7 +81,7 @@ let config = {
 };
 @NgModule({
   imports: [
-    BrowserAnimationsModule,
+    
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig), // Main Angular fire module
     AngularFireDatabaseModule,  // Firebase database module
@@ -102,7 +102,8 @@ let config = {
       preventDuplicates: true,
     }),
     NgxPaginationModule ,
-    SharedModule
+    SharedModule,
+    
   ],
   declarations: [
     AppComponent,
