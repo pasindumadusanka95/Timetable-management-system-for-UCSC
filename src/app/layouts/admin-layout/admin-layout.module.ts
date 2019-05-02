@@ -34,6 +34,7 @@ import { ViewFirstYearComponent } from 'app/viewtimetabels/view-first-year/view-
 import { ViewSecondYearComponent } from 'app/viewtimetabels/view-second-year/view-second-year.component';
 import { ViewThirdYearComponent } from 'app/viewtimetabels/view-third-year/view-third-year.component';
 import { ViewFourthYearComponent } from 'app/viewtimetabels/view-fourth-year/view-fourth-year.component';
+import { StudentsCountComponent } from 'app/students-count/students-count.component';
 
 
 @NgModule({
@@ -63,6 +64,7 @@ import { ViewFourthYearComponent } from 'app/viewtimetabels/view-fourth-year/vie
     LecturersListComponent,
     SubjectsComponent,
     SubjectListComponent,
+    StudentsCountComponent,
     FirstYearComponent,
     SecondYearComponent,
     ThirdYearComponent,

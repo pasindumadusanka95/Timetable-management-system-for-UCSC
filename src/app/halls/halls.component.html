@@ -1,7 +1,7 @@
 <div class="main-content">
     <div class="container-fluid center">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-header card-header-danger">
                         <h4 class="card-title">Manage Halls</h4>
@@ -17,21 +17,39 @@
                                     <div *ngIf="hallName.invalid && hallName.touched" class="validation-error">This field is required.</div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Hall Capacity</label>
+                                    <input type="text" name="capacity" #capacity="ngModel" [(ngModel)]="hallsService.formData.capacity" class="form-control" required>
+                                    <div *ngIf="capacity.invalid && capacity.touched" class="validation-error">This field is required.</div>
+                                </div>
+                            </div>
                             <label>Resources</label>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <input type="checkbox" name="resources" value="whiteboard">Whiteboard
+                                    <input type="checkbox" name="resources[]" value="whiteboard">Whiteboard
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="checkbox" name="resources" value="mic">Mic
+                                    <input type="checkbox" name="resources[]" value="mic">Mic
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="checkbox" name="resources" value="projector">Projector
+                                    <input type="checkbox" name="resources[]" value="projector">Projector
                                 </div>
                             </div>
-                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Add Hall</button>
+                            <button mat-raised-button type="submit" [disabled]="form.invalid" class="btn btn-danger pull-right">Add Hall</button>
                             <div class="clearfix"></div>
                         </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-profile">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Halls List</h4>
+                        <!-- <p class="card-category">Complete your profile</p> -->
+                    </div>
+                    <div class="card-body">
+                        <!-- <app-hall-list></app-hall-list> -->
                     </div>
                 </div>
             </div>

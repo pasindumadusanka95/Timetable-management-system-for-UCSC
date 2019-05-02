@@ -52,6 +52,7 @@ import { HallListComponent } from './hall-list/hall-list.component';
 import { LecsidebarComponent } from './lecsidebar/lecsidebar.component';
 import { SuperadminDashComponent } from './superadmin-dash/superadmin-dash.component';
 import { SuperadminSidebarComponent } from './superadmin-sidebar/superadmin-sidebar.component';
+import { StudentsCountComponent } from './students-count/students-count.component';
 
 
 
@@ -91,7 +92,6 @@ let config = {
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
-    //HallsComponent,
     EditLecturerComponent,
     LecturerDashboardComponent,
     HallListComponent,

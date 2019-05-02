@@ -1,3 +1,19 @@
-<p>
-  hall-list works!
-</p>
+<table class="table table-sm">
+  <thead>
+    <th>Hall Name</th>
+    <th>capacity</th>
+    <!-- <th>Resources</th> -->
+    <th></th>
+  </thead>
+  <ng-container *ngFor="let hall of list">
+    <tr class="table">
+      <td>{{hall.hallName}}</td>
+      <td>{{hall.capacity}}</td>
+      <!-- <td>{{hall.resources}}</td> -->
+      <td> 
+        <!-- <button class="btn btn-outline-info" (click)="onEdit(hall)">Edit</button>
+        <button class="btn btn-outline-danger" (click)="onDelete(hall.id)">Delete</button> -->
+      </td>
+    </tr>
+  </ng-container>
+</table>
