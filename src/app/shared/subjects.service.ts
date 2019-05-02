@@ -22,6 +22,9 @@ export class SubjectsService {
     year: new FormControl('', [Validators.required, Validators.min(1), Validators.max(4), Validators.pattern('^[1-4]*$')]),
     semester: new FormControl('', [Validators.required, Validators.min(1), Validators.max(2), Validators.pattern('^[1-2]*$')]),
     credit: new FormControl('', [Validators.required, Validators.min(1), Validators.max(3), Validators.pattern('^[1-3]*$')]),
+    assignedLecturer1: new FormControl('', Validators.required),
+    assignedLecturer2: new FormControl('', Validators.required),
+
   });
 
   getSubjects(){
@@ -37,6 +40,8 @@ export class SubjectsService {
   //     year: subjects.year,
   //     semester: subjects.semester,
   //     credit: subjects.credit
+  //     assignedLecturer1: subjects.assignedLecturer1
+  //     assignedLecturer2: subjects.assignedLecturer2
   //   });
   // }
 
@@ -51,6 +56,8 @@ export class SubjectsService {
   //     year: subjects.year,
   //     semester: subjects.semester,
   //     credit: subjects.credit
+  //     assignedLecturer1: subjects.assignedLecturer1
+  //     assignedLecturer2: subjects.assignedLecturer2
   //   });
   // }
 
