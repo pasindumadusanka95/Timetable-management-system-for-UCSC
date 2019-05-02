@@ -49,7 +49,7 @@ import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestor
 import { LecturerDashboardComponent } from './lecturer-dashboard/lecturer-dashboard.component';
 import { LecsidebarComponent } from './lecComponents/lecsidebar/lecsidebar.component';
 import { SuperadminDashComponent } from './superadmin-dash/superadmin-dash.component';
-import { SuperadminSidebarComponent } from './superadmin-sidebar/superadmin-sidebar.component';
+
 import { ViewFirstYearComponent } from './viewtimetabels/view-first-year/view-first-year.component';
 import { ViewSecondYearComponent } from './viewtimetabels/view-second-year/view-second-year.component';
 import { ViewThirdYearComponent } from './viewtimetabels/view-third-year/view-third-year.component';
@@ -64,6 +64,8 @@ import { StudentCountListComponent } from './student-count-list/student-count-li
 import { MessagesComponent } from './messages/messages.component';
 import { LecturerLayoutComponent } from './lecturer-layout/lecturer-layout.component';
 import { LecnavbarComponent } from './lecComponents/lecnavbar/lecnavbar.component';
+import { SuperadminLayoutComponent } from './superadmin-layout/superadmin-layout.component';
+import { NoticesComponent } from './notices/notices.component';
 
 
 
@@ -110,26 +112,10 @@ let config = {
     EditLecturerComponent,
     // LecturerDashboardComponent,
     // LecsidebarComponent,
-    SuperadminDashComponent,
-    SuperadminSidebarComponent,
-   
+  
+  //  SuperadminSidebarComponent,
     LecturerLayoutComponent,
-   
- 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-   
-    
-    
-    //SubjectsComponent,
-    //SubjectListComponent,
+    SuperadminLayoutComponent,
 
   ],
   exports:[
