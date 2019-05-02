@@ -13,11 +13,15 @@ import { LecnavbarComponent } from 'app/lecComponents/lecnavbar/lecnavbar.compon
 import { SuperadminSidebarComponent } from 'app/superadmincomponent/superadmin-sidebar/superadmin-sidebar.component';
 import { SuperadminDashComponent } from 'app/superadmin-dash/superadmin-dash.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 @NgModule({
     imports: [
         CommonModule,
         ScheduleModule,
-        RouterModule
+        RouterModule,
+       
+       
      ],
     declarations: [
         ViewFirstYearComponent,
