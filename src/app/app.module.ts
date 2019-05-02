@@ -1,3 +1,4 @@
+import { SuperadminSidebarComponent } from 'app/superadmincomponent/superadmin-sidebar/superadmin-sidebar.component';
 import { HallsService } from './shared/halls.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -48,10 +49,6 @@ import { SubjectsService } from './shared/subjects.service';
 import {TimeTableCRUDService} from './shared/time-table-crud.service';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { LecturerDashboardComponent } from './lecturer-dashboard/lecturer-dashboard.component';
-import { HallListComponent } from './hall-list/hall-list.component';
-import { LecsidebarComponent } from './lecsidebar/lecsidebar.component';
-import { SuperadminDashComponent } from './superadmin-dash/superadmin-dash.component';
-import { SuperadminSidebarComponent } from './superadmin-sidebar/superadmin-sidebar.component';
 import { StudentsCountComponent } from './students-count/students-count.component';
 import { LecsidebarComponent } from './lecComponents/lecsidebar/lecsidebar.component';
 import { SuperadminDashComponent } from './superadmin-dash/superadmin-dash.component';
@@ -132,7 +129,7 @@ let config = {
     //SubjectListComponent,
 
   ],
-  providers: [LecturerService, SubjectsService,TimeTableCRUDService,NgbActiveModal, HallsService],
+  providers: [LecturerService, SubjectsService,TimeTableCRUDService,NgbActiveModal, HallsService,
     // LecturerDashboardComponent,
     // LecsidebarComponent,
   
@@ -144,7 +141,6 @@ let config = {
   exports:[
     
   ],
-  providers: [LecturerService, SubjectsService,TimeTableCRUDService,NgbActiveModal],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

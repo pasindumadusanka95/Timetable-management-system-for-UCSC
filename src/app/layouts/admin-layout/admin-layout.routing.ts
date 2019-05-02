@@ -61,8 +61,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'icons',             component: IconsComponent },
     { path: 'subjects',          component: SubjectsComponent },
     { path: 'upgrade',           component: UpgradeComponent },
-    {path: 'managelectures',     component: LecturersComponent }
-    
+    {path: 'managelectures',     component: LecturersComponent },
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'halls',          component: HallsComponent },
     { path: 'table-list',     component: TableListComponent },
