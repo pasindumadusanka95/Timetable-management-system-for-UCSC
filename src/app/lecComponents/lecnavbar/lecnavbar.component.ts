@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import {  Router } from '@angular/router';
 import { AuthService } from 'app/auth/auth.service';
 import { ROUTES } from '../lecsidebar/lecsidebar.component';
+import { Location, LocationStrategy, PathLocationStrategy, PopStateEvent } from '@angular/common';
 
 @Component({
   selector: 'app-lecnavbar',
@@ -110,18 +111,18 @@ export class LecnavbarComponent implements OnInit {
       }
   };
 
-  // getTitle(){
-  //   let titlee = this.location.prepareExternalUrl(this.location.path());
-  //   if(titlee.charAt(0) === '#'){
-  //       titlee = titlee.slice( 2 );
-  //   }
-  //   titlee = titlee.split('/').pop();
+  getTitle(){
+    let titlee = this.location.prepareExternalUrl(this.location.path());
+    if(titlee.charAt(0) === '#'){
+        titlee = titlee.slice( 2 );
+    }
+    titlee = titlee.split('/').pop();
 
-  //   for(let item = 0; item < this.listTitles.length; item++){
-  //       if(this.listTitles[item].path === titlee){
-  //           return this.listTitles[item].title;
-  //       }
-  //   }
-  //   return 'LecturerDashboard';
-  // }
+    for(let item = 0; item < this.listTitles.length; item++){
+        if(this.listTitles[item].path === titlee){
+            return this.listTitles[item].title;
+        }
+    }
+    return 'LecturerDashboard';
+  }
 }

@@ -10,6 +10,8 @@ import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
 import { LecsidebarComponent } from 'app/lecComponents/lecsidebar/lecsidebar.component';
 import { RouterModule } from '@angular/router';
 import { LecnavbarComponent } from 'app/lecComponents/lecnavbar/lecnavbar.component';
+import { SuperadminSidebarComponent } from 'app/superadmincomponent/superadmin-sidebar/superadmin-sidebar.component';
+import { SuperadminDashComponent } from 'app/superadmin-dash/superadmin-dash.component';
 
 @NgModule({
     imports: [
@@ -23,7 +25,9 @@ import { LecnavbarComponent } from 'app/lecComponents/lecnavbar/lecnavbar.compon
         ViewThirdYearComponent,
         ViewFourthYearComponent,
         LecsidebarComponent,
-        LecnavbarComponent
+        LecnavbarComponent,
+        SuperadminSidebarComponent,
+        
     ],
     exports: [
         ViewFirstYearComponent,
@@ -31,7 +35,9 @@ import { LecnavbarComponent } from 'app/lecComponents/lecnavbar/lecnavbar.compon
         ViewThirdYearComponent,
         ViewFourthYearComponent,
         LecsidebarComponent,
-        LecnavbarComponent
+        LecnavbarComponent,
+        SuperadminSidebarComponent,
+       
     ]
 })
 export class SharedModule {}
