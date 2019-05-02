@@ -37,8 +37,8 @@
                                   </mat-form-field>
                                   <mat-error class="invalid-feedback" *ngIf="year.invalid && year.touched">
                                       <div class="text-danger">
-                                          <label *ngIf="formControls.year.errors.required">This field is required</label>
-                                          <label *ngIf="formControls.year.errors.min || formControls.year.errors.max || formControls.year.errors.pattern">Enter a number between 1-4</label>
+                                          <label *ngIf="formControl.year.errors.required">This field is required</label>
+                                          <label *ngIf="formControl.year.errors.min || formControls.year.errors.max || formControls.year.errors.pattern">Enter a number between 1-4</label>
                                       </div>
                                   </mat-error>
                                 </div>
