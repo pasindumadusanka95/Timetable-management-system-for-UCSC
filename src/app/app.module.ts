@@ -53,6 +53,26 @@ import { LecsidebarComponent } from './lecsidebar/lecsidebar.component';
 import { SuperadminDashComponent } from './superadmin-dash/superadmin-dash.component';
 import { SuperadminSidebarComponent } from './superadmin-sidebar/superadmin-sidebar.component';
 import { StudentsCountComponent } from './students-count/students-count.component';
+import { LecsidebarComponent } from './lecComponents/lecsidebar/lecsidebar.component';
+import { SuperadminDashComponent } from './superadmin-dash/superadmin-dash.component';
+
+import { ViewFirstYearComponent } from './viewtimetabels/view-first-year/view-first-year.component';
+import { ViewSecondYearComponent } from './viewtimetabels/view-second-year/view-second-year.component';
+import { ViewThirdYearComponent } from './viewtimetabels/view-third-year/view-third-year.component';
+import { ViewFourthYearComponent } from './viewtimetabels/view-fourth-year/view-fourth-year.component';
+import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
+import { SharedModule } from './shared/shared.module';
+import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
+import { WorkloadComponent } from './workload/workload.component';
+import { HallListComponent } from './hall-list/hall-list.component';
+import { StudentCountComponent } from './student-count/student-count.component';
+import { StudentCountListComponent } from './student-count-list/student-count-list.component';
+import { MessagesComponent } from './messages/messages.component';
+import { LecturerLayoutComponent } from './lecturer-layout/lecturer-layout.component';
+import { LecnavbarComponent } from './lecComponents/lecnavbar/lecnavbar.component';
+import { SuperadminLayoutComponent } from './superadmin-layout/superadmin-layout.component';
+import { NoticesComponent } from './notices/notices.component';
+
 
 
 
@@ -67,7 +87,7 @@ let config = {
 };
 @NgModule({
   imports: [
-    BrowserAnimationsModule,
+    
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig), // Main Angular fire module
     AngularFireDatabaseModule,  // Firebase database module
@@ -80,6 +100,7 @@ let config = {
     AngularFireAuthModule,
     ReactiveFormsModule,        // Reactive forms module
     AppRoutingModule,
+    ScheduleModule,
     BrowserAnimationsModule,    // Required animations module for Toastr
     ToastrModule.forRoot({      // Register NgxToast NPM module
       timeOut: 3000,
@@ -87,6 +108,8 @@ let config = {
       preventDuplicates: true,
     }),
     NgxPaginationModule ,
+    SharedModule,
+    
   ],
   declarations: [
     AppComponent,
@@ -110,6 +133,19 @@ let config = {
 
   ],
   providers: [LecturerService, SubjectsService,TimeTableCRUDService,NgbActiveModal, HallsService],
+    // LecturerDashboardComponent,
+    // LecsidebarComponent,
+  
+  //  SuperadminSidebarComponent,
+    LecturerLayoutComponent,
+    SuperadminLayoutComponent,
+
+  ],
+  exports:[
+    
+  ],
+  providers: [LecturerService, SubjectsService,TimeTableCRUDService,NgbActiveModal],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

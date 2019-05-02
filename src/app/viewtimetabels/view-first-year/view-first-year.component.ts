@@ -79,7 +79,7 @@ export class ViewFirstYearComponent implements OnInit {
       for (let i of next.data().firstyear as any[]){
         i.StartTime = i.StartTime.toDate();
         i.EndTime = i.EndTime.toDate();
-        //this.eventSettings1Y.dataSource.push(i);
+        (<any[]>(this.eventSettings1Y.dataSource)).push(i);
 
       }
     

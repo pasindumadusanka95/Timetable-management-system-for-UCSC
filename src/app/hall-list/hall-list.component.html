@@ -1,19 +1,47 @@
-<table class="table table-sm">
-  <thead>
-    <th>Hall Name</th>
-    <th>capacity</th>
-    <!-- <th>Resources</th> -->
-    <th></th>
-  </thead>
-  <ng-container *ngFor="let hall of list">
-    <tr class="table">
-      <td>{{hall.hallName}}</td>
-      <td>{{hall.capacity}}</td>
-      <!-- <td>{{hall.resources}}</td> -->
-      <td> 
-        <!-- <button class="btn btn-outline-info" (click)="onEdit(hall)">Edit</button>
-        <button class="btn btn-outline-danger" (click)="onDelete(hall.id)">Delete</button> -->
-      </td>
-    </tr>
-  </ng-container>
-</table>
+
+    
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th scope="col"><b>Hall ID</b></th>
+            <th scope="col"><b>Capacity</b></th>
+            <th scope="col"><b>Availability</b></th>
+            <th scope="col"></th>
+           
+          </tr>
+        </thead>
+        
+          
+          <ng-container *ngFor="let hall of halllist | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
+           
+             <tr  class="table-striped"> 
+            <td>{{hall.hallID}} </td>
+            <td>{{hall.capacity}}</td>
+            <td>{{hall.resourceStatus}}</td>
+            
+      
+               <td>
+                <a class="action-btn" style="color:rgb(36, 143, 192); cursor: pointer" (click)="onEdit(hall)">
+                  <i class="material-icons">edit</i>
+                </a>
+                <a class="action-btn" style="color:lightcoral; cursor: pointer" (click)="onDelete(hall.id)">
+                  <i class="material-icons">delete</i>
+                </a>
+              </td>
+          </tr>
+        
+      </ng-container>
+      </table>
+      <div class="alert alert-danger" *ngIf="showDeleteMessage">
+          Deleted Successfully!
+        </div>
+    
+    <!-- Pagination -->
+    <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
+  
+  
+
+
+
+
+

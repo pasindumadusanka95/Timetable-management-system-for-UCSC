@@ -1,6 +1,6 @@
-import { Halls } from './../shared/halls.model';
-import { HallsService } from './../shared/halls.service';
 import { Component, OnInit } from '@angular/core';
+import { Hall } from 'app/shared/hall.model';
+import { HallService } from 'app/shared/hall.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
 
@@ -10,33 +10,39 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./hall-list.component.scss']
 })
 export class HallListComponent implements OnInit {
-
-  list: Halls[];
-  constructor(private hallsService:HallsService,
-    private firestore:AngularFirestore,
-    private toastr:ToastrService) { }
+  halllist: Hall[];
+  constructor(
+    private hallservice: HallService,
+  private firestore: AngularFirestore,
+  private toastr : ToastrService
+  ) { }
 
   ngOnInit() {
-    this.hallsService.getHalls().subscribe(actionArray => {
-      this.list = actionArray.map(item=>{
+    this.hallservice.getHall().subscribe(actionArray => {
+      this.halllist = actionArray.map(item=>{
         return {
           id: item.payload.doc.id,
           ...item.payload.doc.data() 
-        } as Halls;
+        } as Hall;
         
         })
   });
   }
+  onEdit(hall:Hall){
+    this.hallservice.formData= Object.assign ({}, hall);
+   
+    
+  }
+  
+  onDelete(id:String){
+    if(confirm('Are you sure to delete this record?')){
+        this.firestore.doc('halls/'+ id).delete()
+    this.toastr.warning('Deleted successfully!','Hall Record');
+      }
+  }
+  
+    }
+  
+  
+  
 
-  // onEdit(hall:Halls){
-  //   this.hallsService.formData= Object.assign ({}, hall);
-  // }
-
-  // onDelete(id:string){
-  //   if(confirm('Are you sure to delete this record?')){
-  //     this.firestore.doc('halls/'+ id).delete()
-  //     this.toastr.warning('Deleted successfully!','Hall Record');
-  //   }
-  // }
-
-}

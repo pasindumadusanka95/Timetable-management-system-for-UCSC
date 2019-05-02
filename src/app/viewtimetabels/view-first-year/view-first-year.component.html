@@ -1,4 +1,24 @@
-<ejs-schedule #scheduleObj width='100%' height='100%' [selectedDate]="selectedDate" [eventSettings]="eventSettings1Y" (popupOpen)="onPopupOpen($event)" [showHeaderBar]="showHederBar" [views]="views" [workHours]="scheduleHours"startHour='08:00' endHour='19:00'[showTimeIndicator]="showTimeIndicator" [readonly]="readonly">
+<ng-template #content2 let-modal>
+  <div class="modal-header">
+<h3 class="h3">1st Year Time Table</h3>
+<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+  <div class="modal-body">
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
+  
+  <div>
+  <app-view-first-year></app-view-first-year>
+</div>
+</div>
+</div>
+</ng-template>
+
+
+
+<ejs-schedule #scheduleObj width='100%' height='350px' [selectedDate]="selectedDate" [eventSettings]="eventSettings1Y" (popupOpen)="onPopupOpen($event)" [showHeaderBar]="showHederBar" [views]="views" [workHours]="scheduleHours"startHour='08:00' endHour='19:00'[showTimeIndicator]="showTimeIndicator" [readonly]="readonly">
   <ng-template #dateHeaderTemplate let-data>
       <div class="date-text">{{getDateHeaderText(data.date)}}</div>
   </ng-template>

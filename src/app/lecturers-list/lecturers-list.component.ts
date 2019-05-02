@@ -18,8 +18,6 @@ export class LecturersListComponent implements OnInit {
     // public crudApi: LecturerService, // Inject student CRUD services in constructor.
    // public toastr: ToastrService ,  // Toastr service for alert message
     private service: LecturerService,
-   public modalService: NgbModal,
-  public activeModal: NgbActiveModal,
   private firestore: AngularFirestore,
   private toastr : ToastrService
    ) { }
@@ -28,24 +26,7 @@ export class LecturersListComponent implements OnInit {
    lecturerArray = [];
    showDeleteMessage: boolean;
 
-    open(content) {
-      this.modalService.open(content , {ariaLabelledBy: 'modal-basic-title', size: 'lg'}).result.then((result) => {
-        this.closeResult = `Closed with: ${result}`;
-      }, (reason) => {
-        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      }, );
-    }
-
-    private getDismissReason(reason: any): string {
-      if (reason === ModalDismissReasons.ESC) {
-        return 'by pressing ESC';
-      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-        return 'by clicking on a backdrop';
-      } else {
-        return  `with: ${reason}`;
-      }
-    }
-
+   
 
   ngOnInit() {
 
@@ -63,7 +44,7 @@ export class LecturersListComponent implements OnInit {
 
 onEdit(lecturer:Lecturer){
   this.service.formData= Object.assign ({}, lecturer);
-  this.activeModal.close('Edit close');
+  
   
 }
 

@@ -1,0 +1,48 @@
+
+    
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th scope="col"><b>Registered Year</b></th>
+            <th scope="col"><b>Course</b></th>
+            <th scope="col"><b>Group Name</b></th>
+            <th scope="col"><b>Number of Groups</b></th>
+            <th scope="col"><b>Size of Groups</b></th>
+            <th scope="col"></th>
+           
+          </tr>
+        </thead>
+        
+          
+          <ng-container *ngFor="let std of stdlist | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
+           
+             <tr  class="table-striped"> 
+            <td>{{std.registeredYear}}</td>
+            <td>{{std.course}}</td>
+            <td>{{std.groupName}}</td>
+            <td>{{std.numberofGroups}}</td>
+            <td>{{std.sizeofGroups}}</td>
+      
+               <td>
+                <a class="action-btn" style="color:rgb(36, 143, 192); cursor: pointer" (click)="onEdit(std)">
+                  <i class="material-icons">edit</i>
+                </a>
+                <a class="action-btn" style="color:lightcoral; cursor: pointer" (click)="onDelete(std.id)">
+                  <i class="material-icons">delete</i>
+                </a>
+              </td>
+          </tr>
+        
+      </ng-container>
+      </table>
+      
+    
+    <!-- Pagination -->
+    <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
+  
+  
+
+
+
+
+

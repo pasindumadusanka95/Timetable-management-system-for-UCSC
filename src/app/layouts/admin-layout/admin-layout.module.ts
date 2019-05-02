@@ -35,6 +35,11 @@ import { ViewSecondYearComponent } from 'app/viewtimetabels/view-second-year/vie
 import { ViewThirdYearComponent } from 'app/viewtimetabels/view-third-year/view-third-year.component';
 import { ViewFourthYearComponent } from 'app/viewtimetabels/view-fourth-year/view-fourth-year.component';
 import { StudentsCountComponent } from 'app/students-count/students-count.component';
+import { SharedModule } from 'app/shared/shared.module';
+import { WorkloadComponent } from 'app/workload/workload.component';
+import { HallListComponent } from 'app/hall-list/hall-list.component';
+import { StudentCountComponent } from 'app/student-count/student-count.component';
+import { StudentCountListComponent } from 'app/student-count-list/student-count-list.component';
 
 
 @NgModule({
@@ -51,6 +56,7 @@ import { StudentsCountComponent } from 'app/students-count/students-count.compon
     ReactiveFormsModule,
     ScheduleModule,
     NgxPaginationModule,
+    SharedModule
   ],
   declarations: [
     DashboardComponent,
@@ -69,10 +75,19 @@ import { StudentsCountComponent } from 'app/students-count/students-count.compon
     SecondYearComponent,
     ThirdYearComponent,
     FourthYearComponent,
-    ViewFirstYearComponent,
-    ViewSecondYearComponent,
-    ViewThirdYearComponent,
-    ViewFourthYearComponent,
+    WorkloadComponent,
+    HallListComponent,
+    StudentCountComponent,
+    StudentCountListComponent,
+  
+    
+    
+  ],
+  exports:[
+    FirstYearComponent,
+    SecondYearComponent,
+    ThirdYearComponent,
+    FourthYearComponent,
     
   ]
 })

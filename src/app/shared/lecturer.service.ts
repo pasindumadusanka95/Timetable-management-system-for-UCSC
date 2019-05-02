@@ -34,39 +34,7 @@ getLecturers(){
 
 
 
-//   getLecturers() {
-//     this.lecturerList = this.firebase.list('lecturers');
-//     return this.lecturerList.snapshotChanges();
-//   }
 
-//   insertLecturer(lecturer) {
-//     this.lecturerList.push({
-//       userName: lecturer.userName,
-//       firstName: lecturer.firstName,
-//       lastName: lecturer.lastName,
-//       email: lecturer.email,
-//       mobileNumber: lecturer.mobileNumber
-//     });
-//   }
-
-//   populateForm(lecturer){
-//     this.form.setValue(lecturer);
-//   }
-
-//   updateLecturer(lecturer) {
-//     this.lecturerList.update(lecturer.$key,{
-//       userName: lecturer.userName,
-//       firstName: lecturer.firstName,
-//       lastName: lecturer.lastName,
-//       email: lecturer.email,
-//       mobileNumber: lecturer.mobileNumber
-//     });
-//   }
-
-//   deleteLecturer($key: string){
-//     this.lecturerList.remove($key);
-//   }
-// }
 
 }
 

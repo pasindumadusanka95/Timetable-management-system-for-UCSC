@@ -1,39 +1,6 @@
-<ng-template #content let-modal>
+
     
-    <div class="modal-body">
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-          </button>
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
-    <h3 class="h2">Lecturers List</h3>
-    
-    <!-- It won't show if there is no student data -->
-    <!-- <a routerLink="/register-student" class="btn btn-success" *ngIf="hideWhenNoStudent"> -->
-      <!-- <i class="fas fa-plus custom-fa-plus"></i>
-      Add Student
-    </a> -->
-  </div>
-  
-  <!-- <div class="pricing-header mx-auto">
-  
- 
-    <div class="no-data text-center" *ngIf="preLoader">
-      <img src="assets/preloader.gif" class="preloader-icon" alt="No student">
-    </div> -->
-  
-    <!-- No data shows when their is no student data available -->
-    <!-- <div class="no-data text-center" *ngIf="noData">
-      <img src="assets/no-student.svg" class="nodata-msg" alt="No student">
-      <p class="nodata-msg">No student added yet!</p>
-      <a routerLink="/register-student" class="btn btn-success">
-        <i class="fas fa-plus custom-fa-plus"></i>
-        Add Student
-      </a>
-    </div> -->
-  
-    <!-- Showing students data -->
-    <div class="table-responsive" >
-      <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
+      <table class="table table-sm">
         <thead>
           <tr>
             <th scope="col"><b>Name</b></th>
@@ -45,41 +12,34 @@
           </tr>
         </thead>
         
-          <!-- *ngFor loop iterates over Student array and fetch the student's data -->
-          <!-- paginate pipe will add pagination in student's list, it won't show if items are less then 7 -->
+          
           <ng-container *ngFor="let lecturer of list | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
            
              <tr  class="table-striped"> 
-            <!-- <th scope="row">{{student.$key}}</th> -->
             <td>{{lecturer.firstName}} {{lecturer.lastName}}</td>
             <td>{{lecturer.email}}</td>
             <td>{{lecturer.mobileNumber}}</td>
             <td>{{lecturer.userName}}</td>
-            <td>
-              <button class="btn btn-outline-info" (click)="onEdit(lecturer)">Edit</button>
-              <button class="btn btn-outline-danger" (click)="onDelete(lecturer.id)">Delete</button>
-            <!-- <td class="text-center action-block">
-              <i class="far fa-edit" routerLink="/edit-student/{{student.$key}}"></i>
-              <i class="far fa-trash-alt" (click)="deleteStudent(student)"></i></td> -->
+      
+               <td>
+                <a class="action-btn" style="color:rgb(36, 143, 192); cursor: pointer" (click)="onEdit(lecturer)">
+                  <i class="material-icons">edit</i>
+                </a>
+                <a class="action-btn" style="color:lightcoral; cursor: pointer" (click)="onDelete(lecturer.id)">
+                  <i class="material-icons">delete</i>
+                </a>
               </td>
           </tr>
         
       </ng-container>
       </table>
-      <div class="alert alert-danger" *ngIf="showDeleteMessage">
-          Deleted Successfully!
-        </div>
-    </div>
+      
     <!-- Pagination -->
     <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
   
-  </div>
+  
 
 
 
-</ng-template>
 
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">View Lectures</button>
-
-<hr>
 

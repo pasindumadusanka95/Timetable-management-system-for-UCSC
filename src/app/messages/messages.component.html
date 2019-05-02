@@ -1,0 +1,73 @@
+<div id="cont">
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header card-header-primary">
+                      <h4 class="card-title">Send Request For Reschedule</h4>
+                     
+                  </div>
+                  <div class="card-body">
+                    <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+                      <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id">
+                       
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <label>Lecturer ID</label>
+                                  <input type="text" name="LecturerID" #LecturerID="ngModel" [(ngModel)]="service.formData.LecturerID" class="form-control" required>
+                                  <div *ngIf="LecturerID.invalid && LecturerID.touched" class="validation-error">This field is required.</div>
+                                </div>
+                              </div>
+                              <div class="row">
+                            <div class="col-md-12">
+                              <label> Date</label>
+                                  
+                               <input type="date" name="Date" #Date="ngModel" [(ngModel)]="service.formData.Date" class="form-control" required>
+                                             <!-- <owl-date-time #Date></owl-date-time> -->
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <label>Time</label>
+                               <input type="time" name="Time" #Time="ngModel" [(ngModel)]="service.formData.Time" class="form-control" required>
+                                             <!-- <owl-date-time #Time></owl-date-time> -->
+                            </div>
+                          </div>
+                         
+                          
+                    
+                          <div class="row">
+                            <div class="col-md-12">
+                              <label>Subject</label>
+                              <input type="Subject" name="Subject" #Subject="ngModel" [(ngModel)]="service.formData.Subject" class="form-control" required>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <label>Reason</label>
+                              <input type="text" name="Reason" #Reason="ngModel" [(ngModel)]="service.formData.Reason" class="form-control" required>
+                              </div>
+                            </div>
+                              
+                            
+                            
+                          
+                    
+                           <div class="form-group text-right">
+                            <button type="button" class="btn btn-info gap-right" (click)="resetForm(form)">Reset</button>
+                            <button type="submit" class="btn btn-success pull-right" [disabled]="form.invalid" value="submit">Send</button>
+                          </div>
+                    
+                       
+                        <div class="clearfix"></div>
+                      
+                    </form>
+                    
+                  </div>
+              </div>
+          </div>
+</div>
+</div>
+</div>
+</div>

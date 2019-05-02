@@ -69,7 +69,7 @@
         </thead>
         
          
-          <ng-container *ngFor="let subject of subjectsArray | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
+          <ng-container *ngFor="let subject of list | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
            
              <tr  class="table-striped"> 
             <!-- <th scope="row">{{student.$key}}</th> -->
@@ -96,17 +96,125 @@
 <!-- end subjectModal -->
 
 
+ <!-- lecturermodal -->
+ <ng-template #contentl let-modal>
+    
+  <div class="modal-body">
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
+  <h3 class="h2">Lecturer List</h3>
+  
+  
+</div>
+
+
+  <div class="table-responsive" >
+    <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
+      <thead>
+        <tr>
+          
+            <th scope="col"><b>Name</b></th>
+            <th scope="col"><b>Email</b></th>
+            <th scope="col"><b>Mobile Number</b></th>
+            <th scope="col"><b>User Name</b></th>
+            <th scope="col"></th>
+           
+          
+          
+         
+        </tr>
+      </thead>
+      
+       
+        <ng-container *ngFor="let lecturer of Llist  | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
+         
+           <tr  class="table-striped"> 
+          <!-- <th scope="row">{{student.$key}}</th> -->
+          <td>{{lecturer.firstName}} {{lecturer.lastName}}</td>
+            <td>{{lecturer.email}}</td>
+            <td>{{lecturer.mobileNumber}}</td>
+            <td>{{lecturer.userName}}</td>
+          
+        </tr>
+      
+    </ng-container>
+    </table>
+   
+  </div>
+  <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
+
+</div>
+
+
+
+</ng-template>
+   
+<!-- end lecturerModal -->
+
+
+<!-- hallmodal -->
+<ng-template #contenth let-modal>
+    
+  <div class="modal-body">
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
+  <h3 class="h2">Hall List</h3>
+  
+  
+</div>
+
+
+  <div class="table-responsive" >
+    <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
+      <thead>
+        <tr>
+          
+            <th scope="col"><b>Hall ID</b></th>
+            <th scope="col"><b>Capacity</b></th>
+            <th scope="col"><b>Resource Availability</b></th>
+
+        </tr>
+      </thead>
+      
+       
+        <ng-container *ngFor="let hall of Hlist  | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
+         
+           <tr  class="table-striped"> 
+          <!-- <th scope="row">{{student.$key}}</th> -->
+          <td>{{hall.hallID}}</td>
+            <td>{{hall.capacity}}</td>
+            <td>{{hall.resourceStatus}}</td>
+          
+        </tr>
+      
+    </ng-container>
+    </table>
+   
+  </div>
+  <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
+
+</div>
+
+
+
+</ng-template>
+   
+<!-- end hallModal -->
+
 <!-- 1st year Modal -->
 <ng-template #content2 let-modal>
-    
+    <div class="modal-header">
+  <h3 class="h3">1st Year Time Table</h3>
+  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
     <div class="modal-body">
-        
-            <h3 class="h3">1st Year Time Table</h3>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-          </button>
-         
-          <br>
+ 
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
     
     <div>
@@ -119,15 +227,13 @@
 
 <!-- 2nd year Modal -->
 <ng-template #content3 let-modal>
-    
+    <div class="modal-header">
+        <h3 class="h3">2nd Year Time Table</h3>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
         <div class="modal-body">
-          
-                <h3 class="h3">2nd Year Time Table</h3>
-            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                <span aria-hidden="true">&times;</span>
-              </button>
-             
-              <br>
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
         
         <div>
@@ -140,15 +246,14 @@
 
 <!-- 3rd year Modal -->
 <ng-template #content4 let-modal>
-    
+    <div class="modal-header">
+        <h3 class="h3">3rd Year Time Table</h3>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
         <div class="modal-body">
-         
-                <h3 class="h3">3rd Year Time Table</h3>
-            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                <span aria-hidden="true">&times;</span>
-              </button>
-             
-              <br>
+  
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
         
         <div>
@@ -161,15 +266,14 @@
 
     <!-- 4th year Modal -->
 <ng-template #content5 let-modal>
-    
+    <div class="modal-header">
+        <h3 class="h3">4th Year Time Table</h3>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
         <div class="modal-body">
-         
-                <h3 class="h3">4th Year Time Table</h3>
-            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                <span aria-hidden="true">&times;</span>
-              </button>
-             
-              <br>
+      
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
         
         <div>
@@ -197,9 +301,9 @@
           </div>
           <div class="col-lg-4 col-md-6 col-sm-6">
               <div class="card card-stats">
-                  <div class="card-header card-header-primary card-header-icon">
+                  <div class="card-header card-header-info card-header-icon">
                       <div class="card-icon">
-                          <i class="material-icons">store</i>
+                          <i class="material-icons" style="cursor: pointer;" (click)="open(contenth)">store</i>
                       </div>
                       <h4 class="card-title">View Lecture Halls</h4>
                       
@@ -210,7 +314,7 @@
               <div class="card card-stats">
                   <div class="card-header card-header-warning card-header-icon">
                       <div class="card-icon">
-                          <i class="material-icons">people</i>
+                          <i class="material-icons" style="cursor: pointer;" (click)="open(contentl)">people</i>
                       </div>
                       <h5 class="card-title">View Lecturer Details</h5>
                   </div>
@@ -219,7 +323,7 @@
       <div class="row">
           <div class="col-lg-6 col-md-12">
             <div class="card">
-                <div class="card-header card-header-info">
+                <div class="card-header card-header-primary">
                     <h4 class="card-title" style="cursor: pointer;" (click)="open(content2)">First Year Time Table</h4>
                 </div>
                  <div class="card-body table-responsive">
@@ -229,7 +333,7 @@
           </div>
           <div class="col-lg-6 col-md-12">
               <div class="card">
-                  <div class="card-header card-header-info">
+                  <div class="card-header card-header-primary">
                       <h4 class="card-title" style="cursor: pointer;" (click)="open(content3)">Second Year Time Table</h4>
                   </div>
                     <div class="card-body table-responsive">
@@ -241,7 +345,7 @@
       <div class="row">
         <div class="col-lg-6 col-md-12">
           <div class="card">
-              <div class="card-header card-header-info">
+              <div class="card-header card-header-primary">
                   <h4 class="card-title" style="cursor: pointer;" (click)="open(content4)">Third Year Time Table</h4>
               </div>
                 <div class="card-body table-responsive">
@@ -251,7 +355,7 @@
       </div>
         <div class="col-lg-6 col-md-12">
           <div class="card">
-             <div class="card-header card-header-info">
+             <div class="card-header card-header-primary">
                     <h4 class="card-title" style="cursor: pointer;" (click)="open(content5)">Fourth Year Time Table</h4>
                 </div>
                     <div class="card-body table-responsive">

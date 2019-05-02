@@ -12,6 +12,9 @@ import {
 } from '@syncfusion/ej2-angular-schedule';
 import { TimeTableCRUDService } from 'app/shared/time-table-crud.service';
 import { Key } from 'protractor';
+import { SubjectsService } from 'app/shared/subjects.service';
+import { LecturerService } from 'app/shared/lecturer.service';
+import { HallService } from 'app/shared/hall.service';
 
 @Component({
   selector: 'app-first-year',
@@ -28,6 +31,9 @@ export class FirstYearComponent implements OnInit {
   public views: Array<String> = ['WorkWeek'];
   public showTimeIndicator: boolean = false;
   public showQuickInfo: boolean = false;
+  public sub_list: Array<any> = [];
+  public lec_list: Array<any> = [];
+  public venue_list: Array<any> = [];
 
 
   @ViewChild('scheduleObj')
@@ -56,7 +62,7 @@ export class FirstYearComponent implements OnInit {
     if (args.type === 'RecurrenceAlert') { 
       args.cancel = true; 
       let data: { [key: string]: Object } = args.data as { [key: string]: Object }; 
-      this.scheduleObj.openEditor(data.event, 'EditOccurrence'); 
+      this.scheduleObj.openEditor(data.event, 'EditSeries'); 
     } 
 
 
@@ -65,24 +71,24 @@ export class FirstYearComponent implements OnInit {
       let subjectElement: HTMLInputElement = args.element.querySelector('#Subject') as HTMLInputElement;
       if (!subjectElement.classList.contains('e-dropdownlist')) {
         let dropDownListObject: DropDownList = new DropDownList({
-          placeholder: 'Choose status', value: subjectElement.value,
-          dataSource: ['New', 'Requested', 'Confirmed']
+          placeholder: 'Choose Subject', value: subjectElement.value,
+          dataSource: this.sub_list
         });
         dropDownListObject.appendTo(subjectElement);
       }
       let lecturerElement: HTMLInputElement = args.element.querySelector('#Lecturer') as HTMLInputElement;
       if (!lecturerElement.classList.contains('e-dropdownlist')) {
         let dropDownListObject: DropDownList = new DropDownList({
-          placeholder: 'Choose Lecture', value: lecturerElement.value,
-          dataSource: []
+          placeholder: 'Choose Lecturer', value: lecturerElement.value,
+          dataSource: this.lec_list
         });
         dropDownListObject.appendTo(lecturerElement);
       }
       let venueElement: HTMLInputElement = args.element.querySelector('#Location') as HTMLInputElement;
       if (!venueElement.classList.contains('e-dropdownlist')) {
         let dropDownListObject: DropDownList = new DropDownList({
-          placeholder: 'Choose venue', value: venueElement.value,
-          dataSource: ['Mumbai', 'Chennai', 'Bangalore']
+          placeholder: 'Choose Venue', value: venueElement.value,
+          dataSource: this.venue_list
         });
         dropDownListObject.appendTo(venueElement);
       }
@@ -116,7 +122,7 @@ export class FirstYearComponent implements OnInit {
 }
     }
 
-  constructor(private ttcs:TimeTableCRUDService) { }
+  constructor(private ttcs:TimeTableCRUDService, private scs: SubjectsService, private lcs: LecturerService, private hcs: HallService ) { }
 
   onDataBound1Y(event){
   
@@ -146,14 +152,43 @@ export class FirstYearComponent implements OnInit {
       for (let i of next.data().firstyear as any[]){
         i.StartTime = i.StartTime.toDate();
         i.EndTime = i.EndTime.toDate();
-        //this.eventSettings1Y.dataSource.push(i);
+         (<any[]>(this.eventSettings1Y.dataSource)).push(i);
 
       }
     
       this.scheduleObj.refreshEvents()
       console.log(this.eventSettings1Y.dataSource)
     
+    });
+
+    this.scs.getSubjects().subscribe(actionArray => {
+      this.sub_list = actionArray.map(item=>{
+        let a:any=item.payload.doc.data();
+        return a.subjectCode
+      }) 
+
+        
+  });
+
+    this.lcs.getLecturers().subscribe(actionArray => {
+      this.lec_list = actionArray.map(item=>{
+        let a:any=item.payload.doc.data();
+        return a.userName
+      }) 
+
+      
+  });
+
+    this.hcs.getHall().subscribe(actioArray => {
+      this.venue_list = actioArray.map(item=>{
+        let a:any=item.payload.doc.data();
+        return a.hallID
+      })
     })
+
+  
+
+  
   }
 
 }
