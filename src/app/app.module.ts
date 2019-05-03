@@ -113,11 +113,9 @@ let config = {
     AdminLayoutComponent,
     LoginComponent,
     EditLecturerComponent,
-    LecturerDashboardComponent,
-    HallListComponent,
-    LecsidebarComponent,
-    SuperadminDashComponent,
-    SuperadminSidebarComponent,
+    SuperadminLayoutComponent,
+    LecturerLayoutComponent,
+
     
     
     
