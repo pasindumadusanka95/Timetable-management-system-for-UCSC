@@ -2,7 +2,7 @@ import { Component, OnInit,ViewChild,ViewEncapsulation } from '@angular/core';
 import * as Chartist from 'chartist';
 import { extend } from '@syncfusion/ej2-base';
 import {Internationalization} from '@syncfusion/ej2-base';
-import {eventsData1Y} from '../../datasource';
+import {eventsData1Y,eventsData2Y} from '../../datasource';
 import { DateTimePicker } from '@syncfusion/ej2-calendars';
 import { DropDownList } from '@syncfusion/ej2-dropdowns';
 
@@ -27,6 +27,7 @@ export class FirstYearComponent implements OnInit {
 
   public selectedDate: Date = new Date(2018, 1, 15);
   public eventSettings1Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData1Y, null, true) };
+  public eventSettings2Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData2Y, null, true) };
   public showHederBar: Boolean = false;
   public views: Array<String> = ['WorkWeek'];
   public showTimeIndicator: boolean = false;
@@ -34,6 +35,7 @@ export class FirstYearComponent implements OnInit {
   public sub_list: Array<any> = [];
   public lec_list: Array<any> = [];
   public venue_list: Array<any> = [];
+  public enableAppointmentResize:boolean = true
 
 
   @ViewChild('scheduleObj')
@@ -127,23 +129,21 @@ export class FirstYearComponent implements OnInit {
   onDataBound1Y(event){
   
     console.log(this.eventSettings1Y.dataSource)
-    // let canAdd=true;
-    // for(let i of this.eventSettings2Y.dataSource as any[])
-    // {
-    //     if(event.StartTime.getDay()==i.StartTime.getDay() ){
-    //       canAdd=false;
-    //       break;
-    //     }
-    // }
+    let canAdd=true;
+    for(let i of this.eventSettings2Y.dataSource as any[])
+    {
+        if(event.StartTime.getDay()==i.StartTime.getDay() ){
+          canAdd=false;
+          break;
+        }
+    }
     
     this.ttcs.setFirstYearTT(this.eventSettings1Y.dataSource)
 
       
-    // }
-    // else{
-    //   console.log('cannot allocate')
-    // }
-  }
+    }
+    
+  
 
   ngOnInit() {
 

@@ -7,6 +7,7 @@ import {
   WorkWeekService, MonthService, AgendaService, PopupOpenEventArgs, ResizeService, DragAndDropService, 
 } from '@syncfusion/ej2-angular-schedule';
 import { TimeTableCRUDService } from 'app/shared/time-table-crud.service';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -30,6 +31,7 @@ export class TableListComponent implements OnInit {
   public views: Array<String> = ['WorkWeek'];
   public showTimeIndicator: boolean = false;
   public readonly: boolean = true;
+  closeResult: string;
 
   @ViewChild('scheduleObj')
   public scheduleObj: ScheduleComponent;
@@ -39,61 +41,26 @@ export class TableListComponent implements OnInit {
     return this.instance.formatDate(value, { skeleton: 'E' });
   }
   
-  constructor(private ttcs:TimeTableCRUDService) { }
+  constructor(private ttcs:TimeTableCRUDService,public modalService: NgbModal,) { }
 
-  ngOnInit() {
+  ngOnInit() {}
 
-    this.ttcs.getFirstYearTT().subscribe(next=>{
-
-      for (let i of next.data().firstyear as any[]){
-        i.StartTime = i.StartTime.toDate();
-        i.EndTime = i.EndTime.toDate();
-        //this.eventSettings1Y.dataSource.push(i);
-
-      }
-    
-      this.scheduleObj.refreshEvents()
-      console.log(this.eventSettings1Y.dataSource)
-    })
-
-    this.ttcs.getSecondYearTT().subscribe(next=>{
-
-      for (let i of next.data().secondyear as any[]){
-        i.StartTime = i.StartTime.toDate();
-        i.EndTime = i.EndTime.toDate();
-        //this.eventSettings2Y.dataSource.push(i);
-
-      }
-    
-      this.scheduleObj.refreshEvents()
-      console.log(this.eventSettings2Y.dataSource)
-    })
-
-    this.ttcs.getThirdYearTT().subscribe(next=>{
-
-      for (let i of next.data().thirdyear as any[]){
-        i.StartTime = i.StartTime.toDate();
-        i.EndTime = i.EndTime.toDate();
-         //this.eventSettings3Y.dataSource.push(i);
-
-      }
-    
-      this.scheduleObj.refreshEvents()
-      console.log(this.eventSettings3Y.dataSource)
-    })
-
-    this.ttcs.getFourthYearTT().subscribe(next=>{
-
-      for (let i of next.data().fourthyear as any[]){
-        i.StartTime = i.StartTime.toDate();
-        i.EndTime = i.EndTime.toDate();
-        //this.eventSettings4Y.dataSource.push(i);
-
-      }
-    
-      this.scheduleObj.refreshEvents()
-      console.log(this.eventSettings4Y.dataSource)
-    })
+  open(content) {
+    this.modalService.open(content , {ariaLabelledBy: 'modal-basic-title', size: 'lg'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    }, );
+  }
+  
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
   }
   
 

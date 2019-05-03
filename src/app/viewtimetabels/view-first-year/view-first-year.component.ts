@@ -9,6 +9,7 @@ import {
 import { TimeTableCRUDService } from 'app/shared/time-table-crud.service';
 
 
+
 @Component({
   selector: 'app-view-first-year',
   templateUrl: './view-first-year.component.html',
@@ -24,6 +25,7 @@ export class ViewFirstYearComponent implements OnInit {
   public views: Array<String> = ['WorkWeek'];
   public showTimeIndicator: boolean = false;
   public readonly: boolean = true;
+ 
 
   @ViewChild('scheduleObj')
   public scheduleObj: ScheduleComponent;
@@ -70,7 +72,7 @@ export class ViewFirstYearComponent implements OnInit {
     }
   }
   
-  constructor(private ttcs:TimeTableCRUDService) { }
+  constructor(private ttcs:TimeTableCRUDService,) { }
 
   ngOnInit() {
 
@@ -93,4 +95,5 @@ export class ViewFirstYearComponent implements OnInit {
 
 
 }
+
 }

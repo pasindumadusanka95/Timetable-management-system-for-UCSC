@@ -77,6 +77,10 @@ import { StudentCountListComponent } from 'app/student-count-list/student-count-
     HallListComponent,
     StudentCountComponent,
     StudentCountListComponent,
+    FirstYearComponent,
+    SecondYearComponent,
+    ThirdYearComponent,
+    FourthYearComponent,
   
     
     
