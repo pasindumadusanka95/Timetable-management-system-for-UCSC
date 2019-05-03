@@ -21,7 +21,7 @@
                               <div class="row">
                             <div class="col-md-12">
                               <label>Lecturer Name</label>
-                              <input type="number" name="capacity" #capacity="ngModel" [(ngModel)]="hallservice.formData.capacity" class="form-control" required>
+                              <input type="text" name="capacity" #capacity="ngModel" [(ngModel)]="hallservice.formData.capacity" class="form-control" required>
                             </div>
                           </div>
                           <div class="row">
@@ -33,7 +33,7 @@
                     
                            <div class="form-group text-right">
               
-                            <button type="submit" class="btn btn-success pull-right" [disabled]="form.invalid" value="submit">Calculate</button>
+                            <button type="submit" class="btn btn-success pull-left" [disabled]="form.invalid" value="submit">Calculate</button>
                           </div>
                     
                        
