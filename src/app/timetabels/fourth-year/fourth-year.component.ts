@@ -2,7 +2,7 @@ import { Component, OnInit,ViewChild,ViewEncapsulation } from '@angular/core';
 import * as Chartist from 'chartist';
 import { extend } from '@syncfusion/ej2-base';
 import {Internationalization} from '@syncfusion/ej2-base';
-import {eventsData4Y} from '../../datasource';
+import {eventsData4Y,eventsData2Y,eventsData3Y,eventsData1Y} from '../../datasource';
 import { DateTimePicker } from '@syncfusion/ej2-calendars';
 import { DropDownList } from '@syncfusion/ej2-dropdowns';
 
@@ -26,6 +26,9 @@ export class FourthYearComponent implements OnInit {
 
   public selectedDate: Date = new Date(2018, 1, 15);
   public eventSettings4Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData4Y, null, true) };
+  public eventSettings2Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData2Y, null, true) };
+  public eventSettings3Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData3Y, null, true) };
+  public eventSettings1Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData1Y, null, true) };
   public showHederBar: Boolean = false;
   public views: Array<String> = ['WorkWeek'];
   public showTimeIndicator: boolean = false;
@@ -122,23 +125,19 @@ export class FourthYearComponent implements OnInit {
 
   onDataBound4Y(event){
   
-    console.log(this.eventSettings4Y.dataSource)
-    // let canAdd=true;
-    // for(let i of this.eventSettings2Y.dataSource as any[])
-    // {
-    //     if(event.StartTime.getDay()==i.StartTime.getDay() ){
-    //       canAdd=false;
-    //       break;
-    //     }
-    // }
-    
-    this.ttcs.setFourthYearTT(this.eventSettings4Y.dataSource)
-
-      
-    // }
-    // else{
-    //   console.log('cannot allocate')
-    // }
+    let canAdd=true;
+    for(let y2 of this.eventSettings2Y.dataSource as any[])
+    for(let y3 of this.eventSettings3Y.dataSource as any[])
+    for(let y1 of this.eventSettings1Y.dataSource as any[])
+    {
+        if((event.StartTime.getDay() == y2.StartTime.getDay() && y3.StartTime.getDay() && y1.StartTime.getDay()) || (event.Location == y2.Location && y3.Location && y1.Location)  ){
+          canAdd=false;
+          break;
+          }
+        else{
+          this.ttcs.setFourthYearTT(this.eventSettings4Y.dataSource)
+        }
+    }
   }
 
   ngOnInit() {
