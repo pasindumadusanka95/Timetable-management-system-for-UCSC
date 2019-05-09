@@ -37,6 +37,7 @@ import { LecsidebarComponent } from 'app/lecComponents/lecsidebar/lecsidebar.com
 import { MessagesComponent } from 'app/messages/messages.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChatComponent } from 'app/chat/chat.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   declarations: [
    
   LecturerDashboardComponent,
-  MessagesComponent
+  MessagesComponent,
+  ChatComponent
   ],
   exports:[
     

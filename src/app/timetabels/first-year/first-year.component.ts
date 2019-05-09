@@ -1,6 +1,6 @@
 import { Component, OnInit,ViewChild,ViewEncapsulation } from '@angular/core';
 import * as Chartist from 'chartist';
-import { extend } from '@syncfusion/ej2-base';
+import { extend, Collection } from '@syncfusion/ej2-base';
 import {Internationalization} from '@syncfusion/ej2-base';
 import {eventsData1Y,eventsData2Y} from '../../datasource';
 import { DateTimePicker } from '@syncfusion/ej2-calendars';
@@ -35,7 +35,9 @@ export class FirstYearComponent implements OnInit {
   public sub_list: Array<any> = [];
   public lec_list: Array<any> = [];
   public venue_list: Array<any> = [];
-  public enableAppointmentResize:boolean = true
+  public enableAppointmentResize:boolean = true;
+  public st2y;
+  public loc2y;
 
 
   @ViewChild('scheduleObj')
@@ -44,6 +46,7 @@ export class FirstYearComponent implements OnInit {
 
   onCellClick(args: CellClickEventArgs): void {
     this.scheduleObj.openEditor(args, 'Add');
+
   }
   
   onEventClick(args: EventClickArgs): void {
@@ -127,21 +130,9 @@ export class FirstYearComponent implements OnInit {
   constructor(private ttcs:TimeTableCRUDService, private scs: SubjectsService, private lcs: LecturerService, private hcs: HallService ) { }
 
   onDataBound1Y(event){
-  
-    console.log(this.eventSettings1Y.dataSource)
-    let canAdd=true;
-    for(let i of this.eventSettings2Y.dataSource as any[])
-    {
-        if(event.StartTime.getDay()==i.StartTime.getDay() ){
-          canAdd=false;
-          break;
-        }
-    }
-    
-    this.ttcs.setFirstYearTT(this.eventSettings1Y.dataSource)
+        this.ttcs.setFirstYearTT(this.eventSettings1Y.dataSource)
+      }
 
-      
-    }
     
   
 
@@ -157,8 +148,17 @@ export class FirstYearComponent implements OnInit {
       }
     
       this.scheduleObj.refreshEvents()
-      console.log(this.eventSettings1Y.dataSource)
+      
     
+    });
+
+    this.ttcs.getSecondYearTT().subscribe(next=>{
+      for (let i of next.data().secondyear as any[]){
+        this.st2y = i.StartTime.toDate();
+        this.loc2y = i.Location;
+        
+        console.log(this.st2y)     
+      }  
     });
 
     this.scs.getSubjects().subscribe(actionArray => {

@@ -48,6 +48,7 @@ import { LecturerLayoutComponent } from './lecturer-layout/lecturer-layout.compo
 import { LecnavbarComponent } from './lecComponents/lecnavbar/lecnavbar.component';
 import { SuperadminLayoutComponent } from './superadmin-layout/superadmin-layout.component';
 import { NoticesComponent } from './notices/notices.component';
+import { ChatComponent } from './chat/chat.component';
 
 
 
@@ -94,6 +95,7 @@ let config = {
     EditLecturerComponent,
     SuperadminLayoutComponent,
     LecturerLayoutComponent,
+    
 
     
     
