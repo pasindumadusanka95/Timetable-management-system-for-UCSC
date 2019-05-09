@@ -94,31 +94,16 @@ let config = {
     EditLecturerComponent,
     SuperadminLayoutComponent,
     LecturerLayoutComponent,
-
-    
-    
-    
-    
-   
-    
-    
-    //SubjectsComponent,
-    //SubjectListComponent,
-
   ],
   providers: [LecturerService, SubjectsService,TimeTableCRUDService,NgbActiveModal, HallsService,
-    // LecturerDashboardComponent,
-    // LecsidebarComponent,
-  
-  //  SuperadminSidebarComponent,
     LecturerLayoutComponent,
     SuperadminLayoutComponent,
+  ],
 
-  ],
-  exports:[
-    
-  ],
-  bootstrap: [AppComponent]
+  exports:[],
+
+
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
 

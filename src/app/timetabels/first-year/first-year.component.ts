@@ -2,7 +2,7 @@ import { Component, OnInit,ViewChild,ViewEncapsulation } from '@angular/core';
 import * as Chartist from 'chartist';
 import { extend } from '@syncfusion/ej2-base';
 import {Internationalization} from '@syncfusion/ej2-base';
-import {eventsData1Y,eventsData2Y} from '../../datasource';
+import {eventsData1Y,eventsData2Y,eventsData3Y,eventsData4Y} from '../../datasource';
 import { DateTimePicker } from '@syncfusion/ej2-calendars';
 import { DropDownList } from '@syncfusion/ej2-dropdowns';
 
@@ -28,6 +28,8 @@ export class FirstYearComponent implements OnInit {
   public selectedDate: Date = new Date(2018, 1, 15);
   public eventSettings1Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData1Y, null, true) };
   public eventSettings2Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData2Y, null, true) };
+  public eventSettings3Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData3Y, null, true) };
+  public eventSettings4Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData4Y, null, true) };
   public showHederBar: Boolean = false;
   public views: Array<String> = ['WorkWeek'];
   public showTimeIndicator: boolean = false;
@@ -128,17 +130,23 @@ export class FirstYearComponent implements OnInit {
 
   onDataBound1Y(event){
   
-    console.log(this.eventSettings1Y.dataSource)
+    console.log(event.Location)
     let canAdd=true;
-    for(let i of this.eventSettings2Y.dataSource as any[])
+    for(let y2 of this.eventSettings2Y.dataSource as any[])
+    for(let y3 of this.eventSettings3Y.dataSource as any[])
+    for(let y4 of this.eventSettings4Y.dataSource as any[])
     {
-        if(event.StartTime.getDay()==i.StartTime.getDay() ){
+        if((event.StartTime.getDay() == y2.StartTime.getDay() && y3.StartTime.getDay() && y4.StartTime.getDay()) || (event.Location == y2.Location && y3.Location && y4.Location)  ){
           canAdd=false;
           break;
+          }
+        else{
+          this.ttcs.setFirstYearTT(this.eventSettings1Y.dataSource)
         }
     }
     
-    this.ttcs.setFirstYearTT(this.eventSettings1Y.dataSource)
+    
+    
 
       
     }
