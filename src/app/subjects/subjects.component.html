@@ -37,8 +37,8 @@
                                   </mat-form-field>
                                   <mat-error class="invalid-feedback" *ngIf="year.invalid && year.touched">
                                       <div class="text-danger">
-                                          <label *ngIf="formControls.year.errors.required">This field is required</label>
-                                          <label *ngIf="formControls.year.errors.min || formControls.year.errors.max || formControls.year.errors.pattern">Enter a number between 1-4</label>
+                                          <label *ngIf="formControl.year.errors.required">This field is required</label>
+                                          <label *ngIf="formControl.year.errors.min || formControls.year.errors.max || formControls.year.errors.pattern">Enter a number between 1-4</label>
                                       </div>
                                   </mat-error>
                                 </div>
@@ -73,9 +73,9 @@
                             <div class="row">
                                 <div class="col-md-12">
                                   <mat-form-field class="example-full-width">
-                                      <input matInput placeholder="Assigned Lecturer 1" type="text" name="AssignedLecturer1" #AssignedLecturer1="ngModel" [(ngModel)]="subjectsService.formData.AssignedLecturer1" class="form-control" required>
+                                      <input matInput placeholder="assigned Lecturer 1" type="text" name="assignedLecturer1" #assignedLecturer1="ngModel" [(ngModel)]="subjectsService.formData.assignedLecturer1" class="form-control" required>
                                   </mat-form-field>
-                                  <mat-error class="invalid-feedback" *ngIf="AssignedLecturer1.invalid && AssignedLecturer1.touched">
+                                  <mat-error class="invalid-feedback" *ngIf="assignedLecturer1.invalid && assignedLecturer1.touched">
                                     This field is required.
                                   </mat-error>
                                 </div>
@@ -84,9 +84,9 @@
                             <div class="row">
                                 <div class="col-md-12">
                                   <mat-form-field class="example-full-width">
-                                      <input matInput placeholder="Assigned Lecturer 2" type="text" name="AssignedLecturer2" #AssignedLecturer2="ngModel" [(ngModel)]="subjectsService.formData.AssignedLecturer2" class="form-control" required>
+                                      <input matInput placeholder="assigned Lecturer 2" type="text" name="assignedLecturer2" #assignedLecturer2="ngModel" [(ngModel)]="subjectsService.formData.assignedLecturer2" class="form-control" required>
                                   </mat-form-field>
-                                  <mat-error class="invalid-feedback" *ngIf="AssignedLecturer2.invalid && AssignedLecturer2.touched">
+                                  <mat-error class="invalid-feedback" *ngIf="assignedLecturer2.invalid && assignedLecturer2.touched">
                                     This field is required.
                                   </mat-error>
                                 </div>

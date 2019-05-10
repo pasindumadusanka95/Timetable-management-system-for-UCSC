@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SubjectsComponent implements OnInit {
 
-  constructor(private subjectsService: SubjectsService,
+  constructor(public subjectsService: SubjectsService,
     private firestore : AngularFirestore,
     private toastr : ToastrService) { }
   submitted: boolean;
@@ -32,8 +32,8 @@ export class SubjectsComponent implements OnInit {
       year: null,
       semester: null,
       credit: null,
-      AssignedLecturer1:'',
-      AssignedLecturer2:'',
+      AssignedLecturer1: '',
+      AssignedLecturer2: '',
     }
   }
   

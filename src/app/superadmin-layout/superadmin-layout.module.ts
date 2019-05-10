@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LecturerLayoutRoutes } from './lecturer-layout.routing';
+
 
 import {NgxPaginationModule} from 'ngx-pagination';
 
@@ -14,9 +14,7 @@ import {
   MatRippleModule,
   MatFormFieldModule,
   MatTooltipModule,
-  MatSelectModule,
-  MatDatepickerModule,
-  MatNativeDateModule
+  MatSelectModule
 } from '@angular/material';
 import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
 import { FirstYearComponent } from 'app/timetabels/first-year/first-year.component';
@@ -32,18 +30,15 @@ import { WorkloadComponent } from 'app/workload/workload.component';
 import { HallListComponent } from 'app/hall-list/hall-list.component';
 import { StudentCountComponent } from 'app/student-count/student-count.component';
 import { StudentCountListComponent } from 'app/student-count-list/student-count-list.component';
-import { LecturerDashboardComponent } from 'app/lecturer-dashboard/lecturer-dashboard.component';
-import { LecsidebarComponent } from 'app/lecComponents/lecsidebar/lecsidebar.component';
-import { MessagesComponent } from 'app/messages/messages.component';
-import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ChatComponent } from 'app/chat/chat.component';
+import { SuperadminDashComponent } from 'app/superadmin-dash/superadmin-dash.component';
+import { SuperAdminLayoutRoutes } from './superadmin-layout.routing';
+import { NoticesComponent } from 'app/notices/notices.component';
 
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(LecturerLayoutRoutes),
+    RouterModule.forChild(SuperAdminLayoutRoutes),
     FormsModule,
     MatButtonModule,
     MatRippleModule,
@@ -54,25 +49,19 @@ import { ChatComponent } from 'app/chat/chat.component';
     ReactiveFormsModule,
     ScheduleModule,
     NgxPaginationModule,
-    SharedModule,
-    OwlDateTimeModule, 
-    OwlNativeDateTimeModule,           // <----- this module will be deprecated in the future version.
-    MatDatepickerModule,        // <----- import(must)
-    MatNativeDateModule,        // <----- import for date formating(optional)
-  
-  
+    SharedModule
   ],
   declarations: [
+    SuperadminDashComponent,
+    NoticesComponent
    
-  LecturerDashboardComponent,
-  MessagesComponent,
-  ChatComponent
+    
+    
   ],
   exports:[
+    SuperadminDashComponent,
     
-    
-  ],
-  bootstrap:[MessagesComponent]
+  ]
 })
 
-export class LecturerLayoutModule {}
+export class SuperAdminLayoutModule {}

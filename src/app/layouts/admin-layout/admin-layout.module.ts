@@ -34,6 +34,7 @@ import { ViewFirstYearComponent } from 'app/viewtimetabels/view-first-year/view-
 import { ViewSecondYearComponent } from 'app/viewtimetabels/view-second-year/view-second-year.component';
 import { ViewThirdYearComponent } from 'app/viewtimetabels/view-third-year/view-third-year.component';
 import { ViewFourthYearComponent } from 'app/viewtimetabels/view-fourth-year/view-fourth-year.component';
+import { StudentsCountComponent } from 'app/students-count/students-count.component';
 import { SharedModule } from 'app/shared/shared.module';
 import { WorkloadComponent } from 'app/workload/workload.component';
 import { HallListComponent } from 'app/hall-list/hall-list.component';
@@ -69,6 +70,7 @@ import { StudentCountListComponent } from 'app/student-count-list/student-count-
     LecturersListComponent,
     SubjectsComponent,
     SubjectListComponent,
+    StudentsCountComponent,
     FirstYearComponent,
     SecondYearComponent,
     ThirdYearComponent,
@@ -77,6 +79,10 @@ import { StudentCountListComponent } from 'app/student-count-list/student-count-
     HallListComponent,
     StudentCountComponent,
     StudentCountListComponent,
+    FirstYearComponent,
+    SecondYearComponent,
+    ThirdYearComponent,
+    FourthYearComponent,
   
     
     

@@ -1,8 +1,9 @@
+import { NgForm } from '@angular/forms';
+import { HallsService } from './../shared/halls.service';
 import { Component, OnInit } from '@angular/core';
 import { HallService } from 'app/shared/hall.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-halls',
@@ -55,5 +56,9 @@ export class HallsComponent implements OnInit {
 
 
 
+
+  
+
+  
 
 }

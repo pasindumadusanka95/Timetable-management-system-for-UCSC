@@ -4,13 +4,14 @@ import { WorkloadComponent } from 'app/workload/workload.component';
 import { StudentCountComponent } from 'app/student-count/student-count.component';
 import { LecturerDashboardComponent } from 'app/lecturer-dashboard/lecturer-dashboard.component';
 import { MessagesComponent } from 'app/messages/messages.component';
-import { ChatComponent } from 'app/chat/chat.component';
+import { SuperadminDashComponent } from 'app/superadmin-dash/superadmin-dash.component';
+import { NoticesComponent } from 'app/notices/notices.component';
 
-export const LecturerLayoutRoutes: Routes = [
+export const SuperAdminLayoutRoutes: Routes = [
     
-     { path: 'lecturer',      component: LecturerDashboardComponent },
-     { path: 'reqSchedule',          component: MessagesComponent },
-     { path: 'chat', component:ChatComponent}
+     { path: 'superadmin',      component:SuperadminDashComponent },
+     { path: 'notice',      component:NoticesComponent },
+   
     // { path: 'table-list',     component: TableListComponent },
     // { path: 'student-count',     component: StudentCountComponent },
     // { path: 'icons',          component: IconsComponent },
