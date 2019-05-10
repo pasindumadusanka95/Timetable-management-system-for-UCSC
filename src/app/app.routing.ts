@@ -9,8 +9,10 @@ import { SuperadminDashComponent } from './superadmin-dash/superadmin-dash.compo
 import { MessagesComponent } from './messages/messages.component';
 import { LecturerLayoutComponent } from './lecturer-layout/lecturer-layout.component';
 import { SuperadminLayoutComponent } from './superadmin-layout/superadmin-layout.component';
+import { HomepageComponent } from './homepage/homepage.component';
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '', component: HomepageComponent },
   // { path: 'lecturer', component: LecturerDashboardComponent },
   // { path: 'superadmin', component: SuperadminDashComponent },
   // { path: 'reqSchedule', component: MessagesComponent },
