@@ -72,6 +72,9 @@ this.hallservice.getHall().subscribe(actionArray => {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         }, );
       }
+
+    
+
   
       private getDismissReason(reason: any): string {
         if (reason === ModalDismissReasons.ESC) {
