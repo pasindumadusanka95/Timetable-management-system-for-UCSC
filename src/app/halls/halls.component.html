@@ -19,7 +19,7 @@
                                 <div class="col-md-12" *ngIf="this.isButtonVisible" [hidden]="false">
                                     <label>Hall ID</label>
                                  <select #hallID="ngModel" name="hallID" [(ngModel)]="hallservice.formData.hallID" class="form-control" required>
-                                   <option *ngFor="let hallID of halls" [value]="hallID">{{hallID}}</option>
+                                   <option *ngFor="let hallID of halllist" [value]="hallID">{{hallID.hallID}}</option>
                                  </select>
                                  
                                  <div *ngIf="hallID.invalid && hallID.touched" class="validation-error">This field is required.</div>

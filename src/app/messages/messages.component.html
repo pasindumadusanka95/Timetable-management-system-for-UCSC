@@ -21,7 +21,7 @@
                               </div>
                               <div class="row">
                             <div class="col-md-12">
-                              <label> Date</label>
+                              <label>Current Date</label>
                                   
                                <input type="date" name="Date" #Date="ngModel" [(ngModel)]="service.formData.Date" class="form-control" required>
                                              <!-- <owl-date-time #Date></owl-date-time> -->
@@ -29,18 +29,34 @@
                           </div>
                           <div class="row">
                             <div class="col-md-12">
-                              <label>Time</label>
+                              <label>Current Time</label>
                                <input type="time" name="Time" #Time="ngModel" [(ngModel)]="service.formData.Time" class="form-control" required>
                                              <!-- <owl-date-time #Time></owl-date-time> -->
                             </div>
                           </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <label>Request Date</label>
+                               <input type="date" name="Date" #NewDate="ngModel" [(ngModel)]="service.formData.NewDate" class="form-control" required>
+                                             <!-- <owl-date-time #Time></owl-date-time> -->
+                            </div>
+                          </div>
                          
-                          
+                          <div class="row">
+                            <div class="col-md-12">
+                              <label>Request Time</label>
+                              <a class="action-btn pull-right" style="color:rgb(36, 143, 192); cursor: pointer" >suggest time slot<i class="material-icons">add</i> </a>
+                               <input type="time" name="NewTime" #NewTime="ngModel" [(ngModel)]="service.formData.NewTime" class="form-control" required>
+                            </div>
+                          </div>
                     
                           <div class="row">
                             <div class="col-md-12">
                               <label>Subject</label>
-                              <input type="Subject" name="Subject" #Subject="ngModel" [(ngModel)]="service.formData.Subject" class="form-control" required>
+                              <select #Subject="ngModel" name="Subject" [(ngModel)]="service.formData.Subject" class="form-control" required>
+                                  <option *ngFor="let subject of subjects" [value]="Subject">{{subject.subjectCode}}-{{subject.subjectTitle}}</option>
+                                </select>
+                              <!-- <input type="Subject" name="Subject" #Subject="ngModel" [(ngModel)]="service.formData.Subject" class="form-control" required> -->
                             </div>
                           </div>
                           <div class="row">

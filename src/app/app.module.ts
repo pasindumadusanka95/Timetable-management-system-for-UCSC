@@ -51,6 +51,7 @@ import { NoticesComponent } from './notices/notices.component';
 import { ChatComponent } from './chat/chat.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { CoreModule } from './core/core.module';
+import { LecturerWorkloadComponent } from './lecturer-workload/lecturer-workload.component';
 
 
 
@@ -98,6 +99,7 @@ let config = {
     SuperadminLayoutComponent,
     LecturerLayoutComponent,
     HomepageComponent,
+    
     
 
     

@@ -3,7 +3,9 @@ export interface Messages {
     LecturerID: string;
     Date: string;
     Time: string;
-    Subject: string,
+    NewDate:string;
+    NewTime:string;
+    Subject: string;
     Reason: string;
    // subjects: Array[] ;
  }
