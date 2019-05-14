@@ -8,7 +8,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { TableListComponent } from '../../table-list/table-list.component';
-import { NotificationsComponent } from '../../notifications/notifications.component';
 import { LecturersComponent } from '../../addlecturers/lecturers.component';
 import {LecturersListComponent} from '../../lecturers-list/lecturers-list.component';
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -55,7 +54,6 @@ import { StudentCountListComponent } from 'app/student-count-list/student-count-
     DashboardComponent,
     HallsComponent,
     TableListComponent,
-    NotificationsComponent,
     LecturersComponent,
     LecturersListComponent,
     SubjectsComponent,
