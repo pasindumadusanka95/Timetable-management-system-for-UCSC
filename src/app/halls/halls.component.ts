@@ -12,6 +12,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class HallsComponent implements OnInit {
 
+  public isButtonVisible = true;
+
+halls = ['S104','S204','W002','W001','S203','E205','E401'];  
   constructor(public hallservice: HallService, private firestore: AngularFirestore,
     private toastr : ToastrService) { }
 
@@ -56,7 +59,7 @@ export class HallsComponent implements OnInit {
 
 
 
-
+  
   
 
   
