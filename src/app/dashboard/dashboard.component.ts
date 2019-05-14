@@ -10,10 +10,6 @@ import { Hall } from 'app/shared/hall.model';
 import { HallService } from 'app/shared/hall.service';
 
 
-
-
-
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -28,7 +24,7 @@ export class DashboardComponent implements OnInit {
   closeResult: string;
 constructor(
   private lecservice: LecturerService,
-   public modalService: NgbModal,
+  public modalService: NgbModal,
   private firestore: AngularFirestore,
   private toastr : ToastrService,
   private subjectsService: SubjectsService,
