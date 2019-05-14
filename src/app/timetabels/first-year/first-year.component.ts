@@ -157,7 +157,7 @@ export class FirstYearComponent implements OnInit {
         this.st2y = i.StartTime.toDate();
         this.loc2y = i.Location;
         
-        console.log(this.st2y)     
+            
       }  
     });
 

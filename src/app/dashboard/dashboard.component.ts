@@ -8,6 +8,8 @@ import { Subjects } from 'app/shared/subjects.model';
 import { Lecturer } from 'app/shared/lecturer.model';
 import { Hall } from 'app/shared/hall.model';
 import { HallService } from 'app/shared/hall.service';
+import { MessageService } from 'app/shared/messages.service';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 
 @Component({
@@ -21,6 +23,7 @@ export class DashboardComponent implements OnInit {
   list: Subjects[];
   Llist: Lecturer[];
   Hlist: Hall[];
+  Mlist: Message[];
   closeResult: string;
 constructor(
   private lecservice: LecturerService,
@@ -28,7 +31,8 @@ constructor(
   private firestore: AngularFirestore,
   private toastr : ToastrService,
   private subjectsService: SubjectsService,
-  private hallservice : HallService
+  private hallservice : HallService,
+  private msgService : MessageService
 ) { }
    
    ngOnInit() {
@@ -49,15 +53,25 @@ constructor(
       } as Lecturer;
       
       })
-});
-this.hallservice.getHall().subscribe(actionArray => {
-  this.Hlist = actionArray.map(item=>{
-    return {
-      id: item.payload.doc.id,
-      ...item.payload.doc.data() 
+  });
+  this.hallservice.getHall().subscribe(actionArray => {
+    this.Hlist = actionArray.map(item=>{
+      return {
+        id: item.payload.doc.id,
+        ...item.payload.doc.data() 
     } as Hall;
       })
-    });
+  });
+  this.msgService.getMessages().subscribe(actionArray => {
+    this.Mlist = actionArray.map(item=>{
+      let a:any=item.payload.doc.data();
+      return a.Reason
+    }) 
+
+      
+});
+
+
   }
 
 

@@ -31,6 +31,10 @@ getLecturers(){
   return this.firestore.collection('lecturers').snapshotChanges();
 }
 
+getMessages(){
+  return this.firestore.collection('messages').snapshotChanges();
+}
+
 
 
 
