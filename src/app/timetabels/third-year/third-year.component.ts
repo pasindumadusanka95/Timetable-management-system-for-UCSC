@@ -126,7 +126,7 @@ export class ThirdYearComponent implements OnInit {
 
   onDataBound3Y(event){
   
-    console.log(this.eventSettings3Y.dataSource)
+    
     // let canAdd=true;
     // for(let i of this.eventSettings2Y.dataSource as any[])
     // {
@@ -157,7 +157,7 @@ export class ThirdYearComponent implements OnInit {
       }
     
       this.scheduleObj.refreshEvents()
-      console.log(this.eventSettings3Y.dataSource)
+      
     
     });
 
@@ -167,7 +167,7 @@ export class ThirdYearComponent implements OnInit {
         return a.subjectCode
       }) 
 
-        console.log(this.sub_list)
+        
     });
 
 
