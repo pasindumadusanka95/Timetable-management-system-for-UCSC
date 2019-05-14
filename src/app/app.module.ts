@@ -50,6 +50,7 @@ import { SuperadminLayoutComponent } from './superadmin-layout/superadmin-layout
 import { NoticesComponent } from './notices/notices.component';
 import { ChatComponent } from './chat/chat.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { CoreModule } from './core/core.module';
 
 
 
@@ -87,7 +88,7 @@ let config = {
     }),
     NgxPaginationModule ,
     SharedModule,
-    
+    CoreModule
   ],
   declarations: [
     AppComponent,
