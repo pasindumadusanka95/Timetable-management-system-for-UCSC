@@ -21,6 +21,8 @@ constructor(private firestore: AngularFirestore) {}
     LecturerID: new FormControl('',Validators.required),
     Date: new FormControl('', Validators.required),
     Time: new FormControl('', Validators.required),
+    NewDate: new FormControl('', Validators.required),
+    NewTime: new FormControl('', Validators.required),
     Subject: new FormControl('',Validators.required),
     Reason: new FormControl('', Validators.required),
   
@@ -36,7 +38,9 @@ getMessages(){
 }
 
 
-
+getSubjects(){
+  return this.firestore.collection('subjects').snapshotChanges();
+}
 
 
 

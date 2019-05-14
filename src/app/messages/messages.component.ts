@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { MessageService } from 'app/shared/messages.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
+import { Subjects } from 'app/shared/subjects.model';
+
 
 @Component({
   selector: 'app-messages',
@@ -10,12 +12,21 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./messages.component.css']
 })
 export class MessagesComponent implements OnInit {
-
+  subjects: Subjects[];
   constructor(public service: MessageService, private firestore: AngularFirestore,
     private toastr : ToastrService) {}
  
   ngOnInit() {
     this.resetForm();
+    this.service.getSubjects().subscribe(actionArray => {
+      this.subjects = actionArray.map(item=>{
+        return {
+          id: item.payload.doc.id,
+          ...item.payload.doc.data() 
+        } as Subjects;
+        
+        })
+  });
   }
  
  
@@ -28,6 +39,8 @@ export class MessagesComponent implements OnInit {
       LecturerID:'',
       Date:'',
       Time:'',
+      NewDate:'',
+      NewTime:'',
       Subject: '',
       Reason: '',
       
