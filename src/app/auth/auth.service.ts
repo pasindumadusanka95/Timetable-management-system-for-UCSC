@@ -27,8 +27,8 @@ export class AuthService {
     } catch (e) {
         alert('Error!'  +  e.message);
     }
-    }
-    async logout(){
+  }
+  async logout(){
       await this.afAuth.auth.signOut();
       localStorage.removeItem('user');
       this.router.navigate(['']);
