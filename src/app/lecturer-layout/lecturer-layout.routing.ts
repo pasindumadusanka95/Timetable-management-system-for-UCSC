@@ -6,18 +6,14 @@ import { LecturerDashboardComponent } from 'app/lecturer-dashboard/lecturer-dash
 import { MessagesComponent } from 'app/messages/messages.component';
 import { ChatComponent } from 'app/chat/chat.component';
 import { LecturerWorkloadComponent } from 'app/lecturer-workload/lecturer-workload.component';
+import { LecturerprofileComponent } from 'app/lecturerprofile/lecturerprofile.component';
 
 export const LecturerLayoutRoutes: Routes = [
     
      { path: 'lecturer',      component: LecturerDashboardComponent },
      { path: 'reqSchedule',          component: MessagesComponent },
      { path: 'lecworkload',          component: LecturerWorkloadComponent },
-     { path: 'chat', component:ChatComponent}
-    // { path: 'table-list',     component: TableListComponent },
-    // { path: 'student-count',     component: StudentCountComponent },
-    // { path: 'icons',          component: IconsComponent },
-    // { path: 'subjects',       component: SubjectsComponent },
-    // { path: 'upgrade',        component: UpgradeComponent },
-    // { path: 'managelectures',  component: LecturersComponent },
-    // { path: 'workload',  component: WorkloadComponent },
+     { path: 'chat', component:ChatComponent},
+     { path: 'lecturerprofile', component:LecturerprofileComponent}
+    
 ];

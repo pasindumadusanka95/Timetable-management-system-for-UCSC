@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
 import { LecnavbarComponent } from 'app/lecComponents/lecnavbar/lecnavbar.component';
 import { SuperadminSidebarComponent } from 'app/superadmincomponent/superadmin-sidebar/superadmin-sidebar.component';
 import { SuperadminDashComponent } from 'app/superadmin-dash/superadmin-dash.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 @NgModule({
@@ -20,6 +20,7 @@ import { BrowserModule } from '@angular/platform-browser';
         CommonModule,
         ScheduleModule,
         RouterModule,
+       
        
        
      ],
