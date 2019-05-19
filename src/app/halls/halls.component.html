@@ -8,23 +8,24 @@
                        
                     </div>
                     <div class="card-body">
-                        <a class="action-btn pull-right" style="color:rgb(36, 143, 192); cursor: pointer"   (click)="this.isButtonVisible = false">new hall<i class="material-icons">add</i>
-                        </a>
-                        <br><br>
+                        <!-- <a class="action-btn pull-right" style="color:rgb(36, 143, 192); cursor: pointer"   (click)="this.isButtonVisible = false">new hall<i class="material-icons">add</i> -->
+                        <!-- </a> -->
+                        
                       <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
                           
                         <input type="hidden" name="id" #id="ngModel" [(ngModel)]="hallservice.formData.id">
                         
                             <div class="row">
-                                <div class="col-md-12" *ngIf="this.isButtonVisible" [hidden]="false">
+                                <!-- <div class="col-md-12" *ngIf="this.isButtonVisible" [hidden]="false">
                                     <label>Hall ID</label>
                                  <select #hallID="ngModel" name="hallID" [(ngModel)]="hallservice.formData.hallID" class="form-control" required>
                                    <option *ngFor="let hallID of halllist" [value]="hallID">{{hallID.hallID}}</option>
                                  </select>
                                  
                                  <div *ngIf="hallID.invalid && hallID.touched" class="validation-error">This field is required.</div>
-                                  </div>
-                                  <div class="col-md-12" *ngIf="!this.isButtonVisible" [hidden]="false">
+                                  </div> -->
+                                  <!-- <div class="col-md-12" *ngIf="!this.isButtonVisible" [hidden]="false"> -->
+                                      <div class="col-md-12">
                                       <label>Hall ID</label>
                                       <input type="text" name="hallID" #hallID="ngModel" [(ngModel)]="hallservice.formData.hallID" class="form-control" required>
                                      
