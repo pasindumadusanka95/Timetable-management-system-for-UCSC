@@ -25,6 +25,7 @@ constructor(private firestore: AngularFirestore) {}
     NewTime: new FormControl('', Validators.required),
     Subject: new FormControl('',Validators.required),
     Reason: new FormControl('', Validators.required),
+    Message:new FormControl(),
   
   });
 

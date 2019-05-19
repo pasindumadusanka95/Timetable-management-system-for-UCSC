@@ -7,6 +7,7 @@ export interface Messages {
     NewTime:string;
     Subject: string;
     Reason: string;
+    Message:string;
    // subjects: Array[] ;
  }
 
