@@ -11,6 +11,9 @@ import { NgForm } from '@angular/forms';
 })
 export class StudentCountComponent implements OnInit {
 
+  // results: any;
+  groups:any =[];
+
   constructor(public StudentCountservice: StudentCountService, private firestore: AngularFirestore,
     private toastr : ToastrService) { }
 
@@ -25,9 +28,10 @@ export class StudentCountComponent implements OnInit {
       id: null,
       registeredYear:null,
       course:'',
+      subject:'',
       groupName: '',
       numberofGroups: null,
-      sizeofGroups: null,
+      sizeofGroups: new Array(),
     }
   }
 
@@ -44,17 +48,34 @@ export class StudentCountComponent implements OnInit {
 
 
   onSubmit(form:NgForm){
+    console.log(form)
     let data = Object.assign({},form.value);
     delete data.id;
     // tslint:disable-next-line:curly
     if(form.value.id == null)
       this.firestore.collection('studentcount').add(data);
-    // tslint:disable-next-line:curly
+    
     else
     this.firestore.doc('studentcount/'+ form.value.id).update(data);
       this.resetForm(form);
       this.toastr.success('Submitted successfully','Student Groups Details');
   }
 
+  // search() {
+  //   let self = this;
+  //   self.results = self.firestore.collection(`studentcount`, ref => ref
+  //     .orderBy('subject')
+  //     .startAt(self.StudentCountservice.formData.subject.toLowerCase())
+  //     .endAt(self.StudentCountservice.formData.subject.toLowerCase() + '\uf8ff')
+  //     .limit(10))
+  //     .valueChanges();
+  // }
 
+  onValueChange(newvalue){
+    // console.log(event.eventPhase);
+    this.groups=[];
+    for(var i=0;i<newvalue;i++){
+      this.groups[i]=this.StudentCountservice.formData.sizeofGroups[i] ;
+    }
+  }
 }
