@@ -29,7 +29,9 @@ getHall(){
   return this.firestore.collection('halls').snapshotChanges();
 }
 
-
+getReservedHalls() {
+  return this.firestore.collection('Timetable').get();
+}
 
 
 
