@@ -123,7 +123,7 @@ export class SecondYearComponent implements OnInit {
 
   onDataBound2Y(event){
   
-    console.log(this.eventSettings2Y.dataSource)
+    
     // let canAdd=true;
     // for(let i of this.eventSettings2Y.dataSource as any[])
     // {
@@ -154,7 +154,7 @@ export class SecondYearComponent implements OnInit {
       }
     
       this.scheduleObj.refreshEvents()
-      console.log(this.eventSettings2Y.dataSource)
+     
     
     });
 
@@ -164,7 +164,6 @@ export class SecondYearComponent implements OnInit {
         return a.subjectCode
       }) 
 
-        console.log(this.sub_list)
     });
 
 

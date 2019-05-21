@@ -11,6 +11,7 @@ import { StudentCount } from 'app/shared/student-count.model';
 })
 export class StudentCountListComponent implements OnInit {
   stdlist: StudentCount[];
+ x=[1,2];
   constructor(
     private stdservice: StudentCountService,
   private firestore: AngularFirestore,
@@ -26,6 +27,7 @@ export class StudentCountListComponent implements OnInit {
         } as StudentCount;
         
         })
+       
   });
 
 }
@@ -43,6 +45,21 @@ onDelete(id:String){
     }
 }
 
+
+createRange(number){
+  var items: number[] = [];
+  for(var i = 1; i <= number; i++){
+     items.push(i);
+  }
+  return items;
+}
+groups=[];
+onValueChange(newvalue){
+  this.groups=[];
+  for(var i=0;i<newvalue;i++){
+    this.groups[i]=''; 
+  }
+}
   }
 
 

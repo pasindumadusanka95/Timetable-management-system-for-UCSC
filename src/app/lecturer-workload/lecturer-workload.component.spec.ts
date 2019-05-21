@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IconsComponent } from './icons.component';
+import { LecturerWorkloadComponent } from './lecturer-workload.component';
 
-describe('IconsComponent', () => {
-  let component: IconsComponent;
-  let fixture: ComponentFixture<IconsComponent>;
+describe('LecturerWorkloadComponent', () => {
+  let component: LecturerWorkloadComponent;
+  let fixture: ComponentFixture<LecturerWorkloadComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IconsComponent ]
+      declarations: [ LecturerWorkloadComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IconsComponent);
+    fixture = TestBed.createComponent(LecturerWorkloadComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

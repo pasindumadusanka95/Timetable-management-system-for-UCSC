@@ -31,38 +31,6 @@ export class SubjectsService {
     return this.firestore.collection('subjects').snapshotChanges();
   }
 
-  
 
-  // insertSubject(subjects) {
-  //   this.subjectsList.push({
-  //     subjectCode: subjects.subjectCode,
-  //     subjectTitle: subjects.subjectTitle,
-  //     year: subjects.year,
-  //     semester: subjects.semester,
-  //     credit: subjects.credit
-  //     assignedLecturer1: subjects.assignedLecturer1
-  //     assignedLecturer2: subjects.assignedLecturer2
-  //   });
-  // }
-
-  // populateForm(subject){
-  //   this.form.setValue(subject);
-  // }
-
-  // updateSubject(subjects) {
-  //   this.subjectsList.update(subjects.$key,{
-  //     subjectCode: subjects.subjectCode,
-  //     subjectTitle: subjects.subjectTitle,
-  //     year: subjects.year,
-  //     semester: subjects.semester,
-  //     credit: subjects.credit
-  //     assignedLecturer1: subjects.assignedLecturer1
-  //     assignedLecturer2: subjects.assignedLecturer2
-  //   });
-  // }
-
-  // deleteSubject($key: string){
-  //   this.subjectsList.remove($key);
-  // }
 
 }

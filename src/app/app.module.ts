@@ -28,7 +28,7 @@ import { SubjectsService } from './shared/subjects.service';
 import {TimeTableCRUDService} from './shared/time-table-crud.service';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { LecturerDashboardComponent } from './lecturer-dashboard/lecturer-dashboard.component';
-import { StudentsCountComponent } from './students-count/students-count.component';
+
 import { LecsidebarComponent } from './lecComponents/lecsidebar/lecsidebar.component';
 import { SuperadminDashComponent } from './superadmin-dash/superadmin-dash.component';
 
@@ -50,6 +50,8 @@ import { SuperadminLayoutComponent } from './superadmin-layout/superadmin-layout
 import { NoticesComponent } from './notices/notices.component';
 import { ChatComponent } from './chat/chat.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { CoreModule } from './core/core.module';
+import { LecturerWorkloadComponent } from './lecturer-workload/lecturer-workload.component';
 
 
 
@@ -87,7 +89,7 @@ let config = {
     }),
     NgxPaginationModule ,
     SharedModule,
-    
+    CoreModule
   ],
   declarations: [
     AppComponent,
@@ -97,6 +99,7 @@ let config = {
     SuperadminLayoutComponent,
     LecturerLayoutComponent,
     HomepageComponent,
+    
     
 
     

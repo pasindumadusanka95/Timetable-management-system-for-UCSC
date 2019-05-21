@@ -21,7 +21,15 @@
             <td>{{std.course}}</td>
             <td>{{std.groupName}}</td>
             <td>{{std.numberofGroups}}</td>
-            <td>{{std.sizeofGroups}}</td>
+            <td>
+
+              <ul style="list-style-type:disc;" *ngFor="let item of createRange(std.numberofGroups);" >
+                <li >group {{item}}-<b>{{std['sizeofGroups_' + item]}}</b></li>
+               
+               
+              </ul>  
+
+            </td>
       
                <td>
                 <a class="action-btn" style="color:rgb(36, 143, 192); cursor: pointer" (click)="onEdit(std)">

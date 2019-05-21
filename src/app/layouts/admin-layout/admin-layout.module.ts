@@ -8,10 +8,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { TableListComponent } from '../../table-list/table-list.component';
-import { TypographyComponent } from '../../typography/typography.component';
-import { IconsComponent } from '../../icons/icons.component';
-import { NotificationsComponent } from '../../notifications/notifications.component';
-import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { LecturersComponent } from '../../addlecturers/lecturers.component';
 import {LecturersListComponent} from '../../lecturers-list/lecturers-list.component';
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -30,11 +26,7 @@ import { FirstYearComponent } from 'app/timetabels/first-year/first-year.compone
 import { SecondYearComponent } from 'app/timetabels/second-year/second-year.component';
 import { ThirdYearComponent } from 'app/timetabels/third-year/third-year.component';
 import { FourthYearComponent } from 'app/timetabels/fourth-year/fourth-year.component';
-import { ViewFirstYearComponent } from 'app/viewtimetabels/view-first-year/view-first-year.component';
-import { ViewSecondYearComponent } from 'app/viewtimetabels/view-second-year/view-second-year.component';
-import { ViewThirdYearComponent } from 'app/viewtimetabels/view-third-year/view-third-year.component';
-import { ViewFourthYearComponent } from 'app/viewtimetabels/view-fourth-year/view-fourth-year.component';
-import { StudentsCountComponent } from 'app/students-count/students-count.component';
+
 import { SharedModule } from 'app/shared/shared.module';
 import { WorkloadComponent } from 'app/workload/workload.component';
 import { HallListComponent } from 'app/hall-list/hall-list.component';
@@ -62,15 +54,10 @@ import { StudentCountListComponent } from 'app/student-count-list/student-count-
     DashboardComponent,
     HallsComponent,
     TableListComponent,
-    TypographyComponent,
-    IconsComponent,
-    NotificationsComponent,
-    UpgradeComponent,
     LecturersComponent,
     LecturersListComponent,
     SubjectsComponent,
     SubjectListComponent,
-    StudentsCountComponent,
     FirstYearComponent,
     SecondYearComponent,
     ThirdYearComponent,

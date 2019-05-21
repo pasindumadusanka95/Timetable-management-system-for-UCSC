@@ -38,6 +38,8 @@ import { MessagesComponent } from 'app/messages/messages.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChatComponent } from 'app/chat/chat.component';
+import { LecturerWorkloadComponent } from 'app/lecturer-workload/lecturer-workload.component';
+import { LecturerprofileComponent } from 'app/lecturerprofile/lecturerprofile.component';
 
 
 @NgModule({
@@ -66,7 +68,9 @@ import { ChatComponent } from 'app/chat/chat.component';
    
   LecturerDashboardComponent,
   MessagesComponent,
-  ChatComponent
+  ChatComponent,
+  LecturerWorkloadComponent,
+  LecturerprofileComponent,
   ],
   exports:[
     

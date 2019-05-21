@@ -13,7 +13,7 @@
                       <div class="row"> 
                               <div class="col-md-12">
                                   <label>Registered Year</label>
-                                  <input type="text" name="registeredYear" #registeredYear="ngModel" [(ngModel)]="StudentCountservice.formData.registeredYear" class="form-control" required>
+                                  <input type="number" name="registeredYear" #registeredYear="ngModel" [(ngModel)]="StudentCountservice.formData.registeredYear" class="form-control" required>
                                   <div *ngIf="registeredYear.invalid && registeredYear.touched" class="validation-error">This field is required.</div>
                                 </div>
                       </div>
@@ -24,6 +24,12 @@
                             </div>
                           </div>
                           <div class="row">
+                              <div class="col-md-12">
+                                <label>Subject</label>
+                                <input type="text" name="subject" #subject="ngModel" [(ngModel)]="StudentCountservice.formData.subject" class="form-control" required>
+                              </div>
+                            </div>
+                          <div class="row">
                             <div class="col-md-12">
                               <label>Group Name</label>
                               <input type="text" name="groupName" #groupName="ngModel" [(ngModel)]="StudentCountservice.formData.groupName" class="form-control" required>
@@ -33,16 +39,18 @@
                           <div class="row">
                             <div class="col-md-12">
                               <label>Number of Groups </label>
-                              <input type="number" name="numberofGroups" #numberofGroups="ngModel" [(ngModel)]="StudentCountservice.formData.numberofGroups" class="form-control" required>
+                              <input type="number" name="numberofGroups" #numberofGroups="ngModel" [(ngModel)]="StudentCountservice.formData.numberofGroups" (ngModelChange)="onValueChange($event)"class="form-control" required>
                             </div>
-                    </div>
-                    <div class="row">
+                         </div>
+                           <div class="row" *ngFor="let grp of groups;let i=index;trackBy: trackArray " [attr.data-index]="i" >
                             <div class="col-md-12">
-                              <label>Sizes of Groups</label>
-                              <input type="number" name="sizeofGroups" #sizeofGroups="ngModel" [(ngModel)]="StudentCountservice.formData.sizeofGroups" class="form-control" required>
+                              <label>Sizes of Group {{i+1}} </label>
+                              <input type="number" name="sizeofGroups_{{i+1}}" #sizeofGroups_{{i+1}}="ngModel" [(ngModel)]="groups[i]" class="form-control"  required >
                               </div>
                           
-                      </div> 
+                            </div> 
+                    
+                  <br>
                       <div class="form-group text-right">
                         <button type="button" class="btn btn-info gap-right" (click)="resetForm(form)">Reset</button>
                         <button type="submit" class="btn btn-success pull-right" [disabled]="form.invalid" value="submit">Submit</button>

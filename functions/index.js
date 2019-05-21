@@ -19,6 +19,8 @@ exports.sendMail = functions.firestore.document('messages/{document}').onCreate(
      const reason = event.data().Reason;
      const date = event.data().Date;
      const time = event.data().Time;
+     const newdate = event.data().NewDate;
+     const newtime = event.data().NewTime;
      const subject = event.data().Subject;
 
     
@@ -30,6 +32,8 @@ exports.sendMail = functions.firestore.document('messages/{document}').onCreate(
                 <p> <b>Lecturer Code     :</b> ${LecturerID} </p>
                 <p> <b>Lecture Date      :</b> ${date}</p>
                 <p> <b>Lecture Time      :</b> ${time}</p>
+                <p> <b>Requested Date    :</b> ${newdate}</p>
+                <p> <b>Requested Time    :</b> ${newtime}</p>
                 <p> <b>Subject           :</b> ${subject}</p>
                 <p> <b>Reason            :</b> ${reason}</p>`
     }
