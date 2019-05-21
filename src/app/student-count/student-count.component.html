@@ -40,13 +40,12 @@
                             <div class="col-md-12">
                               <label>Number of Groups </label>
                               <input type="number" name="numberofGroups" #numberofGroups="ngModel" [(ngModel)]="StudentCountservice.formData.numberofGroups" (ngModelChange)="onValueChange($event)"class="form-control" required>
-                              <!-- <a class="action-btn pull-right" style="color:rgb(36, 143, 192); cursor: pointer"   (click)="StudentCountservice.formData.numberofGroups">allocate size for groups<i class="material-icons">add</i></a> -->
                             </div>
                          </div>
-                           <div class="row" *ngFor="let grp of groups;let i=index" [attr.data-index]="i">
+                           <div class="row" *ngFor="let grp of groups;let i=index;trackBy: trackArray " [attr.data-index]="i" >
                             <div class="col-md-12">
                               <label>Sizes of Group {{i+1}} </label>
-                              <input type="number" name="sizeofGroups" #sizeofGroups="ngModel" [(ngModel)]="groups[i]" class="form-control" required ng-model-option="{debounce:750}">
+                              <input type="number" name="sizeofGroups_{{i+1}}" #sizeofGroups_{{i+1}}="ngModel" [(ngModel)]="groups[i]" class="form-control"  required >
                               </div>
                           
                             </div> 

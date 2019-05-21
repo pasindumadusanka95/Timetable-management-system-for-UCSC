@@ -72,10 +72,15 @@ export class StudentCountComponent implements OnInit {
   // }
 
   onValueChange(newvalue){
-    // console.log(event.eventPhase);
     this.groups=[];
     for(var i=0;i<newvalue;i++){
-      this.groups[i]=this.StudentCountservice.formData.sizeofGroups[i] ;
+      this.groups[i]=''; 
     }
   }
+
+
+ trackArray(index, item) {
+    return index;
+  }
+
 }

@@ -26,7 +26,7 @@ import { FirstYearComponent } from 'app/timetabels/first-year/first-year.compone
 import { SecondYearComponent } from 'app/timetabels/second-year/second-year.component';
 import { ThirdYearComponent } from 'app/timetabels/third-year/third-year.component';
 import { FourthYearComponent } from 'app/timetabels/fourth-year/fourth-year.component';
-import { StudentsCountComponent } from 'app/students-count/students-count.component';
+
 import { SharedModule } from 'app/shared/shared.module';
 import { WorkloadComponent } from 'app/workload/workload.component';
 import { HallListComponent } from 'app/hall-list/hall-list.component';
@@ -58,7 +58,6 @@ import { StudentCountListComponent } from 'app/student-count-list/student-count-
     LecturersListComponent,
     SubjectsComponent,
     SubjectListComponent,
-    StudentsCountComponent,
     FirstYearComponent,
     SecondYearComponent,
     ThirdYearComponent,
