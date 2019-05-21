@@ -6,7 +6,7 @@ export interface Roles{
 
 export interface User{
     uid: string;
-    emai: string;
+    email: string;
     password: string;
     roles: Roles;
 }

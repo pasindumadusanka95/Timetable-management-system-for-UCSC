@@ -3,6 +3,7 @@ import { StudentCountService } from 'app/shared/student-count.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
 import { NgForm } from '@angular/forms';
+import { Subjects } from 'app/shared/subjects.model';
 
 @Component({
   selector: 'app-student-count',
@@ -13,12 +14,21 @@ export class StudentCountComponent implements OnInit {
 
   // results: any;
   groups:any =[];
-
+  subjects: Subjects[];
   constructor(public StudentCountservice: StudentCountService, private firestore: AngularFirestore,
     private toastr : ToastrService) { }
 
   ngOnInit() {
     this.resetForm();
+    this.StudentCountservice.getSubjects().subscribe(actionArray => {
+      this.subjects = actionArray.map(item=>{
+        return {
+          id: item.payload.doc.id,
+          ...item.payload.doc.data() 
+        } as Subjects;
+        
+        })
+  });
   }
   resetForm(form?: NgForm) {
     // tslint:disable-next-line:curly
@@ -82,5 +92,9 @@ export class StudentCountComponent implements OnInit {
  trackArray(index, item) {
     return index;
   }
+  onChange(newValue) {
+    // console.log(newValue);
+    this.StudentCountservice.formData.subject = newValue;
+}
 
 }

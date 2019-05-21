@@ -1,10 +1,11 @@
 
     
-      <table class="table table-sm">
+      <table class="table table-md">
         <thead>
           <tr>
             <th scope="col"><b>Registered Year</b></th>
             <th scope="col"><b>Course</b></th>
+            <th scope="col"><b>Subject</b></th>
             <th scope="col"><b>Group Name</b></th>
             <th scope="col"><b>Number of Groups</b></th>
             <th scope="col"><b>Size of Groups</b></th>
@@ -19,12 +20,13 @@
              <tr  class="table-striped"> 
             <td>{{std.registeredYear}}</td>
             <td>{{std.course}}</td>
+            <td>{{std.subject}}</td>
             <td>{{std.groupName}}</td>
             <td>{{std.numberofGroups}}</td>
             <td>
 
               <ul style="list-style-type:disc;" *ngFor="let item of createRange(std.numberofGroups);" >
-                <li >group {{item}}-<b>{{std['sizeofGroups_' + item]}}</b></li>
+                <li >G{{item}}- <b>{{std['sizeofGroups_' + item]}}</b></li>
                
                
               </ul>  
