@@ -43,6 +43,7 @@ export class MessagesComponent implements OnInit {
       NewTime:'',
       Subject: '',
       Reason: '',
+      Message:''
       
     }
   }
@@ -59,6 +60,8 @@ export class MessagesComponent implements OnInit {
 
   onSubmit(form:NgForm){
     let data = Object.assign({},form.value);
+  //  console.log(data.Subject);
+    data.message= data.LecturerID + " requested rechedule for "+data.Subject+" on "+ data.Date +" at "+data.Time+ ". requesting new date on "+data.NewDate+" at "+data.NewTime+".";
     delete data.id;
     // tslint:disable-next-line:curly
     if(form.value.id == null)
@@ -70,6 +73,10 @@ export class MessagesComponent implements OnInit {
       this.toastr.success('successfully','Message Sent');
   }
 
+  onChange(newValue) {
+    // console.log(newValue);
+    this.service.formData.Subject = newValue;
+}
 
 
 

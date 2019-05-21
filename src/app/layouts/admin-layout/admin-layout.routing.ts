@@ -1,4 +1,4 @@
-import { StudentsCountComponent } from './../../students-count/students-count.component';
+
 import { HallsComponent } from './../../halls/halls.component';
 import { SubjectsComponent } from '../../subjects/subjects.component';
 import { Routes } from '@angular/router';
@@ -13,7 +13,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',         component: DashboardComponent },
     { path: 'halls',             component: HallsComponent },
     { path: 'table-list',        component: TableListComponent },
-    { path: 'students-count',    component: StudentsCountComponent },
     { path: 'subjects',          component: SubjectsComponent },
     { path: 'managelectures',     component: LecturersComponent },
     { path: 'student-count',     component: StudentCountComponent },

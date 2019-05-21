@@ -20,15 +20,24 @@ export class AuthService {
     })
   }
   async  login(email:  string, password:  string) {
-
+    if(email=='aucsc321@gmail.com'){
     try {
         await  this.afAuth.auth.signInWithEmailAndPassword(email, password)
         this.router.navigate(['/dashboard']);
     } catch (e) {
         alert('Error!'  +  e.message);
     }
-    }
-    async logout(){
+  }
+    else{
+      try {
+          await  this.afAuth.auth.signInWithEmailAndPassword(email, password)
+          this.router.navigate(['/lecturer']);
+      } catch (e) {
+          alert('Error!'  +  e.message);
+      }
+  }
+  }
+  async logout(){
       await this.afAuth.auth.signOut();
       localStorage.removeItem('user');
       this.router.navigate(['']);
