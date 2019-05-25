@@ -16,7 +16,8 @@ export class SubjectsComponent implements OnInit {
     private toastr : ToastrService) { }
   submitted: boolean;
   showSuccessMessage: boolean;
-  formControls = this.subjectsService.form.controls;
+  // tslint:disable-next-line:member-ordering
+  formControls = this.subjectsService.form;
 
   ngOnInit() {
     this.resetForm();

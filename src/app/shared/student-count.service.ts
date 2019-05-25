@@ -31,7 +31,9 @@ constructor(private firestore: AngularFirestore) {}
 getStudentCount(){
   return this.firestore.collection('studentcount').snapshotChanges();
 }
-
+getSubjects(){
+  return this.firestore.collection('subjects').snapshotChanges();
+}
 
 
 

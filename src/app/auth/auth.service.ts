@@ -28,13 +28,21 @@ export class AuthService {
         alert('Error!'  +  e.message);
     }
   }
-    else{
+    else if(email=='saucsc321@gmail.com'){
       try {
           await  this.afAuth.auth.signInWithEmailAndPassword(email, password)
-          this.router.navigate(['/lecturer']);
+          this.router.navigate(['/superadmin']);
       } catch (e) {
           alert('Error!'  +  e.message);
       }
+  }
+  else{
+    try {
+      await  this.afAuth.auth.signInWithEmailAndPassword(email, password)
+      this.router.navigate(['/lecturer']);
+  } catch (e) {
+      alert('Error!'  +  e.message);
+  }
   }
   }
   async logout(){
