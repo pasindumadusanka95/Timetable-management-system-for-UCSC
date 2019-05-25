@@ -138,6 +138,10 @@ export class FirstYearComponent implements OnInit {
 
   ngOnInit() {
 
+    this.hcs.getReservedHalls().subscribe(hall=> {
+      console.log(hall);
+    })
+
     this.ttcs.getFirstYearTT().subscribe(next=>{
 
       for (let i of next.data().firstyear as any[]){

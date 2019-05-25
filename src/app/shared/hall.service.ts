@@ -30,7 +30,7 @@ getHall(){
 }
 
 getReservedHalls() {
-  return this.firestore.collection('Timetable').get();
+  return this.firestore.collection('Timetable').doc('1styear').get();
 }
 
 
