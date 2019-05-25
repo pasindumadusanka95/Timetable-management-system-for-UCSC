@@ -15,6 +15,7 @@ import { SuperadminDashComponent } from 'app/superadmin-dash/superadmin-dash.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { SuperadminNavbarComponent } from 'app/superadmincomponent/superadmin-navbar/superadmin-navbar.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -32,6 +33,7 @@ import { BrowserModule } from '@angular/platform-browser';
         LecsidebarComponent,
         LecnavbarComponent,
         SuperadminSidebarComponent,
+        SuperadminNavbarComponent,
         
     ],
     exports: [
@@ -42,6 +44,7 @@ import { BrowserModule } from '@angular/platform-browser';
         LecsidebarComponent,
         LecnavbarComponent,
         SuperadminSidebarComponent,
+        SuperadminNavbarComponent,
        
     ]
 })
