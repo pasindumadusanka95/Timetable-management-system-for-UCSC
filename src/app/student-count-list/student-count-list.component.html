@@ -16,8 +16,8 @@
         
           
           <ng-container *ngFor="let std of stdlist | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
-           
-             <tr  class="table-striped"> 
+                 
+             <tr  class="table-striped">
             <td>{{std.registeredYear}}</td>
             <td>{{std.course}}</td>
             <td>{{std.subject}}</td>
@@ -25,7 +25,7 @@
             <td>{{std.numberofGroups}}</td>
             <td>
 
-              <ul style="list-style-type:disc;" *ngFor="let item of createRange(std.numberofGroups);" >
+              <ul *ngFor="let item of createRange(std.numberofGroups);" >
                 <li >G{{item}}- <b>{{std['sizeofGroups_' + item]}}</b></li>
                
                
