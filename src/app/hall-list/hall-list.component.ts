@@ -18,15 +18,6 @@ export class HallListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.hallservice.getHall().subscribe(actionArray => {
-      this.halllist = actionArray.map(item=>{
-        return {
-          id: item.payload.doc.id,
-          ...item.payload.doc.data() 
-        } as Hall;
-        
-        })
-  });
   }
   onEdit(hall:Hall){
     this.hallservice.formData= Object.assign ({}, hall);

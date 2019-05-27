@@ -136,11 +136,11 @@ export class FirstYearComponent implements OnInit {
     
   
 
-  ngOnInit() {
+  async ngOnInit() {
 
-    this.hcs.getReservedHalls().subscribe(hall=> {
-      console.log(hall);
-    })
+    // this.ttcs.checkReservedSlots(0, 1618581800, "g515", "thusitha32").subscribe((hall)=> {
+    //   console.log(hall);
+    // });
 
     this.ttcs.getFirstYearTT().subscribe(next=>{
 

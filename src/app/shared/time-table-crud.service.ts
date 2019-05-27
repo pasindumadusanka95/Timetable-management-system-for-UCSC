@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -60,5 +61,39 @@ export class TimeTableCRUDService {
   }
   setFourthYearTT(object){
     const doc = this.db.collection('Timetable').doc('4thyear').set({fourthyear:object});
+  }
+
+  checkReservedSlots(startTime: number, endTime: number, location: string, lecturer: string) {
+    const hallsObservable = new Observable(observer => {
+      this.db.collection('Timetable').snapshotChanges().subscribe((actioArray => {
+        actioArray.map(item=>{
+          let years:any=item.payload.doc.data();
+          for (let key of Object.keys(years)) {
+            let year = years[key];
+
+            year.forEach(item => {
+              let isHallReserved = false;
+              let isLectureReserved = false;
+              if(item.StartTime.seconds >= startTime && item.StartTime.seconds < endTime 
+                || item.EndTime.seconds > startTime && item.EndTime.seconds <= endTime) {
+                  if(item.Location == location) {
+                    isHallReserved = true;
+                  }
+                  if(item.Lecturer == lecturer) {
+                    isLectureReserved = true;
+                  }
+                  observer.next({
+                    isHallReserved: isHallReserved,
+                    isLectureReserved: isLectureReserved
+                  });
+              }
+            });
+
+          }
+        });
+      }));
+    });
+  
+    return hallsObservable;
   }
 }

@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
   // Lecturer data type interface class
 // tslint:disable-next-line:max-line-length
-import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';  // Firebase modules for Database, Data list and Single object
+import {  AngularFireList } from 'angularfire2/database';  // Firebase modules for Database, Data list and Single object
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-  import { from } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Hall } from './hall.model';
 @Injectable({
@@ -29,15 +28,5 @@ getHall(){
   return this.firestore.collection('halls').snapshotChanges();
 }
 
-getReservedHalls() {
-  return this.firestore.collection('Timetable').doc('1styear').get();
-}
-
-
-
-
 
 }
-
-
-
