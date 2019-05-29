@@ -52,6 +52,8 @@ import { ChatComponent } from './chat/chat.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { CoreModule } from './core/core.module';
 import { LecturerWorkloadComponent } from './lecturer-workload/lecturer-workload.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+
 
 
 
@@ -89,7 +91,8 @@ let config = {
     }),
     NgxPaginationModule ,
     SharedModule,
-    CoreModule
+    CoreModule,
+     
   ],
   declarations: [
     AppComponent,
@@ -99,6 +102,7 @@ let config = {
     SuperadminLayoutComponent,
     LecturerLayoutComponent,
     HomepageComponent,
+    NotificationsComponent,
     
     
 
