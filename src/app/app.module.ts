@@ -52,8 +52,7 @@ import { ChatComponent } from './chat/chat.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { CoreModule } from './core/core.module';
 import { LecturerWorkloadComponent } from './lecturer-workload/lecturer-workload.component';
-import { NotificationsComponent } from './notifications/notifications.component';
-
+import { SuperadminNavbarComponent } from './superadmincomponent/superadmin-navbar/superadmin-navbar.component';
 
 
 
@@ -102,7 +101,7 @@ let config = {
     SuperadminLayoutComponent,
     LecturerLayoutComponent,
     HomepageComponent,
-    NotificationsComponent,
+   
     
     
 

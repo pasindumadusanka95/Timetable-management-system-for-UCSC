@@ -7,7 +7,7 @@ import { StudentCount } from 'app/shared/student-count.model';
 @Component({
   selector: 'app-student-count-list',
   templateUrl: './student-count-list.component.html',
-  styleUrls: ['./student-count-list.component.scss']
+  styleUrls: ['./student-count-list.component.css']
 })
 export class StudentCountListComponent implements OnInit {
   stdlist: StudentCount[];
