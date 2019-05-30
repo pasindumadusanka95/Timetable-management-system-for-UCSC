@@ -1,83 +1,6 @@
 
 
-<!-- 1st year Modal -->
-<ng-template #content2 let-modal>
-<div class="modal-header">
-<h3 class="h3">1st Year Time Table</h3>
-<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-<span aria-hidden="true">&times;</span>
-</button>
-</div>
-<div class="modal-body">
 
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
-
-<div>
-<app-view-first-year></app-view-first-year>
-</div>
-</div>
-</div>
-</ng-template>
-<!-- End 1st year Modal -->
-
-<!-- 2nd year Modal -->
-<ng-template #content3 let-modal>
-<div class="modal-header">
-  <h3 class="h3">2nd Year Time Table</h3>
-  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-  <div class="modal-body">
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
-  
-  <div>
-          <app-view-second-year></app-view-second-year>
-</div>
-</div>
-</div>
-</ng-template>
-<!-- End 2nd year Modal -->
-
-<!-- 3rd year Modal -->
-<ng-template #content4 let-modal>
-<div class="modal-header">
-  <h3 class="h3">3rd Year Time Table</h3>
-  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-  <div class="modal-body">
-
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
-  
-  <div>
-          <app-view-third-year></app-view-third-year> 
-</div>
-</div>
-</div>
-</ng-template>
-<!-- End 3rd year Modal -->
-
-<!-- 4th year Modal -->
-<ng-template #content5 let-modal>
-<div class="modal-header">
-  <h3 class="h3">4th Year Time Table</h3>
-  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-  <div class="modal-body">
-
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
-  
-  <div>
-          <app-view-fourth-year></app-view-fourth-year>
-</div>
-</div>
-</div>
-</ng-template>
-<!-- End 4th year Modal -->
 
 
 <div class="main-content">
@@ -85,48 +8,17 @@
 <div class="row">
    
 <div class="row">
-    <div class="col-lg-6 col-md-12">
+    <div class="col-lg-12 col-md-12">
       <div class="card">
           <div class="card-header card-header-info">
-              <h4 class="card-title" style="cursor: pointer;" (click)="open(content2)">First Year Time Table</h4>
+              <h3 class="card-title" style="cursor: pointer;" ><b>Main Time Table</b></h3>
           </div>
            <div class="card-body table-responsive">
               <app-view-first-year></app-view-first-year>
            </div>
       </div>
     </div>
-    <div class="col-lg-6 col-md-12">
-        <div class="card">
-            <div class="card-header card-header-info">
-                <h4 class="card-title" style="cursor: pointer;" (click)="open(content3)">Second Year Time Table</h4>
-            </div>
-              <div class="card-body table-responsive">
-              <app-view-second-year></app-view-second-year>
-              </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-  <div class="col-lg-6 col-md-12">
-    <div class="card">
-        <div class="card-header card-header-info">
-            <h4 class="card-title" style="cursor: pointer;" (click)="open(content4)">Third Year Time Table</h4>
-        </div>
-          <div class="card-body table-responsive">
-           <app-view-third-year></app-view-third-year>             
-          </div>
-    </div>
-</div>
-  <div class="col-lg-6 col-md-12">
-    <div class="card">
-       <div class="card-header card-header-info">
-              <h4 class="card-title" style="cursor: pointer;" (click)="open(content5)">Fourth Year Time Table</h4>
-          </div>
-              <div class="card-body table-responsive">
-              <app-view-fourth-year></app-view-fourth-year>             
-              </div>
-      </div>
-  </div>
+    
 </div>
 </div>
 </div>

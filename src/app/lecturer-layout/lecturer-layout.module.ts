@@ -40,6 +40,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChatComponent } from 'app/chat/chat.component';
 import { LecturerWorkloadComponent } from 'app/lecturer-workload/lecturer-workload.component';
 import { LecturerprofileComponent } from 'app/lecturerprofile/lecturerprofile.component';
+import { CommontableComponent } from 'app/commontable/commontable.component';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { LecturerprofileComponent } from 'app/lecturerprofile/lecturerprofile.co
   ChatComponent,
   LecturerWorkloadComponent,
   LecturerprofileComponent,
+  CommontableComponent,
   ],
   exports:[
     
