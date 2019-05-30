@@ -93,7 +93,7 @@ export class StudentCountComponent implements OnInit {
   }
   onChange(newValue) {
     // console.log(newValue);
-    this.StudentCountservice.formData.subject = newValue;
+    this.StudentCountservice.formData = newValue;
 }
 
 }

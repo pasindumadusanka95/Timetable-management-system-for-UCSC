@@ -81,13 +81,21 @@ export class FirstYearComponent implements OnInit {
         });
         dropDownListObject.appendTo(subjectElement);
       }
-      let lecturerElement: HTMLInputElement = args.element.querySelector('#Lecturer') as HTMLInputElement;
-      if (!lecturerElement.classList.contains('e-dropdownlist')) {
+      let lecturerElement1: HTMLInputElement = args.element.querySelector('#Lecturer1') as HTMLInputElement;
+      if (!lecturerElement1.classList.contains('e-dropdownlist')) {
         let dropDownListObject: DropDownList = new DropDownList({
-          placeholder: 'Choose Lecturer', value: lecturerElement.value,
+          placeholder: 'Choose Lecturer', value: lecturerElement1.value,
           dataSource: this.lec_list
         });
-        dropDownListObject.appendTo(lecturerElement);
+        dropDownListObject.appendTo(lecturerElement1);
+      }
+      let lecturerElement2: HTMLInputElement = args.element.querySelector('#Lecturer2') as HTMLInputElement;
+      if (!lecturerElement2.classList.contains('e-dropdownlist')) {
+        let dropDownListObject: DropDownList = new DropDownList({
+          placeholder: 'Choose Lecturer', value: lecturerElement2.value,
+          dataSource: this.lec_list
+        });
+        dropDownListObject.appendTo(lecturerElement2);
       }
       let venueElement: HTMLInputElement = args.element.querySelector('#Location') as HTMLInputElement;
       if (!venueElement.classList.contains('e-dropdownlist')) {
