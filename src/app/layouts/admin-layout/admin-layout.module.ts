@@ -32,6 +32,7 @@ import { WorkloadComponent } from 'app/workload/workload.component';
 import { HallListComponent } from 'app/hall-list/hall-list.component';
 import { StudentCountComponent } from 'app/student-count/student-count.component';
 import { StudentCountListComponent } from 'app/student-count-list/student-count-list.component';
+import { TagInputModule } from 'ngx-chips';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { StudentCountListComponent } from 'app/student-count-list/student-count-
     ReactiveFormsModule,
     ScheduleModule,
     NgxPaginationModule,
-    SharedModule
+    SharedModule,
+    TagInputModule
   ],
   declarations: [
     DashboardComponent,

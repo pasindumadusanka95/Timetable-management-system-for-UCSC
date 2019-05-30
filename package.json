@@ -52,6 +52,7 @@
     "jquery": "3.2.1",
     "moment": "2.22.1",
     "ng-pick-datetime": "^5.2.6",
+    "ngx-chips": "^2.0.0-beta.0",
     "ngx-pagination": "^3.2.1",
     "ngx-toastr": "^10.0.2",
     "nodemailer": "^6.1.1",
