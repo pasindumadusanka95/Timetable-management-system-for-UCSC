@@ -81,13 +81,21 @@ export class FirstYearComponent implements OnInit {
         });
         dropDownListObject.appendTo(subjectElement);
       }
-      let lecturerElement: HTMLInputElement = args.element.querySelector('#Lecturer') as HTMLInputElement;
-      if (!lecturerElement.classList.contains('e-dropdownlist')) {
+      let lecturerElement1: HTMLInputElement = args.element.querySelector('#Lecturer1') as HTMLInputElement;
+      if (!lecturerElement1.classList.contains('e-dropdownlist')) {
         let dropDownListObject: DropDownList = new DropDownList({
-          placeholder: 'Choose Lecturer', value: lecturerElement.value,
+          placeholder: 'Choose Lecturer', value: lecturerElement1.value,
           dataSource: this.lec_list
         });
-        dropDownListObject.appendTo(lecturerElement);
+        dropDownListObject.appendTo(lecturerElement1);
+      }
+      let lecturerElement2: HTMLInputElement = args.element.querySelector('#Lecturer2') as HTMLInputElement;
+      if (!lecturerElement2.classList.contains('e-dropdownlist')) {
+        let dropDownListObject: DropDownList = new DropDownList({
+          placeholder: 'Choose Lecturer', value: lecturerElement2.value,
+          dataSource: this.lec_list
+        });
+        dropDownListObject.appendTo(lecturerElement2);
       }
       let venueElement: HTMLInputElement = args.element.querySelector('#Location') as HTMLInputElement;
       if (!venueElement.classList.contains('e-dropdownlist')) {
@@ -130,6 +138,17 @@ export class FirstYearComponent implements OnInit {
   constructor(private ttcs:TimeTableCRUDService, private scs: SubjectsService, private lcs: LecturerService, private hcs: HallService ) { }
 
   onDataBound1Y(event){
+    let startTime = event.data.StartTime
+    let endTime = event.data.EndTime
+    let lecturer = event.data.Lecturer
+    let location = event.data.Location
+
+    
+
+    
+    this.ttcs.checkReservedSlots(startTime,endTime , lecturer, location).subscribe((hall)=> {
+      console.log(hall);
+    });
         this.ttcs.setFirstYearTT(this.eventSettings1Y.dataSource)
       }
 
@@ -150,15 +169,6 @@ export class FirstYearComponent implements OnInit {
       this.scheduleObj.refreshEvents()
       
     
-    });
-
-    this.ttcs.getSecondYearTT().subscribe(next=>{
-      for (let i of next.data().secondyear as any[]){
-        this.st2y = i.StartTime.toDate();
-        this.loc2y = i.Location;
-        
-            
-      }  
     });
 
     this.scs.getSubjects().subscribe(actionArray => {

@@ -65,7 +65,7 @@ constructor(
   this.msgService.getMessages().subscribe(actionArray => {
     this.Mlist = actionArray.map(item=>{
       let a:any=item.payload.doc.data();
-      return a.Reason
+      return a.message
     }) 
 
       
