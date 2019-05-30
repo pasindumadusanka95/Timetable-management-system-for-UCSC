@@ -12,7 +12,7 @@ import { Hall } from 'app/shared/hall.model';
   styleUrls: ['./halls.component.scss']
 })
 export class HallsComponent implements OnInit {
-
+  items = ['Pizza', 'Pasta', 'Parmesan'];
   public isButtonVisible = true;
   halllist: Hall[];
 

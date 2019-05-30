@@ -12,12 +12,16 @@
         </thead>
         
           
-          <ng-container *ngFor="let hall of halllist | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
+          <ng-container *ngFor="let hall of halllist | paginate: { itemsPerPage: 4, currentPage: p }; let i = index;">
            
              <tr  class="table-striped"> 
             <td>{{hall.hallID}} </td>
             <td>{{hall.capacity}}</td>
-            <td>{{hall.resourceStatus}}</td>
+            <td >
+             <ul *ngFor="let item of createRange(hall.resourceStatus.length);"> 
+               <li>{{hall.resourceStatus[item].display}}</li>
+             </ul>
+            </td>
             
       
                <td>
@@ -32,9 +36,9 @@
         
       </ng-container>
       </table>
-      <div class="alert alert-danger" *ngIf="showDeleteMessage">
+      <!-- <div class="alert alert-danger" *ngIf="showDeleteMessage">
           Deleted Successfully!
-        </div>
+        </div> -->
     
     <!-- Pagination -->
     <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>

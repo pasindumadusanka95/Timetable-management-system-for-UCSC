@@ -38,7 +38,6 @@ export class StudentCountComponent implements OnInit {
       id: null,
       registeredYear:null,
       course:'',
-      subject:'',
       groupName: '',
       numberofGroups: null,
       sizeofGroups: new Array(),

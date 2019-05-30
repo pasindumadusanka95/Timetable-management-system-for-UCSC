@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class HallListComponent implements OnInit {
   halllist: Hall[];
+ 
   constructor(
     private hallservice: HallService,
   private firestore: AngularFirestore,
@@ -41,6 +42,13 @@ export class HallListComponent implements OnInit {
       }
   }
   
+  createRange(number){
+    var items: number[] = [];
+    for(var i = 0; i < number; i++){
+       items.push(i);
+    }
+    return items;
+  }
     }
   
   

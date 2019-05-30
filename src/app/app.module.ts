@@ -53,6 +53,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { CoreModule } from './core/core.module';
 import { LecturerWorkloadComponent } from './lecturer-workload/lecturer-workload.component';
 import { SuperadminNavbarComponent } from './superadmincomponent/superadmin-navbar/superadmin-navbar.component';
+import { TagInputModule } from 'ngx-chips';
 
 
 
@@ -91,7 +92,7 @@ let config = {
     NgxPaginationModule ,
     SharedModule,
     CoreModule,
-     
+    TagInputModule,
   ],
   declarations: [
     AppComponent,
