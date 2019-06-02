@@ -64,7 +64,7 @@ export class TimeTableCRUDService {
     const doc = this.db.collection('Timetable').doc('4thyear').set({fourthyear:object});
   }
 
-  checkReservedSlots(startTime: Date, endTime: Date, location: string, lecturer: string) {
+  checkReservedSlots(startTime: Date, endTime: Date, lecturer1: string, lecturer2: string, location: string) {
     const hallsObservable = new Observable(observer => {
       this.db.collection('Timetable').snapshotChanges().subscribe((actioArray => {
         actioArray.map(item=>{
@@ -74,23 +74,28 @@ export class TimeTableCRUDService {
 
             year.forEach(item => {
               let isHallReserved = false;
-              let isLectureReserved = false;
+              let isLecture1Reserved = false;
+              let isLecture2Reserved = false;
+              let stTime = startTime.getTime()/1000;
+              let enTime = endTime.getTime()/1000;
               
-              console.log("**"+location)
-              console.log("**"+lecturer)
-              console.log(item.Location)
-              console.log(item.Lecturer)
-              if(item.StartTime.toDate() >= startTime && item.StartTime.toDate() < endTime 
-                || item.EndTime.toDate() > startTime && item.EndTime.toDate() <= endTime) {
+              if(item.StartTime.seconds >= startTime && item.StartTime.seconds < endTime 
+                || item.EndTime.seconds > startTime && item.EndTime.seconds <= endTime) {
+              
                   if(item.Location === location) {
                     isHallReserved = true;
                   }
-                  if(item.Lecturer === lecturer) {
-                    isLectureReserved = true;
+                  if(item.Lecturer1 === lecturer1) {
+                    isLecture1Reserved = true;
+                  }
+                  if(item.Lecturer2 === lecturer2) {
+                    isLecture2Reserved = true;
                   }
                   observer.next({
                     isHallReserved: isHallReserved,
-                    isLectureReserved: isLectureReserved
+                    isLecture1Reserved: isLecture1Reserved,
+                    isLecture2Reserved: isLecture2Reserved
+
                   });
               }
             });

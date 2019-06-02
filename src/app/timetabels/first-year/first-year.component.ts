@@ -140,13 +140,16 @@ export class FirstYearComponent implements OnInit {
   onDataBound1Y(event){
     let startTime = event.data.StartTime
     let endTime = event.data.EndTime
-    let lecturer = event.data.Lecturer
+    let lecturer1 = event.data.Lecturer1
+    let lecturer2 = event.data.Lecturer2
     let location = event.data.Location
+    
+
 
     
 
     
-    this.ttcs.checkReservedSlots(startTime,endTime , lecturer, location).subscribe((hall)=> {
+    this.ttcs.checkReservedSlots(startTime,endTime,lecturer1,lecturer2,location).subscribe((hall)=> {
       console.log(hall);
     });
         this.ttcs.setFirstYearTT(this.eventSettings1Y.dataSource)
