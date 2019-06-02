@@ -31,39 +31,6 @@ export class AuthService {
     }
 
     SignIn(email, password) {
-      // if(email=='aucsc321@gmail.com'){
-      //   return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      //   .then((result) => {
-      //     this.ngZone.run(() => {
-      //       this.router.navigate(['/dashboard']);
-      //       localStorage.setItem('user', JSON.stringify(result.user));
-      //     });
-      //   }).catch((error) => {
-      //     window.alert('Ooops! something went wrong');
-      //   })
-      // }
-      // else if(email=='saucsc321@gmail.com'){
-      //   return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      //   .then((result) => {
-      //     this.ngZone.run(() => {
-      //       this.router.navigate(['/superadmin']);
-      //       localStorage.setItem('user', JSON.stringify(result.user));
-      //     });
-      //   }).catch((error) => {
-      //     window.alert('Ooops! something went wrong');
-      //   })
-      // }
-      // else{
-      //   return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      //   .then((result) => {
-      //     this.ngZone.run(() => {
-      //       this.router.navigate(['/lecturer']);
-      //       localStorage.setItem('user', JSON.stringify(result.user));
-      //     });
-      //   }).catch((error) => {
-      //     window.alert('Ooops! something went wrong');
-      //   })
-      // }
       return this.afAuth.auth.signInWithEmailAndPassword(email, password)
         .then((result) => {
           this.ngZone.run(() => {
@@ -128,7 +95,7 @@ export class AuthService {
     SignOut() {
       return this.afAuth.auth.signOut().then(() => {
         localStorage.removeItem('user');
-        this.router.navigate(['']);
+        this.router.navigate(['/login']);
       })
     }
 
