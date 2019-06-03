@@ -130,23 +130,16 @@ export class FourthYearComponent implements OnInit {
 
   onDataBound4Y(event){
   
-    
-    // let canAdd=true;
-    // for(let i of this.eventSettings2Y.dataSource as any[])
-    // {
-    //     if(event.StartTime.getDay()==i.StartTime.getDay() ){
-    //       canAdd=false;
-    //       break;
-    //     }
-    // }
-    
-    this.ttcs.setFourthYearTT(this.eventSettings4Y.dataSource)
-
-      
-    // }
-    // else{
-    //   console.log('cannot allocate')
-    // }
+    let startTime = event.data.StartTime
+    let endTime = event.data.EndTime
+    let lecturer1 = event.data.Lecturer1
+    let lecturer2 = event.data.Lecturer2
+    let location = event.data.Location
+  
+    this.ttcs.checkReservedSlots(startTime,endTime,lecturer1,lecturer2,location).subscribe((hall)=> {
+      console.log(hall);
+    });
+        this.ttcs.setFirstYearTT(this.eventSettings4Y.dataSource)
   }
 
   ngOnInit() {

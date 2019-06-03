@@ -79,8 +79,8 @@ export class TimeTableCRUDService {
               let stTime = startTime.getTime()/1000;
               let enTime = endTime.getTime()/1000;
               
-              if(item.StartTime.seconds >= startTime && item.StartTime.seconds < endTime 
-                || item.EndTime.seconds > startTime && item.EndTime.seconds <= endTime) {
+              if(item.StartTime.seconds >= stTime && item.StartTime.seconds < enTime 
+                || item.EndTime.seconds > stTime && item.EndTime.seconds <= enTime) {
               
                   if(item.Location === location) {
                     isHallReserved = true;

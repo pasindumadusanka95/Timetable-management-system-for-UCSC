@@ -132,22 +132,16 @@ export class SecondYearComponent implements OnInit {
   onDataBound2Y(event){
   
     
-    // let canAdd=true;
-    // for(let i of this.eventSettings2Y.dataSource as any[])
-    // {
-    //     if(event.StartTime.getDay()==i.StartTime.getDay() ){
-    //       canAdd=false;
-    //       break;
-    //     }
-    // }
-    
-    this.ttcs.setSecondYearTT(this.eventSettings2Y.dataSource)
-
-      
-    // }
-    // else{
-    //   console.log('cannot allocate')
-    // }
+    let startTime = event.data.StartTime
+    let endTime = event.data.EndTime
+    let lecturer1 = event.data.Lecturer1
+    let lecturer2 = event.data.Lecturer2
+    let location = event.data.Location
+  
+    this.ttcs.checkReservedSlots(startTime,endTime,lecturer1,lecturer2,location).subscribe((hall)=> {
+      console.log(hall);
+    });
+        this.ttcs.setFirstYearTT(this.eventSettings2Y.dataSource)
   }
 
   ngOnInit() {
