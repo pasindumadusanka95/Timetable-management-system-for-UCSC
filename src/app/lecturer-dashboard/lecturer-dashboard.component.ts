@@ -18,10 +18,10 @@ constructor(
   private service: LecturerService,
    public modalService: NgbModal,
   private firestore: AngularFirestore,
-  private toastr : ToastrService,
+  private toastr: ToastrService,
   private subjectsService: SubjectsService
 ) { }
-   
+
    ngOnInit() {
     this.subjectsService.getSubjects().subscribe(
       list => {
@@ -43,7 +43,7 @@ constructor(
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         }, );
       }
-  
+
       private getDismissReason(reason: any): string {
         if (reason === ModalDismissReasons.ESC) {
           return 'by pressing ESC';

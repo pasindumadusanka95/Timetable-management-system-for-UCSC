@@ -1,3 +1,4 @@
+import { AdminGuard } from './core/admin.guard';
 import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
@@ -10,6 +11,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { LecturerLayoutComponent } from './lecturer-layout/lecturer-layout.component';
 import { SuperadminLayoutComponent } from './superadmin-layout/superadmin-layout.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { LecturerGuard } from './core/lecturer.guard';
+import { SuperadminGuard } from './core/superadmin.guard';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', component: HomepageComponent },
@@ -24,6 +27,7 @@ const routes: Routes = [
    {
     path: '',
     component: AdminLayoutComponent,
+    canActivate: [AdminGuard],
     children: [
         {
       path: '',
@@ -32,6 +36,7 @@ const routes: Routes = [
   {
     path: '',
     component: LecturerLayoutComponent,
+    canActivate: [LecturerGuard],
     children: [
         {
       path: '',
@@ -40,6 +45,7 @@ const routes: Routes = [
   {
     path: '',
     component: SuperadminLayoutComponent,
+    canActivate: [SuperadminGuard],
     children: [
         {
       path: '',

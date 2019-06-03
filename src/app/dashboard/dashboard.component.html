@@ -29,12 +29,21 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <button mat-raised-button type="button" 
+                        class="btn btn-info gap-right" 
+                        (click)="authService.SignOut()">
+                        Logout</button>
+                        <!-- <a class="nav-link" href="">
                             <i class="material-icons">logout</i> Logout
                             <p>
                                 <span class="d-lg-none d-md-block">Account</span>
                             </p>
-                        </a>
+                        </a> -->
+                        <!-- <div class="container-login100-form-btn m-t-20">
+                          <button class="login100-form-btn" (click)="authService.SignOut()">
+                            Logout
+                          </button>
+                        </div> -->
                     </li>
                 </ul>
             </div>

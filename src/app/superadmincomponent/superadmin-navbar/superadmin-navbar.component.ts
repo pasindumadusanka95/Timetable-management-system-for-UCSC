@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'app/core/auth.service';
 
 @Component({
   selector: 'app-superadmin-navbar',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuperadminNavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
