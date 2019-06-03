@@ -20,23 +20,23 @@ export class AuthService {
     })
   }
   async  login(email:  string, password:  string) {
-    if(email=='aucsc321@gmail.com'){
+// tslint:disable-next-line: triple-equals
+    if (email == 'aucsc321@gmail.com') {
     try {
         await  this.afAuth.auth.signInWithEmailAndPassword(email, password)
         this.router.navigate(['/dashboard']);
     } catch (e) {
         alert('Error!'  +  e.message);
     }
-  }
-    else if(email=='saucsc321@gmail.com'){
+// tslint:disable-next-line: triple-equals
+  } else if (email == 'saucsc321@gmail.com') {
       try {
           await  this.afAuth.auth.signInWithEmailAndPassword(email, password)
           this.router.navigate(['/superadmin']);
       } catch (e) {
           alert('Error!'  +  e.message);
       }
-  }
-  else{
+  } else {
     try {
       await  this.afAuth.auth.signInWithEmailAndPassword(email, password)
       this.router.navigate(['/lecturer']);
@@ -45,7 +45,7 @@ export class AuthService {
   }
   }
   }
-  async logout(){
+  async logout() {
       await this.afAuth.auth.signOut();
       localStorage.removeItem('user');
       this.router.navigate(['']);

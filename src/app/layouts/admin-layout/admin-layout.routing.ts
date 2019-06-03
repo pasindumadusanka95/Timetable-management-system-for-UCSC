@@ -7,11 +7,12 @@ import { TableListComponent } from '../../table-list/table-list.component';
 import { LecturersComponent } from '../../addlecturers/lecturers.component';
 import { WorkloadComponent } from 'app/workload/workload.component';
 import { StudentCountComponent } from 'app/student-count/student-count.component';
+import { AdminGuard } from 'app/core/admin.guard';
 
 export const AdminLayoutRoutes: Routes = [
-    
+
     { path: 'dashboard',         component: DashboardComponent },
-    { path: 'halls',             component: HallsComponent },
+    { path: 'halls',             component: HallsComponent, canActivate: [AdminGuard], },
     { path: 'table-list',        component: TableListComponent },
     { path: 'subjects',          component: SubjectsComponent },
     { path: 'managelectures',     component: LecturersComponent },

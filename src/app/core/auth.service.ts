@@ -13,7 +13,7 @@ import { User } from './user';
 export class AuthService {
 
   user: Observable<User>;
-  
+
   constructor(private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router,
@@ -34,23 +34,27 @@ export class AuthService {
       return this.afAuth.auth.signInWithEmailAndPassword(email, password)
         .then((result) => {
           this.ngZone.run(() => {
-            if(email=='aucsc321@gmail.com'){
+// tslint:disable-next-line: triple-equals
+            if (email == 'aucsc321@gmail.com') {
+              console.log(this.isLoggedIn);
+              localStorage.setItem('user', JSON.stringify(result.user));
+              console.log(this.isLoggedIn);
               this.router.navigate(['/dashboard']);
-            }
-            else if(email=='saucsc321@gmail.com'){
+              console.log(this.isLoggedIn);
+// tslint:disable-next-line: triple-equals
+            } else if (email == 'saucsc321@gmail.com') {
+              localStorage.setItem('user', JSON.stringify(result.user));
               this.router.navigate(['/superadmin']);
-            }
-            else{
+            } else {
+              localStorage.setItem('user', JSON.stringify(result.user));
               this.router.navigate(['/lecturer']);
             }
-            // this.router.navigate(['/superadmin']);
-            localStorage.setItem('user', JSON.stringify(result.user));
           });
         }).catch((error) => {
           window.alert('Ooops! something went wrong');
         })
     }
-  
+
     getUser() {
       return this.user;
     }
@@ -75,7 +79,7 @@ export class AuthService {
 
     get isLoggedIn(): boolean {
       const user = JSON.parse(localStorage.getItem('user'));
-      return (user !== null) ? true : false;
+      return (user !== null) ;
     }
 
     SetUserData(user) {
@@ -91,7 +95,7 @@ export class AuthService {
         merge: true
       })
     }
-    
+
     SignOut() {
       return this.afAuth.auth.signOut().then(() => {
         localStorage.removeItem('user');

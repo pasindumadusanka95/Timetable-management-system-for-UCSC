@@ -13,10 +13,10 @@ export class UserService {
   users: Observable<User[]>;
 
   constructor(public afs: AngularFirestore) {
-    this.usersCollection = this.afs.collection('users', ref => ref.orderBy('email','asc'));
-  
+    this.usersCollection = this.afs.collection('users', ref => ref.orderBy('email', 'asc'));
+
     this.users = this.afs.collection('users').snapshotChanges().pipe(map(changes => {
-      return changes.map( a=> {
+      return changes.map( a => {
         const data = a.payload.doc.data() as User;
         data.uid = a.payload.doc.id;
         return data;
