@@ -36,11 +36,8 @@ export class AuthService {
           this.ngZone.run(() => {
 // tslint:disable-next-line: triple-equals
             if (email == 'aucsc321@gmail.com') {
-              console.log(this.isLoggedIn);
               localStorage.setItem('user', JSON.stringify(result.user));
-              console.log(this.isLoggedIn);
               this.router.navigate(['/dashboard']);
-              console.log(this.isLoggedIn);
 // tslint:disable-next-line: triple-equals
             } else if (email == 'saucsc321@gmail.com') {
               localStorage.setItem('user', JSON.stringify(result.user));

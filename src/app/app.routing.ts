@@ -12,6 +12,7 @@ import { LecturerLayoutComponent } from './lecturer-layout/lecturer-layout.compo
 import { SuperadminLayoutComponent } from './superadmin-layout/superadmin-layout.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { LecturerGuard } from './core/lecturer.guard';
+import { SuperadminGuard } from './core/superadmin.guard';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', component: HomepageComponent },
@@ -26,7 +27,7 @@ const routes: Routes = [
    {
     path: '',
     component: AdminLayoutComponent,
-    // canActivate: [AdminGuard],
+    canActivate: [AdminGuard],
     children: [
         {
       path: '',
@@ -35,7 +36,7 @@ const routes: Routes = [
   {
     path: '',
     component: LecturerLayoutComponent,
-    // canActivate: [LecturerGuard],
+    canActivate: [LecturerGuard],
     children: [
         {
       path: '',
@@ -44,6 +45,7 @@ const routes: Routes = [
   {
     path: '',
     component: SuperadminLayoutComponent,
+    canActivate: [SuperadminGuard],
     children: [
         {
       path: '',

@@ -28,13 +28,17 @@
                     <a class="nav-link" style="color:rgb(69, 72, 76); cursor: pointer" [routerLink]="['/lecturerprofile']" >  <i class="material-icons">person</i> Profile</a> 
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="">
+                    <button mat-raised-button type="button" 
+                    class="btn btn-info gap-right" 
+                    (click)="authService.SignOut()">
+                    Logout</button>
+                  <!-- <a class="nav-link" href="">
                        
                       <i class="material-icons">logout</i> Logout
                       <p>
                           <span class="d-lg-none d-md-block">Account</span>
                       </p>
-                  </a>
+                  </a> -->
               </li>
           </ul>
       </div>

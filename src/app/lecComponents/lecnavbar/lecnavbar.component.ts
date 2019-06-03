@@ -1,8 +1,8 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import {  Router } from '@angular/router';
-import { AuthService } from 'app/auth/auth.service';
 import { ROUTES } from '../lecsidebar/lecsidebar.component';
 import { Location, LocationStrategy, PathLocationStrategy, PopStateEvent } from '@angular/common';
+import { AuthService } from 'app/core/auth.service';
 
 @Component({
   selector: 'app-lecnavbar',
