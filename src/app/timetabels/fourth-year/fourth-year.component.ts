@@ -139,7 +139,7 @@ export class FourthYearComponent implements OnInit {
     this.ttcs.checkReservedSlots(startTime,endTime,lecturer1,lecturer2,location).subscribe((hall)=> {
       console.log(hall);
     });
-        this.ttcs.setFirstYearTT(this.eventSettings4Y.dataSource)
+        this.ttcs.setFourthYearTT(this.eventSettings4Y.dataSource)
   }
 
   ngOnInit() {
