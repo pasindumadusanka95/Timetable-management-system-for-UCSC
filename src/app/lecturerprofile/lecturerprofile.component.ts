@@ -13,22 +13,22 @@ import { NgForm } from '@angular/forms';
 export class LecturerprofileComponent implements OnInit {
   lecturer: Lecturer[];
   constructor(public service: LecturerService, private firestore: AngularFirestore,
-    private toastr : ToastrService) {}
- 
+    private toastr: ToastrService) {}
+
   ngOnInit() {
     this.resetForm();
     this.service.getLecturers().subscribe(actionArray => {
-      this.lecturer = actionArray.map(item=>{
+      this.lecturer = actionArray.map(item => {
         return {
           id: item.payload.doc.id,
-          ...item.payload.doc.data() 
+          ...item.payload.doc.data()
         } as Lecturer;
-        
+
         })
   });
   }
- 
- 
+
+
   resetForm(form?: NgForm) {
     // tslint:disable-next-line:curly
     // if (form != null)
@@ -42,10 +42,10 @@ export class LecturerprofileComponent implements OnInit {
     //   NewTime:'',
     //   Subject: '',
     //   Reason: '',
-      
+
     // }
   }
-  onEdit(lecturer:Lecturer){
-    this.service.formData= Object.assign ({}, lecturer);
+  onEdit(lecturer: Lecturer) {
+    this.service.formData = Object.assign ({}, lecturer);
   }
 }

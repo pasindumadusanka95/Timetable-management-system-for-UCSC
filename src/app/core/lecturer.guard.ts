@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { tap, map, take } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -13,13 +14,20 @@ export class LecturerGuard implements CanActivate {
     public router: Router
   ) { }
 
+  isLecturer() {
+    if (this.authService.curUser === 'lecturer') {
+      return true;
+    } else { return false; }
+  }
+
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (!this.authService.isLoggedIn) {
-       window.alert('You are not allowed to access this URL!');
-       this.router.navigate(['/login'])
-    }
-    return true;
+      if (!this.authService.isLoggedIn || !this.isLecturer()) {
+        window.alert('Sign In as a Lecturer to access this URL!');
+        this.authService.SignOut();
+
+     }
+     return true;
   }
 }
