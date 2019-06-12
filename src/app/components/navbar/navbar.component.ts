@@ -3,9 +3,11 @@ import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
+import { Message } from '_debugger';
+import { MessageService } from 'app/shared/messages.service';
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'app-anavbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
@@ -15,8 +17,13 @@ export class NavbarComponent implements OnInit {
       mobile_menu_visible: any = 0;
     private toggleButton: any;
     private sidebarVisible: boolean;
-
-    constructor(private  authService:  AuthService, location: Location,  private element: ElementRef, private router: Router) {
+    Mlist: Message[];
+    constructor(private  authService:  AuthService,
+         location: Location,  
+         private element: ElementRef, 
+         private router: Router,
+         private msgService: MessageService
+         ) {
       this.location = location;
           this.sidebarVisible = false;
     }
@@ -33,6 +40,15 @@ export class NavbarComponent implements OnInit {
            this.mobile_menu_visible = 0;
          }
      });
+     this.msgService.getMessages().subscribe(actionArray => {
+        this.Mlist = actionArray.map(item => {
+          const a: any = item.payload.doc.data();
+          return a.message
+        })
+    
+    
+    });
+    
     }
 
     sidebarOpen() {
