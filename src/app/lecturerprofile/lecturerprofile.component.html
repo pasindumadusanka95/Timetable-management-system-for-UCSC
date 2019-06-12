@@ -5,11 +5,11 @@
               <div class="col-md-8">
                   <div class="card">
                       <div class="card-header card-header-primary">
-                          <h4 class="card-title">User Profile</h4>
+                          <h4 class="card-title">User Profile {{user.email}}</h4>
                          
                       </div>
                       <div class="card-body">
-                        <form #form="ngForm" autocomplete="off" (submit)="onEdit(form)">
+                        <!-- <form #form="ngForm" autocomplete="off" (submit)="onEdit(form)">
                           <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id">
                            
                           <div class="row">
@@ -31,14 +31,14 @@
                                   <label>Email</label>
                                       
                                    <input type="email" name="email" #email="ngModel" [(ngModel)]="service.formData.email" class="form-control" required>
-                                                 <!-- <owl-date-time #Date></owl-date-time> -->
+                                                 
                                 </div>
                               </div>
                               <div class="row">
                                 <div class="col-md-12">
                                   <label>Mobile Number</label>
                                    <input type="number" name="mobileNumber" #mobileNumber="ngModel" [(ngModel)]="service.formData.mobileNumber" class="form-control" required>
-                                                 <!-- <owl-date-time #Time></owl-date-time> -->
+                                                 
                                 </div>
                               </div>
 
@@ -54,9 +54,9 @@
                               <div class="row">
                                 <div class="col-md-12">
                                   <label>OLD Password</label>
-                                  <!-- <a class="action-btn pull-right" style="color:rgb(36, 143, 192); cursor: pointer" >Reset password<i class="material-icons">add</i> </a> -->
+                                  
                                    <input type="password" name="Date" #NewDate="ngModel" [(ngModel)]="service.formData.NewDate" class="form-control" required>
-                                                 <!-- <owl-date-time #Time></owl-date-time> -->
+                                                 
                                 </div>
                               </div>
                              
@@ -88,7 +88,7 @@
                            
                             <div class="clearfix"></div>
                           
-                        </form>
+                        </form> -->
                         
                       </div>
                   </div>
