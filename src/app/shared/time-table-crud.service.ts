@@ -97,6 +97,13 @@ export class TimeTableCRUDService {
                     isLecture2Reserved: isLecture2Reserved
                   });
               }
+              // else{
+              //   observer.next({
+              //     isHallReserved : false,
+              //     isLecture1Reserved : false,
+              //     isLecture2Reserved : false
+              //   })
+              // }
             });
 
           }

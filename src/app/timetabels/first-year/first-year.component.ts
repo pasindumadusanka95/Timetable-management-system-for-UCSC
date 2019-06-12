@@ -158,9 +158,12 @@ export class FirstYearComponent implements OnInit {
     //  this.ttcs.checkReservedSlots(startTime, endTime, lecturer1, lecturer2, location).subscribe((hall: any) => {
     //     if (hall.isHallReserved == true || hall.isLecture1Reserved == true || hall.isLecture2Reserved == true) {
     //       this.isAdd == false;
+    //       console.log(hall)
     //     }
-    //   },(error) => console.log(error), () => {
-    //     console.log("fvdsd")
+    //   else{
+    //       console.log("fvdsd")
+    //   }
+        
     //   });
   }
 
