@@ -82,13 +82,13 @@ export class TimeTableCRUDService {
               if(item.StartTime.seconds >= stTime && item.StartTime.seconds < enTime 
                 || item.EndTime.seconds > stTime && item.EndTime.seconds <= enTime) {
               
-                  if(item.Location === location) {
+                  if(item.Location == location) {
                     isHallReserved = true;
                   }
-                  if(item.Lecturer1 === lecturer1) {
+                  if(item.Lecturer1 == lecturer1) {
                     isLecture1Reserved = true;
                   }
-                  if(item.Lecturer2 === lecturer2) {
+                  if(item.Lecturer2 == lecturer2) {
                     isLecture2Reserved = true;
                   }
                   observer.next({

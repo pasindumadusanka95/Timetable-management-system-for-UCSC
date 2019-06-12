@@ -20,24 +20,24 @@ export class SubjectListComponent implements OnInit {
 
   ngOnInit() {
     this.subjectsService.getSubjects().subscribe(actionArray => {
-      this.list = actionArray.map(item=>{
+      this.list = actionArray.map(item => {
         return {
           id: item.payload.doc.id,
-          ...item.payload.doc.data() 
+          ...item.payload.doc.data()
         } as Subjects;
-        
+
         })
   });
   }
 
-  onEdit(subject:Subjects){
-    this.subjectsService.formData= Object.assign ({}, subject);
+  onEdit(subject: Subjects) {
+    this.subjectsService.formData = Object.assign ({}, subject);
   }
 
-  onDelete(id:string){
-    if(confirm('Are you sure to delete this record?')){
-      this.firestore.doc('subjects/'+ id).delete()
-      this.toastr.warning('Deleted successfully!','Subject Record');
+  onDelete(id: string) {
+    if (confirm('Are you sure to delete this record?')) {
+      this.firestore.doc('subjects/' + id).delete()
+      this.toastr.warning('Deleted successfully!', 'Subject Record');
     }
   }
 

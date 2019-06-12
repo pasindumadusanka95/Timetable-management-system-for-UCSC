@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { tap, map, take } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -12,13 +13,31 @@ export class SuperadminGuard implements CanActivate {
     public router: Router
   ) { }
 
+  isSuperdmin() {
+    if (this.authService.curUser === 'superAdmin') {
+      return true;
+    } else { return false; }
+  }
+
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (!this.authService.isLoggedIn) {
-       window.alert('You are not allowed to access this URL!');
-       this.router.navigate(['/login'])
-    }
-    return true;
+      // return this.authService.user.pipe (
+      //   take(1),
+      //   map(data => data && data.roles.superAdmin),
+      //   tap(isSuperAdmin => {
+      //     if (!isSuperAdmin) {
+      //       window.alert('Super Admins Only');
+      //       console.log('Super Admins Only');
+      //       this.router.navigate(['']);
+      //     }
+      //   })
+      // );
+      if (!this.authService.isLoggedIn || !this.isSuperdmin()) {
+        window.alert('Sign In as a Lecturer to access this URL!');
+        this.authService.SignOut();
+
+     }
+     return true;
   }
 }
