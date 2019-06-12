@@ -95,7 +95,6 @@ export class TimeTableCRUDService {
                     isHallReserved: isHallReserved,
                     isLecture1Reserved: isLecture1Reserved,
                     isLecture2Reserved: isLecture2Reserved
-
                   });
               }
             });

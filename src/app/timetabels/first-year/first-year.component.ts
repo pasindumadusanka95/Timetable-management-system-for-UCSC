@@ -148,14 +148,31 @@ export class FirstYearComponent implements OnInit {
     let location = event.data.Location
 
     let isAdd = true;
+
+    this.testFunc(startTime, endTime, lecturer1, lecturer2, location).then((hall)=> {
+     console.log(hall)
+    }).catch((error)=> {
+      console.log(error)
+    });
     
-     this.ttcs.checkReservedSlots(startTime, endTime, lecturer1, lecturer2, location).subscribe((hall: any) => {
-        if (hall.isHallReserved == true || hall.isLecture1Reserved == true || hall.isLecture2Reserved == true) {
-          this.isAdd == false;
-        }
-      },(error) => console.log(error), () => {
-        console.log("fvdsd")
-      });
+    //  this.ttcs.checkReservedSlots(startTime, endTime, lecturer1, lecturer2, location).subscribe((hall: any) => {
+    //     if (hall.isHallReserved == true || hall.isLecture1Reserved == true || hall.isLecture2Reserved == true) {
+    //       this.isAdd == false;
+    //     }
+    //   },(error) => console.log(error), () => {
+    //     console.log("fvdsd")
+    //   });
+  }
+
+  testFunc(startTime, endTime, lecturer1, lecturer2, location) {
+    return new Promise((resolve, reject) => {
+      this.ttcs.checkReservedSlots(startTime, endTime, lecturer1, lecturer2, location).subscribe((hall: any) => {
+      if (hall.isHallReserved == true || hall.isLecture1Reserved == true || hall.isLecture2Reserved == true) {
+        resolve(hall);
+      }
+    },(error) => () => {
+      reject(error)
+    })});
   }
 
 
