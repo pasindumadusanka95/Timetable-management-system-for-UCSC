@@ -4,7 +4,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Injectable, NgZone } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, first } from 'rxjs/operators';
 import { User } from './user';
 
 @Injectable({
@@ -13,6 +13,7 @@ import { User } from './user';
 export class AuthService {
 
   user: Observable<User>;
+  curUser;
 
   constructor(private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
@@ -37,13 +38,16 @@ export class AuthService {
 // tslint:disable-next-line: triple-equals
             if (email == 'aucsc321@gmail.com') {
               localStorage.setItem('user', JSON.stringify(result.user));
+              this.curUser = 'admin';
               this.router.navigate(['/dashboard']);
 // tslint:disable-next-line: triple-equals
             } else if (email == 'saucsc321@gmail.com') {
               localStorage.setItem('user', JSON.stringify(result.user));
+              this.curUser = 'superAdmin';
               this.router.navigate(['/superadmin']);
             } else {
               localStorage.setItem('user', JSON.stringify(result.user));
+              this.curUser = 'lecturer';
               this.router.navigate(['/lecturer']);
             }
           });
@@ -54,6 +58,9 @@ export class AuthService {
 
     getUser() {
       return this.user;
+    }
+    GetUser() {
+      return this.user.pipe(first()).toPromise();
     }
 
     SignUp(email, password) {
@@ -99,17 +106,5 @@ export class AuthService {
         this.router.navigate(['/login']);
       })
     }
-
-    // private updateUserData(user) {
-    //   const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-    //   const data: User = {
-    //     uid: user.uid,
-    //     email: user.email,
-    //     roles: {
-    //       admin: true
-    //     }
-    //   }
-    //   return userRef.set(data, { merge: true })
-    // }
 
 }

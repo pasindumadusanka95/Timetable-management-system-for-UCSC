@@ -10,7 +10,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 
 export class LecturerService {
-    formData : Lecturer;
+    formData: Lecturer;
 
 constructor(private firestore: AngularFirestore) {}
     // tslint:disable-next-line:member-ordering
@@ -26,7 +26,7 @@ constructor(private firestore: AngularFirestore) {}
   });
 
 
-getLecturers(){
+getLecturers() {
   return this.firestore.collection('lecturers').snapshotChanges();
 }
 
