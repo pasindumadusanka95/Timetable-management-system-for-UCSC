@@ -196,7 +196,9 @@
           <!-- <th scope="row">{{student.$key}}</th> -->
           <td>{{hall.hallID}}</td>
             <td>{{hall.capacity}}</td>
-            <td>{{hall.resourceStatus}}</td>
+            <td> <ul *ngFor="let item of createRange(hall.resourceStatus.length);"> 
+              <li>{{hall.resourceStatus[item].display}}</li>
+            </ul></td>
           
         </tr>
       
