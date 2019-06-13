@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HallsComponent } from './halls.component';
 
-describe('HallsComponent', () => {
+fdescribe('HallsComponent', () => {
   let component: HallsComponent;
   let fixture: ComponentFixture<HallsComponent>;
 
@@ -19,7 +19,7 @@ describe('HallsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  fit('should create', () => {
     expect(component).toBeTruthy();
   });
 });
