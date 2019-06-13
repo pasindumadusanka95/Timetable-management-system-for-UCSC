@@ -190,7 +190,7 @@ export class FirstYearComponent implements OnInit {
 
       }
 
-      this.scheduleObj.refreshEvents()
+      this.scheduleObj.refreshEvents();
 
 
     });
