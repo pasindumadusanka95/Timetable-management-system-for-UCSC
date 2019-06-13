@@ -12,8 +12,8 @@ import { ToastrService } from 'ngx-toastr';
 export class SubjectsComponent implements OnInit {
 
   constructor(public subjectsService: SubjectsService,
-    private firestore : AngularFirestore,
-    private toastr : ToastrService) { }
+    private firestore: AngularFirestore,
+    private toastr: ToastrService) { }
   submitted: boolean;
   showSuccessMessage: boolean;
   // tslint:disable-next-line:member-ordering
@@ -24,12 +24,13 @@ export class SubjectsComponent implements OnInit {
   }
 
   resetForm(form?: NgForm) {
-    if (form != null)
+    if (form != null) {
       form.resetForm();
+    }
     this.subjectsService.formData = {
       id: null,
-      subjectCode:'',
-      subjectTitle:'',
+      subjectCode: '',
+      subjectTitle: '',
       year: null,
       semester: null,
       credit: null,
@@ -37,16 +38,16 @@ export class SubjectsComponent implements OnInit {
       AssignedLecturer2: '',
     }
   }
-  
+
   // ResetForm() {
   //   this.subjectsService.form.reset();
   //   this.submitted = false;
   // }
 
-  onSubmit(form:NgForm){
+  onSubmit(form: NgForm) {
     // this.submitted = true;
     // if (this.subjectsService.form.valid) {
-    //  if (this.subjectsService.form.get('$key').value == null) 
+    //  if (this.subjectsService.form.get('$key').value == null)
     //    this.subjectsService.insertSubject(this.subjectsService.form.value);
     //  else
     //    this.subjectsService.updateSubject(this.subjectsService.form.value);
@@ -56,13 +57,14 @@ export class SubjectsComponent implements OnInit {
     // this.subjectsService.form.reset();
     // }
 
-    let data = Object.assign({},form.value);
+    const data = Object.assign({}, form.value);
     delete data.id;
-    if(form.value.id == null)
+    if (form.value.id == null) {
       this.firestore.collection('subjects').add(data);
-    else
-      this.firestore.doc('subjects/'+ form.value.id).update(data);
+    } else {
+      this.firestore.doc('subjects/' + form.value.id).update(data);
+    }
     this.resetForm(form);
-    this.toastr.success('Submitted successfully','Subject Details');
+    this.toastr.success('Submitted successfully', 'Subject Details');
 }
 }

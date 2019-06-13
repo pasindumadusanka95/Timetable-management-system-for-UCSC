@@ -55,6 +55,7 @@ import { LecturerWorkloadComponent } from './lecturer-workload/lecturer-workload
 import { SuperadminNavbarComponent } from './superadmincomponent/superadmin-navbar/superadmin-navbar.component';
 import { TagInputModule } from 'ngx-chips';
 import { CommontableComponent } from './commontable/commontable.component';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material';
 
 
 
@@ -128,7 +129,7 @@ let config = {
   //  SuperadminSidebarComponent,
     LecturerLayoutComponent,
     SuperadminLayoutComponent,
-
+    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
   ],
   exports:[
     
