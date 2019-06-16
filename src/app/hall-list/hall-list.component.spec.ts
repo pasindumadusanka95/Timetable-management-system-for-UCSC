@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HallListComponent } from './hall-list.component';
 
-describe('HallListComponent', () => {
+fdescribe('HallListComponent', () => {
   let component: HallListComponent;
   let fixture: ComponentFixture<HallListComponent>;
 
@@ -19,7 +19,7 @@ describe('HallListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  fit('should create', () => {
     expect(component).toBeTruthy();
   });
 });

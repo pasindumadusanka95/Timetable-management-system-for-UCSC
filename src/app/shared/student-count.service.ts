@@ -20,7 +20,6 @@ constructor(private firestore: AngularFirestore) {}
     $key: new FormControl(null),
     registeredYear: new FormControl(null,Validators.required),
     course: new FormControl('',Validators.required),
-    subject: new FormControl('',Validators.required),
     groupName: new FormControl('', Validators.required),
     numberofGroups: new FormControl(null,Validators.required),
     sizeofGroups: new FormControl([], Validators.required),

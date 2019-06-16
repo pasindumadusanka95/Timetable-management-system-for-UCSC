@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -61,4 +63,56 @@ export class TimeTableCRUDService {
   setFourthYearTT(object){
     const doc = this.db.collection('Timetable').doc('4thyear').set({fourthyear:object});
   }
+
+  checkReservedSlots(startTime: Date, endTime: Date, lecturer1: string, lecturer2: string, location: string) {
+    const hallsObservable = new Observable(observer => {
+      this.db.collection('Timetable').snapshotChanges().subscribe((actioArray => {
+        actioArray.map(item=>{
+          let years:any=item.payload.doc.data();
+          for (let key of Object.keys(years)) {
+            let year = years[key];
+
+            year.forEach(item => {
+              let isHallReserved = false;
+              let isLecture1Reserved = false;
+              let isLecture2Reserved = false;
+              let stTime = startTime.getTime()/1000;
+              let enTime = endTime.getTime()/1000;
+              
+              if(item.StartTime.seconds >= stTime && item.StartTime.seconds < enTime 
+                || item.EndTime.seconds > stTime && item.EndTime.seconds <= enTime) {
+              
+                  if(item.Location == location) {
+                    isHallReserved = true;
+                  }
+                  if(item.Lecturer1 == lecturer1) {
+                    isLecture1Reserved = true;
+                  }
+                  if(item.Lecturer2 == lecturer2) {
+                    isLecture2Reserved = true;
+                  }
+                  observer.next({
+                    isHallReserved: isHallReserved,
+                    isLecture1Reserved: isLecture1Reserved,
+                    isLecture2Reserved: isLecture2Reserved
+                  });
+              }
+              // else{
+              //   observer.next({
+              //     isHallReserved : false,
+              //     isLecture1Reserved : false,
+              //     isLecture2Reserved : false
+              //   })
+              // }
+            });
+
+          }
+        });
+      }));
+    });
+  
+    return hallsObservable;
+  }
+
+
 }

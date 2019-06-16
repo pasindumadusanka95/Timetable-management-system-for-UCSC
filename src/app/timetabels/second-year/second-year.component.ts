@@ -75,13 +75,21 @@ export class SecondYearComponent implements OnInit {
         });
         dropDownListObject.appendTo(subjectElement);
       }
-      let lecturerElement: HTMLInputElement = args.element.querySelector('#Lecturer') as HTMLInputElement;
-      if (!lecturerElement.classList.contains('e-dropdownlist')) {
+      let lecturerElement1: HTMLInputElement = args.element.querySelector('#Lecturer1') as HTMLInputElement;
+      if (!lecturerElement1.classList.contains('e-dropdownlist')) {
         let dropDownListObject: DropDownList = new DropDownList({
-          placeholder: 'Choose Lecturer', value: lecturerElement.value,
+          placeholder: 'Choose Lecturer', value: lecturerElement1.value,
           dataSource: this.lec_list
         });
-        dropDownListObject.appendTo(lecturerElement);
+        dropDownListObject.appendTo(lecturerElement1);
+      }
+      let lecturerElement2: HTMLInputElement = args.element.querySelector('#Lecturer2') as HTMLInputElement;
+      if (!lecturerElement2.classList.contains('e-dropdownlist')) {
+        let dropDownListObject: DropDownList = new DropDownList({
+          placeholder: 'Choose Lecturer', value: lecturerElement2.value,
+          dataSource: this.lec_list
+        });
+        dropDownListObject.appendTo(lecturerElement2);
       }
       let venueElement: HTMLInputElement = args.element.querySelector('#Location') as HTMLInputElement;
       if (!venueElement.classList.contains('e-dropdownlist')) {
@@ -124,22 +132,16 @@ export class SecondYearComponent implements OnInit {
   onDataBound2Y(event){
   
     
-    // let canAdd=true;
-    // for(let i of this.eventSettings2Y.dataSource as any[])
-    // {
-    //     if(event.StartTime.getDay()==i.StartTime.getDay() ){
-    //       canAdd=false;
-    //       break;
-    //     }
-    // }
-    
-    this.ttcs.setSecondYearTT(this.eventSettings2Y.dataSource)
-
-      
-    // }
-    // else{
-    //   console.log('cannot allocate')
-    // }
+    let startTime = event.data.StartTime
+    let endTime = event.data.EndTime
+    let lecturer1 = event.data.Lecturer1
+    let lecturer2 = event.data.Lecturer2
+    let location = event.data.Location
+  
+    this.ttcs.checkReservedSlots(startTime,endTime,lecturer1,lecturer2,location).subscribe((hall)=> {
+      console.log(hall);
+    });
+        this.ttcs.setSecondYearTT(this.eventSettings2Y.dataSource)
   }
 
   ngOnInit() {

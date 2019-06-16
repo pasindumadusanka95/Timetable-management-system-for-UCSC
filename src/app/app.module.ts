@@ -53,6 +53,10 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { CoreModule } from './core/core.module';
 import { LecturerWorkloadComponent } from './lecturer-workload/lecturer-workload.component';
 import { SuperadminNavbarComponent } from './superadmincomponent/superadmin-navbar/superadmin-navbar.component';
+import { TagInputModule } from 'ngx-chips';
+import { CommontableComponent } from './commontable/commontable.component';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material';
+
 
 
 
@@ -90,7 +94,8 @@ let config = {
     }),
     NgxPaginationModule ,
     SharedModule,
-    CoreModule
+    CoreModule,
+    TagInputModule,
   ],
   declarations: [
     AppComponent,
@@ -100,6 +105,8 @@ let config = {
     SuperadminLayoutComponent,
     LecturerLayoutComponent,
     HomepageComponent,
+    
+   
    
     
     
@@ -122,7 +129,7 @@ let config = {
   //  SuperadminSidebarComponent,
     LecturerLayoutComponent,
     SuperadminLayoutComponent,
-
+    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
   ],
   exports:[
     

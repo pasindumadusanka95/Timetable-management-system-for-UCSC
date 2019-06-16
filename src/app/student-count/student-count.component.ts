@@ -38,7 +38,6 @@ export class StudentCountComponent implements OnInit {
       id: null,
       registeredYear:null,
       course:'',
-      subject:'',
       groupName: '',
       numberofGroups: null,
       sizeofGroups: new Array(),
@@ -92,9 +91,9 @@ export class StudentCountComponent implements OnInit {
  trackArray(index, item) {
     return index;
   }
-  onChange(newValue) {
+//  onChange(newValue) {
     // console.log(newValue);
-    this.StudentCountservice.formData.subject = newValue;
-}
+   // this.StudentCountservice.formData.subject = newValue;
+//}
 
 }

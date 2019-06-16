@@ -23,15 +23,15 @@
                               <input type="text" name="course" #course="ngModel" [(ngModel)]="StudentCountservice.formData.course" class="form-control" required>
                             </div>
                           </div>
-                          <div class="row">
+                          <!-- <div class="row">
                               <div class="col-md-12">
-                                <label>Subject</label>
+                                <label>Subject</label> -->
                                 <!-- <input type="text" name="subject" #subject="ngModel" [(ngModel)]="StudentCountservice.formData.subject" class="form-control" required> -->
-                                <select [ngModel]="StudentCountservice.formData.subject" (ngModelChange)="onChange($event)" name="subject" class="form-control" required>
+                                <!-- <select [ngModel]="StudentCountservice.formData.subject" (ngModelChange)="onChange($event)" name="subject" class="form-control" required>
                                   <option [value]="subject.subjectCode" *ngFor="let subject of subjects">{{subject.subjectCode}}-{{subject.subjectTitle}}</option>
                               </select> 
                               </div>
-                            </div>
+                            </div> -->
                           <div class="row">
                             <div class="col-md-12">
                               <label>Group Name</label>

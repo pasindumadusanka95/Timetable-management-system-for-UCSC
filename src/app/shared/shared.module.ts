@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { SuperadminNavbarComponent } from 'app/superadmincomponent/superadmin-navbar/superadmin-navbar.component';
+import { LecturerViewComponent } from 'app/viewtimetabels/lecturer-view/lecturer-view.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -34,6 +35,7 @@ import { SuperadminNavbarComponent } from 'app/superadmincomponent/superadmin-na
         LecnavbarComponent,
         SuperadminSidebarComponent,
         SuperadminNavbarComponent,
+        LecturerViewComponent
         
     ],
     exports: [
@@ -45,6 +47,7 @@ import { SuperadminNavbarComponent } from 'app/superadmincomponent/superadmin-na
         LecnavbarComponent,
         SuperadminSidebarComponent,
         SuperadminNavbarComponent,
+        LecturerViewComponent
        
     ]
 })
