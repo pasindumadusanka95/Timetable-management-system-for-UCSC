@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../core/auth.service';
 import { Message } from '_debugger';
 import { MessageService } from 'app/shared/messages.service';
+import { NotificationsService } from 'app/shared/notifications.service';
 
 @Component({
   selector: 'app-anavbar',
@@ -22,7 +23,7 @@ export class NavbarComponent implements OnInit {
          location: Location,  
          private element: ElementRef, 
          private router: Router,
-         private msgService: MessageService
+         private msgService: MessageService 
          ) {
       this.location = location;
           this.sidebarVisible = false;
@@ -43,7 +44,7 @@ export class NavbarComponent implements OnInit {
      this.msgService.getMessages().subscribe(actionArray => {
         this.Mlist = actionArray.map(item => {
           const a: any = item.payload.doc.data();
-          return a.message
+          return a.message;
         })
     
     
