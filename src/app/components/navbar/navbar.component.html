@@ -14,14 +14,17 @@
               <li class="nav-item dropdown">
                   <a class="nav-link" href="#pablo" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                       <i class="material-icons">notifications</i>
-                      <span class="notification">5</span>
+                      <!-- <span class="notification" ng-click="clearNotifications()">{{Mlist.length}}</span> -->
+                      <span  class="notification" ng-if="count">{{count}}</span>
                       <p>
                           <span class="d-lg-none d-md-block">Some Actions</span>
                       </p>
                   </a>
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                     <ul *ngFor="let item of Mlist">
-                        <a class="dropdown-item"> <li> {{item}}</li></a>
+                        <a class="dropdown-item"> <li> 
+                            <h5>{{item[2]}}</h5>
+                            {{item[0]}}</li></a>
                     </ul>
                       
                       

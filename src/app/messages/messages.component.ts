@@ -4,7 +4,6 @@ import { MessageService } from 'app/shared/messages.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
 import { Subjects } from 'app/shared/subjects.model';
-import { NotificationsService } from 'app/shared/notifications.service';
 
 
 @Component({
@@ -15,7 +14,7 @@ import { NotificationsService } from 'app/shared/notifications.service';
 export class MessagesComponent implements OnInit {
   subjects: Subjects[];
   constructor(public service: MessageService, private firestore: AngularFirestore,
-    private toastr: ToastrService,public notiservice: NotificationsService) {}
+    private toastr: ToastrService) {}
 
   ngOnInit() {
     this.resetForm();
@@ -63,10 +62,10 @@ export class MessagesComponent implements OnInit {
     const data = Object.assign({}, form.value);
    console.log(data);
   // tslint:disable-next-line:max-line-length
-  // this.notiservice.formData.notification_body = data.LecturerID + ' requested rechedule for ' + data.Subject + ' on ' + data.Date + ' at ' + data.Time + '. requesting new date on ' + data.NewDate + ' at ' + data.NewTime + '.';
-  // this.notiservice.formData.type=2;
-  // this.notiservice.formData.notification_subject="recheduling request";
-  const notificationdata = Object.assign({}, this.notiservice.formData);
+  const notificationbody = data.LecturerID + ' requested rechedule for ' + data.Subject + ' on ' + data.Date + ' at ' + data.Time + '. requesting new date on ' + data.NewDate + ' at ' + data.NewTime + '.';
+  const type=2;
+  const notificationsubject="recheduling request";
+  const notificationdata = Object.assign({}, [notificationbody,type,notificationsubject]);
   delete data.id;
     // tslint:disable-next-line:curly
     if (form.value.id == null) {
