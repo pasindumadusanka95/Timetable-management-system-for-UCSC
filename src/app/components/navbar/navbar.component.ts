@@ -141,7 +141,7 @@ export class NavbarComponent implements OnInit {
       }
       return 'Dashboard';
     }
-    count;
+  
     mainController($scope) {
         $scope.count = 0;
         $scope.addNotification = function(){
