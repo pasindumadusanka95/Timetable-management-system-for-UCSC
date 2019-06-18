@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
          location: Location,  
          private element: ElementRef, 
          private router: Router,
-         private msgService: MessageService 
+         private msgService: NotificationsService
          ) {
       this.location = location;
           this.sidebarVisible = false;
@@ -41,10 +41,10 @@ export class NavbarComponent implements OnInit {
            this.mobile_menu_visible = 0;
          }
      });
-     this.msgService.getMessages().subscribe(actionArray => {
+     this.msgService.getnotifications().subscribe(actionArray => {
         this.Mlist = actionArray.map(item => {
           const a: any = item.payload.doc.data();
-          return a.message;
+          return a;
         })
     
     
@@ -140,5 +140,15 @@ export class NavbarComponent implements OnInit {
           }
       }
       return 'Dashboard';
+    }
+    count;
+    mainController($scope) {
+        $scope.count = 0;
+        $scope.addNotification = function(){
+            $scope.count++;
+        }
+        $scope.clearNotifications = function(){
+            $scope.count = 0;
+        };
     }
 }
