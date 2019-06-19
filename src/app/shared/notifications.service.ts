@@ -22,4 +22,8 @@ return this.firestore.collection('notifications').snapshotChanges();
 getlecnotifications() {
   return this.firestore.collection('notifications',ref => ref.where('1', '==', 1)).snapshotChanges();
   }
+
+  getsupernotifications() {
+    return this.firestore.collection('notifications',ref => ref.where('1', '==', 0)).snapshotChanges();
+    }
 }
