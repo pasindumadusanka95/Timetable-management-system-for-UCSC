@@ -78,10 +78,10 @@ export class TimeTableCRUDService {
               let isLecture2Reserved = false;
               let stTime = startTime.getTime()/1000;
               let enTime = endTime.getTime()/1000;
-              
-              if(item.StartTime.seconds >= stTime && item.StartTime.seconds < enTime 
+
+              if(item.StartTime.seconds >= stTime && item.StartTime.seconds < enTime
                 || item.EndTime.seconds > stTime && item.EndTime.seconds <= enTime) {
-              
+
                   if(item.Location == location) {
                     isHallReserved = true;
                   }
@@ -91,26 +91,32 @@ export class TimeTableCRUDService {
                   if(item.Lecturer2 == lecturer2) {
                     isLecture2Reserved = true;
                   }
-                  observer.next({
-                    isHallReserved: isHallReserved,
-                    isLecture1Reserved: isLecture1Reserved,
-                    isLecture2Reserved: isLecture2Reserved
-                  });
+                  
+                  if (isHallReserved == true || isLecture1Reserved == true || isLecture2Reserved == true) {
+                    observer.next({
+                      isConflicts: true,
+                      isHallReserved: isHallReserved,
+                      isLecture1Reserved: isLecture1Reserved,
+                      isLecture2Reserved: isLecture2Reserved
+                    });
+                  } else {
+                    observer.next({
+                        isConflicts:false
+                    });
+                  }
               }
-              // else{
-              //   observer.next({
-              //     isHallReserved : false,
-              //     isLecture1Reserved : false,
-              //     isLecture2Reserved : false
-              //   })
-              // }
+              else{
+                observer.next({
+                  isConflicts: false
+                })
+              }
             });
 
           }
         });
-      }));
+      }),);
     });
-  
+
     return hallsObservable;
   }
 
