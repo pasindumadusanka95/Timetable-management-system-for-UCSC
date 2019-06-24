@@ -3,6 +3,8 @@ import {  Router } from '@angular/router';
 import { ROUTES } from '../lecsidebar/lecsidebar.component';
 import { Location, LocationStrategy, PathLocationStrategy, PopStateEvent } from '@angular/common';
 import { AuthService } from 'app/core/auth.service';
+import { Notifications } from 'app/shared/notifications.model';
+import { NotificationsService } from 'app/shared/notifications.service';
 
 @Component({
   selector: 'app-lecnavbar',
@@ -10,14 +12,19 @@ import { AuthService } from 'app/core/auth.service';
   styleUrls: ['./lecnavbar.component.scss']
 })
 export class LecnavbarComponent implements OnInit {
-
+    Mlist: Notifications[];
   private listTitles: any[];
   location: Location;
     mobile_menu_visible: any = 0;
   private toggleButton: any;
   private sidebarVisible: boolean;
 
-  constructor(private  authService:  AuthService, location: Location,  private element: ElementRef, private router: Router) {
+  constructor(private  authService:  AuthService, 
+    location: Location,  
+    private element: ElementRef,
+     private router: Router,
+     private msgService: NotificationsService
+     ) {
     this.location = location;
         this.sidebarVisible = false;
   }
@@ -34,6 +41,15 @@ export class LecnavbarComponent implements OnInit {
          this.mobile_menu_visible = 0;
        }
    });
+
+   this.msgService.getlecnotifications().subscribe(actionArray => {
+    this.Mlist = actionArray.map(item => {
+      const a: any = item.payload.doc.data();
+      return a;
+    })
+
+
+});
   }
 
   sidebarOpen() {
