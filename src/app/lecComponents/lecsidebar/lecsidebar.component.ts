@@ -13,7 +13,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/reqSchedule', title: 'Request Reschedule',  icon: 'schedule', class: '' },
     { path: '/lecworkload', title: 'Work Load',  icon: 'work', class: '' },
     { path: '/alltimetables', title: 'Common Timetables',  icon: 'table', class: '' },
-    { path: '/chat', title: 'Chat',  icon: 'chat', class: '' },
+    // { path: '/chat', title: 'Chat',  icon: 'chat', class: '' },
     // { path: '/typography', title: 'Manage Student Counts',  icon: 'people', class: '' },
     // { path: '/subjects', title: 'Manage Subjects',  icon: 'books', class: '' },
 ];

@@ -150,8 +150,9 @@ export class FirstYearComponent implements OnInit {
     let isAdd = true;
 
     this.testFunc(startTime, endTime, lecturer1, lecturer2, location).then((hall)=> {
-     console.log(hall)
+     console.log("testing" + hall)
     }).catch((error)=> {
+      
       console.log(error)
     });
     
