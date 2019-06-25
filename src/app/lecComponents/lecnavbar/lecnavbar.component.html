@@ -26,19 +26,18 @@
                     
                 </div>
             </li>
-              <li class="nav-item">
-                    <button mat-raised-button type="button" 
-                    class="btn btn-info gap-right" 
-                    (click)="authService.SignOut()">
-                    Logout</button>
-                  <!-- <a class="nav-link" href="">
-                       
-                      <i class="material-icons">logout</i> Logout
-                      <p>
-                          <span class="d-lg-none d-md-block">Account</span>
-                      </p>
-                  </a> -->
-              </li>
+            <li class="nav-item">
+              <button mat-raised-button type="button" 
+              class="btn btn-info gap-right" 
+              (click)="this.profile()">
+              Profile</button>
+            </li>
+            <li class="nav-item">
+                <button mat-raised-button type="button" 
+                 class="btn btn-info gap-right" 
+                (click)="authService.SignOut()">
+                Logout</button>
+            </li>
           </ul>
       </div>
   </div>

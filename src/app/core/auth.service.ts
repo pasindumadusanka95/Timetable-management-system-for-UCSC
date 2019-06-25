@@ -1,5 +1,4 @@
 import { Router } from '@angular/router';
-import { auth } from 'firebase/app';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Injectable, NgZone } from '@angular/core';
