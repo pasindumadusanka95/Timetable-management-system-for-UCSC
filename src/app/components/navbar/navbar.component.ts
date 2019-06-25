@@ -41,7 +41,7 @@ export class NavbarComponent implements OnInit {
            this.mobile_menu_visible = 0;
          }
      });
-     this.msgService.getnotifications().subscribe(actionArray => {
+     this.msgService.getxnotifications().subscribe(actionArray => {
         this.Mlist = actionArray.map(item => {
           const a: any = item.payload.doc.data();
           return a;

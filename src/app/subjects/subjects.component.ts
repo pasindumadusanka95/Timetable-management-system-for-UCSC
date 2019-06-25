@@ -3,6 +3,8 @@ import { SubjectsService } from './../shared/subjects.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
+import { LecturerService } from 'app/shared/lecturer.service';
+import { Lecturer } from 'app/shared/lecturer.model';
 
 @Component({
   selector: 'app-subjects',
@@ -10,8 +12,9 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./subjects.component.scss']
 })
 export class SubjectsComponent implements OnInit {
-
+username: Lecturer[];
   constructor(public subjectsService: SubjectsService,
+    public lecturerservice: LecturerService,
     private firestore: AngularFirestore,
     private toastr: ToastrService) { }
   submitted: boolean;
@@ -21,6 +24,13 @@ export class SubjectsComponent implements OnInit {
 
   ngOnInit() {
     this.resetForm();
+    this.lecturerservice.getLecturers().subscribe(actionArray => {
+      this.username = actionArray.map(item => {
+        const a: any = item.payload.doc.data();
+        return a.userName;
+
+        })
+  });
   }
 
   resetForm(form?: NgForm) {
@@ -34,8 +44,8 @@ export class SubjectsComponent implements OnInit {
       year: null,
       semester: null,
       credit: null,
-      AssignedLecturer1: '',
-      AssignedLecturer2: '',
+      assignedLecturer1: '',
+      
     }
   }
 

@@ -72,26 +72,36 @@
 
                             <div class="row">
                                 <div class="col-md-12">
-                                  <mat-form-field class="example-full-width">
+                                        <label>Assigned Lecturers</label>
+                                        <tag-input   name="assignedLecturer1" #assignedLecturer1="ngModel" [(ngModel)]="subjectsService.formData.assignedLecturer1" class="form-control" required
+                                        [onlyFromAutocomplete]="true">
+                                 <tag-input-dropdown [showDropdownIfEmpty]="false"
+                                                     [autocompleteItems]="username">
+                                     <ng-template let-item="item " let-index="index">
+                                        {{ item.display }}
+                                     </ng-template>
+                                 </tag-input-dropdown>
+                             </tag-input>
+                                  <!-- <mat-form-field class="example-full-width">
                                       <input matInput placeholder="assigned Lecturer 1" type="text" name="assignedLecturer1" #assignedLecturer1="ngModel" [(ngModel)]="subjectsService.formData.assignedLecturer1" class="form-control" >
-                                  </mat-form-field>
+                                  </mat-form-field> -->
                                   <!-- <mat-error class="invalid-feedback" *ngIf="assignedLecturer1.invalid && assignedLecturer1.touched">
                                     This field is required.
                                   </mat-error> -->
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col-md-12">
                                   <mat-form-field class="example-full-width">
                                       <input matInput placeholder="assigned Lecturer 2" type="text" name="assignedLecturer2" #assignedLecturer2="ngModel" [(ngModel)]="subjectsService.formData.assignedLecturer2" class="form-control" >
-                                  </mat-form-field>
+                                  </mat-form-field> -->
                                   <!-- <mat-error class="invalid-feedback" *ngIf="assignedLecturer2.invalid && assignedLecturer2.touched">
                                     This field is required.
                                   </mat-error> -->
-                                </div>
-                            </div>
-
+                                <!-- </div>
+                            </div> -->
+<br><br>
                             <div class="form-group text-right">
                                 <button mat-raised-button type="button" class="btn btn-info gap-right" (click)="resetForm()">Reset</button>
                                 <button mat-raised-button type="submit" class="btn btn-success pull-right" value="submit" >Submit</button>
