@@ -40,7 +40,6 @@ export class LecturerprofileComponent implements OnInit {
         })
   });
 
-
   }
 
   getLecturer() {
@@ -55,6 +54,7 @@ export class LecturerprofileComponent implements OnInit {
   onSubmit(form: NgForm) {
     const data = Object.assign({}, form.value);
     this.firestore.doc('lecturers/' + form.value.id).update(data);
+    this.toastr.success('Updated successfully', 'Your Details');
     console.log(form.value);
   }
 

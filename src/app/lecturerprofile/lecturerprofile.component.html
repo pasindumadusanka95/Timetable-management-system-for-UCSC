@@ -2,27 +2,13 @@
     <div class="main-content">
       <div class="container-fluid">
           <div class="row">
-              <div class="col-md-4">
-                  <div class="card">
-                      <div class="card-header card-header-primary">
-                          <h4 class="card-title">User Profile</h4>
-                      </div>
-                      <div class="card-body">
-                          <h4 class="card-title"><b>Email : {{user.email}}</b></h4>
-                          <h4 class="card-title"><b>Email : {{getLecturer().id}} </b></h4>
-                          <h4 class="card-title"><b>Email : {{getLecturer().email}} </b></h4>
-                          <h4 class="card-title"><b>Email : {{getLecturer().mobileNumber}} </b></h4>
-                          <!-- <h4 class="card-title"><b>Role : {{user.roles.lecturer? true : false}}</b></h4> -->
-                      </div>
-                  </div>
-              </div>
-              <div class="col-md-8">
+              <div class="col-md-6">
                 <div class="card">
                     <div class="card-header card-header-primary">
                         <h4 class="card-title">User Profile</h4>
                     </div>
                     <div class="card-body">
-
+                      <h4 class="card-title"><b>Email : {{user.email}}</b></h4>
                       <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
                         <input type="hidden" name="id" #id="ngModel" [(ngModel)]="getLecturer().id">
                          
@@ -38,12 +24,6 @@
                                 <label>Last Name</label>
                                 <input type="text" name="lastName" #lastName="ngModel" [(ngModel)]="getLecturer().lastName" class="form-control" required>
                                 <div *ngIf="lastName.invalid && lastName.touched" class="validation-error">This field is required.</div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label>Email</label>
-                                <input type="email" name="email" #email="ngModel" [(ngModel)]="getLecturer().email" class="form-control" required>
                             </div>
                         </div>
                         <div class="row">

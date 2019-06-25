@@ -15,7 +15,7 @@ export class LecturerGuard implements CanActivate {
   ) { }
 
   isLecturer() {
-    if (this.authService.curUser === 'lecturer') {
+    if (localStorage.getItem('curUser') === 'lecturer') {
       return true;
     } else { return false; }
   }

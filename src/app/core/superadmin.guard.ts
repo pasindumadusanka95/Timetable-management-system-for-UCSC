@@ -14,7 +14,7 @@ export class SuperadminGuard implements CanActivate {
   ) { }
 
   isSuperdmin() {
-    if (this.authService.curUser === 'superAdmin') {
+    if (localStorage.getItem('curUser') === 'superAdmin') {
       return true;
     } else { return false; }
   }
