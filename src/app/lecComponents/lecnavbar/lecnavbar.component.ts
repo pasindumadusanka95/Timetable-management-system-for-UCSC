@@ -19,7 +19,7 @@ export class LecnavbarComponent implements OnInit {
   private toggleButton: any;
   private sidebarVisible: boolean;
 
-  constructor(private  authService:  AuthService, 
+  constructor(public  authService:  AuthService, 
     location: Location,  
     private element: ElementRef,
      private router: Router,
@@ -50,6 +50,10 @@ export class LecnavbarComponent implements OnInit {
 
 
 });
+  }
+
+  profile(){
+    this.router.navigate(['/lecturerprofile']);
   }
 
   sidebarOpen() {

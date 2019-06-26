@@ -2,98 +2,80 @@
     <div class="main-content">
       <div class="container-fluid">
           <div class="row">
-              <div class="col-md-8">
-                  <div class="card">
-                      <div class="card-header card-header-primary">
-                          <h4 class="card-title">User Profile</h4>
+              <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">User Profile</h4>
+                    </div>
+                    <div class="card-body">
+                      <h4 class="card-title"><b>Email : {{user.email}}</b></h4>
+                      <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+                        <input type="hidden" name="id" #id="ngModel" [(ngModel)]="getLecturer().id">
                          
-                      </div>
-                      <div class="card-body">
-                          <h4 class="card-title"><b>Email : {{user.email}}</b></h4>
-                        <!-- <form #form="ngForm" autocomplete="off" (submit)="onEdit(form)">
-                          <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id">
-                           
-                          <div class="row">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>First Name</label>
+                                <input type="text" name="firstName" #firstName="ngModel" [(ngModel)]="getLecturer().firstName" class="form-control" required>
+                                <div *ngIf="firstName.invalid && firstName.touched" class="validation-error">This field is required.</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Last Name</label>
+                                <input type="text" name="lastName" #lastName="ngModel" [(ngModel)]="getLecturer().lastName" class="form-control" required>
+                                <div *ngIf="lastName.invalid && lastName.touched" class="validation-error">This field is required.</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Mobile Number</label>
+                                <input type="number" name="mobileNumber" #mobileNumber="ngModel" [(ngModel)]="getLecturer().mobileNumber" class="form-control" required>
+                                               
+                            </div>
+                        </div>
+
+                        <div class="form-group text-right">
+                            <button type="submit" class="btn btn-success pull-right" [disabled]="form.invalid" value="submit">Submit</button>
+                        </div>                           
+                        <div class="clearfix"></div>
+                        
+                      </form>
+                            
+                      <!-- <h4 class="card-title"><b>Reset Password</b></h4>
+                                 
+                              
+                            <div class="row">
                               <div class="col-md-12">
-                                  <label>First Name</label>
-                                  <input type="text" name="firstName" #firstName="ngModel" [(ngModel)]="service.formData.firstName" class="form-control" required>
-                                  <div *ngIf="firstName.invalid && firstName.touched" class="validation-error">This field is required.</div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                  <div class="col-md-12">
-                                      <label>Last Name</label>
-                                      <input type="text" name="lastName" #lastName="ngModel" [(ngModel)]="service.formData.lastName" class="form-control" required>
-                                      <div *ngIf="lastName.invalid && lastName.touched" class="validation-error">This field is required.</div>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                <div class="col-md-12">
-                                  <label>Email</label>
-                                      
-                                   <input type="email" name="email" #email="ngModel" [(ngModel)]="service.formData.email" class="form-control" required>
-                                                 
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-md-12">
-                                  <label>Mobile Number</label>
-                                   <input type="number" name="mobileNumber" #mobileNumber="ngModel" [(ngModel)]="service.formData.mobileNumber" class="form-control" required>
-                                                 
-                                </div>
-                              </div>
-
-
-                              <div class="form-group text-right">
-                                  <button type="button" class="btn btn-info gap-right" (click)="resetForm(form)">Reset</button>
-                                  <button type="submit" class="btn btn-success pull-right" [disabled]="form.invalid" value="submit">Submit</button>
-                                </div>
+                                <label>OLD Password</label>
                                 
-                           <h4 class="card-title"><b>Reset Password</b></h4>
-                                   
-                                
-                              <div class="row">
-                                <div class="col-md-12">
-                                  <label>OLD Password</label>
-                                  
-                                   <input type="password" name="Date" #NewDate="ngModel" [(ngModel)]="service.formData.NewDate" class="form-control" required>
-                                                 
-                                </div>
+                                 <input type="password" name="Date" #NewDate="ngModel" [(ngModel)]="service.formData.NewDate" class="form-control" required>
+                                               
                               </div>
-                             
-                              <div class="row">
-                                <div class="col-md-12">
-                                  <label>New Password</label>
-                                  
-                                   <input type="password" name="NewTime" #NewTime="ngModel" [(ngModel)]="service.formData.NewTime" class="form-control" required>
-                                </div>
-                              </div>
-                        
-                              <div class="row">
-                                <div class="col-md-12">
-                                  <label>ReEnter Password</label>
-                                  <input type="password" name="Subject" #Subject="ngModel" [(ngModel)]="service.formData.Subject" class="form-control" required>
-                                </div>
-                              </div>
-                             
-                              <div class="form-group text-right">
-                                  <button type="button" class="btn btn-danger gap-right" (click)="resetForm(form)">Reset</button>
-                               
-                                </div> 
-                                
-                                
-                              
-                        
-                              
-                        
+                            </div>
                            
-                            <div class="clearfix"></div>
-                          
-                        </form> -->
-                        
-                      </div>
-                  </div>
-              </div>
+                            <div class="row">
+                              <div class="col-md-12">
+                                <label>New Password</label>
+                                
+                                 <input type="password" name="NewTime" #NewTime="ngModel" [(ngModel)]="service.formData.NewTime" class="form-control" required>
+                              </div>
+                            </div>
+                      
+                            <div class="row">
+                              <div class="col-md-12">
+                                <label>ReEnter Password</label>
+                                <input type="password" name="Subject" #Subject="ngModel" [(ngModel)]="service.formData.Subject" class="form-control" required>
+                              </div>
+                            </div> -->
+                           
+                            <!-- <div class="form-group text-right">
+                                <button type="button" class="btn btn-danger gap-right" (click)="resetForm(form)">Reset</button>
+                             
+                            </div>  -->
+                      
+                    </div>
+                </div>
+            </div>
     </div>
     </div>
     </div>

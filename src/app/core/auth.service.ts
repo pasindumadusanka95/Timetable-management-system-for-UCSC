@@ -1,5 +1,4 @@
 import { Router } from '@angular/router';
-import { auth } from 'firebase/app';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Injectable, NgZone } from '@angular/core';
@@ -13,7 +12,6 @@ import { User } from './user';
 export class AuthService {
 
   user: Observable<User>;
-  curUser;
 
   constructor(private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
@@ -38,16 +36,16 @@ export class AuthService {
 // tslint:disable-next-line: triple-equals
             if (email == 'aucsc321@gmail.com') {
               localStorage.setItem('user', JSON.stringify(result.user));
-              this.curUser = 'admin';
+              localStorage.setItem('curUser', 'admin');
               this.router.navigate(['/dashboard']);
 // tslint:disable-next-line: triple-equals
             } else if (email == 'saucsc321@gmail.com') {
               localStorage.setItem('user', JSON.stringify(result.user));
-              this.curUser = 'superAdmin';
+              localStorage.setItem('curUser', 'superAdmin');
               this.router.navigate(['/superadmin']);
             } else {
               localStorage.setItem('user', JSON.stringify(result.user));
-              this.curUser = 'lecturer';
+              localStorage.setItem('curUser', 'lecturer');
               this.router.navigate(['/lecturer']);
             }
           });
@@ -103,6 +101,7 @@ export class AuthService {
     SignOut() {
       return this.afAuth.auth.signOut().then(() => {
         localStorage.removeItem('user');
+        localStorage.removeItem('curUser');
         this.router.navigate(['/login']);
       })
     }

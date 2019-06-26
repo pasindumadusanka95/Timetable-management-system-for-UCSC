@@ -13,7 +13,7 @@ export class AdminGuard implements CanActivate {
     public router: Router
   ) { }
 isAdmin() {
-  if (this.authService.curUser === 'admin') {
+  if (localStorage.getItem('curUser') === 'admin') {
     return true;
   } else { return false; }
 }
