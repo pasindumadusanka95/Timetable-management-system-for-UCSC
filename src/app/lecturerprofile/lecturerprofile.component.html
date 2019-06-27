@@ -9,6 +9,8 @@
                     </div>
                     <div class="card-body">
                       <h4 class="card-title"><b>Email : {{user.email}}</b></h4>
+                      <h4 class="card-title"><b>Username : {{getLecturer().userName}}</b></h4>
+
                       <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
                         <input type="hidden" name="id" #id="ngModel" [(ngModel)]="getLecturer().id">
                          
