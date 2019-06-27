@@ -145,6 +145,7 @@ export class ThirdYearComponent implements OnInit {
       console.log(hall);
     });
         this.ttcs.setThirdYearTT(this.eventSettings3Y.dataSource)
+        this.ttcs.setMainTT(this.eventSettings3Y.dataSource)
   }
 
   ngOnInit() {

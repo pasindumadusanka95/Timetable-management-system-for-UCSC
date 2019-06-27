@@ -138,10 +138,11 @@ export class SecondYearComponent implements OnInit {
     let lecturer2 = event.data.Lecturer2
     let location = event.data.Location
   
-    this.ttcs.checkReservedSlots(startTime,endTime,lecturer1,lecturer2,location).subscribe((hall)=> {
-      console.log(hall);
-    });
+    // this.ttcs.checkReservedSlots(startTime,endTime,lecturer1,lecturer2,location).subscribe((hall)=> {
+    //   console.log(hall);
+    // });
         this.ttcs.setSecondYearTT(this.eventSettings2Y.dataSource)
+        this.ttcs.setMainTT(this.eventSettings2Y.dataSource)
   }
 
   ngOnInit() {

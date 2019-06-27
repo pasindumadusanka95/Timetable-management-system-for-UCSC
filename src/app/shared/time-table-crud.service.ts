@@ -39,6 +39,9 @@ export class TimeTableCRUDService {
   getFourthYearTT(){
     return this.db.collection('Timetable').doc('4thyear').get();
   }
+  getMainTT(){
+    return this.db.collection('Timetable').doc('MainTimeTable').get();
+  }
 
   // searchUsers(searchValue){
   //   return this.db.collection('users',ref => ref.where('nameToSearch', '>=', searchValue)
@@ -52,6 +55,7 @@ export class TimeTableCRUDService {
 
 
   setFirstYearTT(object){
+    console.log('service called')
     const doc = this.db.collection('Timetable').doc('1styear').set({firstyear:object});
   }
   setSecondYearTT(object){
@@ -64,6 +68,10 @@ export class TimeTableCRUDService {
     const doc = this.db.collection('Timetable').doc('4thyear').set({fourthyear:object});
   }
 
+  setMainTT(object){
+    const doc = this.db.collection('Timetable').doc('MainTimeTable').set({main:object});
+  }
+
   checkReservedSlots(startTime: Date, endTime: Date, lecturer1: string, lecturer2: string, location: string) {
     const hallsObservable = new Observable(observer => {
       this.db.collection('Timetable').snapshotChanges().subscribe((actioArray => {
@@ -71,7 +79,7 @@ export class TimeTableCRUDService {
           let years:any=item.payload.doc.data();
           for (let key of Object.keys(years)) {
             let year = years[key];
-
+            console.log(year)
             year.forEach(item => {
               let isHallReserved = false;
               let isLecture1Reserved = false;
@@ -106,9 +114,11 @@ export class TimeTableCRUDService {
                   }
               }
               else{
+                console.log('here')
                 observer.next({
                   isConflicts: false
                 })
+                console.log()
               }
             });
 

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ViewEncapsulation } from "@angular/core";
 import * as Chartist from "chartist";
 import { extend, Collection } from "@syncfusion/ej2-base";
 import { Internationalization } from "@syncfusion/ej2-base";
-import { eventsData1Y, eventsData2Y } from "../../datasource";
+import { eventsData1Y,  } from "../../datasource";
 import { DateTimePicker } from "@syncfusion/ej2-calendars";
 import { DropDownList } from "@syncfusion/ej2-dropdowns";
 
@@ -35,9 +35,7 @@ export class FirstYearComponent implements OnInit {
   public eventSettings1Y: EventSettingsModel = {
     dataSource: <Object[]>extend([], eventsData1Y, null, true)
   };
-  public eventSettings2Y: EventSettingsModel = {
-    dataSource: <Object[]>extend([], eventsData2Y, null, true)
-  };
+ 
   public showHederBar: Boolean = false;
   public views: Array<String> = ["WorkWeek"];
   public showTimeIndicator: boolean = false;
@@ -187,7 +185,7 @@ export class FirstYearComponent implements OnInit {
 //       console.log(error)
 //     });
     
-    
+    console.log('first call')
     let x = this.ttcs
       .checkReservedSlots(startTime, endTime, lecturer1, lecturer2, location)
       .subscribe(
@@ -203,6 +201,11 @@ export class FirstYearComponent implements OnInit {
                 result.isLecture2Reserved
             );
             isAdd = false;
+          }else{
+            // console.log(this.eventSettings1Y.dataSource);
+            console.log('else called')
+            this.ttcs.setFirstYearTT(this.eventSettings1Y.dataSource)
+            this.ttcs.setMainTT(this.eventSettings1Y.dataSource)
           }
         },
         error => console.log(error)
