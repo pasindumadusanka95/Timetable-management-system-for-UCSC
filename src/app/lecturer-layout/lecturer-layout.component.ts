@@ -1,4 +1,3 @@
-import { Lecturer } from 'app/shared/lecturer.model';
 import { Component, OnInit } from '@angular/core';
 import PerfectScrollbar from 'perfect-scrollbar';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
@@ -7,7 +6,6 @@ import 'rxjs/add/operator/filter';
 import { Location, LocationStrategy, PathLocationStrategy, PopStateEvent } from '@angular/common';
 import { LecProfileService } from 'app/shared/lec-profile.service';
 import { AuthService } from 'app/core/auth.service';
-import { User } from 'app/core/user';
 
 @Component({
   selector: 'app-lecturer-layout',
@@ -19,8 +17,6 @@ export class LecturerLayoutComponent implements OnInit {
   private _router: Subscription;
   private lastPoppedUrl: string;
   private yScrollStack: number[] = [];
-  lecturer: Lecturer[];
-  user: User;
 
   constructor( public location: Location,
                private router: Router,
@@ -66,39 +62,8 @@ export class LecturerLayoutComponent implements OnInit {
           ps = new PerfectScrollbar(elemSidebar);
       }
 
-      this.authService.getUser().subscribe( user => {
-        if (user) {
-          this.user = user;
-        }
-        console.log(this.user.email);
-      });
-
-      this.service.getLecturers().subscribe(actionArray => {
-        this.lecturer = actionArray.map(item => {
-          return {
-            id: item.payload.doc.id,
-            ...item.payload.doc.data()
-          } as Lecturer;
-
-          })
-    });
-
-    // this.getLecturer();
-
-
-
-
   }
 
-  getLecturer() {
-    for (const l of this.lecturer) {
-    // tslint:disable-next-line: triple-equals
-        if (l.email == this.user.email) {
-            localStorage.setItem('curLec', JSON.stringify(l));
-            return l;
-        }
-    }
-  }
 
   ngAfterViewInit() {
       this.runOnRouteChange();

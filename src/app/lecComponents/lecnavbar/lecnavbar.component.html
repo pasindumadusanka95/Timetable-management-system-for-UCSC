@@ -7,6 +7,9 @@
      
       <div class="collapse navbar-collapse justify-content-end" id="navigation">
         <ul class="navbar-nav">
+            <li class="nav-item">
+              <h4 class="card-title"><b>Welcome, {{getLecturer().firstName}} {{getLecturer().lastName}}</b></h4>
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link" href="#pablo" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                     <i class="material-icons">notifications</i>
@@ -27,16 +30,22 @@
                 </div>
             </li>
             <li class="nav-item">
+                <!-- <a class="action-btn gap-right" style="color:rgb(36, 143, 192); cursor: pointer" (click)="this.profile()">
+                    <i class="material-icons">person</i>
+                </a> -->
               <button mat-raised-button type="button" 
               class="btn btn-info gap-right" 
               (click)="this.profile()">
-              Profile</button>
+              <i class="material-icons">person</i> Profile</button>
             </li>
             <li class="nav-item">
+                <!-- <a class="action-btn gap-right" style="color:rgb(36, 143, 192); cursor: pointer" (click)="authService.SignOut()">
+                    <i class="material-icons">logout</i>
+                </a> -->
                 <button mat-raised-button type="button" 
                  class="btn btn-info gap-right" 
                 (click)="authService.SignOut()">
-                Logout</button>
+                Logout <i class="material-icons">logout</i></button>
             </li>
           </ul>
       </div>
