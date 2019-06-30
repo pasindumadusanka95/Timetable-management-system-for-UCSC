@@ -1,3 +1,4 @@
+import { Lecturer } from './../shared/lecturer.model';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -14,6 +15,8 @@ export class LecturerDashboardComponent implements OnInit {
 
   subjectsArray = [];
   closeResult: string;
+  public curLec: Lecturer = JSON.parse(localStorage.getItem('curLec'));
+
 constructor(
   private service: LecturerService,
    public modalService: NgbModal,
