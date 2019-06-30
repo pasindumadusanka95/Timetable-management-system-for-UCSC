@@ -8,6 +8,9 @@ import {
   WorkWeekService, MonthService, AgendaService, PopupOpenEventArgs, ResizeService, DragAndDropService, 
 } from '@syncfusion/ej2-angular-schedule';
 import { TimeTableCRUDService } from 'app/shared/time-table-crud.service';
+import { User } from 'app/core/user';
+import { AuthService } from 'app/core/auth.service';
+import { LecProfileService } from 'app/shared/lec-profile.service';
 
 
 @Component({
@@ -25,7 +28,9 @@ export class LecturerViewComponent implements OnInit {
   public views: Array<String> = ['WorkWeek'];
   public showTimeIndicator: boolean = false;
   public readonly: boolean = true;
-  public curLec: Lecturer = JSON.parse(localStorage.getItem('curLec'));
+  lecturer: Lecturer[];
+  user: User;
+  public curLec: Lecturer;
 
   @ViewChild('scheduleObj')
   public scheduleObj: ScheduleComponent;
@@ -73,9 +78,30 @@ export class LecturerViewComponent implements OnInit {
   }
  
 
-  constructor(private ttcs: TimeTableCRUDService) { }
+  constructor(private ttcs: TimeTableCRUDService,
+    public service: LecProfileService,
+    private authService: AuthService) { }
 
   ngOnInit() {
+    
+    this.authService.getUser().subscribe( user => {
+      if (user) {
+      this.user = user;
+      }
+      console.log(this.user.email);
+    });
+
+    this.service.getLecturers().subscribe(actionArray => {
+    this.lecturer = actionArray.map(item => {
+    return {
+      id: item.payload.doc.id,
+      ...item.payload.doc.data()
+    } as Lecturer;
+
+    })
+    });
+
+    this.curLec = JSON.parse(localStorage.getItem('curLec'));
     console.log(this.curLec.userName);
 
     this.ttcs.getFirstYearTT().subscribe(next => {
@@ -90,6 +116,16 @@ export class LecturerViewComponent implements OnInit {
       this.scheduleObj.refreshEvents()
       console.log(this.eventSettings1Y.dataSource)
     })
+  }
+
+  getLecturer() {
+    for (const l of this.lecturer) {
+    // tslint:disable-next-line: triple-equals
+        if (l.email == this.user.email) {
+            localStorage.setItem('curLec', JSON.stringify(l));
+            return l;
+        }
+    }
   }
 
 }
