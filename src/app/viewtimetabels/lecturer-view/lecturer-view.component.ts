@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild,ViewEncapsulation } from '@angular/core';
+import { Lecturer } from './../../shared/lecturer.model';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { createElement, extend } from '@syncfusion/ej2-base';
 import { Internationalization } from '@syncfusion/ej2-base';
 import { eventsData1Y} from '../../datasource'
@@ -14,7 +15,7 @@ import { TimeTableCRUDService } from 'app/shared/time-table-crud.service';
   templateUrl: './lecturer-view.component.html',
   styleUrls: ['./lecturer-view.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [DayService, WeekService, WorkWeekService, MonthService, AgendaService,DragAndDropService,ResizeService],
+  providers: [DayService, WeekService, WorkWeekService, MonthService, AgendaService, DragAndDropService, ResizeService],
 })
 export class LecturerViewComponent implements OnInit {
 
@@ -24,6 +25,7 @@ export class LecturerViewComponent implements OnInit {
   public views: Array<String> = ['WorkWeek'];
   public showTimeIndicator: boolean = false;
   public readonly: boolean = true;
+  public curLec: Lecturer = JSON.parse(localStorage.getItem('curLec'));
 
   @ViewChild('scheduleObj')
   public scheduleObj: ScheduleComponent;
@@ -58,7 +60,7 @@ export class LecturerViewComponent implements OnInit {
             (endDate.getTime() - startDate.getTime()) / (60 * 60 * 1000) < 24 ? 1 : 0;
       if (isAllDay) {
         details = startDateDetails + ' (all Day)';
-        if ((endDate.getTime() -startDate.getTime()) / 86400000 > 1) {
+        if ((endDate.getTime() - startDate.getTime()) / 86400000 > 1) {
           details += ' - ' + endDateDetails + ' (all Day)';
         }
       } else if ((((endDate.getTime() - startDate.getTime()) / 86400000) >= 1 || spanLength > 0)) {
@@ -71,11 +73,12 @@ export class LecturerViewComponent implements OnInit {
   }
  
 
-  constructor(private ttcs:TimeTableCRUDService) { }
+  constructor(private ttcs: TimeTableCRUDService) { }
 
   ngOnInit() {
+    console.log(this.curLec.userName);
 
-    this.ttcs.getFirstYearTT().subscribe(next=>{
+    this.ttcs.getFirstYearTT().subscribe(next => {
 
       for (let i of next.data().firstyear as any[]){
         i.StartTime = i.StartTime.toDate();
