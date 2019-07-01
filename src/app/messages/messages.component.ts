@@ -65,7 +65,8 @@ export class MessagesComponent implements OnInit {
   const notificationbody = data.LecturerID + ' requested rechedule for ' + data.Subject + ' on ' + data.Date + ' at ' + data.Time + '. requesting new date on ' + data.NewDate + ' at ' + data.NewTime + '.';
   const type=2;
   const notificationsubject="recheduling request";
-  const notificationdata = Object.assign({}, [notificationbody,type,notificationsubject]);
+  const read=0;
+  const notificationdata = Object.assign({}, [notificationbody,type,notificationsubject,read]);
   delete data.id;
     // tslint:disable-next-line:curly
     if (form.value.id == null) {
