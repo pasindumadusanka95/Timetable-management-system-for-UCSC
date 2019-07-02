@@ -41,7 +41,7 @@ import { ChatComponent } from 'app/chat/chat.component';
 import { LecturerWorkloadComponent } from 'app/lecturer-workload/lecturer-workload.component';
 import { LecturerprofileComponent } from 'app/lecturerprofile/lecturerprofile.component';
 import { CommontableComponent } from 'app/commontable/commontable.component';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -62,7 +62,7 @@ import { CommontableComponent } from 'app/commontable/commontable.component';
     OwlNativeDateTimeModule,           // <----- this module will be deprecated in the future version.
     MatDatepickerModule,        // <----- import(must)
     MatNativeDateModule,        // <----- import for date formating(optional)
-  
+    NgbModule
   
   ],
   declarations: [

@@ -1,6 +1,6 @@
 export interface Notifications {
-    id: string;
-    type:number;
-    notification_subject: string;
-    notification_body:string ;
+    0: string;
+    1:number;
+    2: string;
+    3:number ;
 }

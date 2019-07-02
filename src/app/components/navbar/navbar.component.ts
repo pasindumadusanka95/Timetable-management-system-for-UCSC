@@ -85,9 +85,9 @@ export class NavbarComponent implements OnInit {
         if (this.mobile_menu_visible == 1) {
             // $('html').removeClass('nav-open');
             body.classList.remove('nav-open');
-            if ($layer) {
-                $layer.remove();
-            }
+         //   if ($layer) {
+         //       $layer.remove();
+         //   }
             setTimeout(function() {
                 $toggle.classList.remove('toggled');
             }, 400);
@@ -152,10 +152,9 @@ export class NavbarComponent implements OnInit {
             $scope.count = 0;
         };
     }
-    counter(notifications: Notifications) {
+    counter(notifications:Notifications) {
         console.log("hello")
-        
+        notifications[3]= 1;
             this.msgService.formData = Object.assign ({}, notifications);
-
     }
 }

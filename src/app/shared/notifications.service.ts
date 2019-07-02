@@ -17,18 +17,23 @@ notificationsList: AngularFireList<any>;
 
 
 getxnotifications() {
-return this.firestore.collection('notifications',ref => ref.where('1', '==', 2) && ref.where('3','==', 0)).snapshotChanges();
+return this.firestore.collection('notifications',ref => ref.where('1', '==', 2).where('3','==', 0)).snapshotChanges();
 }
 getlecnotifications() {
-  return this.firestore.collection('notifications',ref => ref.where('1', '==', 1)).snapshotChanges();
+  return this.firestore.collection('notifications',ref => ref.where('1', '==', 1).where('3','==', 0)).snapshotChanges();
   }
 
   getsupernotifications() {
-    return this.firestore.collection('notifications',ref => ref.where('1', '==', 0)).snapshotChanges();
+    return this.firestore.collection('notifications',ref => ref.where('1', '==', 0).where('3','==', 0)).snapshotChanges();
     }
 
   //   getcountnotification(){
   //     return this.firestore.collection('notifications',ref => ref.where('1', '==', 2) && ref.where('3','==', 0)).doc("counts").get().subscribe(doc=>{
   //       console.log(doc.count)
   //       })
+
+  updateCounter(data) {
+    return
+        this.firestore.collection('notifications').doc(data.payload.doc.id).set({ 3: 1 }, { merge: true });
+ }
   }
