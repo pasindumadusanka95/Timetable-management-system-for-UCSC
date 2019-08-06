@@ -39,9 +39,7 @@ export class TimeTableCRUDService {
   getFourthYearTT(){
     return this.db.collection('Timetable').doc('4thyear').get();
   }
-  getMainTT(){
-    return this.db.collection('Timetable').doc('MainTimeTable').get();
-  }
+ 
 
   // searchUsers(searchValue){
   //   return this.db.collection('users',ref => ref.where('nameToSearch', '>=', searchValue)
@@ -55,7 +53,6 @@ export class TimeTableCRUDService {
 
 
   setFirstYearTT(object){
-    console.log('service called')
     const doc = this.db.collection('Timetable').doc('1styear').set({firstyear:object});
   }
   setSecondYearTT(object){
@@ -68,9 +65,6 @@ export class TimeTableCRUDService {
     const doc = this.db.collection('Timetable').doc('4thyear').set({fourthyear:object});
   }
 
-  setMainTT(object){
-    const doc = this.db.collection('Timetable').doc('MainTimeTable').set({main:object});
-  }
 
   checkReservedSlots(startTime: Date, endTime: Date, lecturer1: string, lecturer2: string, location: string) {
     const hallsObservable = new Observable(observer => {

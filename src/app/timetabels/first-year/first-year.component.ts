@@ -179,19 +179,13 @@ export class FirstYearComponent implements OnInit {
 
     let isAdd: boolean;
 
-//     this.testFunc(startTime, endTime, lecturer1, lecturer2, location).then(()=> {
-//       console.log("No Conflicts");
-//     }).catch((error) => {
-//       console.log(error)
-//     });
-    
-    console.log('first call')
     let x = this.ttcs
       .checkReservedSlots(startTime, endTime, lecturer1, lecturer2, location)
       .subscribe(
         (result: any) => {
           isAdd = true;
           if (result.isConflicts) {
+            console.log('if called')
             alert(
               "There is a conflict. \nReasons : \n1). Hall reserved, " +
                 result.isHallReserved +
@@ -201,52 +195,17 @@ export class FirstYearComponent implements OnInit {
                 result.isLecture2Reserved
             );
             isAdd = false;
+            
           }else{
-            // console.log(this.eventSettings1Y.dataSource);
             console.log('else called')
             this.ttcs.setFirstYearTT(this.eventSettings1Y.dataSource)
-            this.ttcs.setMainTT(this.eventSettings1Y.dataSource)
+            isAdd = true
           }
         },
         error => console.log(error)
       );
 
-    //  this.ttcs.checkReservedSlots(startTime, endTime, lecturer1, lecturer2, location).subscribe((hall: any) => {
-    //     if (hall.isHallReserved == true || hall.isLecture1Reserved == true || hall.isLecture2Reserved == true) {
-    //       this.isAdd == false;
-    //       console.log(hall)
-    //     }
-    //   else{
-    //       console.log("fvdsd")
-    //   }
-
-    //   });
-  }
-
-  // this is not used for the current way.
-  testFunc(startTime, endTime, lecturer1, lecturer2, location) {
-    return new Promise((resolve, reject) => {
-      let x = this.ttcs
-        .checkReservedSlots(startTime, endTime, lecturer1, lecturer2, location)
-        .subscribe(
-          (result: any) => {
-            if (result.isConflicts) {
-              alert(
-                "There is a conflict. \nReasons : \n1). Hall reserved, " +
-                  result.isHallReserved +
-                  "\n1). Lecture1 reserved, " +
-                  result.isLecture1Reserved +
-                  "\n1). Lecturer2 reserved, " +
-                  result.isLecture2Reserved
-              );
-              resolve(false);
-            }
-          },
-          error => () => {
-            reject(error);
-          }
-        );
-    });
+    
   }
 
   ngOnInit() {

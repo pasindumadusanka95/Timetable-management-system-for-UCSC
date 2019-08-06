@@ -141,11 +141,9 @@ export class ThirdYearComponent implements OnInit {
     let lecturer2 = event.data.Lecturer2
     let location = event.data.Location
   
-    this.ttcs.checkReservedSlots(startTime,endTime,lecturer1,lecturer2,location).subscribe((hall)=> {
-      console.log(hall);
-    });
+  
         this.ttcs.setThirdYearTT(this.eventSettings3Y.dataSource)
-        this.ttcs.setMainTT(this.eventSettings3Y.dataSource)
+      
   }
 
   ngOnInit() {
