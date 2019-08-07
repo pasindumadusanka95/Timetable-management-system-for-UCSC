@@ -90,16 +90,11 @@ export class TimeTableCRUDService {
               let isLecture2Reserved = false;
               let stTime = startTime.getTime()/1000;
               let enTime = endTime.getTime()/1000;
-              console.log([item.StartTime.seconds >= stTime,
-               item.StartTime.seconds < enTime,
-              item.EndTime.seconds > stTime ,
-              item.EndTime.seconds <= enTime], 
-              (item.StartTime.seconds >= stTime && item.StartTime.seconds < enTime)
-              || (item.EndTime.seconds > stTime && item.EndTime.seconds <= enTime));
+              
               
 
               if((item.StartTime.seconds >= stTime && item.StartTime.seconds < enTime)
-                || (item.EndTime.seconds > stTime && item.EndTime.seconds <= enTime)) {
+                || (item.EndTime.seconds > stTime && item.EndTime.seconds <= enTime) || (item.StartTime.seconds <= stTime && item.EndTime.seconds >= enTime)) {
 
                   if(item.Location == location) {
                     isHallReserved = true;
