@@ -8,14 +8,20 @@
 <div class="row">
 <div class="row">
         <div class="col">
-                
-                <select [(ngModel)]="selItem" selected="firstyear" name="itemSelection" (ngModelChange)="onChange($event)">
+        <!-- <div ngbDropdown class="d-inline-block">
+            <button[(ngModel)]="selItem" class="btn btn-outline-info"  selected="firstyear" id="" name="itemSelection" (ngModelChange)="onChange($event)" ngbDropdownToggle>Toggle dropdown</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" [value]="x" *ngFor="let x of names">
+              <button ngbDropdownItem>{{x}}</button>
+              <button ngbDropdownItem>Another Action</button>
+              <button ngbDropdownItem>Something else is here</button>
+            </div>
+          </div> -->
+          <div ngbDropdown class="d-inline-block">
+                <select [(ngModel)]="selItem" class="btn btn-outline-info"  selected="firstyear" id="" name="itemSelection" (ngModelChange)="onChange($event)" >
                   <option [value]="x" *ngFor="let x of names">{{x}}</option>
-                  <!-- <option [value]="firstyear">First Year</option>
-                  <option [value]="secondyear">Second Year</option>
-                  <option [value]="thirdyear">Third Year</option>
-                  <option [value]="fourthyear">Fourth Year</option> -->
+                 
                 </select>
+               </div> 
     <div class="col-lg-12 col-md-12">
       <div class="card">
         
