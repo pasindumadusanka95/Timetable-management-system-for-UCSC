@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { take, tap, map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -68,22 +69,34 @@ export class TimeTableCRUDService {
 
   checkReservedSlots(startTime: Date, endTime: Date, lecturer1: string, lecturer2: string, location: string) {
 
-    const hallsObservable = new Observable(observer => {
-      this.db.collection('Timetable').get().subscribe((actioArray => {
-        
+    return this.db.collection('Timetable').get().pipe(
+      take(1),
+      map(actioArray => {
+        let hallsObservable: any = {
+          isConflicts:false
+      };
+
         actioArray.forEach(item =>{
-          
           let years:any=item.data();
           // console.log('item', years);
           for (let key of Object.keys(years)) {
+            if (hallsObservable.isConflicts) return;
+
             let year = years[key];
-            // console.log(year)
-            year.forEach(item => {
+            console.log('year', year)
+            year.every(item => {
               let isHallReserved = false;
               let isLecture1Reserved = false;
               let isLecture2Reserved = false;
               let stTime = startTime.getTime()/1000;
               let enTime = endTime.getTime()/1000;
+              console.log([item.StartTime.seconds >= stTime,
+               item.StartTime.seconds < enTime,
+              item.EndTime.seconds > stTime ,
+              item.EndTime.seconds <= enTime], 
+              (item.StartTime.seconds >= stTime && item.StartTime.seconds < enTime)
+              || (item.EndTime.seconds > stTime && item.EndTime.seconds <= enTime));
+              
 
               if((item.StartTime.seconds >= stTime && item.StartTime.seconds < enTime)
                 || (item.EndTime.seconds > stTime && item.EndTime.seconds <= enTime)) {
@@ -98,34 +111,40 @@ export class TimeTableCRUDService {
                     isLecture2Reserved = true;
                   }
                   
+                  console.log('inside if', isHallReserved == true || isLecture1Reserved == true || isLecture2Reserved == true);
                   if (isHallReserved == true || isLecture1Reserved == true || isLecture2Reserved == true) {
-                    observer.next({
+                    
+                    hallsObservable = {
                       isConflicts: true,
                       isHallReserved: isHallReserved,
                       isLecture1Reserved: isLecture1Reserved,
                       isLecture2Reserved: isLecture2Reserved
-                    });
+                    };
+                  // return;
+
                   } else {
-                    observer.next({
-                        isConflicts:false
-                    });
+                    // hallsObservable = {
+                    //     isConflicts:false
+                    // };
                   }
-              }
-              else{
+
+              } else{
                 console.log('here')
-                observer.next({
-                  isConflicts: false
-                })
+                // hallsObservable = {
+                //   isConflicts: false
+                // }
                 console.log()
               }
             });
 
           }
         });
-      }),);
-    });
 
-    return hallsObservable;
+        return hallsObservable;
+
+      })
+    );
+
   }
 
 
