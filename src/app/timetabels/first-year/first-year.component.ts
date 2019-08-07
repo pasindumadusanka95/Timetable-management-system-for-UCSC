@@ -22,6 +22,7 @@ import { Key } from "protractor";
 import { SubjectsService } from "app/shared/subjects.service";
 import { LecturerService } from "app/shared/lecturer.service";
 import { HallService } from "app/shared/hall.service";
+import { take } from "rxjs/operators";
 
 @Component({
   selector: "app-first-year",
@@ -178,12 +179,13 @@ export class FirstYearComponent implements OnInit {
     let location = event.data.Location;
 
     let isAdd: boolean;
-
-    let x = this.ttcs
-      .checkReservedSlots(startTime, endTime, lecturer1, lecturer2, location)
-      .subscribe(
+    
+    this.ttcs.checkReservedSlots(startTime, endTime, lecturer1, lecturer2, location).subscribe(
+      
         (result: any) => {
-          isAdd = true;
+          console.log('result', result);
+          
+          isAdd = false;
           if (result.isConflicts) {
             console.log('if called')
             alert(
@@ -194,8 +196,8 @@ export class FirstYearComponent implements OnInit {
                 "\n1). Lecturer2 reserved, " +
                 result.isLecture2Reserved
             );
-            isAdd = false;
-            
+          isAdd = false;
+
           }else{
             console.log('else called')
             this.ttcs.setFirstYearTT(this.eventSettings1Y.dataSource)

@@ -67,13 +67,17 @@ export class TimeTableCRUDService {
 
 
   checkReservedSlots(startTime: Date, endTime: Date, lecturer1: string, lecturer2: string, location: string) {
+
     const hallsObservable = new Observable(observer => {
-      this.db.collection('Timetable').snapshotChanges().subscribe((actioArray => {
-        actioArray.map(item=>{
-          let years:any=item.payload.doc.data();
+      this.db.collection('Timetable').get().subscribe((actioArray => {
+        
+        actioArray.forEach(item =>{
+          
+          let years:any=item.data();
+          // console.log('item', years);
           for (let key of Object.keys(years)) {
             let year = years[key];
-            console.log(year)
+            // console.log(year)
             year.forEach(item => {
               let isHallReserved = false;
               let isLecture1Reserved = false;
@@ -81,8 +85,8 @@ export class TimeTableCRUDService {
               let stTime = startTime.getTime()/1000;
               let enTime = endTime.getTime()/1000;
 
-              if(item.StartTime.seconds >= stTime && item.StartTime.seconds < enTime
-                || item.EndTime.seconds > stTime && item.EndTime.seconds <= enTime) {
+              if((item.StartTime.seconds >= stTime && item.StartTime.seconds < enTime)
+                || (item.EndTime.seconds > stTime && item.EndTime.seconds <= enTime)) {
 
                   if(item.Location == location) {
                     isHallReserved = true;
