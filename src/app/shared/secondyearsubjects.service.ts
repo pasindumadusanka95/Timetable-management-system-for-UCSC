@@ -1,13 +1,13 @@
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subjects } from './subjects.model';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { AngularFireList } from 'angularfire2/database';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Subjects } from './subjects.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SubjectsService {
+export class SecondyearsubjectsService {
 
   formData : Subjects;
 
@@ -27,8 +27,8 @@ export class SubjectsService {
     
   });
 
-  getSubjects(){
-    return this.firestore.collection('subjects').snapshotChanges();
+  getSecondYearSubjects(){
+    return this.firestore.collection('secondyearsubjects').snapshotChanges();
   }
 
 

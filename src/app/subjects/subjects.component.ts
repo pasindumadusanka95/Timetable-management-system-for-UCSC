@@ -13,6 +13,8 @@ import { Lecturer } from 'app/shared/lecturer.model';
 })
 export class SubjectsComponent implements OnInit {
 username: Lecturer[];
+subTypeCS:any;
+subTypeIS:any;
   constructor(public subjectsService: SubjectsService,
     public lecturerservice: LecturerService,
     private firestore: AngularFirestore,
@@ -69,10 +71,45 @@ username: Lecturer[];
 
     const data = Object.assign({}, form.value);
     delete data.id;
+    this.subTypeCS= (data.subjectCode).charAt(3);
+    this.subTypeIS= (data.subjectCode).charAt(2);
+    console.log(this.subTypeCS);
+    console.log("hello");
     if (form.value.id == null) {
-      this.firestore.collection('subjects').add(data);
-    } else {
+      console.log(this.subTypeCS);
+      if(this.subTypeCS=='1' || this.subTypeIS=='1'){
+        this.firestore.collection('firstyearsubjects').add(data);
+      }
+      else if(this.subTypeCS=='2' || this.subTypeIS=='2'){
+        this.firestore.collection('secondyearsubjects').add(data);
+      }
+      else if(this.subTypeCS=='3' || this.subTypeIS=='3'){
+        this.firestore.collection('thirdyearsubjects').add(data);
+      }
+      else if(this.subTypeCS=='4' || this.subTypeIS=='4'){
+        this.firestore.collection('fourthyearsubjects').add(data);
+      }
+      this.resetForm(form);
+    this.toastr.success('Submitted successfully', 'Subject Details');
+    }
+      //this.firestore.collection('subjects').add(data);
+     else {
       this.firestore.doc('subjects/' + form.value.id).update(data);
+
+      if(this.subTypeCS=='1' || this.subTypeIS=='1'){
+        this.firestore.doc('firstsubjects/' + form.value.id).update(data);
+      }
+      else if(this.subTypeCS=='2' || this.subTypeIS=='2'){
+        this.firestore.doc('secondsubjects/' + form.value.id).update(data);
+      }
+      else if(this.subTypeCS=='3' || this.subTypeIS=='3'){
+        this.firestore.doc('thirdsubjects/' + form.value.id).update(data);
+      }
+      else if(this.subTypeCS=='4' || this.subTypeIS=='4'){
+        this.firestore.doc('fourthsubjects/' + form.value.id).update(data);
+      }
+      this.resetForm(form);
+    this.toastr.info('Updated successfully', 'Subject Details');
     }
     this.resetForm(form);
     this.toastr.success('Submitted successfully', 'Subject Details');

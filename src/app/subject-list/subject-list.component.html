@@ -1,5 +1,13 @@
+
 <table class="table table-sm">
+   
   <thead>
+      <div ngbDropdown class="d-inline-block" style="margin: 0;">
+          <select [(ngModel)]="selItem" class="btn btn-outline-primary"  selected="firstyear" id="" name="itemSelection" (ngModelChange)="onChange($event)" >
+            <option [value]="x" *ngFor="let x of names">{{x}}</option>
+           
+          </select>
+         </div> 
     <th>Subject Code</th>
     <th>Subject</th>
     <th>Year</th>
@@ -8,9 +16,11 @@
     <th>Assigned Lecturers</th>
     <!-- <th>Assigned Lecturer 2</th> -->
     <th></th>
-  </thead>
-  <ng-container *ngFor="let subject of list">
+  </thead >
+  <ng-container  *ngIf="firstyear">
+  <ng-container *ngFor="let subject of flist">
     <tr class="table">
+      <td></td>
       <td>{{subject.subjectCode}}</td>
       <td>{{subject.subjectTitle}}</td>
       <td>{{subject.year}}</td>
@@ -31,6 +41,86 @@
       </td>
     </tr>
   </ng-container>
+  </ng-container>
+
+  <ng-container  *ngIf="secondyear">
+      <ng-container *ngFor="let subject of slist">
+        <tr class="table">
+          <td></td>
+          <td>{{subject.subjectCode}}</td>
+          <td>{{subject.subjectTitle}}</td>
+          <td>{{subject.year}}</td>
+          <td>{{subject.semester}}</td>
+          <td>{{subject.credit}}</td>
+          <td>  <ul *ngFor="let item of createRange(subject.assignedLecturer1.length);"> 
+              <li>{{subject.assignedLecturer1[item].display}}</li>
+             </ul>
+          </td>
+          
+          <td>
+            <a class="action-btn" style="color:rgb(36, 143, 192); cursor: pointer" (click)="onEdit(subject)">
+              <i class="material-icons">edit</i>
+            </a>
+            <a class="action-btn" style="color:lightcoral; cursor: pointer" (click)="onDelete(subject.id)">
+              <i class="material-icons">delete</i>
+            </a>
+          </td>
+        </tr>
+      </ng-container>
+      </ng-container>
+
+
+      <ng-container  *ngIf="thirdyear">
+          <ng-container *ngFor="let subject of tlist">
+            <tr class="table">
+              <td></td>
+              <td>{{subject.subjectCode}}</td>
+              <td>{{subject.subjectTitle}}</td>
+              <td>{{subject.year}}</td>
+              <td>{{subject.semester}}</td>
+              <td>{{subject.credit}}</td>
+              <td>  <ul *ngFor="let item of createRange(subject.assignedLecturer1.length);"> 
+                  <li>{{subject.assignedLecturer1[item].display}}</li>
+                 </ul>
+              </td>
+              
+              <td>
+                <a class="action-btn" style="color:rgb(36, 143, 192); cursor: pointer" (click)="onEdit(subject)">
+                  <i class="material-icons">edit</i>
+                </a>
+                <a class="action-btn" style="color:lightcoral; cursor: pointer" (click)="onDelete(subject.id)">
+                  <i class="material-icons">delete</i>
+                </a>
+              </td>
+            </tr>
+          </ng-container>
+          </ng-container>
+
+          <ng-container  *ngIf="fourthyear">
+              <ng-container *ngFor="let subject of folist">
+                <tr class="table">
+                  <td></td>
+                  <td>{{subject.subjectCode}}</td>
+                  <td>{{subject.subjectTitle}}</td>
+                  <td>{{subject.year}}</td>
+                  <td>{{subject.semester}}</td>
+                  <td>{{subject.credit}}</td>
+                  <td>  <ul *ngFor="let item of createRange(subject.assignedLecturer1.length);"> 
+                      <li>{{subject.assignedLecturer1[item].display}}</li>
+                     </ul>
+                  </td>
+                  
+                  <td>
+                    <a class="action-btn" style="color:rgb(36, 143, 192); cursor: pointer" (click)="onEdit(subject)">
+                      <i class="material-icons">edit</i>
+                    </a>
+                    <a class="action-btn" style="color:lightcoral; cursor: pointer" (click)="onDelete(subject.id)">
+                      <i class="material-icons">delete</i>
+                    </a>
+                  </td>
+                </tr>
+              </ng-container>
+              </ng-container>
 </table>
 <div class="alert alert-danger" *ngIf="showDeleteMessage">
     Deleted Successfully!
