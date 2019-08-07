@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { LecturerService } from 'app/shared/lecturer.service';
 import { SubjectsService } from 'app/shared/subjects.service';
+import { yearsPerPage } from '@angular/material/datepicker/typings/multi-year-view';
 
 @Component({
   selector: 'app-lecturer-dashboard',
@@ -12,9 +13,16 @@ import { SubjectsService } from 'app/shared/subjects.service';
   styleUrls: ['./lecturer-dashboard.component.scss']
 })
 export class LecturerDashboardComponent implements OnInit {
-
+  names = ['firstyear','secondyear','thirdyear','fourthyear'];
+  selItem = 'firstyear';
   subjectsArray = [];
+  firstyear: boolean;
+  secondyear: boolean;
+  thirdyear: boolean;
+  fourthyear: boolean;
+  selectedValue: any;
   closeResult: string;
+  Y: string;
   public curLec: Lecturer = JSON.parse(localStorage.getItem('curLec'));
 
 constructor(
@@ -26,6 +34,11 @@ constructor(
 ) { }
 
    ngOnInit() {
+     this.Y= 'First Year';
+    this.firstyear= true;
+    this.secondyear=false;
+    this.thirdyear=false;
+    this.fourthyear=false;
     this.subjectsService.getSubjects().subscribe(
       list => {
         this.subjectsArray = list.map(item => {
@@ -56,4 +69,44 @@ constructor(
           return  `with: ${reason}`;
         }
       }
+
+      onChange(data) {
+        console.log(data);
+        this.selItem = data;
+        // this.selectedValue = newValue;
+        // console.log(newValue);
+        if(data== 'firstyear' || data == ''){
+          console.log('test');
+          this.Y = 'First Year';
+          this.firstyear= true;
+          this.secondyear=false;
+          this.thirdyear=false;
+          this.fourthyear=false;
+        }
+        else if(data== 'secondyear'){
+          console.log('test1');
+          this.Y = 'Second Year';
+          this.firstyear= false;
+          this.secondyear=true;
+          this.thirdyear=false;
+          this.fourthyear=false;
+        }
+        else if(data== 'thirdyear'){
+          console.log('test2');
+          this.Y = 'Third Year';
+          this.firstyear= false;
+          this.secondyear=false;
+          this.thirdyear=true;
+          this.fourthyear=false;
+        }
+        else{
+          console.log('test3');
+          this.Y= 'Fourth Year';
+          this.firstyear= false;
+          this.secondyear=false;
+          this.thirdyear=false;
+          this.fourthyear=true;
+        }
+      
+    }
 }

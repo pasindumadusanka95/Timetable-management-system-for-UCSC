@@ -8,24 +8,33 @@
 <div class="row">
 <div class="row">
         <div class="col">
-                <div ngbDropdown class="d-inline-block">
-                  <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Select Year</button>
-                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                    <button ngbDropdownItem>First Year</button>
-                    <button ngbDropdownItem>Second Year</button>
-                    <button ngbDropdownItem>Third Year</button>
-                    <button ngbDropdownItem>Fourth Year</button>
-                  </div>
-                </div>
+                
+                <select [(ngModel)]="selItem" selected="firstyear" name="itemSelection" (ngModelChange)="onChange($event)">
+                  <option [value]="x" *ngFor="let x of names">{{x}}</option>
+                  <!-- <option [value]="firstyear">First Year</option>
+                  <option [value]="secondyear">Second Year</option>
+                  <option [value]="thirdyear">Third Year</option>
+                  <option [value]="fourthyear">Fourth Year</option> -->
+                </select>
     <div class="col-lg-12 col-md-12">
       <div class="card">
         
           <div class="card-header card-header-info">
-              <h3 class="card-title" style="cursor: pointer;" ><b>Main Time Table</b></h3>
+              <h3 class="card-title" style="cursor: pointer;" ><b>{{Y}} Table</b></h3>
           </div>
-           <div class="card-body table-responsive" >
-              <app-lecturer-view></app-lecturer-view>
+        
+           <div class="card-body table-responsive" *ngIf="firstyear" >
+              <app-view-first-year></app-view-first-year>
            </div>
+           <div class="card-body table-responsive"  *ngIf="secondyear">
+            <app-view-second-year></app-view-second-year>
+         </div>
+         <div class="card-body table-responsive"  *ngIf="thirdyear" >
+          <app-view-third-year></app-view-third-year>
+       </div>
+       <div class="card-body table-responsive"  *ngIf="fourthyear" >
+        <app-view-fourth-year></app-view-fourth-year>
+     </div>
       </div>
     </div>
     
