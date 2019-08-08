@@ -14,6 +14,7 @@ import { TimeTableCRUDService } from 'app/shared/time-table-crud.service';
 import { SubjectsService } from 'app/shared/subjects.service';
 import { LecturerService } from 'app/shared/lecturer.service';
 import { HallService } from 'app/shared/hall.service';
+import { take } from "rxjs/operators";
 
 
 @Component({
@@ -131,15 +132,40 @@ export class SecondYearComponent implements OnInit {
 
   onDataBound2Y(event){
   
+    let startTime = event.data.StartTime;
+    let endTime = event.data.EndTime;
+    let lecturer1 = event.data.Lecturer1;
+    let lecturer2 = event.data.Lecturer2;
+    let location = event.data.Location;
+
+    let isAdd: boolean;
     
-    let startTime = event.data.StartTime
-    let endTime = event.data.EndTime
-    let lecturer1 = event.data.Lecturer1
-    let lecturer2 = event.data.Lecturer2
-    let location = event.data.Location
-  
-   
-        this.ttcs.setSecondYearTT(this.eventSettings2Y.dataSource)
+    this.ttcs.checkReservedSlots(startTime, endTime, lecturer1, lecturer2, location).pipe(take(1)).subscribe(
+      
+        (result: any) => {
+          console.log('result', result);
+          
+          isAdd = false;
+          if (result.isConflicts) {
+            console.log('if called')
+            alert(
+              "There is a conflict. \nReasons : \n1). Hall reserved, " +
+                result.isHallReserved +
+                "\n1). Lecture1 reserved, " +
+                result.isLecture1Reserved +
+                "\n1). Lecturer2 reserved, " +
+                result.isLecture2Reserved
+            );
+          isAdd = false;
+
+          }else{
+            console.log('else called')
+            this.ttcs.setSecondYearTT(this.eventSettings2Y.dataSource)
+            isAdd = true
+          }
+        },
+        error => console.log(error)
+      );
         
   }
 
@@ -159,7 +185,7 @@ export class SecondYearComponent implements OnInit {
     
     });
 
-    this.scs.getSubjects().subscribe(actionArray => {
+    this.scs.getSecondYrSubjects().subscribe(actionArray => {
       this.sub_list = actionArray.map(item=>{
         let a:any=item.payload.doc.data();
         return a.subjectCode

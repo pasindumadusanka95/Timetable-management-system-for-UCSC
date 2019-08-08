@@ -221,7 +221,7 @@ export class FirstYearComponent implements OnInit {
       this.scheduleObj.refreshEvents();
     });
 
-    this.scs.getSubjects().subscribe(actionArray => {
+    this.scs.getFirstYrSubjects().subscribe(actionArray => {
       this.sub_list = actionArray.map(item => {
         let a: any = item.payload.doc.data();
         return a.subjectCode;

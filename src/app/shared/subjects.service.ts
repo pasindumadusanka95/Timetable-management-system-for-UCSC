@@ -31,6 +31,22 @@ export class SubjectsService {
     return this.firestore.collection('subjects').snapshotChanges();
   }
 
+  getFirstYrSubjects(){
+    return this.firestore.collection('firstyearsubjects').snapshotChanges();
+  }
+
+  getSecondYrSubjects(){
+    return this.firestore.collection('secondyearsubjects').snapshotChanges();
+  }
+
+  getThirdYrSubjects(){
+    return this.firestore.collection('thirdyearsubjects').snapshotChanges();
+  }
+
+  getFourthYrSubjects(){
+    return this.firestore.collection('fourthyearsubjects').snapshotChanges();
+  }
+
 
 
 }
