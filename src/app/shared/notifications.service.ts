@@ -32,8 +32,7 @@ getlecnotifications() {
   //       console.log(doc.count)
   //       })
 
-  updateCounter(data) {
-    return
-        this.firestore.collection('notifications').doc(data.payload.doc.id).set({ 3: 1 }, { merge: true });
+  updateCounter(id) {
+    return this.firestore.collection('notifications').doc(id).set({ 3: 1 }, { merge: true });
  }
   }
