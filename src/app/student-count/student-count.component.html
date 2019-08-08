@@ -21,6 +21,7 @@
                             <div class="col-md-12">
                               <label>Course</label>
                               <input type="text" name="course" #course="ngModel" [(ngModel)]="StudentCountservice.formData.course" class="form-control" required>
+                              <div *ngIf="course.invalid && course.touched" class="validation-error">This field is required.</div>
                             </div>
                           </div>
                           <!-- <div class="row">
@@ -36,6 +37,7 @@
                             <div class="col-md-12">
                               <label>Group Name</label>
                               <input type="text" name="groupName" #groupName="ngModel" [(ngModel)]="StudentCountservice.formData.groupName" class="form-control" required>
+                              <div *ngIf="groupName.invalid && groupName.touched" class="validation-error">This field is required.</div>
                             </div>
                           </div>
                     
@@ -43,6 +45,7 @@
                             <div class="col-md-12">
                               <label>Number of Groups </label>
                               <input type="number" name="numberofGroups" #numberofGroups="ngModel" [(ngModel)]="StudentCountservice.formData.numberofGroups" (ngModelChange)="onValueChange($event)"class="form-control" required>
+                              <div *ngIf="numberofGroups.invalid && numberofGroups.touched" class="validation-error">This field is required.</div>
                             </div>
                          </div>
                            <div class="row" *ngFor="let grp of groups;let i=index;trackBy: trackArray " [attr.data-index]="i" >
