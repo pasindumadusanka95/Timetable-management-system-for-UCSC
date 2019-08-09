@@ -38,6 +38,8 @@
                               <div class="col-md-12">
                                 <label>Hall Capacity</label>
                                 <input type="number" name="capacity" #capacity="ngModel" [(ngModel)]="hallservice.formData.capacity" class="form-control" required>
+                                <div *ngIf="capacity.invalid && capacity.touched" class="validation-error">This field is required.</div>
+
                               </div>
                             </div>
                             <div class="row">

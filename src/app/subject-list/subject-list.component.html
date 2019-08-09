@@ -18,7 +18,7 @@
     <th></th>
   </thead >
   <ng-container  *ngIf="firstyear">
-  <ng-container *ngFor="let subject of flist">
+  <ng-container *ngFor="let subject of flist| paginate: { itemsPerPage: 3, currentPage: p }; let i = index;">
     <tr class="table">
       <td></td>
       <td>{{subject.subjectCode}}</td>
@@ -44,7 +44,7 @@
   </ng-container>
 
   <ng-container  *ngIf="secondyear">
-      <ng-container *ngFor="let subject of slist">
+      <ng-container *ngFor="let subject of slist | paginate: { itemsPerPage: 3, currentPage: p }; let i = index;">
         <tr class="table">
           <td></td>
           <td>{{subject.subjectCode}}</td>
@@ -71,7 +71,7 @@
 
 
       <ng-container  *ngIf="thirdyear">
-          <ng-container *ngFor="let subject of tlist">
+          <ng-container *ngFor="let subject of tlist | paginate: { itemsPerPage: 3, currentPage: p }; let i = index;">
             <tr class="table">
               <td></td>
               <td>{{subject.subjectCode}}</td>
@@ -97,7 +97,7 @@
           </ng-container>
 
           <ng-container  *ngIf="fourthyear">
-              <ng-container *ngFor="let subject of folist">
+              <ng-container *ngFor="let subject of folist | paginate: { itemsPerPage: 3, currentPage: p }; let i = index;">
                 <tr class="table">
                   <td></td>
                   <td>{{subject.subjectCode}}</td>

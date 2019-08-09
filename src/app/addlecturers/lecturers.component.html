@@ -22,12 +22,14 @@
                             <div class="col-md-12">
                               <label>First name</label>
                               <input type="text" name="firstName" #firstName="ngModel" [(ngModel)]="service.formData.firstName" class="form-control" required>
+                              <div *ngIf="firstName.invalid && firstName.touched" class="validation-error">This field is required.</div>
                             </div>
                           </div>
                           <div class="row">
                             <div class="col-md-12">
                               <label>Last name</label>
                               <input type="text" name="lastName" #lastName="ngModel" [(ngModel)]="service.formData.lastName" class="form-control" required>
+                              <div *ngIf="lastName.invalid && lastName.touched" class="validation-error">This field is required.</div>
                             </div>
                     </div>
                           
@@ -36,12 +38,14 @@
                             <div class="col-md-12">
                               <label>Email</label>
                               <input type="email" name="email" #email="ngModel" [(ngModel)]="service.formData.email" class="form-control" required>
+                              <div *ngIf="email.invalid && email.touched" class="validation-error">This field is required.</div>
                             </div>
                           </div>
                           <div class="row">
                             <div class="col-md-12">
                               <label>Mobile number</label>
                               <input type="number" name="mobileNumber" #mobileNumber="ngModel" [(ngModel)]="service.formData.mobileNumber" class="form-control" required>
+                              <div *ngIf="mobileNumber.invalid && mobileNumber.touched" class="validation-error">This field is required.</div>
                               </div>
                             </div>
                               

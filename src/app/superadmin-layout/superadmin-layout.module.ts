@@ -33,6 +33,7 @@ import { StudentCountListComponent } from 'app/student-count-list/student-count-
 import { SuperadminDashComponent } from 'app/superadmin-dash/superadmin-dash.component';
 import { SuperAdminLayoutRoutes } from './superadmin-layout.routing';
 import { NoticesComponent } from 'app/notices/notices.component';
+import { NoticeEditComponent } from 'app/notice-edit/notice-edit.component';
 
 
 @NgModule({
@@ -53,14 +54,12 @@ import { NoticesComponent } from 'app/notices/notices.component';
   ],
   declarations: [
     SuperadminDashComponent,
-    NoticesComponent
-   
-    
-    
+    NoticesComponent,
+    NoticeEditComponent
   ],
-  exports:[
+  exports: [
     SuperadminDashComponent,
-    
+
   ]
 })
 

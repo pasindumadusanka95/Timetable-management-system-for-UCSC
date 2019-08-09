@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './login/login.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import {NgbModule,NgbActiveModal} from '@ng-bootstrap/ng-bootstrap'
+import {NgbModule, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap'
 // Toaster for Alert Messages
 // Firebase Modules
 import {AngularFireModule} from 'angularfire2'
@@ -56,6 +56,8 @@ import { SuperadminNavbarComponent } from './superadmincomponent/superadmin-navb
 import { TagInputModule } from 'ngx-chips';
 import { CommontableComponent } from './commontable/commontable.component';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material';
+import { NoticeListComponent } from './notice-list/notice-list.component';
+import { NoticeEditComponent } from './notice-edit/notice-edit.component';
 
 
 
@@ -72,7 +74,7 @@ let config = {
 };
 @NgModule({
   imports: [
-    
+
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig), // Main Angular fire module
     AngularFireDatabaseModule,  // Firebase database module
@@ -105,34 +107,36 @@ let config = {
     SuperadminLayoutComponent,
     LecturerLayoutComponent,
     HomepageComponent,
-    
-   
-   
-    
-    
+    // NoticeListComponent,
+    // NoticeEditComponent,
 
-    
-    
-    
-    
-   
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
     //SubjectsComponent,
     //SubjectListComponent,
 
   ],
-  providers: [LecturerService, SubjectsService,TimeTableCRUDService,NgbActiveModal, HallsService,
+  providers: [LecturerService, SubjectsService, TimeTableCRUDService, NgbActiveModal, HallsService,
     // LecturerDashboardComponent,
     // LecsidebarComponent,
-  
+
   //  SuperadminSidebarComponent,
     LecturerLayoutComponent,
     SuperadminLayoutComponent,
     {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
   ],
-  exports:[
-    
+  exports: [
+
   ],
   bootstrap: [AppComponent]
 })
