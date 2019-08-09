@@ -51,6 +51,7 @@ export class LecnavbarComponent implements OnInit {
     this.msgService.getlecnotifications().subscribe(actionArray => {
     this.Mlist = actionArray.map(item => {
       const a: any = item.payload.doc.data();
+      a[4] = item.payload.doc.id;
       return a;
     })
 
@@ -179,4 +180,13 @@ export class LecnavbarComponent implements OnInit {
     }
     return 'LecturerDashboard';
   }
+  counter(notifications:Notifications) {
+    // console.log("hello")
+     notifications[3]= 1;
+         // this.msgService.formData = Object.assign ({}, notifications);
+     this.msgService.formData = Object.assign ({}, notifications);
+     this.msgService.updateCounter(notifications[4])
+         .then(()=> console.log("Success"))
+         .catch((err)=>console.log("New Error " + err));
+ }
 }
