@@ -8,14 +8,16 @@ import { ChatComponent } from 'app/chat/chat.component';
 import { LecturerWorkloadComponent } from 'app/lecturer-workload/lecturer-workload.component';
 import { LecturerprofileComponent } from 'app/lecturerprofile/lecturerprofile.component';
 import { CommontableComponent } from 'app/commontable/commontable.component';
+import { NoticeListComponent } from 'app/notice-list/notice-list.component';
 
 export const LecturerLayoutRoutes: Routes = [
-    
-     { path: 'lecturer',      component: LecturerDashboardComponent },
-     { path: 'reqSchedule',          component: MessagesComponent },
-     { path: 'lecworkload',          component: LecturerWorkloadComponent },
-     { path: 'chat', component:ChatComponent},
-     { path: 'lecturerprofile', component:LecturerprofileComponent},
-     { path: 'alltimetables', component:CommontableComponent}
-    
+
+     { path: 'lecturer',        component: LecturerDashboardComponent },
+     { path: 'reqSchedule',     component: MessagesComponent },
+     { path: 'lecworkload',     component: LecturerWorkloadComponent },
+     { path: 'chat',            component: ChatComponent},
+     { path: 'noticelist',   component: NoticeListComponent},
+     { path: 'lecturerprofile', component: LecturerprofileComponent},
+     { path: 'alltimetables',   component: CommontableComponent}
+
 ];

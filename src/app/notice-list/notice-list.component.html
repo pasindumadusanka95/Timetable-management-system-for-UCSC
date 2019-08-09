@@ -1,0 +1,26 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">Notices</h4>
+                    </div>
+                    <div class="card-body">
+                        
+                        <div class="row columns">
+                            <div class="notice-container" *ngFor="let item of list">
+                                <a>{{item.subject}}</a>
+                                <p>{{item.message}}</p>
+                            </div>
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+  
+  

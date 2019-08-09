@@ -1,0 +1,36 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">Notices</h4>
+                    </div>
+                    <div class="card-body">
+                        
+                        <div class="row columns">
+                            <div class="notice-container" *ngFor="let item of list">
+                                <tr  class="table-striped"> 
+                                    <td><a>{{item.subject}}</a></td>
+                                    <td>
+                                        <a class="action-btn" style="color:rgb(36, 143, 192); cursor: pointer" (click)="onEdit(item)">
+                                          <i class="material-icons">edit</i>
+                                        </a>
+                                        <a class="action-btn" style="color:lightcoral; cursor: pointer" (click)="onDelete(item.id)">
+                                          <i class="material-icons">delete</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <p>{{item.message}}</p>
+                            </div>
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+  
+  
