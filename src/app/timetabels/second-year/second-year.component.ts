@@ -100,6 +100,17 @@ export class SecondYearComponent implements OnInit {
         });
         dropDownListObject.appendTo(venueElement);
       }
+      let groupElement: HTMLInputElement = args.element.querySelector(
+        "#GroupName"
+      ) as HTMLInputElement;
+      if (!groupElement.classList.contains("e-dropdownlist")) {
+        let dropDownListObject: DropDownList = new DropDownList({
+          placeholder: "Choose Group",
+          value: groupElement.value,
+          dataSource: ["Group 1", "Group 2", "Whole Group"]
+        });
+        dropDownListObject.appendTo(groupElement);
+      }
       let startElement: HTMLInputElement = args.element.querySelector('#StartTime') as HTMLInputElement;
       if (!startElement.classList.contains('e-datetimepicker')) {
         new DateTimePicker({ value: new Date(startElement.value) || new Date() }, startElement).format='EEEE HH:mm';
@@ -148,7 +159,7 @@ export class SecondYearComponent implements OnInit {
           isAdd = false;
           if (result.isConflicts) {
             console.log('if called')
-            alert(
+            let notification = confirm(
               "There is a conflict. \nReasons : \n1). Hall reserved, " +
                 result.isHallReserved +
                 "\n1). Lecture1 reserved, " +
@@ -156,7 +167,26 @@ export class SecondYearComponent implements OnInit {
                 "\n1). Lecturer2 reserved, " +
                 result.isLecture2Reserved
             );
-          isAdd = false;
+            
+
+            if (notification){
+              let confirmMsg = confirm(
+                "There is a conflict! Do you want to create the slot" 
+                  
+              );
+
+              if(confirmMsg){
+                this.ttcs.setSecondYearTT(this.eventSettings2Y.dataSource)
+                isAdd = true;
+              }
+              else{
+                isAdd = false;
+              }
+  
+            }
+            isAdd = false;
+           
+          
 
           }else{
             console.log('else called')
