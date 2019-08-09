@@ -108,7 +108,7 @@ export class ThirdYearComponent implements OnInit {
         let dropDownListObject: DropDownList = new DropDownList({
           placeholder: "Choose Group",
           value: groupElement.value,
-          dataSource: ["Group 1", "Group 2", "Whole Group"]
+          dataSource: ["Group 1", "Group 2", "All Groups"]
         });
         dropDownListObject.appendTo(groupElement);
       }
