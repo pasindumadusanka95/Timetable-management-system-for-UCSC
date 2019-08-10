@@ -6,12 +6,13 @@ import { LecturerDashboardComponent } from 'app/lecturer-dashboard/lecturer-dash
 import { MessagesComponent } from 'app/messages/messages.component';
 import { SuperadminDashComponent } from 'app/superadmin-dash/superadmin-dash.component';
 import { NoticesComponent } from 'app/notices/notices.component';
+import { ApprovalsuperComponent } from 'app/approvalsuper/approvalsuper.component';
 
 export const SuperAdminLayoutRoutes: Routes = [
     
      { path: 'superadmin',      component:SuperadminDashComponent },
      { path: 'notice',      component:NoticesComponent },
-   
+     { path: 'approval',  component:ApprovalsuperComponent}
     // { path: 'table-list',     component: TableListComponent },
     // { path: 'student-count',     component: StudentCountComponent },
     // { path: 'icons',          component: IconsComponent },

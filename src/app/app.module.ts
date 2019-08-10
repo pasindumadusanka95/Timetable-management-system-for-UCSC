@@ -56,6 +56,7 @@ import { SuperadminNavbarComponent } from './superadmincomponent/superadmin-navb
 import { TagInputModule } from 'ngx-chips';
 import { CommontableComponent } from './commontable/commontable.component';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material';
+import { ApprovalsuperComponent } from './approvalsuper/approvalsuper.component';
 
 
 
@@ -105,6 +106,7 @@ let config = {
     SuperadminLayoutComponent,
     LecturerLayoutComponent,
     HomepageComponent,
+    
     
    
    
