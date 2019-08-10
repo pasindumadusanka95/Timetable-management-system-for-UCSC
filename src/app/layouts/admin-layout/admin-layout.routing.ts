@@ -7,6 +7,7 @@ import { TableListComponent } from '../../table-list/table-list.component';
 import { LecturersComponent } from '../../addlecturers/lecturers.component';
 import { WorkloadComponent } from 'app/workload/workload.component';
 import { StudentCountComponent } from 'app/student-count/student-count.component';
+import { ApprovalmodComponent } from 'app/approvalmod/approvalmod.component';
 
 export const AdminLayoutRoutes: Routes = [
 
@@ -17,5 +18,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'managelectures',    component: LecturersComponent },
     { path: 'student-count',     component: StudentCountComponent },
     { path: 'workload',          component: WorkloadComponent },
+    { path: 'modapprove',          component: ApprovalmodComponent },
 
 ];

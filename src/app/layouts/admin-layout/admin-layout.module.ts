@@ -33,6 +33,7 @@ import { HallListComponent } from 'app/hall-list/hall-list.component';
 import { StudentCountComponent } from 'app/student-count/student-count.component';
 import { StudentCountListComponent } from 'app/student-count-list/student-count-list.component';
 import { TagInputModule } from 'ngx-chips';
+import { ApprovalmodComponent } from 'app/approvalmod/approvalmod.component';
 
 
 @NgModule({
@@ -72,6 +73,8 @@ import { TagInputModule } from 'ngx-chips';
     SecondYearComponent,
     ThirdYearComponent,
     FourthYearComponent,
+    ApprovalmodComponent,
+
   
     
     

@@ -15,6 +15,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/student-count', title: 'Manage Student Counts',  icon: 'people', class: '' },
     { path: '/subjects', title: 'Manage Subjects',  icon: 'books', class: '' },
     { path: '/workload', title: 'Work Load Calculator',  icon: 'equalizer', class: '' },
+    { path: '/modapprove', title: 'Approve/Reject Rechedules',  icon: 'message', class: '' },
 ];
 
 @Component({

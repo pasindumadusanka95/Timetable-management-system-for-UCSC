@@ -14,7 +14,6 @@ export const LecturerLayoutRoutes: Routes = [
 
      { path: 'lecturer',        component: LecturerDashboardComponent },
      { path: 'reqSchedule',     component: MessagesComponent },
-     { path: 'lecworkload',     component: LecturerWorkloadComponent },
      { path: 'chat',            component: ChatComponent},
      { path: 'noticelist',   component: NoticeListComponent},
      { path: 'lecturerprofile', component: LecturerprofileComponent},
