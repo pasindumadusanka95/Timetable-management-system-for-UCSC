@@ -150,7 +150,7 @@ export class LecnavbarComponent implements OnInit {
               $layer.classList.add('visible');
           }, 100);
 
-          $layer.onclick = function() { //asign a function
+          $layer.onclick = function() { // asign a function
             body.classList.remove('nav-open');
             this.mobile_menu_visible = 0;
             $layer.classList.remove('visible');

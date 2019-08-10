@@ -34,6 +34,8 @@ import { SuperadminDashComponent } from 'app/superadmin-dash/superadmin-dash.com
 import { SuperAdminLayoutRoutes } from './superadmin-layout.routing';
 import { NoticesComponent } from 'app/notices/notices.component';
 import { ApprovalsuperComponent } from 'app/approvalsuper/approvalsuper.component';
+import { NoticeEditComponent } from 'app/notice-edit/notice-edit.component';
+
 
 
 @NgModule({
@@ -56,13 +58,12 @@ import { ApprovalsuperComponent } from 'app/approvalsuper/approvalsuper.componen
     SuperadminDashComponent,
     NoticesComponent,
     ApprovalsuperComponent,
-   
-    
-    
+    NoticeEditComponent
+
   ],
-  exports:[
+  exports: [
     SuperadminDashComponent,
-    
+
   ]
 })
 

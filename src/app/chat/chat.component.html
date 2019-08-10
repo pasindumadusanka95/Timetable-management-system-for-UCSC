@@ -1,3 +1,42 @@
-<p>
-  chat works!
-</p>
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-primary">
+                      <h4 class="card-title">CHAT</h4>
+                  </div>
+                  <div class="card-body">
+
+                      <form #form="ngForm" autocomplete="off" (submit)="chatSend(form)">
+                          <!-- <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id"> -->
+                           
+                              <div class="row">
+                                  <div class="col-md-12">
+                                      <input type="hidden" name="name" #name="ngModel" [(ngModel)]="chatService.formData.name">
+                                      <input type="text" name="message" #message="ngModel" [(ngModel)]="chatService.formData.message" class="form-control" required>
+                                      <div *ngIf="message.invalid && message.touched" class="validation-error">This field is required.</div>
+                                    </div>
+                              </div>
+        
+                              <div class="form-group text-right">
+                                <button type="submit" class="btn btn-success pull-right" [disabled]="form.invalid" value="submit">Send Message</button>
+                              </div>
+                        
+                           
+                            <div class="clearfix"></div>
+                          
+                      </form>
+
+                      <div class="row columns">
+                          <div class="chat-container" *ngFor="let item of list">
+                              <a>{{item.name}}</a>
+                              <p>{{item.message}}</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
