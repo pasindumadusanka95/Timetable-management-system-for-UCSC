@@ -76,6 +76,7 @@ subTypeIS:any;
     console.log(this.subTypeCS);
     console.log("hello");
     if (form.value.id == null) {
+      this.firestore.collection('subjects').add(data);
       console.log(this.subTypeCS);
       if(this.subTypeCS=='1' || this.subTypeIS=='1'){
         this.firestore.collection('firstyearsubjects').add(data);

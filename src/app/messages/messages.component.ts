@@ -64,14 +64,17 @@ export class MessagesComponent implements OnInit {
   // tslint:disable-next-line:max-line-length
   const notificationbody = data.LecturerID + ' requested rechedule for ' + data.Subject + ' on ' + data.Date + ' at ' + data.Time + '. requesting new date on ' + data.NewDate + ' at ' + data.NewTime + '.';
   const type=2;
+  const typesuper=0;
   const notificationsubject="recheduling request";
   const read=0;
   const notificationdata = Object.assign({}, [notificationbody,type,notificationsubject,read]);
+  const notificationdatasuper = Object.assign({}, [notificationbody,typesuper,notificationsubject,read]);
   delete data.id;
     // tslint:disable-next-line:curly
     if (form.value.id == null) {
       this.firestore.collection('messages').add(data);
       this.firestore.collection('notifications').add(notificationdata);
+      this.firestore.collection('notifications').add(notificationdatasuper);
     } else {
     this.firestore.doc('messages/' + form.value.id).update(data);
     }
