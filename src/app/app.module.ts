@@ -57,6 +57,7 @@ import { TagInputModule } from 'ngx-chips';
 import { CommontableComponent } from './commontable/commontable.component';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material';
 import { ApprovalmodComponent } from './approvalmod/approvalmod.component';
+import { ViewUpcomingLecturesComponent } from './view-upcoming-lectures/view-upcoming-lectures.component';
 
 
 
@@ -109,6 +110,7 @@ let config = {
     SuperadminLayoutComponent,
     LecturerLayoutComponent,
     HomepageComponent,
+    
     
     //SubjectsComponent,
     //SubjectListComponent,

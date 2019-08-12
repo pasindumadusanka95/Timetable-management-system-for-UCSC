@@ -119,7 +119,7 @@ export class FirstYearComponent implements OnInit {
         let dropDownListObject: DropDownList = new DropDownList({
           placeholder: "Choose Venue",
           value: venueElement.value,
-          dataSource: this.venue_list
+          dataSource: this.venue_list,
         });
         dropDownListObject.appendTo(venueElement);
       }

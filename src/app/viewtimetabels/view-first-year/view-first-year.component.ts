@@ -86,7 +86,7 @@ export class ViewFirstYearComponent implements OnInit {
       }
     
       this.scheduleObj.refreshEvents()
-      console.log(this.eventSettings1Y.dataSource)
+     
     })
 
     

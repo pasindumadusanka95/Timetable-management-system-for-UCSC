@@ -34,6 +34,7 @@ import { StudentCountComponent } from 'app/student-count/student-count.component
 import { StudentCountListComponent } from 'app/student-count-list/student-count-list.component';
 import { TagInputModule } from 'ngx-chips';
 import { ApprovalmodComponent } from 'app/approvalmod/approvalmod.component';
+import { ViewUpcomingLecturesComponent } from 'app/view-upcoming-lectures/view-upcoming-lectures.component';
 
 
 @NgModule({
@@ -74,6 +75,7 @@ import { ApprovalmodComponent } from 'app/approvalmod/approvalmod.component';
     ThirdYearComponent,
     FourthYearComponent,
     ApprovalmodComponent,
+    ViewUpcomingLecturesComponent,
 
   
     
