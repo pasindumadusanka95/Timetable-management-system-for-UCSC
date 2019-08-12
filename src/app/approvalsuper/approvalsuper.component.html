@@ -13,25 +13,31 @@
                       
                     <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
                         
-                      <input type="hidden" name="id" #id="ngModel" [(ngModel)]="hallservice.formData.id">
-                      
+                      <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id">
+                      <div class="row">
+                
+                        <div class="col-md-12">
+                        <label>Message Subject</label>
+                        <select [ngModel]="service.formData.reason" (ngModelChange)="onChangeSub($event)" name="reason" class="form-control" required>
+                          <option [value]="slist" *ngFor="let slist of Sub">{{slist}}</option>
+                         
+                      </select>
+                      </div>
+                  </div>
                           <div class="row">
                 
                                     <div class="col-md-12">
                                     <label>Approval Status</label>
-                                    <select [ngModel]="service.formData.Subject" (ngModelChange)="onChange($event)" name="Subject" class="form-control" required>
-                                      <option [value]="subject.subjectTitle" *ngFor="let subject of subjects">{{subject.subjectCode}}-{{subject.subjectTitle}}</option>
+                                    <select [ngModel]="service.formData.approveStatus" (ngModelChange)="onChange($event)" name="approveStatus" class="form-control" required>
+                                      <option [value]="list" *ngFor="let list of Slist">{{list}}</option>
+                                     
                                   </select>
-                                   
-                               
-                                 
-                                 <div *ngIf="hallID.invalid && hallID.touched" class="validation-error">This field is required.</div>
                                   </div>
                               </div>
                               <div class="row">
                             <div class="col-md-12">
                               <label>Message</label>
-                              <textarea type="number" name="capacity" #capacity="ngModel" [(ngModel)]="hallservice.formData.capacity" class="form-control" required></textarea>
+                              <textarea type="string" name="reasonmessage" #reasonmessage="ngModel" [(ngModel)]="service.formData.reasonmessage" class="form-control" required></textarea>
                             </div>
                           </div>
                          
