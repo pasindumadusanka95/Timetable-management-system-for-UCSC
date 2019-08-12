@@ -46,8 +46,10 @@ onChangeSub(newValue) {
 }
 onSubmit(form: NgForm) {
   console.log('hello');
+  
   const data = Object.assign({}, form.value);
   delete data.id;
+ 
   // tslint:disable-next-line:curly
   if (form.value.id == null)
     this.firestore.collection('approvetables').add(data);

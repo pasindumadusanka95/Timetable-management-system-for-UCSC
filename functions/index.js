@@ -15,6 +15,7 @@ let transporter = nodemailer.createTransport({
 exports.sendMail = functions.firestore.document('messages/{document}').onCreate(event => {
 
     const dest = "pasindusenerath@gmail.com";
+    const seconddest = "pasindu.rc95@gmail.com";
      const LecturerID = event.data().LecturerID;
      const reason = event.data().Reason;
      const date = event.data().Date;
@@ -25,8 +26,9 @@ exports.sendMail = functions.firestore.document('messages/{document}').onCreate(
 
     
     const mailOption = {
-        from: 'Schedule Manager <pasindusenerath@gmail.com>',
+        from: 'Schedule Manager <schedulemanager1@gmail.com>',
         to: dest,
+        cc:seconddest,
         subject: 'Requesting Reschedule',
         html: `<h3> Details of Request </h3>
                 <p> <b>Lecturer Code     :</b> ${LecturerID} </p>
@@ -39,6 +41,65 @@ exports.sendMail = functions.firestore.document('messages/{document}').onCreate(
     }
 
     return transporter.sendMail(mailOption, (err, info) => {
+        if(err){
+            console.log('Error'+ err)
+            return;
+        }else{
+            console.log('message Sent')
+            return
+        }
+    })
+})
+exports.sendMail = functions.firestore.document('approvetables/{document}').onCreate(event => {
+
+    const dest = "pasindusenerath@gmail.com"; //moderator
+    //const seconddest = "pasindu.rc95@gmail.com"; //admin
+     const approveStatus = event.data().approveStatus;
+     const Mreason = event.data().reason;
+     const reasonmessage = event.data().reasonmessage;
+    
+    
+    const mailOptionsuper = {
+        from: 'Schedule Manager <schedulemanager1@gmail.com>',
+        to: dest,
+      //  cc:seconddest,
+        subject: 'Approval of Admin',
+        html: `<h3> ${Mreason} </h3>
+                <p> <b>Approval Status    :</b> ${approveStatus} </p>
+                <p> <b>Remarks     :</b> ${reasonmessage}</p>`
+    }
+
+    return transporter.sendMail(mailOptionsuper, (err, info) => {
+        if(err){
+            console.log('Error'+ err)
+            return;
+        }else{
+            console.log('message Sent')
+            return
+        }
+    })
+})
+
+exports.sendMail = functions.firestore.document('sendapproval/{document}').onCreate(event => {
+
+   // const dest = "pasindusenerath@gmail.com"; //moderator
+    const dest = "pasindu.rc95@gmail.com"; //admin
+     const approveStatus = event.data().approveStatus;
+     const Mreason = event.data().reason;
+     const reasonmessage = event.data().reasonmessage;
+    
+    
+    const mailOptionmod = {
+        from: 'Schedule Manager <schedulemanager1@gmail.com>',
+        to: dest,
+      //  cc:seconddest,
+        subject: 'Approval of Admin',
+        html: `<h3> ${Mreason} </h3>
+                <p> <b>Approval Status    :</b> ${approveStatus} </p>
+                <p> <b>Remarks     :</b> ${reasonmessage}</p>`
+    }
+
+    return transporter.sendMail(mailOptionmod, (err, info) => {
         if(err){
             console.log('Error'+ err)
             return;
