@@ -151,7 +151,7 @@ export class SecondYearComponent implements OnInit {
 
     let isAdd: boolean;
     
-    this.ttcs.checkReservedSlots(startTime, endTime, lecturer1, lecturer2, location).pipe(take(1)).subscribe(
+    this.ttcs.checkReservedSlots(startTime, endTime, lecturer1, lecturer2, location).subscribe(
       
         (result: any) => {
           console.log('result', result);

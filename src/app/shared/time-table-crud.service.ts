@@ -57,6 +57,8 @@ export class TimeTableCRUDService {
     const doc = this.db.collection('Timetable').doc('1styear').set({firstyear:object});
   }
   setSecondYearTT(object){
+    console.log('asdf', object);
+    
     const doc = this.db.collection('Timetable').doc('2ndyear').set({secondyear:object});
   }
   setThirdYearTT(object){
@@ -70,7 +72,7 @@ export class TimeTableCRUDService {
   checkReservedSlots(startTime: Date, endTime: Date, lecturer1: string, lecturer2: string, location: string) {
 
     return this.db.collection('Timetable').get().pipe(
-      take(1),
+      //take(1),
       map(actioArray => {
         let hallsObservable: any = {
           isConflicts:false
@@ -78,23 +80,35 @@ export class TimeTableCRUDService {
 
         actioArray.forEach(item =>{
           let years:any=item.data();
+          
           // console.log('item', years);
           for (let key of Object.keys(years)) {
             if (hallsObservable.isConflicts) return;
 
             let year = years[key];
             console.log('year', year)
-            year.every(item => {
+            year.forEach(item => {
+              
               let isHallReserved = false;
               let isLecture1Reserved = false;
               let isLecture2Reserved = false;
               let stTime = startTime.getTime()/1000;
               let enTime = endTime.getTime()/1000;
               
+              // console.log({
+              //   1:[item.StartTime.seconds , stTime , item.StartTime.seconds , enTime],
+              //   2: [item.EndTime.seconds , stTime , item.EndTime.seconds , enTime],
+              //   3:   [item.StartTime.seconds , stTime , item.EndTime.seconds , enTime]
+              // });
               
+              console.log(((item.StartTime.seconds >= stTime && item.StartTime.seconds < enTime) ||
+              (item.EndTime.seconds > stTime && item.EndTime.seconds <= enTime) || 
+               (item.StartTime.seconds <= stTime && item.EndTime.seconds >= enTime)))
 
-              if((item.StartTime.seconds >= stTime && item.StartTime.seconds < enTime)
-                || (item.EndTime.seconds > stTime && item.EndTime.seconds <= enTime) || (item.StartTime.seconds <= stTime && item.EndTime.seconds >= enTime)) {
+
+              if((item.StartTime.seconds >= stTime && item.StartTime.seconds < enTime) ||
+               (item.EndTime.seconds > stTime && item.EndTime.seconds <= enTime) || 
+                (item.StartTime.seconds <= stTime && item.EndTime.seconds >= enTime)) {
 
                   if(item.Location == location) {
                     isHallReserved = true;
@@ -106,7 +120,7 @@ export class TimeTableCRUDService {
                     isLecture2Reserved = true;
                   }
                   
-                  console.log('inside if', isHallReserved == true || isLecture1Reserved == true || isLecture2Reserved == true);
+                  
                   if (isHallReserved == true || isLecture1Reserved == true || isLecture2Reserved == true) {
                     
                     hallsObservable = {
@@ -115,7 +129,7 @@ export class TimeTableCRUDService {
                       isLecture1Reserved: isLecture1Reserved,
                       isLecture2Reserved: isLecture2Reserved
                     };
-                  // return;
+                   //return;
 
                   } else {
                     // hallsObservable = {

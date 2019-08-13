@@ -139,18 +139,21 @@ export class FirstYearComponent implements OnInit {
       ) as HTMLInputElement;
       if (!startElement.classList.contains("e-datetimepicker")) {
         new DateTimePicker(
-          { value: new Date(startElement.value) || new Date() },
+          { value: new Date(startElement.value)  },
           startElement
         ).format = "EEEE HH:mm";
+        console.log('startTime', startElement.value)
       }
       let endElement: HTMLInputElement = args.element.querySelector(
         "#EndTime"
       ) as HTMLInputElement;
       if (!endElement.classList.contains("e-datetimepicker")) {
         new DateTimePicker(
-          { value: new Date(endElement.value) || new Date() },
+          { value: new Date(endElement.value) },
           endElement
         ).format = "EEEE HH:mm";
+        console.log('endTime', endElement.value)
+
       }
       
       let recurElement: HTMLElement = args.element.querySelector(
@@ -192,7 +195,7 @@ export class FirstYearComponent implements OnInit {
 
     let isAdd: boolean;
     
-    this.ttcs.checkReservedSlots(startTime, endTime, lecturer1, lecturer2, location).pipe(take(1)).subscribe(
+    this.ttcs.checkReservedSlots(startTime, endTime, lecturer1, lecturer2, location).subscribe(
       
         (result: any) => {
           console.log('result', result);
@@ -218,10 +221,11 @@ export class FirstYearComponent implements OnInit {
 
               if(confirmMsg){
                 this.ttcs.setFirstYearTT(this.eventSettings1Y.dataSource)
+                console.log(this.eventSettings1Y.dataSource)
                 isAdd = true;
               }
               else{
-                isAdd = false;
+               isAdd = false;
               }
   
             }
