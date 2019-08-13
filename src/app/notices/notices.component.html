@@ -20,16 +20,18 @@
                                       <div class="col-md-12">
                                       <label>Subject</label>
                                       <input type="text" name="hallID" #hallID="ngModel" [(ngModel)]="hallservice.formData.hallID" class="form-control" required>
+                                      <div *ngIf="hallID.invalid && hallID.touched" class="validation-error">This field is required.</div>  
                                      
                                  
                                    
-                                   <div *ngIf="hallID.invalid && hallID.touched" class="validation-error">This field is required.</div>
+                                   
                                     </div>
                                 </div>
                                 <div class="row">
                               <div class="col-md-12">
                                 <label>Message</label>
                                 <textarea type="number" name="capacity" #capacity="ngModel" [(ngModel)]="hallservice.formData.capacity" class="form-control" required></textarea>
+                                <div *ngIf="capacity.invalid && capacity.touched" class="validation-error">This field is required.</div>
                               </div>
                             </div>
                            
