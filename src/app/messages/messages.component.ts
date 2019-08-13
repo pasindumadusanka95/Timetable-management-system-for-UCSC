@@ -36,7 +36,7 @@ export class MessagesComponent implements OnInit {
       form.resetForm();
     this.service.formData = {
       id: null,
-      LecturerID: '',
+      LecturerID: JSON.parse(localStorage.getItem('curLec')).userName,
       Date: '',
       Time: '',
       NewDate: '',

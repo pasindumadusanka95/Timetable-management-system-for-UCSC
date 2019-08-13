@@ -43,16 +43,45 @@ onChangeSub(newValue) {
  this.service.formData.reason = newValue;
 }
 onSubmit(form: NgForm) {
+  
+  
   console.log('hello');
   const data = Object.assign({}, form.value);
   delete data.id;
   data.approveStatus= 'Pending';
-  // tslint:disable-next-line:curly
-  if (form.value.id == null)
-    this.firestore.collection('sendapproval').add(data);
-
-    this.toastr.success('for Approval successfully', 'Details Sent');
-    this.resetForm();
+  if (form.value.id == null){
+  if(data.reason=='About TimeTable'){
+    const notificationbody = 'New TimeTable available';
+    const typesuper=0;
+    const notificationsubject='Approval Requested';
+    const read=0;
+    const notificationdatasuper = Object.assign({}, [notificationbody,typesuper,notificationsubject,read]);
+    // tslint:disable-next-line:curly
+   
+      this.firestore.collection('notifications').add(notificationdatasuper);
+      this.firestore.collection('sendapproval').add(data);
+  
+      this.toastr.success('for Approval successfully', 'Details Sent');
+      this.resetForm();
+    
+  }
+  else if(data.reason=='About rescheduling'){
+    // tslint:disable-next-line: no-shadowed-variable
+    const notificationbody = 'New slot has assigned to a lecturer. Details :- '+ data.reasonmessage;
+    const typesuper=0;
+    const notificationsubject='Approval Requested';
+    const read=0;
+    const notificationdatasuper = Object.assign({}, [notificationbody,typesuper,notificationsubject,read]);
+    // tslint:disable-next-line:curly
+   
+      this.firestore.collection('notifications').add(notificationdatasuper);
+      this.firestore.collection('sendapproval').add(data);
+  
+      this.toastr.success('for Approval successfully', 'Details Sent');
+      this.resetForm();
+   
+  }
+ 
 }
-
+}
 }

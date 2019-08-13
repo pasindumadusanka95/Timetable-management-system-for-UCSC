@@ -13,7 +13,7 @@ import { LecnavbarComponent } from 'app/lecComponents/lecnavbar/lecnavbar.compon
 import { SuperadminSidebarComponent } from 'app/superadmincomponent/superadmin-sidebar/superadmin-sidebar.component';
 import { SuperadminDashComponent } from 'app/superadmin-dash/superadmin-dash.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { SuperadminNavbarComponent } from 'app/superadmincomponent/superadmin-navbar/superadmin-navbar.component';
 import { LecturerViewComponent } from 'app/viewtimetabels/lecturer-view/lecturer-view.component';
@@ -26,6 +26,7 @@ import { LecturerViewFourthYearComponent } from 'app/viewtimetabels/lecturer-vie
         CommonModule,
         ScheduleModule,
         RouterModule,
+        
        
        
        

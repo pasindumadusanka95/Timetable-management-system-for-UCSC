@@ -27,6 +27,7 @@
                                       </select> -->
                                    
                                       <select [ngModel]="service.formData.Subject" (ngModelChange)="onChange($event)" name="Subject" class="form-control" required>
+                                      
                                         <option [value]="subject.subjectTitle" *ngFor="let subject of subjects">{{subject.subjectCode}}-{{subject.subjectTitle}}</option>
                                     </select>
                                    
