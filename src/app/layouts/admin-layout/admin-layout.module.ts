@@ -33,7 +33,10 @@ import { HallListComponent } from 'app/hall-list/hall-list.component';
 import { StudentCountComponent } from 'app/student-count/student-count.component';
 import { StudentCountListComponent } from 'app/student-count-list/student-count-list.component';
 import { TagInputModule } from 'ngx-chips';
-
+import { ApprovalmodComponent } from 'app/approvalmod/approvalmod.component';
+import { ViewUpcomingLecturesComponent } from 'app/view-upcoming-lectures/view-upcoming-lectures.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -50,7 +53,9 @@ import { TagInputModule } from 'ngx-chips';
     ScheduleModule,
     NgxPaginationModule,
     SharedModule,
-    TagInputModule
+    TagInputModule,
+    MatMenuModule,
+    MatIconModule 
   ],
   declarations: [
     DashboardComponent,
@@ -72,6 +77,9 @@ import { TagInputModule } from 'ngx-chips';
     SecondYearComponent,
     ThirdYearComponent,
     FourthYearComponent,
+    ApprovalmodComponent,
+    ViewUpcomingLecturesComponent,
+
   
     
     

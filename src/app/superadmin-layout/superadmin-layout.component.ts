@@ -30,13 +30,14 @@ export class SuperadminLayoutComponent implements OnInit {
       const elemMainPanel = <HTMLElement>document.querySelector('.main-panel');
       const elemSidebar = <HTMLElement>document.querySelector('.sidebar .sidebar-wrapper');
 
-      this.location.subscribe((ev:PopStateEvent) => {
+      this.location.subscribe((ev: PopStateEvent) => {
           this.lastPoppedUrl = ev.url;
       });
-       this.router.events.subscribe((event:any) => {
+       this.router.events.subscribe((event: any) => {
           if (event instanceof NavigationStart) {
-             if (event.url != this.lastPoppedUrl)
+             if (event.url != this.lastPoppedUrl) {
                  this.yScrollStack.push(window.scrollY);
+             }
          } else if (event instanceof NavigationEnd) {
              if (event.url == this.lastPoppedUrl) {
                  this.lastPoppedUrl = undefined;
@@ -58,13 +59,12 @@ export class SuperadminLayoutComponent implements OnInit {
   ngAfterViewInit() {
       this.runOnRouteChange();
   }
-  isMaps(path){
-      var titlee = this.location.prepareExternalUrl(this.location.path());
+  isMaps(path) {
+      let titlee = this.location.prepareExternalUrl(this.location.path());
       titlee = titlee.slice( 1 );
-      if(path == titlee){
+      if (path == titlee) {
           return false;
-      }
-      else {
+      } else {
           return true;
       }
   }

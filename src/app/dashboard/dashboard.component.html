@@ -244,6 +244,24 @@
       </div>
       </ng-template>
     <!-- End 4th year Modal -->
+    <ng-template #content6 let-modal>
+      <div class="modal-header">
+          <h3 class="h3">Upcoming Lectures</h3>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+      </div>
+          <div class="modal-body">
+        
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
+          
+          <div>
+               <app-view-upcoming-lectures></app-view-upcoming-lectures>   
+      </div>
+        </div>
+        </div>
+        </ng-template>
+      <!-- End 4th year Modal -->
 
 
 <div class="main-content">
@@ -281,6 +299,54 @@
                   </div>
               </div>
           </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <!-- <div class="card card-stats">
+                <div class="card-header card-header-warning card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons" style="cursor: pointer;" (click)="open(content6)">content_paste</i>
+                    </div>
+                    <h5 class="card-title">View Upcoming Lectures</h5>
+                </div>
+            </div> -->
+            <button mat-icon-button [matMenuTriggerFor]="year"> <mat-icon>more_vert</mat-icon>View Upcoming Lectuers
+               
+            </button>
+
+<mat-menu #year="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="firstyear">First Year</button>
+  <button mat-menu-item [matMenuTriggerFor]="secondyear">Second Year</button>
+  <button mat-menu-item [matMenuTriggerFor]="thirdyear">Third Year</button>
+  <button mat-menu-item [matMenuTriggerFor]="fourthyear">Fourth Year</button>
+</mat-menu>
+
+<mat-menu #firstyear="matMenu">
+    <button mat-menu-item *ngFor="let item of testdata"><b>Subject</b> - {{item.subcode}}---<b>Location</b> - {{item.loc}}</button>
+  
+    
+</mat-menu>
+
+<mat-menu #secondyear="matMenu">
+  <button mat-menu-item>lec1</button>
+  <button mat-menu-item>lec2</button>
+  <button mat-menu-item>lec3</button>
+ 
+</mat-menu>
+
+<mat-menu #thirdyear="matMenu">
+  <button mat-menu-item>lec1</button>
+  <button mat-menu-item>lec2</button>
+  <button mat-menu-item>lec3</button>
+  
+</mat-menu>
+
+
+
+<mat-menu #fourthyear="matMenu">
+    <button mat-menu-item>lec1</button>
+    <button mat-menu-item>lec2</button>
+    <button mat-menu-item>lec3</button>
+</mat-menu>
+        </div>
       <div class="row">
           <div class="col-lg-6 col-md-12">
             <div class="card">

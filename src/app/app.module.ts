@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './login/login.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import {NgbModule,NgbActiveModal} from '@ng-bootstrap/ng-bootstrap'
+import {NgbModule, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap'
 // Toaster for Alert Messages
 // Firebase Modules
 import {AngularFireModule} from 'angularfire2'
@@ -56,6 +56,15 @@ import { SuperadminNavbarComponent } from './superadmincomponent/superadmin-navb
 import { TagInputModule } from 'ngx-chips';
 import { CommontableComponent } from './commontable/commontable.component';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material';
+import { ApprovalmodComponent } from './approvalmod/approvalmod.component';
+import { ViewUpcomingLecturesComponent } from './view-upcoming-lectures/view-upcoming-lectures.component';
+import { LecturerViewFirstYearComponent } from './viewtimetabels/lecturer-view-first-year/lecturer-view-first-year.component';
+import { LecturerViewSecondYearComponent } from './viewtimetabels/lecturer-view-second-year/lecturer-view-second-year.component';
+import { LecturerViewThirdYearComponent } from './viewtimetabels/lecturer-view-third-year/lecturer-view-third-year.component';
+import { LecturerViewFourthYearComponent } from './viewtimetabels/lecturer-view-fourth-year/lecturer-view-fourth-year.component';
+
+
+
 
 
 
@@ -72,7 +81,7 @@ let config = {
 };
 @NgModule({
   imports: [
-    
+
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig), // Main Angular fire module
     AngularFireDatabaseModule,  // Firebase database module
@@ -106,33 +115,23 @@ let config = {
     LecturerLayoutComponent,
     HomepageComponent,
     
-   
-   
-    
-    
-
-    
-    
-    
-    
-   
     
     
     //SubjectsComponent,
     //SubjectListComponent,
 
   ],
-  providers: [LecturerService, SubjectsService,TimeTableCRUDService,NgbActiveModal, HallsService,
+  providers: [LecturerService, SubjectsService, TimeTableCRUDService, NgbActiveModal, HallsService,
     // LecturerDashboardComponent,
     // LecsidebarComponent,
-  
+
   //  SuperadminSidebarComponent,
     LecturerLayoutComponent,
     SuperadminLayoutComponent,
     {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
   ],
-  exports:[
-    
+  exports: [
+
   ],
   bootstrap: [AppComponent]
 })

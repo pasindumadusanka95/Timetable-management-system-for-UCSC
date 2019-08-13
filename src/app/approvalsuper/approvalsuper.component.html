@@ -1,0 +1,58 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-10">
+              <div class="card">
+                  <div class="card-header card-header-success">
+                      <h4 class="card-title">Approvals</h4>
+                     
+                  </div>
+                  <div class="card-body">
+                      <!-- <a class="action-btn pull-right" style="color:rgb(36, 143, 192); cursor: pointer"   (click)="this.isButtonVisible = false">new hall<i class="material-icons">add</i> -->
+                      <!-- </a> -->
+                      
+                    <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+                        
+                      <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id">
+                      <div class="row">
+                
+                        <div class="col-md-12">
+                        <label>Message Subject</label>
+                        <select [ngModel]="service.formData.reason" (ngModelChange)="onChangeSub($event)" name="reason" class="form-control" required>
+                          <option [value]="slist" *ngFor="let slist of Sub">{{slist}}</option>
+                         
+                      </select>
+                      </div>
+                  </div>
+                          <div class="row">
+                
+                                    <div class="col-md-12">
+                                    <label>Approval Status</label>
+                                    <select [ngModel]="service.formData.approveStatus" (ngModelChange)="onChange($event)" name="approveStatus" class="form-control" required>
+                                      <option [value]="list" *ngFor="let list of Slist">{{list}}</option>
+                                     
+                                  </select>
+                                  </div>
+                              </div>
+                              <div class="row">
+                            <div class="col-md-12">
+                              <label>Message</label>
+                              <textarea type="string" name="reasonmessage" #reasonmessage="ngModel" [(ngModel)]="service.formData.reasonmessage" class="form-control" required></textarea>
+                            </div>
+                          </div>
+                         
+                           <div class="form-group text-right">
+                            <button type="button" class="btn btn-info gap-right" (click)="resetForm(form)">Reset</button>
+                            <button type="submit" class="btn btn-success pull-right" [disabled]="form.invalid" value="submit">Send</button>
+                          </div>
+                    
+                       
+                        <div class="clearfix"></div>
+                      
+                    </form>
+                    
+                  </div>
+              </div>
+          </div>
+
+
