@@ -17,6 +17,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { SuperadminNavbarComponent } from 'app/superadmincomponent/superadmin-navbar/superadmin-navbar.component';
 import { LecturerViewComponent } from 'app/viewtimetabels/lecturer-view/lecturer-view.component';
+import { LecturerViewFirstYearComponent } from 'app/viewtimetabels/lecturer-view-first-year/lecturer-view-first-year.component';
+import { LecturerViewSecondYearComponent } from 'app/viewtimetabels/lecturer-view-second-year/lecturer-view-second-year.component';
+import { LecturerViewThirdYearComponent } from 'app/viewtimetabels/lecturer-view-third-year/lecturer-view-third-year.component';
+import { LecturerViewFourthYearComponent } from 'app/viewtimetabels/lecturer-view-fourth-year/lecturer-view-fourth-year.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -36,7 +40,12 @@ import { LecturerViewComponent } from 'app/viewtimetabels/lecturer-view/lecturer
         LecnavbarComponent,
         SuperadminSidebarComponent,
         SuperadminNavbarComponent,
-        LecturerViewComponent
+        LecturerViewComponent,
+        LecturerViewFirstYearComponent,
+        LecturerViewSecondYearComponent,
+        LecturerViewThirdYearComponent,
+        LecturerViewFourthYearComponent,
+   
         
     ],
     exports: [
@@ -48,7 +57,12 @@ import { LecturerViewComponent } from 'app/viewtimetabels/lecturer-view/lecturer
         LecnavbarComponent,
         SuperadminSidebarComponent,
         SuperadminNavbarComponent,
-        LecturerViewComponent
+        LecturerViewComponent,
+        LecturerViewFirstYearComponent,
+        LecturerViewSecondYearComponent,
+        LecturerViewThirdYearComponent,
+        LecturerViewFourthYearComponent,
+   
        
     ]
 })

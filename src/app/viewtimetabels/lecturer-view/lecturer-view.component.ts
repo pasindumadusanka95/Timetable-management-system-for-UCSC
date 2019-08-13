@@ -104,18 +104,18 @@ export class LecturerViewComponent implements OnInit {
     this.curLec = JSON.parse(localStorage.getItem('curLec'));
     console.log(this.curLec.userName);
 
-    this.ttcs.getFirstYearTT().subscribe(next => {
+    // this.ttcs.getFirstYearTT().subscribe(next => {
 
-      for (const i of next.data().firstyear as any[]) {
-        i.StartTime = i.StartTime.toDate();
-        i.EndTime = i.EndTime.toDate();
-        (<any[]>(this.eventSettings1Y.dataSource)).push(i);
+    //   for (const i of next.data().firstyear as any[]) {
+    //     i.StartTime = i.StartTime.toDate();
+    //     i.EndTime = i.EndTime.toDate();
+    //     (<any[]>(this.eventSettings1Y.dataSource)).push(i);
 
-      }
+    //   }
 
-      this.scheduleObj.refreshEvents()
-      console.log(this.eventSettings1Y.dataSource)
-    })
+    //   this.scheduleObj.refreshEvents()
+    //   console.log(this.eventSettings1Y.dataSource)
+    // })
   }
 
   getLecturer() {

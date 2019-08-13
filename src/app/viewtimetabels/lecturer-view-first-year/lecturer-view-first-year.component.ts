@@ -9,15 +9,14 @@ import {
 import { TimeTableCRUDService } from 'app/shared/time-table-crud.service';
 
 
-
 @Component({
-  selector: 'app-view-first-year',
-  templateUrl: './view-first-year.component.html',
-  styleUrls: ['./view-first-year.component.scss'],
+  selector: 'app-lecturer-view-first-year',
+  templateUrl: './lecturer-view-first-year.component.html',
+  styleUrls: ['./lecturer-view-first-year.component.scss'],
   encapsulation: ViewEncapsulation.None,
   providers: [DayService, WeekService, WorkWeekService, MonthService, AgendaService, DragAndDropService, ResizeService],
 })
-export class ViewFirstYearComponent implements OnInit {
+export class LecturerViewFirstYearComponent implements OnInit {
 
   public selectedDate: Date = new Date(2019, 7, 1);
   public eventSettings1Y: EventSettingsModel = { dataSource: <Object[]>extend([], eventsData1Y, null, true) };
@@ -25,6 +24,7 @@ export class ViewFirstYearComponent implements OnInit {
   public views: Array<String> = ['WorkWeek'];
   public showTimeIndicator = false;
   public readonly = true;
+  public curLecUsername;
 
 
   @ViewChild('scheduleObj')
@@ -75,16 +75,23 @@ export class ViewFirstYearComponent implements OnInit {
 
   ngOnInit() {
 
+    this.curLecUsername = JSON.parse(localStorage.getItem('curLec')).userName;
+
     this.ttcs.getFirstYearTT().subscribe(next => {
 
       for (const i of next.data().firstyear as any[]) {
-        i.StartTime = i.StartTime.toDate();
-        i.EndTime = i.EndTime.toDate();
-        (<any[]>(this.eventSettings1Y.dataSource)).push(i);
-
+        if((this.curLecUsername === i.Lecturer1) || (this.curLecUsername === i.Lecturer2) ){
+          i.StartTime = i.StartTime.toDate();
+          i.EndTime = i.EndTime.toDate();
+         (<any[]>(this.eventSettings1Y.dataSource)).push(i);
+         this.scheduleObj.refreshEvents()
+        }
+        else{
+          this.scheduleObj.refreshEvents()
+        }
       }
 
-      this.scheduleObj.refreshEvents()
+      
 
     })
 
@@ -94,5 +101,6 @@ export class ViewFirstYearComponent implements OnInit {
 
 
 }
+
 
 }

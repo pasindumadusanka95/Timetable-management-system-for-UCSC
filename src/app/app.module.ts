@@ -58,6 +58,10 @@ import { CommontableComponent } from './commontable/commontable.component';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material';
 import { ApprovalmodComponent } from './approvalmod/approvalmod.component';
 import { ViewUpcomingLecturesComponent } from './view-upcoming-lectures/view-upcoming-lectures.component';
+import { LecturerViewFirstYearComponent } from './viewtimetabels/lecturer-view-first-year/lecturer-view-first-year.component';
+import { LecturerViewSecondYearComponent } from './viewtimetabels/lecturer-view-second-year/lecturer-view-second-year.component';
+import { LecturerViewThirdYearComponent } from './viewtimetabels/lecturer-view-third-year/lecturer-view-third-year.component';
+import { LecturerViewFourthYearComponent } from './viewtimetabels/lecturer-view-fourth-year/lecturer-view-fourth-year.component';
 
 
 
@@ -110,6 +114,7 @@ let config = {
     SuperadminLayoutComponent,
     LecturerLayoutComponent,
     HomepageComponent,
+    
     
     
     //SubjectsComponent,
