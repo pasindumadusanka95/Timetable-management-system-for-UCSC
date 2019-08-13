@@ -13,7 +13,7 @@
         </thead>
         
           
-          <ng-container *ngFor="let lecturer of list | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
+          <ng-container *ngFor="let lecturer of list | paginate: { itemsPerPage: 5, currentPage: p }; let i = index;">
            
              <tr  class="table-striped"> 
             <td>{{lecturer.firstName}} {{lecturer.lastName}}</td>

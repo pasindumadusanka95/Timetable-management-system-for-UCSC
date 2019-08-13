@@ -35,7 +35,8 @@ import { StudentCountListComponent } from 'app/student-count-list/student-count-
 import { TagInputModule } from 'ngx-chips';
 import { ApprovalmodComponent } from 'app/approvalmod/approvalmod.component';
 import { ViewUpcomingLecturesComponent } from 'app/view-upcoming-lectures/view-upcoming-lectures.component';
-
+import {MatMenuModule} from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -52,7 +53,9 @@ import { ViewUpcomingLecturesComponent } from 'app/view-upcoming-lectures/view-u
     ScheduleModule,
     NgxPaginationModule,
     SharedModule,
-    TagInputModule
+    TagInputModule,
+    MatMenuModule,
+    MatIconModule 
   ],
   declarations: [
     DashboardComponent,

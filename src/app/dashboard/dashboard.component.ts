@@ -27,6 +27,7 @@ export class DashboardComponent implements OnInit {
   Hlist: Hall[];
   Mlist: Message[];
   closeResult: string;
+  testdata=[{subcode:'SCS1001',loc:'W002'},{subcode:'SCS1002',loc:'E401'}]
 constructor(
   private lecservice: LecturerService,
   public modalService: NgbModal,
