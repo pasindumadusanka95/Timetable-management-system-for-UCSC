@@ -63,7 +63,7 @@ export class MessagesComponent implements OnInit {
     const data = Object.assign({}, form.value);
    console.log(data);
   // tslint:disable-next-line:max-line-length
-  const notificationbody = data.LecturerID + ' requested rechedule for ' + data.Subject + ' on ' + data.Date + ' at ' + data.Time + '. requesting new date on ' + data.NewDate + ' at ' + data.NewTime + '.';
+  const notificationbody = data.LecturerID + ' requested rechedule for ' + data.Subject + ' on ' + data.Date + ' at ' + data.Time + '. requesting new date on ' + data.NewDate + ' at ' + data.NewTime + '.'+ ' reason is ' + data.Reason;
   const type=2;
   const typesuper=0;
   const notificationsubject="recheduling request";
