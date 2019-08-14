@@ -37,6 +37,10 @@ import { ApprovalmodComponent } from 'app/approvalmod/approvalmod.component';
 import { ViewUpcomingLecturesComponent } from 'app/view-upcoming-lectures/view-upcoming-lectures.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { ViewUpcomingFourthYearComponent } from 'app/viewUpcomingLectures/view-upcoming-fourth-year/view-upcoming-fourth-year.component';
+import { ViewUpcomingThirdYearComponent } from 'app/viewUpcomingLectures/view-upcoming-third-year/view-upcoming-third-year.component';
+import { ViewUpcomingSecondYearComponent } from 'app/viewUpcomingLectures/view-upcoming-second-year/view-upcoming-second-year.component';
+import { ViewUpcomingFirstYearComponent } from 'app/viewUpcomingLectures/view-upcoming-first-year/view-upcoming-first-year.component';
 
 @NgModule({
   imports: [
@@ -79,6 +83,10 @@ import { MatIconModule } from '@angular/material/icon';
     FourthYearComponent,
     ApprovalmodComponent,
     ViewUpcomingLecturesComponent,
+    ViewUpcomingFirstYearComponent,
+    ViewUpcomingSecondYearComponent,
+    ViewUpcomingThirdYearComponent,
+    ViewUpcomingFourthYearComponent,
 
   
     
