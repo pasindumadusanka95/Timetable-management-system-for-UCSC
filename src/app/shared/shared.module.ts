@@ -21,11 +21,14 @@ import { LecturerViewFirstYearComponent } from 'app/viewtimetabels/lecturer-view
 import { LecturerViewSecondYearComponent } from 'app/viewtimetabels/lecturer-view-second-year/lecturer-view-second-year.component';
 import { LecturerViewThirdYearComponent } from 'app/viewtimetabels/lecturer-view-third-year/lecturer-view-third-year.component';
 import { LecturerViewFourthYearComponent } from 'app/viewtimetabels/lecturer-view-fourth-year/lecturer-view-fourth-year.component';
+import { MatMenuModule, MatIconModule } from '@angular/material';
 @NgModule({
     imports: [
         CommonModule,
         ScheduleModule,
         RouterModule,
+        MatMenuModule,
+        MatIconModule 
         
        
        

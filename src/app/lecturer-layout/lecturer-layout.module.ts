@@ -16,7 +16,9 @@ import {
   MatTooltipModule,
   MatSelectModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatMenuModule,
+  MatIconModule
 } from '@angular/material';
 import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
 import { FirstYearComponent } from 'app/timetabels/first-year/first-year.component';
@@ -63,7 +65,9 @@ import { NoticeListComponent } from 'app/notice-list/notice-list.component';
     OwlNativeDateTimeModule,           // <----- this module will be deprecated in the future version.
     MatDatepickerModule,        // <----- import(must)
     MatNativeDateModule,        // <----- import for date formating(optional)
-    NgbModule
+    NgbModule,
+    MatMenuModule,
+        MatIconModule 
 
   ],
   declarations: [

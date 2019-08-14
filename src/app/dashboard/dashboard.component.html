@@ -320,32 +320,55 @@
 </mat-menu>
 
 <mat-menu #firstyear="matMenu">
-    <button mat-menu-item *ngFor="let item of testdata"><b>Subject</b> - {{item.subcode}}---<b>Location</b> - {{item.loc}}</button>
-  
-    
+    <!-- <button mat-menu-item *ngFor="let item of testdata"><b>Subject</b> - {{item.subcode}}---<b>Location</b> - {{item.loc}}</button>
+   -->
+    <div>
+      <app-view-upcoming-first-year></app-view-upcoming-first-year>
+    </div>
+</mat-menu>
+<mat-menu #secondyear="matMenu">
+  <!-- <button mat-menu-item *ngFor="let item of testdata"><b>Subject</b> - {{item.subcode}}---<b>Location</b> - {{item.loc}}</button>
+ -->
+  <div>
+    <app-view-upcoming-second-year></app-view-upcoming-second-year>
+  </div>
+</mat-menu>
+<mat-menu #thirdyear="matMenu">
+  <!-- <button mat-menu-item *ngFor="let item of testdata"><b>Subject</b> - {{item.subcode}}---<b>Location</b> - {{item.loc}}</button>
+ -->
+  <div>
+    <app-view-upcoming-third-year></app-view-upcoming-third-year>
+  </div>
+</mat-menu>
+<mat-menu #fourthyear="matMenu">
+  <!-- <button mat-menu-item *ngFor="let item of testdata"><b>Subject</b> - {{item.subcode}}---<b>Location</b> - {{item.loc}}</button>
+ -->
+  <div>
+    <app-view-upcoming-fourth-year></app-view-upcoming-fourth-year>
+  </div>
 </mat-menu>
 
-<mat-menu #secondyear="matMenu">
+<!-- <mat-menu #secondyear="matMenu">
   <button mat-menu-item>lec1</button>
   <button mat-menu-item>lec2</button>
   <button mat-menu-item>lec3</button>
  
-</mat-menu>
+</mat-menu> -->
 
-<mat-menu #thirdyear="matMenu">
+<!-- <mat-menu #thirdyear="matMenu">
   <button mat-menu-item>lec1</button>
   <button mat-menu-item>lec2</button>
   <button mat-menu-item>lec3</button>
   
-</mat-menu>
+</mat-menu> -->
 
 
 
-<mat-menu #fourthyear="matMenu">
+<!-- <mat-menu #fourthyear="matMenu">
     <button mat-menu-item>lec1</button>
     <button mat-menu-item>lec2</button>
     <button mat-menu-item>lec3</button>
-</mat-menu>
+</mat-menu> -->
         </div>
       <div class="row">
           <div class="col-lg-6 col-md-12">
