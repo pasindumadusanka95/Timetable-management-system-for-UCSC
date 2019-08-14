@@ -43,7 +43,7 @@ exports.sendMail = functions.firestore.document('approvetables/{document}').onCr
     })
 })
 
-exports.sendMail = functions.firestore.document('sendapproval/{document}').onCreate(event => {
+exports.sendMailmod = functions.firestore.document('sendapproval/{document}').onCreate(event => {
 
    // const dest = "pasindusenerath@gmail.com"; //moderator
     const dest = "pasindu.rc95@gmail.com"; //admin
@@ -86,7 +86,7 @@ exports.sendMailsuper = functions.firestore.document('approvetables/{document}')
     const mailOptionsuper = {
         from: 'Schedule Manager <schedulemanager1@gmail.com>',
         to: lecemail,
-       // cc:lecemail ,
+        cc:dest ,
         subject: 'Approval of Admin',
         html: `<h3> ${Mreason} </h3>
                 <p> <b>Approval Status    :</b> ${approveStatus} </p>

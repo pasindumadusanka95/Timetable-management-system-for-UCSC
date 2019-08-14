@@ -11,8 +11,11 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 export class LecturerService {
     formData: Lecturer;
+    publishState: boolean;
 
-constructor(private firestore: AngularFirestore) {}
+constructor(private firestore: AngularFirestore) {
+  this.publishState = false;
+}
     // tslint:disable-next-line:member-ordering
     lecturerList: AngularFireList<any>;
   // tslint:disable-next-line:member-ordering

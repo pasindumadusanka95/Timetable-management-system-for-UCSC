@@ -18,10 +18,11 @@
                 
                         <div class="col-md-12">
                         <label>Message Subject</label>
-                        <select [ngModel]="service.formData.reason" (ngModelChange)="onChangeSub($event)" name="reason" class="form-control" required>
+                        <!-- <select [ngModel]="service.formData.reason" (ngModelChange)="onChangeSub($event)" name="reason" class="form-control" required>
                           <option [value]="slist" *ngFor="let slist of Sub">{{slist}}</option>
                          
-                      </select>
+                      </select> -->
+                      <input type="text" name="reason" #reason="ngModel" [(ngModel)]="service.formData.reason" class="form-control" required>
                       </div>
                   </div>
                           <!-- <div class="row">
