@@ -30,11 +30,9 @@ getLecturers() {
   return this.firestore.collection('lecturers').snapshotChanges();
 }
 
-
-
-
-
-
+getLecturerByUsername(userName: string) {
+  return this.firestore.collection('lecturers', ref => ref.where('userName', '==', userName)).get();
+}
 
 }
 

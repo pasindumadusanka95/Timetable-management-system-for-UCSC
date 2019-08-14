@@ -17,7 +17,7 @@ notificationsList: AngularFireList<any>;
 
 
 getxnotifications() {
-return this.firestore.collection('notifications',ref => ref.where('1', '==', 2).where('3','==', 0)).snapshotChanges();
+return this.firestore.collection('notifications', ref => ref.where('1', '==', 2).where('3','==', 0)).snapshotChanges();
 }
 getlecnotifications() {
   return this.firestore.collection('notifications',ref => ref.where('1', '==', 1).where('3','==', 0)).snapshotChanges();
