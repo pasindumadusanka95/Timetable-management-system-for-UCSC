@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TimeTableCRUDService } from 'app/shared/time-table-crud.service';
 
 @Component({
   selector: 'app-view-upcoming-third-year',
@@ -7,9 +8,57 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewUpcomingThirdYearComponent implements OnInit {
 
-  constructor() { }
+  public currentTime ;
+  public location;
+  public startTime;
+  public Subject;
+  public currentDay;
+  public databaseDay;
+  public viewStartTime;
+  
+
+  constructor(private ttcs:TimeTableCRUDService,) {
+    
+    this.currentTime = new Date().getHours();
+    this.currentDay = new Date().getDay();
+   }
 
   ngOnInit() {
-  }
 
+    this.ttcs.getThirdYearTT().subscribe(next=>{    
+      for (let i of next.data().thirdyear as any[]){
+        
+        this.databaseDay = i.StartTime.toDate().getDay();
+        this.startTime = i.StartTime.toDate().getHours();
+        this.viewStartTime = i.StartTime.toDate();
+        
+        this.location = i.Location;
+        this.Subject = i.Subject;
+        
+        
+        
+        if (this.currentDay == this.databaseDay){
+          
+          if(this.startTime >= this.currentTime){
+            console.log(this.viewStartTime)
+            console.log(this.location)
+            console.log(this.Subject)
+         }
+        
+        }
+        
+        
+      
+       
+       
+       
+        
+        
+
+      }
+    
+     
+     
+    })
+  }
 }

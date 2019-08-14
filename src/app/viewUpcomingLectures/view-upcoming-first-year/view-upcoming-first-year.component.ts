@@ -15,10 +15,8 @@ export class ViewUpcomingFirstYearComponent implements OnInit {
   public Subject;
   public currentDay;
   public databaseDay;
-  public viewHours;
-  public viewMintues;
-  public show;
-  public temp;
+  public viewStartTime;
+  
 
   constructor(private ttcs:TimeTableCRUDService,) {
     
@@ -33,20 +31,17 @@ export class ViewUpcomingFirstYearComponent implements OnInit {
         
         this.databaseDay = i.StartTime.toDate().getDay();
         this.startTime = i.StartTime.toDate().getHours();
-        this.viewHours = i.StartTime.toDate();
-        this.viewMintues = i.StartTime.toDate().getMinutes();
-
+        this.viewStartTime = i.StartTime.toDate();
+        
         this.location = i.Location;
         this.Subject = i.Subject;
         
-        // console.log(this.currentTime)
-        // console.log(this.startTime)
-
+        
         
         if (this.currentDay == this.databaseDay){
           
           if(this.startTime >= this.currentTime){
-            console.log(this.viewHours)
+            console.log(this.viewStartTime)
             console.log(this.location)
             console.log(this.Subject)
          }
@@ -55,13 +50,7 @@ export class ViewUpcomingFirstYearComponent implements OnInit {
         
         
       
-        // if (this.time < st2){
-         
-        //   this.Subject = i.Subject
-        //   this.location = i.location
-        //   this.startTime = i.StartTime.toDate()
-          
-        // }
+       
        
        
         
