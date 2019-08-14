@@ -13,8 +13,10 @@ import { SuperadminLayoutComponent } from './superadmin-layout/superadmin-layout
 import { HomepageComponent } from './homepage/homepage.component';
 import { LecturerGuard } from './core/lecturer.guard';
 import { SuperadminGuard } from './core/superadmin.guard';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: '', component: HomepageComponent },
   // { path: 'lecturer', component: LecturerDashboardComponent },
   // { path: 'superadmin', component: SuperadminDashComponent },

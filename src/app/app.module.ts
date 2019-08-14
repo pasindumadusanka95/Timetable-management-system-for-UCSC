@@ -70,6 +70,7 @@ import { ViewUpcomingFirstYearLecturerComponent } from './viewUpcomingLectures/v
 import { ViewUpcomingSecondYearLecturerComponent } from './viewUpcomingLectures/view-upcoming-second-year-lecturer/view-upcoming-second-year-lecturer.component';
 import { ViewUpcomingThirdYearLecturerComponent } from './viewUpcomingLectures/view-upcoming-third-year-lecturer/view-upcoming-third-year-lecturer.component';
 import { ViewUpcomingFourthYearLecturerComponent } from './viewUpcomingLectures/view-upcoming-fourth-year-lecturer/view-upcoming-fourth-year-lecturer.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 
@@ -122,6 +123,7 @@ let config = {
     SuperadminLayoutComponent,
     LecturerLayoutComponent,
     HomepageComponent,
+    ForgotPasswordComponent,
     
     
     
