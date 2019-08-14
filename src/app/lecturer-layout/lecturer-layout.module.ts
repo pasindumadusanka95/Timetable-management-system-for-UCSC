@@ -45,6 +45,10 @@ import { LecturerprofileComponent } from 'app/lecturerprofile/lecturerprofile.co
 import { CommontableComponent } from 'app/commontable/commontable.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NoticeListComponent } from 'app/notice-list/notice-list.component';
+import { ViewUpcomingFirstYearLecturerComponent } from 'app/viewUpcomingLectures/view-upcoming-first-year-lecturer/view-upcoming-first-year-lecturer.component';
+import { ViewUpcomingSecondYearLecturerComponent } from 'app/viewUpcomingLectures/view-upcoming-second-year-lecturer/view-upcoming-second-year-lecturer.component';
+import { ViewUpcomingThirdYearLecturerComponent } from 'app/viewUpcomingLectures/view-upcoming-third-year-lecturer/view-upcoming-third-year-lecturer.component';
+import { ViewUpcomingFourthYearLecturerComponent } from 'app/viewUpcomingLectures/view-upcoming-fourth-year-lecturer/view-upcoming-fourth-year-lecturer.component';
 
 @NgModule({
   imports: [
@@ -79,6 +83,11 @@ import { NoticeListComponent } from 'app/notice-list/notice-list.component';
   LecturerprofileComponent,
   CommontableComponent,
   NoticeListComponent,
+  ViewUpcomingFirstYearLecturerComponent,
+    ViewUpcomingSecondYearLecturerComponent,
+    ViewUpcomingThirdYearLecturerComponent,
+    ViewUpcomingFourthYearLecturerComponent,
+
   ],
   exports: [
 

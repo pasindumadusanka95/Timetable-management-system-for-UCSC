@@ -66,6 +66,10 @@ import { ViewUpcomingFirstYearComponent } from './viewUpcomingLectures/view-upco
 import { ViewUpcomingSecondYearComponent } from './viewUpcomingLectures/view-upcoming-second-year/view-upcoming-second-year.component';
 import { ViewUpcomingThirdYearComponent } from './viewUpcomingLectures/view-upcoming-third-year/view-upcoming-third-year.component';
 import { ViewUpcomingFourthYearComponent } from './viewUpcomingLectures/view-upcoming-fourth-year/view-upcoming-fourth-year.component';
+import { ViewUpcomingFirstYearLecturerComponent } from './viewUpcomingLectures/view-upcoming-first-year-lecturer/view-upcoming-first-year-lecturer.component';
+import { ViewUpcomingSecondYearLecturerComponent } from './viewUpcomingLectures/view-upcoming-second-year-lecturer/view-upcoming-second-year-lecturer.component';
+import { ViewUpcomingThirdYearLecturerComponent } from './viewUpcomingLectures/view-upcoming-third-year-lecturer/view-upcoming-third-year-lecturer.component';
+import { ViewUpcomingFourthYearLecturerComponent } from './viewUpcomingLectures/view-upcoming-fourth-year-lecturer/view-upcoming-fourth-year-lecturer.component';
 
 
 
@@ -118,6 +122,7 @@ let config = {
     SuperadminLayoutComponent,
     LecturerLayoutComponent,
     HomepageComponent,
+    
     
     
     
