@@ -7,6 +7,7 @@ import { Message } from '_debugger';
 import { MessageService } from 'app/shared/messages.service';
 import { NotificationsService } from 'app/shared/notifications.service';
 import { Notifications } from 'app/shared/notifications.model';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-anavbar',
@@ -20,11 +21,18 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
     Mlist: Message[];
+    closeResult: string;
+    body: string;
+    sub: string;
+    data: any;
+    status: string;
+    sbody: string;
     constructor(private  authService:  AuthService,
          location: Location,
          private element: ElementRef,
          private router: Router,
-         private msgService: NotificationsService
+         private msgService: NotificationsService,
+         public modalService: NgbModal,
          ) {
       this.location = location;
           this.sidebarVisible = false;
@@ -162,4 +170,30 @@ export class NavbarComponent implements OnInit {
             .then(()=> console.log("Success"))
             .catch((err)=>console.log("New Error " + err));
     }
+    open(content,notifications:Notifications) {
+        this.body = notifications[2];
+        this.sub = notifications[0];
+        this.data= notifications;
+        this.modalService.open(content , {ariaLabelledBy: 'modal-basic-title', size: 'lg'}).result.then((result) => {
+          this.closeResult = `Closed with: ${result}`;
+        }, (reason) => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }, );
+      }
+    
+      private getDismissReason(reason: any): string {
+        if (reason === ModalDismissReasons.ESC) {
+          return 'by pressing ESC';
+        } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+          return 'by clicking on a backdrop';
+        } else {
+          return  `with: ${reason}`;
+        }
+      }
+
+      check(notifications: Notifications){
+        
+         this.counter(notifications);
+         this.modalService.dismissAll('exit by close');
+}
 }

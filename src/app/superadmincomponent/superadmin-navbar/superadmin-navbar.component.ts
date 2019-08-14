@@ -84,9 +84,9 @@ export class SuperadminNavbarComponent implements OnInit {
    this.counter(notifications);
   console.log(status);
   if (status === 'approve') {
-    this.approvaldata.reason = 'sss';
+    this.approvaldata.reason = 'About Rescheduling';
     this.approvaldata.approveStatus = status;
-    this.approvaldata.reasonmessage = 'df';
+    this.approvaldata.reasonmessage = '';
     const data = this.approvaldata;
     delete data.id;
     const name = this.sub.split(' ')[0];
@@ -99,14 +99,66 @@ export class SuperadminNavbarComponent implements OnInit {
           this.toastr.success('', 'Request Approved');
         }).catch((error) => console.log(error));
       });
+
+  const notificationbody = 'Reschedule request Approved for '+ name;
+  const type = 2;
+  const notificationsubject= 'About ReScheduling';
+  const read = 0;
+  const body = notifications[0];
+
+  const notificationbodylec = 'your rescheduling request Approved by admin '+ name;
+  const typel = 1; //lecturer
+  const notificationsubjectlec= 'About ReScheduling';
+  const username = name;
+
+  const notificationdata = Object.assign({}, [notificationbody,type,notificationsubject,read]);
+  const notificationdatalec = Object.assign({}, [notificationbodylec,typel,notificationsubjectlec,read,username]);
+  delete data.id;
+    // tslint:disable-next-line:curly
+   
+
+      this.firestore.collection('notifications').add(notificationdata);
+      this.firestore.collection('notifications').add(notificationdatalec);
+    
+
   } else {
-    this.approvaldata.reason = 'sss';
+    this.approvaldata.reason = 'About Rescheduling';
     this.approvaldata.approveStatus = status;
+    this.approvaldata.reasonmessage = 'not possible';
     const data = this.approvaldata;
     delete data.id;
-    this.firestore.collection('approvetables').add(data);
-    this.toastr.success('', 'Request Rejected');
+    const name = this.sub.split(' ')[0];
+    this.lecService.getLecturerByUsername(name)
+      .subscribe((res: any) => {
+        let docs = res.docs.map(doc => doc.data());
+        data.email = docs[0].email;
+        this.firestore.collection('approvetables').add(data).then(() => {
+          this.modalService.dismissAll('exit by close');
+          this.toastr.error('', 'Request Rejected');
+        }).catch((error) => console.log(error));
+      });
+
+  const notificationbody = 'Reschedule request Rejected for '+ name;
+  const type = 2;
+  const notificationsubject= 'About ReScheduling';
+  const read = 0;
+
+  const notificationbodylec = 'your rescheduling request Approved by admin '+ name;
+  const typel = 1; //lecturer
+  const notificationsubjectlec= 'About ReScheduling';
+  const username = name;
+
+  const notificationdata = Object.assign({}, [notificationbody,type,notificationsubject,read]);
+  const notificationdatalec = Object.assign({}, [notificationbodylec,typel,notificationsubjectlec,read,username]);
+  delete data.id;
+    // tslint:disable-next-line:curly
+   
+
+      this.firestore.collection('notifications').add(notificationdata);
+      this.firestore.collection('notifications').add(notificationdatalec);
+    }
+
   }
 }
-}
+
 
