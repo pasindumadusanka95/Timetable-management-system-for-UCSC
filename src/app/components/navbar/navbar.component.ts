@@ -26,7 +26,7 @@ export class NavbarComponent implements OnInit {
     sub: string;
     data: any;
     status: string;
-    sbody: string;
+    sbody: any;
     constructor(private  authService:  AuthService,
          location: Location,
          private element: ElementRef,
@@ -164,6 +164,7 @@ export class NavbarComponent implements OnInit {
     counter(notifications:Notifications) {
        // console.log("hello")
         notifications[3]= 1;
+   
             // this.msgService.formData = Object.assign ({}, notifications);
         this.msgService.formData = Object.assign ({}, notifications);
         this.msgService.updateCounter(notifications[4])
@@ -171,10 +172,11 @@ export class NavbarComponent implements OnInit {
             .catch((err)=>console.log("New Error " + err));
     }
     open(content,notifications:Notifications) {
-        this.body = notifications[2];
+        this.sbody = notifications[3];
+        console.log(notifications[3]);
         this.sub = notifications[0];
         this.data= notifications;
-        this.modalService.open(content , {ariaLabelledBy: 'modal-basic-title', size: 'lg'}).result.then((result) => {
+        this.modalService.open(content , {ariaLabelledBy: 'modal-basic-title', size: 'sm'}).result.then((result) => {
           this.closeResult = `Closed with: ${result}`;
         }, (reason) => {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;

@@ -8,6 +8,7 @@ import { Notifications } from 'app/shared/notifications.model';
 import { NotificationsService } from 'app/shared/notifications.service';
 import { LecProfileService } from 'app/shared/lec-profile.service';
 import { User } from 'app/core/user';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-lecnavbar',
@@ -23,13 +24,20 @@ export class LecnavbarComponent implements OnInit {
   private sidebarVisible: boolean;
   lecturer: Lecturer[];
   user: User;
+  closeResult: string;
+  body: string;
+  sub: string;
+  data: any;
+  status: string;
+  sbody: any;
 
   constructor(public  authService:  AuthService,
               location: Location,
               private element: ElementRef,
               private router: Router,
               private msgService: NotificationsService,
-              public service: LecProfileService
+              public service: LecProfileService,
+              public modalService: NgbModal,
      ) {
     this.location = location;
         this.sidebarVisible = false;
@@ -180,13 +188,50 @@ export class LecnavbarComponent implements OnInit {
     }
     return 'LecturerDashboard';
   }
-  counter(notifications:Notifications) {
-    // console.log("hello")
-     notifications[3]= 1;
-         // this.msgService.formData = Object.assign ({}, notifications);
-     this.msgService.formData = Object.assign ({}, notifications);
-     this.msgService.updateCounter(notifications[4])
-         .then(()=> console.log("Success"))
-         .catch((err)=>console.log("New Error " + err));
+//   counter(notifications:Notifications) {
+//     // console.log("hello")
+//      notifications[3]= 1;
+//          // this.msgService.formData = Object.assign ({}, notifications);
+//      this.msgService.formData = Object.assign ({}, notifications);
+//      this.msgService.updateCounter(notifications[4])
+//          .then(()=> console.log("Success"))
+//          .catch((err)=>console.log("New Error " + err));
+//  }
+ counter(notifications:Notifications) {
+  // console.log("hello")
+   notifications[3]= 1;
+
+       // this.msgService.formData = Object.assign ({}, notifications);
+   this.msgService.formData = Object.assign ({}, notifications);
+   this.msgService.updateCounter(notifications[4])
+       .then(()=> console.log("Success"))
+       .catch((err)=>console.log("New Error " + err));
+}
+open(content,notifications:Notifications) {
+   this.sbody = notifications[3];
+   console.log(notifications[3]);
+   this.sub = notifications[0];
+   this.data= notifications;
+   this.modalService.open(content , {ariaLabelledBy: 'modal-basic-title', size: 'sm'}).result.then((result) => {
+     this.closeResult = `Closed with: ${result}`;
+   }, (reason) => {
+     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+   }, );
  }
+
+ private getDismissReason(reason: any): string {
+   if (reason === ModalDismissReasons.ESC) {
+     return 'by pressing ESC';
+   } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+     return 'by clicking on a backdrop';
+   } else {
+     return  `with: ${reason}`;
+   }
+ }
+
+ check(notifications: Notifications){
+   
+    this.counter(notifications);
+    this.modalService.dismissAll('exit by close');
+}
 }

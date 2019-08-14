@@ -21,7 +21,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                   <ul *ngFor="let item of Mlist">
-                      <a class="dropdown-item"  (click)="counter(item)"> <li> 
+                      <a class="dropdown-item"  (click)="open(contentlec,item)"> <li> 
                           <h5>{{item[2]}}</h5>
                           {{item[0]}}</li></a>
                   </ul>
@@ -51,3 +51,31 @@
       </div>
   </div>
 </nav>
+<!-- 1st year Modal -->
+<ng-template #contentlec let-modal>
+    <div class="modal-header">
+    <h4 class="h4"><b>Approve/Reject Request </b></h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="modal-body">
+    
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
+    
+    <div>
+      <!-- <h5>{{body}}</h5> -->
+      {{sub}}
+      {{sbody}}
+      
+      <div class="form-group text-right">
+        <button mat-raised-button type="button" class="btn btn-info gap-right" (click)="check(data)">OK</button>
+        
+    </div>
+    </div>
+    <br><br>
+   
+    </div>
+    </div>
+    </ng-template>
+    <!-- End 1st year Modal -->

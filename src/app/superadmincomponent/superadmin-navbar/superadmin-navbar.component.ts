@@ -96,22 +96,22 @@ export class SuperadminNavbarComponent implements OnInit {
         data.email = docs[0].email;
         this.firestore.collection('approvetables').add(data).then(() => {
           this.modalService.dismissAll('exit by close');
-          this.toastr.success('', 'Request Approved');
+          this.toastr.info('', 'Request Approved');
         }).catch((error) => console.log(error));
       });
 
   const notificationbody = 'Reschedule request Approved for '+ name;
   const type = 2;
-  const notificationsubject= 'About ReScheduling';
+  const notificationsubject= 'About ReScheduling of '+name+'\'s slot';
   const read = 0;
   const body = notifications[0];
 
-  const notificationbodylec = 'your rescheduling request Approved by admin '+ name;
+  const notificationbodylec = name +' rescheduling request Approved by admin ' ;
   const typel = 1; //lecturer
-  const notificationsubjectlec= 'About ReScheduling';
+  const notificationsubjectlec= 'About ReScheduling of '+name+'\'s slot';
   const username = name;
 
-  const notificationdata = Object.assign({}, [notificationbody,type,notificationsubject,read]);
+  const notificationdata = Object.assign({}, [notificationbody,type,notificationsubject,read,body]);
   const notificationdatalec = Object.assign({}, [notificationbodylec,typel,notificationsubjectlec,read,username]);
   delete data.id;
     // tslint:disable-next-line:curly
@@ -145,7 +145,7 @@ export class SuperadminNavbarComponent implements OnInit {
 
   const notificationbodylec = 'your rescheduling request Approved by admin '+ name;
   const typel = 1; //lecturer
-  const notificationsubjectlec= 'About ReScheduling';
+  const notificationsubjectlec= 'About ReScheduling of '+name+'\'s slot';
   const username = name;
 
   const notificationdata = Object.assign({}, [notificationbody,type,notificationsubject,read]);

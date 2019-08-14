@@ -54,7 +54,7 @@
 <!-- 1st year Modal -->
 <ng-template #contentmod let-modal>
         <div class="modal-header">
-        <h4 class="h4"><b>Approve/Reject Request </b></h4>
+        <h4 class="h4"><b>Approval Result </b></h4>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
         </button>
@@ -66,6 +66,7 @@
         <div>
           <!-- <h5>{{body}}</h5> -->
           {{sub}}
+          <!-- {{sbody}} -->
           
           <div class="form-group text-right">
             <button mat-raised-button type="button" class="btn btn-info gap-right" (click)="check(data)">OK</button>
