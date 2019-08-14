@@ -13,6 +13,7 @@ import { Subjects } from 'app/shared/subjects.model';
 })
 export class MessagesComponent implements OnInit {
   subjects: Subjects[];
+  // username =JSON.parse(localStorage.getItem('curLec')).userName;
   constructor(public service: MessageService, private firestore: AngularFirestore,
     private toastr: ToastrService) {}
 

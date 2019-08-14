@@ -21,6 +21,9 @@ return this.firestore.collection('notifications', ref => ref.where('1', '==', 2)
 }
 getlecnotifications() {
   return this.firestore.collection('notifications',ref => ref.where('1', '==', 1).where('3','==', 0)).snapshotChanges();
+  // const username = JSON.parse(localStorage.getItem('user')).userName;
+  // return this.firestore.collection('notifications', ref => ref.where('1', '==', 1).where('3','==', 0
+  // ).where('4', '==', username)).snapshotChanges();
   }
 
   getsupernotifications() {
@@ -28,7 +31,8 @@ getlecnotifications() {
     }
 
   //   getcountnotification(){
-  //     return this.firestore.collection('notifications',ref => ref.where('1', '==', 2) && ref.where('3','==', 0)).doc("counts").get().subscribe(doc=>{
+  //     return this.firestore.collection('notifications',ref => ref.where('1', '==', 2
+  // ) && ref.where('3','==', 0)).doc("counts").get().subscribe(doc=>{
   //       console.log(doc.count)
   //       })
 
