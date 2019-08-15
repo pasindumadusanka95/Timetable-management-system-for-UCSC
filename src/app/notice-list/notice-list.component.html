@@ -10,8 +10,10 @@
                         
                         <div class="row columns">
                             <div class="notice-container" *ngFor="let item of list">
-                                <a>{{item.subject}}</a>
-                                <p>{{item.message}}</p>
+                                    <tr  class="table-striped"> 
+                                            <td><a>{{item.subject}}</a><br>Published on <b>{{ item.timestamp | date:'medium'}}</b></td>
+                                    </tr>
+                                    <p>{{item.message}}</p><br>
                             </div>
                         </div>
                       
