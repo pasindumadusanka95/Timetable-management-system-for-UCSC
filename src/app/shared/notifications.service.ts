@@ -17,17 +17,17 @@ notificationsList: AngularFireList<any>;
 
 
 getxnotifications() {
-return this.firestore.collection('notifications', ref => ref.where('1', '==', 2).where('3','==', 0)).snapshotChanges();
+return this.firestore.collection('notifications', ref => ref.where('1', '==', 2).where('3', '==', 0)).snapshotChanges();
 }
 getlecnotifications() {
-  return this.firestore.collection('notifications',ref => ref.where('1', '==', 1).where('3','==', 0)).snapshotChanges();
+  return this.firestore.collection('notifications', ref => ref.where('1', '==', 1).where('3', '==', 0)).snapshotChanges();
   // const username = JSON.parse(localStorage.getItem('user')).userName;
   // return this.firestore.collection('notifications', ref => ref.where('1', '==', 1).where('3','==', 0
   // ).where('4', '==', username)).snapshotChanges();
   }
 
   getsupernotifications() {
-    return this.firestore.collection('notifications',ref => ref.where('1', '==', 0).where('3','==', 0)).snapshotChanges();
+    return this.firestore.collection('notifications', ref => ref.where('1', '==', 0).where('3', '==', 0)).snapshotChanges();
     }
 
   //   getcountnotification(){
@@ -36,7 +36,7 @@ getlecnotifications() {
   //       console.log(doc.count)
   //       })
 
- 
+
     updateCounter(id) {
       return this.firestore.collection('notifications').doc(id).set({ 3: 1 }, { merge: true });
  }
