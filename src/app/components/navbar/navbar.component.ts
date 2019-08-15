@@ -8,6 +8,10 @@ import { MessageService } from 'app/shared/messages.service';
 import { NotificationsService } from 'app/shared/notifications.service';
 import { Notifications } from 'app/shared/notifications.model';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Approvetable } from 'app/shared/approvetable.model';
+import { LecturerService } from 'app/shared/lecturer.service';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-anavbar',
@@ -28,12 +32,24 @@ export class NavbarComponent implements OnInit {
     status: string;
     sbody: any;
     curEmail;
+    approvaldata:  Approvetable = {
+      id: '',
+      email: '',
+      reason: '',
+      approveStatus: '',
+      reasonmessage: ''
+    }
+
+
     constructor(public  authService:  AuthService,
          location: Location,
          private element: ElementRef,
          private router: Router,
          private msgService: NotificationsService,
          public modalService: NgbModal,
+         private lecService: LecturerService,
+         private firestore: AngularFirestore,
+         private toastr: ToastrService
          ) {
       this.location = location;
           this.sidebarVisible = false;
@@ -196,9 +212,76 @@ export class NavbarComponent implements OnInit {
         }
       }
 
-      check(notifications: Notifications){
-        
+      check(status,notifications:Notifications){
+        this.getDismissReason(0);
          this.counter(notifications);
-         this.modalService.dismissAll('exit by close');
+        console.log(status);
+        if (status === 'approve') {
+          this.approvaldata.reason = 'About Rescheduling';
+          this.approvaldata.approveStatus = status;
+          this.approvaldata.reasonmessage = '';
+          const data = this.approvaldata;
+          delete data.id;
+          const name = this.sub.split(' ')[0];
+          this.lecService.getLecturerByUsername(name)
+            .subscribe((res: any) => {
+              let docs = res.docs.map(doc => doc.data());
+              data.email = docs[0].email;
+              this.firestore.collection('approvetables').add(data).then(() => {
+                this.modalService.dismissAll('exit by close');
+                this.toastr.info('', 'Request Approved');
+              }).catch((error) => console.log(error));
+            });
+      
+
+      
+        const notificationbodylec = name +' rescheduling request Approved by admin ' ;
+        const typel = 1; //lecturer
+        const notificationsubjectlec= 'About ReScheduling of '+name+'\'s slot';
+        const username = name;
+        const read = 0;
+     
+        const notificationdatalec = Object.assign({}, [notificationbodylec,typel,notificationsubjectlec,read,username]);
+        delete data.id;
+          // tslint:disable-next-line:curly
+         
+      
+           // this.firestore.collection('notifications').add(notificationdata);
+            this.firestore.collection('notifications').add(notificationdatalec);
+          
+      
+        } else {
+          this.approvaldata.reason = 'About Rescheduling';
+          this.approvaldata.approveStatus = status;
+          this.approvaldata.reasonmessage = 'not possible';
+          const data = this.approvaldata;
+          delete data.id;
+          const name = this.sub.split(' ')[0];
+          this.lecService.getLecturerByUsername(name)
+            .subscribe((res: any) => {
+              let docs = res.docs.map(doc => doc.data());
+              data.email = docs[0].email;
+              this.firestore.collection('approvetables').add(data).then(() => {
+                this.modalService.dismissAll('exit by close');
+                this.toastr.error('', 'Request Rejected');
+              }).catch((error) => console.log(error));
+            });
+      
+        // const notificationbody = 'Reschedule request Rejected for '+ name;
+        // const type = 2;
+        // const notificationsubject= 'About ReScheduling';
+        // const read = 0;
+        const read = 0;
+        const notificationbodylec = 'your rescheduling request Approved by admin '+ name;
+        const typel = 1; //lecturer
+        const notificationsubjectlec= 'About ReScheduling of '+name+'\'s slot';
+        const username = name;
+      
+       
+        const notificationdatalec = Object.assign({}, [notificationbodylec,typel,notificationsubjectlec,read,username]);
+        delete data.id;
+          // tslint:disable-next-line:curly
+            this.firestore.collection('notifications').add(notificationdatalec);
+          }
 }
 }
