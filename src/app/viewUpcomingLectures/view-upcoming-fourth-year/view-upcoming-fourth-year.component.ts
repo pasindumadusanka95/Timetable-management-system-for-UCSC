@@ -15,6 +15,7 @@ export class ViewUpcomingFourthYearComponent implements OnInit {
   public currentDay;
   public databaseDay;
   public viewStartTime;
+  upList:any=[];
 
   constructor(private ttcs:TimeTableCRUDService,) {
     
@@ -39,6 +40,12 @@ export class ViewUpcomingFourthYearComponent implements OnInit {
         if (this.currentDay == this.databaseDay){
           
           if(this.startTime >= this.currentTime){
+            const obj ={
+              viewStartTime:this.viewStartTime,
+              location :this.location,
+              Subject :this.Subject
+            }
+            this.upList.push(obj);
             console.log(this.viewStartTime)
             console.log(this.location)
             console.log(this.Subject)

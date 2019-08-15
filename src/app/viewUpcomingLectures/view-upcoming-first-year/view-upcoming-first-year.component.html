@@ -1,3 +1,7 @@
-<p>
-  view-upcoming-first-year works!
-</p>
+  <div class="p-0" mat-menu *ngFor="let item of upList | slice:0:2;let i = index">
+    <p class="m-0 bg-secondary text-center" mat-menu-item><b>Upcoming Lecture - {{i+1}}</b></p>
+    <p class="m-0" mat-menu-item><b>Start Time</b> - {{item.viewStartTime}}</p>
+    <p class="m-0" mat-menu-item><b>Location</b> - {{item.location}} </p>
+    <p class="m-0" mat-menu-item><b>Subject</b> - {{item.Subject}}</p>
+    <hr class="m-0">
+  </div>
