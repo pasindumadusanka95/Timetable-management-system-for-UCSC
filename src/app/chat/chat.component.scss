@@ -33,9 +33,16 @@
     letter-spacing:2px;
 }
 
+.chat-container b {
+    font-weight:bold;
+    color:rgb(0, 0, 0);
+    font-size:.6em;
+    letter-spacing:1px;
+}
+
 .chat-container p {
-    background:#323035;
-    padding:1.1em;
-    color:white;
-    margin: 5px 0 10px 0;
+    background:#f3f0f0;
+    padding:0.1em;
+    color:black;
+    margin: 1px 0 1px 0;
 }

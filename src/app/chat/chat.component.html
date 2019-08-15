@@ -30,10 +30,12 @@
                       </form>
 
                       <div class="row columns">
-                          <div class="chat-container" *ngFor="let item of list">
-                              <a>{{item.name}}</a>
-                              <p>{{item.message}}</p>
-                          </div>
+                            <div class="chat-container" *ngFor="let item of list">
+                                    <tr  class="table-striped"> 
+                                        <td><a>{{item.name}}</a></td>
+                                    </tr>
+                                    <p>{{item.message}}</p><b>{{ item.timestamp | date:'medium'}}</b><br><br>
+                            </div>
                       </div>
                   </div>
               </div>
