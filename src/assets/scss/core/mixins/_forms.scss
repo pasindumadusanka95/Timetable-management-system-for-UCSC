@@ -21,7 +21,7 @@
   .checkbox-inline,
   .switch label {
     // override bootstrap focus and keep all the standard color (could be multiple radios in the form group)
-    //color: $bmd-label-color;
+    color: $bmd-label-color;
 
     &,
     .is-focused & {
@@ -156,7 +156,7 @@
     // on focus set borders and labels to the validation color
 
     // Use the BS provided mixin for the bulk of the color
-    @include form-validation-state("valid", $label-color);
+    @include form-validation-state("valid", $label-color, "none");
 
     [class^='bmd-label'],
     [class*=' bmd-label'] {

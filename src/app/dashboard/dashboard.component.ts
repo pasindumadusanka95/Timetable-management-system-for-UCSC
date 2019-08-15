@@ -110,6 +110,7 @@ constructor(
 
       publishButtonAction() {
         this.lecservice.publishState = true;
+        console.log(this.lecservice.publishState)
       }
 
       revokeButtonAction() {
