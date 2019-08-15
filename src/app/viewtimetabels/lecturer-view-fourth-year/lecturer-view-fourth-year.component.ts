@@ -43,15 +43,18 @@ export class LecturerViewFourthYearComponent implements OnInit {
     this.ttcs.getFourthYearTT().subscribe(next => {
 
       for (const i of next.data().fourthyear as any[]) {
-        if((this.curLecUsername === i.Lecturer1) || (this.curLecUsername === i.Lecturer2) ){
-          i.StartTime = i.StartTime.toDate();
-          i.EndTime = i.EndTime.toDate();
-         (<any[]>(this.eventSettings4Y.dataSource)).push(i);
-         this.scheduleObj.refreshEvents()
+        if(this.lecservice.publishState){
+          if((this.curLecUsername === i.Lecturer1) || (this.curLecUsername === i.Lecturer2) ){
+            i.StartTime = i.StartTime.toDate();
+            i.EndTime = i.EndTime.toDate();
+           (<any[]>(this.eventSettings4Y.dataSource)).push(i);
+           this.scheduleObj.refreshEvents()
+          }
+          else{
+            this.scheduleObj.refreshEvents()
+          }
         }
-        else{
-          this.scheduleObj.refreshEvents()
-        }
+        
 
       }
 
@@ -59,6 +62,6 @@ export class LecturerViewFourthYearComponent implements OnInit {
     })
 
 
-    console.log(this.lecservice.publishState); 
+    
   }
 }
