@@ -69,7 +69,8 @@
           <!-- {{sbody}} -->
           
           <div class="form-group text-right">
-            <button mat-raised-button type="button" class="btn btn-info gap-right" (click)="check(data)">OK</button>
+            <button mat-raised-button type="button" class="btn btn-success gap-right" (click)="check('approve',data)">Approve</button>
+      <button mat-raised-button type="button" class="btn btn-danger pull-right" (click)="check('reject',data)" >Reject</button>
             
         </div>
         </div>

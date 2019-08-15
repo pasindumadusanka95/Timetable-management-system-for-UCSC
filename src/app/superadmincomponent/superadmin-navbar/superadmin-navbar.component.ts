@@ -115,13 +115,13 @@ export class SuperadminNavbarComponent implements OnInit {
   const username = name;
 
   const notificationdata = Object.assign({}, [notificationbody,type,notificationsubject,read,body]);
-  const notificationdatalec = Object.assign({}, [notificationbodylec,typel,notificationsubjectlec,read,username]);
+ // const notificationdatalec = Object.assign({}, [notificationbodylec,typel,notificationsubjectlec,read,username]);
   delete data.id;
     // tslint:disable-next-line:curly
    
 
       this.firestore.collection('notifications').add(notificationdata);
-      this.firestore.collection('notifications').add(notificationdatalec);
+    //  this.firestore.collection('notifications').add(notificationdatalec);
     
 
   } else {
@@ -152,13 +152,13 @@ export class SuperadminNavbarComponent implements OnInit {
   const username = name;
 
   const notificationdata = Object.assign({}, [notificationbody,type,notificationsubject,read]);
-  const notificationdatalec = Object.assign({}, [notificationbodylec,typel,notificationsubjectlec,read,username]);
+ // const notificationdatalec = Object.assign({}, [notificationbodylec,typel,notificationsubjectlec,read,username]);
   delete data.id;
     // tslint:disable-next-line:curly
    
 
       this.firestore.collection('notifications').add(notificationdata);
-      this.firestore.collection('notifications').add(notificationdatalec);
+    //  this.firestore.collection('notifications').add(notificationdatalec);
     }
 
   }
