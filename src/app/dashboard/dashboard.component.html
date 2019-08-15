@@ -28,7 +28,7 @@
         </thead>
         
          
-          <ng-container *ngFor="let subject of list | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
+          <ng-container *ngFor="let subject of list | paginate: { itemsPerPage: 5, currentPage: p }; let i = index;">
            
              <tr  class="table-striped"> 
             <!-- <th scope="row">{{student.$key}}</th> -->
@@ -87,7 +87,7 @@
       </thead>
       
        
-        <ng-container *ngFor="let lecturer of Llist  | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
+        <ng-container *ngFor="let lecturer of Llist  | paginate: { itemsPerPage: 5, currentPage: p }; let i = index;">
          
            <tr  class="table-striped"> 
           <!-- <th scope="row">{{student.$key}}</th> -->
@@ -140,7 +140,7 @@
       </thead>
       
        
-        <ng-container *ngFor="let hall of Hlist  | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
+        <ng-container *ngFor="let hall of Hlist  | paginate: { itemsPerPage: 3, currentPage: p }; let i = index;">
          
            <tr  class="table-striped"> 
           <!-- <th scope="row">{{student.$key}}</th> -->
