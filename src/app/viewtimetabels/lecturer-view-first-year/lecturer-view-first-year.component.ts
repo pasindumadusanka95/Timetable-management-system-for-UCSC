@@ -7,6 +7,7 @@ import {
   WorkWeekService, MonthService, AgendaService, PopupOpenEventArgs, ResizeService, DragAndDropService,
 } from '@syncfusion/ej2-angular-schedule';
 import { TimeTableCRUDService } from 'app/shared/time-table-crud.service';
+import { LecturerService } from 'app/shared/lecturer.service';
 
 
 @Component({
@@ -71,7 +72,7 @@ export class LecturerViewFirstYearComponent implements OnInit {
     }
   }
 
-  constructor(private ttcs: TimeTableCRUDService, ) { }
+  constructor(private ttcs: TimeTableCRUDService, private lecservice: LecturerService ) { }
 
   ngOnInit() {
 
@@ -95,8 +96,7 @@ export class LecturerViewFirstYearComponent implements OnInit {
 
     })
 
-
-
+    console.log(this.lecservice.publishState); 
 
 
 

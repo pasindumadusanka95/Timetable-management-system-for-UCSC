@@ -7,6 +7,7 @@ import {
   WorkWeekService, MonthService, AgendaService, PopupOpenEventArgs, ResizeService, DragAndDropService,
 } from '@syncfusion/ej2-angular-schedule';
 import { TimeTableCRUDService } from 'app/shared/time-table-crud.service';
+import { LecturerService } from 'app/shared/lecturer.service';
 
 @Component({
   selector: 'app-lecturer-view-third-year',
@@ -33,7 +34,7 @@ export class LecturerViewThirdYearComponent implements OnInit {
     return this.instance.formatDate(value, { skeleton: 'E' });
   }
 
-  constructor(private ttcs: TimeTableCRUDService) { }
+  constructor(private ttcs: TimeTableCRUDService, private lecservice: LecturerService) { }
 
   ngOnInit() {
 
@@ -57,7 +58,7 @@ export class LecturerViewThirdYearComponent implements OnInit {
       this.scheduleObj.refreshEvents()
       console.log(this.eventSettings3Y.dataSource)
     })
-
+    console.log(this.lecservice.publishState); 
 
   }
 

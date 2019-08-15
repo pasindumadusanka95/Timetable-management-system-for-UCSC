@@ -107,4 +107,12 @@ constructor(
         }
         return items;
       }
+
+      publishButtonAction() {
+        this.lecservice.publishState = true;
+      }
+
+      revokeButtonAction() {
+        this.lecservice.publishState = false;
+      }
 }

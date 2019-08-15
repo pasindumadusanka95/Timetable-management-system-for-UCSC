@@ -299,7 +299,9 @@
                   </div>
               </div>
           </div>
-          <div class="col-lg-4 col-md-6 col-sm-6">
+      </div>
+     <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
             <!-- <div class="card card-stats">
                 <div class="card-header card-header-warning card-header-icon">
                     <div class="card-icon">
@@ -308,68 +310,77 @@
                     <h5 class="card-title">View Upcoming Lectures</h5>
                 </div>
             </div> -->
-            <button mat-icon-button [matMenuTriggerFor]="year"> <mat-icon>more_vert</mat-icon>View Upcoming Lectuers
-               
+            <button mat-icon-button [matMenuTriggerFor]="year"> 
+              <mat-icon>more_vert</mat-icon>View Upcoming Lectuers
             </button>
 
-<mat-menu #year="matMenu">
-  <button mat-menu-item [matMenuTriggerFor]="firstyear">First Year</button>
-  <button mat-menu-item [matMenuTriggerFor]="secondyear">Second Year</button>
-  <button mat-menu-item [matMenuTriggerFor]="thirdyear">Third Year</button>
-  <button mat-menu-item [matMenuTriggerFor]="fourthyear">Fourth Year</button>
-</mat-menu>
+            <mat-menu #year="matMenu">
+              <button mat-menu-item [matMenuTriggerFor]="firstyear">First Year</button>
+              <button mat-menu-item [matMenuTriggerFor]="secondyear">Second Year</button>
+              <button mat-menu-item [matMenuTriggerFor]="thirdyear">Third Year</button>
+              <button mat-menu-item [matMenuTriggerFor]="fourthyear">Fourth Year</button>
+            </mat-menu>
 
-<mat-menu #firstyear="matMenu">
-    <!-- <button mat-menu-item *ngFor="let item of testdata"><b>Subject</b> - {{item.subcode}}---<b>Location</b> - {{item.loc}}</button>
-   -->
-    <div>
-      <app-view-upcoming-first-year></app-view-upcoming-first-year>
-    </div>
-</mat-menu>
-<mat-menu #secondyear="matMenu">
-  <!-- <button mat-menu-item *ngFor="let item of testdata"><b>Subject</b> - {{item.subcode}}---<b>Location</b> - {{item.loc}}</button>
- -->
-  <div>
-    <app-view-upcoming-second-year></app-view-upcoming-second-year>
-  </div>
-</mat-menu>
-<mat-menu #thirdyear="matMenu">
-  <!-- <button mat-menu-item *ngFor="let item of testdata"><b>Subject</b> - {{item.subcode}}---<b>Location</b> - {{item.loc}}</button>
- -->
-  <div>
-    <app-view-upcoming-third-year></app-view-upcoming-third-year>
-  </div>
-</mat-menu>
-<mat-menu #fourthyear="matMenu">
-  <!-- <button mat-menu-item *ngFor="let item of testdata"><b>Subject</b> - {{item.subcode}}---<b>Location</b> - {{item.loc}}</button>
- -->
-  <div>
-    <app-view-upcoming-fourth-year></app-view-upcoming-fourth-year>
-  </div>
-</mat-menu>
+            <mat-menu #firstyear="matMenu">
+                <!-- <button mat-menu-item *ngFor="let item of testdata"><b>Subject</b> - {{item.subcode}}---<b>Location</b> - {{item.loc}}</button>
+              -->
+                <div>
+                  <app-view-upcoming-first-year></app-view-upcoming-first-year>
+                </div>
+            </mat-menu>
+            <mat-menu #secondyear="matMenu">
+              <!-- <button mat-menu-item *ngFor="let item of testdata"><b>Subject</b> - {{item.subcode}}---<b>Location</b> - {{item.loc}}</button>
+            -->
+              <div>
+                <app-view-upcoming-second-year></app-view-upcoming-second-year>
+              </div>
+            </mat-menu>
+            <mat-menu #thirdyear="matMenu">
+              <!-- <button mat-menu-item *ngFor="let item of testdata"><b>Subject</b> - {{item.subcode}}---<b>Location</b> - {{item.loc}}</button>
+            -->
+              <div>
+                <app-view-upcoming-third-year></app-view-upcoming-third-year>
+              </div>
+            </mat-menu>
+            <mat-menu #fourthyear="matMenu">
+              <!-- <button mat-menu-item *ngFor="let item of testdata"><b>Subject</b> - {{item.subcode}}---<b>Location</b> - {{item.loc}}</button>
+            -->
+              <div>
+                <app-view-upcoming-fourth-year></app-view-upcoming-fourth-year>
+              </div>
+            </mat-menu>
 
-<!-- <mat-menu #secondyear="matMenu">
-  <button mat-menu-item>lec1</button>
-  <button mat-menu-item>lec2</button>
-  <button mat-menu-item>lec3</button>
- 
-</mat-menu> -->
+            <!-- <mat-menu #secondyear="matMenu">
+              <button mat-menu-item>lec1</button>
+              <button mat-menu-item>lec2</button>
+              <button mat-menu-item>lec3</button>
+            
+            </mat-menu> -->
 
-<!-- <mat-menu #thirdyear="matMenu">
-  <button mat-menu-item>lec1</button>
-  <button mat-menu-item>lec2</button>
-  <button mat-menu-item>lec3</button>
-  
-</mat-menu> -->
+            <!-- <mat-menu #thirdyear="matMenu">
+              <button mat-menu-item>lec1</button>
+              <button mat-menu-item>lec2</button>
+              <button mat-menu-item>lec3</button>
+              
+            </mat-menu> -->
 
 
 
-<!-- <mat-menu #fourthyear="matMenu">
-    <button mat-menu-item>lec1</button>
-    <button mat-menu-item>lec2</button>
-    <button mat-menu-item>lec3</button>
-</mat-menu> -->
+            <!-- <mat-menu #fourthyear="matMenu">
+                <button mat-menu-item>lec1</button>
+                <button mat-menu-item>lec2</button>
+                <button mat-menu-item>lec3</button>
+            </mat-menu> -->
+        </div> 
+        <div class="col-lg-6 col-md-6 col-sm-6 px-4">
+          <button mat-raised-button type="button" class="btn btn-success btn-sm gap-right " (click)="publishButtonAction()" >
+            Publish Timetables to Lecturers
+          </button>
+          <button mat-raised-button type="button" class="btn btn-danger btn-sm pull-right" (click)="revokeButtonAction()" >
+              Revoke Timetables from Lecturers
+          </button>
         </div>
+      </div>
       <div class="row">
           <div class="col-lg-6 col-md-12">
             <div class="card">
