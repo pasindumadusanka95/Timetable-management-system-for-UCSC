@@ -71,6 +71,8 @@ import { ViewUpcomingSecondYearLecturerComponent } from './viewUpcomingLectures/
 import { ViewUpcomingThirdYearLecturerComponent } from './viewUpcomingLectures/view-upcoming-third-year-lecturer/view-upcoming-third-year-lecturer.component';
 import { ViewUpcomingFourthYearLecturerComponent } from './viewUpcomingLectures/view-upcoming-fourth-year-lecturer/view-upcoming-fourth-year-lecturer.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { PrivateNoticeComponent } from './private-notice/private-notice.component';
+import { PrivateNoticeListComponent } from './private-notice-list/private-notice-list.component';
 
 
 

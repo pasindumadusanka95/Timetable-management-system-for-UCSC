@@ -1,0 +1,84 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">Notice Details</h4>
+                       
+                    </div>
+                    <div class="card-body">
+                        <!-- <a class="action-btn pull-right" style="color:rgb(36, 143, 192); cursor: pointer"   (click)="this.isButtonVisible = false">new hall<i class="material-icons">add</i> -->
+                        <!-- </a> -->
+                        
+                      <form #form="ngForm" autocomplete="off" (submit)="noticeSend(form)">
+                          
+                        <input type="hidden" name="id" #id="ngModel" [(ngModel)]="noticeService.formData.id">
+                        <input type="hidden" name="timestamp" #timestamp="ngModel" [(ngModel)]="noticeService.formData.timestamp">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Subject</label>
+                                    <input type="text" name="subject" #subject="ngModel" [(ngModel)]="noticeService.formData.subject" class="form-control" required>
+                                    <div *ngIf="subject.invalid && subject.touched" class="validation-error">This field is required.</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>User</label>
+                                    <input type="text" name="user" #user="ngModel" [(ngModel)]="noticeService.formData.user" class="form-control" required>
+                                    <div *ngIf="user.invalid && user.touched" class="validation-error">This field is required.</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-12">
+                                <label>Message</label>
+                                <textarea type="text" name="message" #message="ngModel" [(ngModel)]="noticeService.formData.message" class="form-control" required></textarea>
+                              </div>
+                            </div>
+                           
+                             <div class="form-group text-right">
+                              <button type="button" class="btn btn-info gap-right" (click)="resetForm(form)">Reset</button>
+                              <button type="submit" class="btn btn-success pull-right" [disabled]="form.invalid" value="submit">Send</button>
+                            </div>
+                      
+                         
+                          <div class="clearfix"></div>
+                        
+                      </form>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">Notices</h4>
+                    </div>
+                    <div class="card-body">
+                        
+                        <div class="row columns">
+                            <div class="notice-container" *ngFor="let item of list">
+                                <tr  class="table-striped"> 
+                                    <td><a>{{item.subject}}</a><br>Published on <b>{{ item.timestamp | date:'medium'}}</b></td>
+                                    <td>Sent to <b>{{ item.user}}</b></td>
+                                    <td>
+                                        <a class="action-btn" style="color:rgb(36, 143, 192); cursor: pointer" (click)="onEdit(item)">
+                                          <i class="material-icons">edit</i>
+                                        </a>
+                                        <a class="action-btn" style="color:lightcoral; cursor: pointer" (click)="onDelete(item.id)">
+                                          <i class="material-icons">delete</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <p>{{item.message}}</p><br>
+                            </div>
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+  

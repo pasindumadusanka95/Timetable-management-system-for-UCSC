@@ -8,11 +8,13 @@ import { SuperadminDashComponent } from 'app/superadmin-dash/superadmin-dash.com
 import { NoticesComponent } from 'app/notices/notices.component';
 import { NoticeEditComponent } from 'app/notice-edit/notice-edit.component';
 import { ApprovalsuperComponent } from 'app/approvalsuper/approvalsuper.component';
+import { PrivateNoticeComponent } from 'app/private-notice/private-notice.component';
 
 export const SuperAdminLayoutRoutes: Routes = [
 
      { path: 'superadmin',      component: SuperadminDashComponent },
      { path: 'notice',      component: NoticesComponent },
+    //  { path: 'private-notice',      component: PrivateNoticeComponent },
     //  { path: 'notices',      component: NoticeEditComponent },
     //  { path: 'approval',  component:ApprovalsuperComponent}
     // { path: 'table-list',     component: TableListComponent },

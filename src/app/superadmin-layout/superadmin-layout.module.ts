@@ -35,6 +35,7 @@ import { SuperAdminLayoutRoutes } from './superadmin-layout.routing';
 import { NoticesComponent } from 'app/notices/notices.component';
 import { ApprovalsuperComponent } from 'app/approvalsuper/approvalsuper.component';
 import { NoticeEditComponent } from 'app/notice-edit/notice-edit.component';
+import { PrivateNoticeComponent } from 'app/private-notice/private-notice.component';
 
 
 
@@ -58,7 +59,8 @@ import { NoticeEditComponent } from 'app/notice-edit/notice-edit.component';
     SuperadminDashComponent,
     NoticesComponent,
     ApprovalsuperComponent,
-    NoticeEditComponent
+    NoticeEditComponent,
+    PrivateNoticeComponent
 
   ],
   exports: [
