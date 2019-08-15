@@ -13,7 +13,7 @@ export const SuperAdminLayoutRoutes: Routes = [
 
      { path: 'superadmin',      component: SuperadminDashComponent },
      { path: 'notice',      component: NoticesComponent },
-     { path: 'notices',      component: NoticeEditComponent },
+    //  { path: 'notices',      component: NoticeEditComponent },
     //  { path: 'approval',  component:ApprovalsuperComponent}
     // { path: 'table-list',     component: TableListComponent },
     // { path: 'student-count',     component: StudentCountComponent },
