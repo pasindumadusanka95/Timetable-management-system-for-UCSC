@@ -19,10 +19,11 @@ export class NoticeService {
   form = new FormGroup({
     $key: new FormControl(null),
     subject: new FormControl('', Validators.required),
-    message: new FormControl('', Validators.required)
+    message: new FormControl('', Validators.required),
+    timestamp: new FormControl('', Validators.required)
   });
 
   getNotices() {
-    return this.firestore.collection('notices').snapshotChanges();
+    return this.firestore.collection('notices', ref => ref.orderBy('timestamp', 'desc')).snapshotChanges();
   }
 }

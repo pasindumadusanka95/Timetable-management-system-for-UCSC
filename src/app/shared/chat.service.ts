@@ -19,11 +19,12 @@ export class ChatService {
   form = new FormGroup({
     $key: new FormControl(null),
     name: new FormControl('', Validators.required),
-    message: new FormControl('', Validators.required)
+    message: new FormControl('', Validators.required),
+    timestamp: new FormControl('', Validators.required)
   });
 
   getChats() {
-    return this.firestore.collection('chats').snapshotChanges();
+    return this.firestore.collection('chats', ref => ref.orderBy('timestamp', 'desc')).snapshotChanges();
   }
 
 }

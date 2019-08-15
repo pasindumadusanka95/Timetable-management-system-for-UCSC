@@ -37,6 +37,7 @@ export class NoticesComponent implements OnInit {
     this.noticeService.formData = {
       id: null,
       subject: '',
+      timestamp: Date.now(),
       message: ''
     }
   }
@@ -56,6 +57,11 @@ export class NoticesComponent implements OnInit {
 
   onEdit(notice: Notice) {
     this.noticeService.formData = Object.assign ({}, notice);
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 
   onDelete(id: String) {

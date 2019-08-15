@@ -38,6 +38,7 @@ export class ChatComponent implements OnInit {
     this.chatService.formData = {
       id: null,
       name: JSON.parse(localStorage.getItem('curLec')).firstName + ' ' + JSON.parse(localStorage.getItem('curLec')).lastName,
+      timestamp: Date.now(),
       message: ''
     }
   }
