@@ -27,6 +27,7 @@ export class SuperadminNavbarComponent implements OnInit {
     approveStatus: '',
     reasonmessage: ''
   }
+  curEmail;
 
   constructor(public authService: AuthService,
     private msgService: NotificationsService,
@@ -37,6 +38,8 @@ export class SuperadminNavbarComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.curEmail = JSON.parse(localStorage.getItem('user')).email;
+
     this.msgService.getsupernotifications().subscribe(actionArray => {
       this.Mlist = actionArray.map(item => {
         const a: any = item.payload.doc.data();

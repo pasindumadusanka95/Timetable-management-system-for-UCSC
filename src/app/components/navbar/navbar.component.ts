@@ -27,7 +27,8 @@ export class NavbarComponent implements OnInit {
     data: any;
     status: string;
     sbody: any;
-    constructor(private  authService:  AuthService,
+    curEmail;
+    constructor(public  authService:  AuthService,
          location: Location,
          private element: ElementRef,
          private router: Router,
@@ -39,6 +40,8 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit() {
+      this.curEmail = JSON.parse(localStorage.getItem('user')).email;
+
       this.listTitles = ROUTES.filter(listTitle => listTitle);
       const navbar: HTMLElement = this.element.nativeElement;
       this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
