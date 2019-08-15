@@ -13,4 +13,9 @@ export class ForgotPasswordComponent implements OnInit {
   ngOnInit() {
   }
 
+  getUrl() {
+    // tslint:disable-next-line: max-line-length
+        return 'url(\'../../assets/img/test/background1t.jpg\')';
+      }
+
 }
