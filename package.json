@@ -34,7 +34,7 @@
     "@coreui/coreui": "^2.1.12",
     "@ng-bootstrap/ng-bootstrap": "^4.2.1",
     "@syncfusion/ej2-angular-schedule": "^16.4.55",
-    "ajv": "6.4.0",
+    "ajv": "6.12.3",
     "angular-bootstrap-md": "^7.5.4",
     "angularfire2": "^5.2.1",
     "arrive": "2.4.1",
